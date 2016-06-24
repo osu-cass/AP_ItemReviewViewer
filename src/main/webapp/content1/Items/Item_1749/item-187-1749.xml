@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item type="wordList" id="1749" version="0" bankkey="187">
+    <keywordList>
+      <keyword text="agility" index="1">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">cleverness</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+      <keyword text="stamina" index="2">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">endurance</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+      <keyword text="ultimate" index="3">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">greatest</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+      <keyword text="fortitude" index="4">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">strength or courage</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+      <keyword text="athleticism" index="5">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">the ability to play sports or do physical activities well</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+    </keywordList>
+  </item>
+</itemrelease>

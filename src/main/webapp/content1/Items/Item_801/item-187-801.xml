@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item type="wordList" id="801" version="7" bankkey="187">
+    <keywordList>
+      <keyword text="all" index="1">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">todas</p>]]></html>
+        <html listType="arabicGlossary" listCode="TDS_WL_ArabicGloss"><![CDATA[<p style="line-height:115%; font-family:'Times New Roman'; "><span style="">كل، </span><span style="">جميع</span> </p>]]></html>
+        <html listType="vietnameseGlossary" listCode="TDS_WL_VietnameseGloss"><![CDATA[<p style="line-height:115%; font-size:0.8333em; font-family:'Times New Roman'; ">tất cả </p>]]></html>
+        <html listType="cantoneseGlossary" listCode="TDS_WL_CantoneseGloss"><![CDATA[<p style="line-height:115%; font-family:'Times New Roman'; "><span style="">所有</span> </p>]]></html>
+        <html listType="mandarinGlossary" listCode="TDS_WL_MandarinGloss"><![CDATA[<p style="line-height:115%; font-family:'Times New Roman'; "><span style="">所有</span> </p>]]></html>
+        <html listType="tagalGlossary" listCode="TDS_WL_TagalGloss"><![CDATA[<p style="font-family:'Times New Roman'; ">lahat, amin </p>]]></html>
+        <html listType="russianGlossary" listCode="TDS_WL_RussianGloss"><![CDATA[<p style="font-family:'Times New Roman'; ">все </p>]]></html>
+        <html listType="koreanGlossary" listCode="TDS_WL_KoreanGloss"><![CDATA[<p style="line-height:115%; font-family:'Times New Roman'; "><span style="">모든</span><span style="font-size:0.6667em; ">, </span><span style="">모두</span> </p>]]></html>
+        <html listType="punjabiGlossary" listCode="TDS_WL_PunjabiGloss"><![CDATA[<p style="font-family:'Times New Roman'; ">سارے, ਸਾਰੇ  </p>]]></html>
+        <html listType="ukrainianGlossary" listCode="TDS_WL_UkrainianGloss"><![CDATA[<p style="line-height:115%; font-family:'Times New Roman'; "><span style="language:uk; country:UA; font-size:0.8333em; ">усі</span> </p>]]></html>
+      </keyword>
+      <keyword text="exactly" index="2">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">exactly - in a correct way </p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">exactly - correct </p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">exactamente</p>]]></html>
+      </keyword>
+      <keyword text="Explain" index="3">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">Explica</p>]]></html>
+        <html listType="arabicGlossary" listCode="TDS_WL_ArabicGloss"><![CDATA[<p style="">اشرح </p>]]></html>
+        <html listType="vietnameseGlossary" listCode="TDS_WL_VietnameseGloss"><![CDATA[<p style="">Giải thích </p>]]></html>
+        <html listType="cantoneseGlossary" listCode="TDS_WL_CantoneseGloss"><![CDATA[<p style="">说明, 說明 </p>]]></html>
+        <html listType="mandarinGlossary" listCode="TDS_WL_MandarinGloss"><![CDATA[<p style="">解释，说明, 解釋，說明 </p>]]></html>
+        <html listType="tagalGlossary" listCode="TDS_WL_TagalGloss"><![CDATA[<p style="">Ipaliwanag, Ilawlawag </p>]]></html>
+        <html listType="russianGlossary" listCode="TDS_WL_RussianGloss"><![CDATA[<p style=""><span style="color:#000000; language:ru; country:RU; font-weight:bold; font-size:1.0000em; font-family:'Times New Roman'; ">Объясните</span><span style="color:#ff0000; language:ru; country:RU; font-weight:bold; font-size:0.8333em; font-family:'Arial Narrow', sans-serif; "> </span>&#xA0;</p>]]></html>
+        <html listType="koreanGlossary" listCode="TDS_WL_KoreanGloss"><![CDATA[<p style="">설명하다 </p>]]></html>
+        <html listType="punjabiGlossary" listCode="TDS_WL_PunjabiGloss"><![CDATA[<p style="">بتلاؤنا, ਦੱਸੋ </p>]]></html>
+        <html listType="ukrainianGlossary" listCode="TDS_WL_UkrainianGloss"><![CDATA[<p style="">Поясніть </p>]]></html>
+      </keyword>
+      <keyword text="sides" index="4">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">side - a line on the outside of a figure </p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">side - off-center </p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">lados</p>]]></html>
+      </keyword>
+    </keywordList>
+  </item>
+</itemrelease>

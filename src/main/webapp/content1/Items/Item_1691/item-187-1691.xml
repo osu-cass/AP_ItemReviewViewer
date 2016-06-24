@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="mi" id="1691" version="7" bankkey="187">
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>1691</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>ELA</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>57808 - SBAC_Field</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val>ELA Training 6-8::SP 14 (5); ELA Training 6-8::SP 14::Braille (5);</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val>
+        </val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>MI</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>6</val>
+        <desc>6</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>MI</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>8</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>TableMatch</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>1pt</val>
+        <desc>
+        </desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="1080" bankkey="187" />
+    <resourceslist>
+      <resource type="wordList" id="1748" index="1" bankkey="187" />
+    </resourceslist>
+    <statistic />
+    <MachineRubric filename="Item_1691_v7.mrx" />
+    <content language="ENU" version="2.0" approvedVersion="7">
+      <qti spec="itemBody"><![CDATA[<matchInteraction responseIdentifier="RESPONSE" minAssociations="1" maxAssociations="0"><prompt /><simpleMatchSet><simpleAssociableChoice identifier="1" matchMax="0"><p style="font-weight:normal; "><span style="font-weight:bold; ">Claim 1: </span>Solar power depends on expensive machines.</p></simpleAssociableChoice><simpleAssociableChoice identifier="2" matchMax="0"><p style="font-weight:normal; "><span style="font-weight:bold; ">Claim 2: </span>Solar power is a clean source of energy.</p></simpleAssociableChoice><simpleAssociableChoice identifier="3" matchMax="0"><p style="font-weight:normal; "><span style="font-weight:bold; ">Claim 3: </span>Solar power produces plenty of energy.</p></simpleAssociableChoice></simpleMatchSet><simpleMatchSet><simpleAssociableChoice identifier="a" matchMax="0"><p style="font-weight:bold; ">Source 1</p></simpleAssociableChoice><simpleAssociableChoice identifier="b" matchMax="0"><p style="font-weight:bold; ">Source 2</p></simpleAssociableChoice><simpleAssociableChoice identifier="c" matchMax="0"><p style="font-weight:bold; ">Both Sources</p></simpleAssociableChoice><simpleAssociableChoice identifier="d" matchMax="0"><p style="font-weight:bold; ">Neither Source</p></simpleAssociableChoice></simpleMatchSet></matchInteraction>]]></qti>
+      <stem><![CDATA[<p style="">A student is writing an argumentative report about solar power. He found possible sources for his report. Read the sources and the directions that follow.</p><p style=""><br /><span id="item_1691_TAG_1_BEGIN"><span style="font-weight:bold; ">Source 1</span></span></p><p style=""><br />People are using the Sun’s rays to meet their power needs. When power is made from the <span id="item_1691_TAG_4_BEGIN">Sun,</span> it is called solar power or solar energy. Every hour the <span id="item_1691_TAG_5_BEGIN">Sun</span> gives enough energy to produce power for the whole world. Energy is <span id="item_1691_TAG_7" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>available<span class="its-tag" data-tag-ref="item_1691_TAG_7" data-tag-boundary="end"></span> power. This kind of energy can provide hot water, heat, and cool air while not <span id="item_1691_TAG_6" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="1"></span>releasing<span class="its-tag" data-tag-ref="item_1691_TAG_6" data-tag-boundary="end"></span> harmful products into the air.</p><p style=""><br /><span style="font-weight:bold; ">Source </span><span id="item_1691_TAG_2_BEGIN"><span style="font-weight:bold; ">2</span></span><span style="font-weight:bold; "> </span></p><p style=""><br />The Sun’s energy is captured by devices with many cells that are able to turn the Sun’s rays into power. The power is then stored in <span id="item_1691_TAG_9" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="4"></span>batteries<span class="its-tag" data-tag-ref="item_1691_TAG_9" data-tag-boundary="end"></span>. The <span id="item_1691_TAG_8" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="3"></span>equipment<span class="its-tag" data-tag-ref="item_1691_TAG_8" data-tag-boundary="end"></span> needed to capture and store solar power costs a lot of money; therefore most private homes are not using solar power. However many businesses and companies are putting money into solar equipment, so they can take advantage of the Sun's endless supply of energy.</p><p style=""><br />The student wrote down some claims to use in his report. Look at the claims in the table. Decide if the information in <span style="font-weight:bold; ">Source 1</span>, <span style="font-weight:bold; ">Source 2</span>, both sources, or neither source supports each claim. Click on the box that identifies the source that supports each claim. There will be only one box selected for each <span id="item_1691_TAG_3_BEGIN">claim.</span></p>]]></stem>
+      <attachmentlist>
+        <attachment id="braillefile1" type="BRF" subtype="contracted" file="item_1691_enu_contracted.brf" />
+        <attachment id="braillefile2" type="BRF" subtype="uncontracted" file="item_1691_enu_uncontracted.brf" />
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="item_1691_TAG_1_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Source 1.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Source 1.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>Source 1</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae2">
+            <contentLinkInfo itsLinkIdentifierRef="item_1691_TAG_4_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Son,</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Son,</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>Sun,</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae3">
+            <contentLinkInfo itsLinkIdentifierRef="item_1691_TAG_5_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>son</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>son</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>Sun</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae6">
+            <contentLinkInfo itsLinkIdentifierRef="item_1691_TAG_2_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>2.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>2.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>2</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae9">
+            <contentLinkInfo itsLinkIdentifierRef="item_1691_TAG_3_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>claim. The table has 4 rows and 3 columns. From left to right the column headings reed: Source 1, Source 2, Both Sources, Neither Source.
+
+From top to bottom the row headings reed: Claim 1: Solar power depends on expensive machines.
+Claim 2: Solar power is a clean source of energy. Claim 3: Solar power produces plenty of energy.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>claim. The table has 4 rows and 3 columns. From left to right the column headings reed: Source 1, Source 2, Both Sources, Neither Source.
+
+From top to bottom the row headings reed: Claim 1: Solar power depends on expensive machines.
+Claim 2: Solar power is a clean source of energy. Claim 3: Solar power produces plenty of energy.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>claim.</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

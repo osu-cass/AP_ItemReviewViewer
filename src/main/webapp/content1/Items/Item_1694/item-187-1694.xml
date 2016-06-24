@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="EBSR" id="1694" version="8" bankkey="187">
+    <associatedpassage>3711</associatedpassage>
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>1694</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>ELA</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>Fishy Weather Conditions - SBAC_Field</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val>ELA Training 6-8::SP 14 (3); ELA Training 6-8::SP 14::Braille (3);</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val>
+        </val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>B</val>
+        <desc>B</desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>6</val>
+        <desc>6</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>EBSR</val>
+        <desc>Evidence-Based Selected Response 4</desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>21</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>EBSR</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>1 pt.</val>
+        <desc>1 Point</desc>
+      </attrib>
+      <attrib attid="stm_pass_id">
+        <name>Stim: ITS ID</name>
+        <val>3711</val>
+        <desc>
+        </desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="1769" bankkey="187" />
+    <resourceslist>
+      <resource type="wordList" id="1763" index="1" bankkey="187" />
+    </resourceslist>
+    <statistic />
+    <MachineRubric filename="Item_1694_v8.qrx" />
+    <content language="ENU" version="2.0" approvedVersion="8">
+      <qti spec="itemBody"><![CDATA[<itemBody><p style=""><p style="">The following question has two parts. First, answer part A. Then, answer part B. </p></p><choiceInteraction responseIdentifier="EBSR1" shuffle="false" maxChoice="1"><prompt><p style="">What is<span style="font-weight:bold; "> </span><span id="item_1694_TAG_6_BEGIN"><span style="font-weight:bold; ">most likely</span></span> the author's intent by mentioning blind fish in the text?</p></prompt><simpleChoice identifier="A"><p style="">to show how different fish survive, depending on the manner and location in which they live</p></simpleChoice><simpleChoice identifier="B"><p style="">to persuade the reader that scientists do not yet understand the <span id="item_1694_TAG_13" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>territory<span class="its-tag" data-tag-ref="item_1694_TAG_13" data-tag-boundary="end"></span> of certain <span id="item_1694_TAG_14" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="3"></span>species<span class="its-tag" data-tag-ref="item_1694_TAG_14" data-tag-boundary="end"></span> of fish</p></simpleChoice><simpleChoice identifier="C"><p style="">to persuade the reader that fish are an important part of the <span id="item_1694_TAG_1_BEGIN"><span id="item_1694_TAG_15" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="4"></span>ecosystem<span class="its-tag" data-tag-ref="item_1694_TAG_15" data-tag-boundary="end"></span>,</span> even if they are unusual in nature</p></simpleChoice><simpleChoice identifier="D"><p style="">to show how knowledge of fish helped scientists determine that waterspouts were responsible for the event</p></simpleChoice></choiceInteraction><choiceInteraction responseIdentifier="EBSR2" shuffle="false" maxChoice="0"><prompt><p style="">Which sentence from the text <span id="item_1694_TAG_7_BEGIN"><span style="font-weight:bold; ">best</span></span><span style="font-weight:bold; "> </span>illustrates the inference made in part A?</p></prompt><simpleChoice identifier="A"><p style=""><span id="item_1694_TAG_2_BEGIN">“Scientists</span> knew that some fish that lived in deep, underground caves with no light sources often lost their eyesight over <span id="item_1694_TAG_16" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="5"></span>generations<span class="its-tag" data-tag-ref="item_1694_TAG_16" data-tag-boundary="end"></span> of <span id="item_1694_TAG_8_BEGIN"><span id="item_1694_TAG_12" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="1"></span>adaptation<span class="its-tag" data-tag-ref="item_1694_TAG_12" data-tag-boundary="end"></span>.”</span></p></simpleChoice><simpleChoice identifier="B"><p style=""><span id="item_1694_TAG_3_BEGIN">“Clearly,</span> these particular fish were pulled from an underground water source by <span id="item_1694_TAG_11_BEGIN">force.”</span></p></simpleChoice><simpleChoice identifier="C"><p style=""><span id="item_1694_TAG_4_BEGIN">“They</span> recorded what was happening and made history by finally proving that the fish really did fall from the <span id="item_1694_TAG_9_BEGIN">sky.”</span></p></simpleChoice><simpleChoice identifier="D"><p style=""><span id="item_1694_TAG_5_BEGIN">“It</span> changed thousands of years of myths and legends into true stories and provided scientific explanations for how fish came to live in deep caves and isolated <span id="item_1694_TAG_10_BEGIN">ponds.”</span></p></simpleChoice></choiceInteraction></itemBody>]]></qti>
+      <attachmentlist>
+        <attachment id="braillefile1" type="BRF" subtype="contracted" file="item_1694_enu_contracted.brf" />
+        <attachment id="braillefile2" type="BRF" subtype="uncontracted" file="item_1694_enu_uncontracted.brf" />
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="item_1694_TAG_6_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>, most likely,</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>, most likely,</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>most likely</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae4">
+            <contentLinkInfo itsLinkIdentifierRef="item_1694_TAG_1_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>eako-system,</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>eako-system,</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>ecosystem,</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae6">
+            <contentLinkInfo itsLinkIdentifierRef="item_1694_TAG_7_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>, best,</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>, best,</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>best</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae7">
+            <contentLinkInfo itsLinkIdentifierRef="item_1694_TAG_2_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Quote, Scientists</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Quote, Scientists</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>“Scientists</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae9">
+            <contentLinkInfo itsLinkIdentifierRef="item_1694_TAG_8_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>adaptation, End Quote.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>adaptation, End Quote.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>adaptation.”</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae11">
+            <contentLinkInfo itsLinkIdentifierRef="item_1694_TAG_3_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Quote, Clearly,</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Quote, Clearly,</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>“Clearly,</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae12">
+            <contentLinkInfo itsLinkIdentifierRef="item_1694_TAG_11_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>force, End Quote.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>force, End Quote.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>force.”</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae13">
+            <contentLinkInfo itsLinkIdentifierRef="item_1694_TAG_4_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Quote, They</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Quote, They</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>“They</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae14">
+            <contentLinkInfo itsLinkIdentifierRef="item_1694_TAG_9_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>sky, End Quote.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>sky, End Quote.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>sky.”</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae15">
+            <contentLinkInfo itsLinkIdentifierRef="item_1694_TAG_5_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Quote, It</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Quote, It</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>“It</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae16">
+            <contentLinkInfo itsLinkIdentifierRef="item_1694_TAG_10_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>ponds, End Quote.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>ponds, End Quote.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>ponds.”</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

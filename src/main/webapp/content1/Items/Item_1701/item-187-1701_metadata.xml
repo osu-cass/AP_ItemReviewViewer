@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadata>
+  <smarterAppMetadata xmlns="http://www.smarterapp.org/ns/1/assessment_item_metadata">
+    <Identifier>1701</Identifier>
+    <InteractionType>ER</InteractionType>
+    <Version>10</Version>
+    <Subject>ELA</Subject>
+    <SecurityStatus>Non-secure</SecurityStatus>
+    <MinimumGrade>03</MinimumGrade>
+    <IntendedGrade>03</IntendedGrade>
+    <MaximumGrade>03</MaximumGrade>
+    <BrailleType>BRF</BrailleType>
+    <SufficientEvidenceOfClaim >  (Organization) The student will use information provided in a stimulus to write organized narratives that engage and orient the reader by e. providing closure that follows logically from the narrative</SufficientEvidenceOfClaim >
+    <Claim2RevisionCategory>BW</Claim2RevisionCategory>
+    <MaximumNumberOfPoints>2</MaximumNumberOfPoints>
+    <ScorePoints>"0,1,2"</ScorePoints>
+    <ItemSpecFormat>SmarterApp</ItemSpecFormat>
+    <EvidenceStatement>  (Organization) The student will use information provided in a stimulus to write organized narratives that engage and orient the reader by e. providing closure that follows logically from the narrative</EvidenceStatement>
+    <StimulusFormat>Standard</StimulusFormat>
+    <EducationalDifficulty>Hard</EducationalDifficulty>
+    <DepthOfKnowledge>3</DepthOfKnowledge>
+    <AdministrationDate>Pilot</AdministrationDate>
+  </smarterAppMetadata>
+</metadata>

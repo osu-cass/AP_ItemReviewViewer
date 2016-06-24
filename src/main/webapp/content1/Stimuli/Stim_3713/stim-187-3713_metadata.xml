@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadata>
+  <smarterAppMetadata xmlns="http://www.smarterapp.org/ns/1/assessment_item_metadata">
+    <Identifier>3713</Identifier>
+    <InteractionType>Stimulus</InteractionType>
+    <Version>4</Version>
+    <Subject>ELA</Subject>
+    <SecurityStatus>Non-secure</SecurityStatus>
+    <MinimumGrade>11</MinimumGrade>
+    <IntendedGrade>11</IntendedGrade>
+    <MaximumGrade>11</MaximumGrade>
+    <BrailleType>BRF</BrailleType>
+    <CopyrightAndOtherRestrictions>Commissioned</CopyrightAndOtherRestrictions>
+    <Description>7110 - SBAC_Field</Description>
+    <StimulusGenre>Informational: Informational</StimulusGenre>
+    <StimulusLength>Short</StimulusLength>
+    <MaximumNumberOfPoints>NA</MaximumNumberOfPoints>
+    <ScorePoints>NA</ScorePoints>
+    <ItemSpecFormat>SmarterApp</ItemSpecFormat>
+    <StimulusGraphic>No</StimulusGraphic>
+    <StimulusFormat>Standard</StimulusFormat>
+    <DepthOfKnowledge>NA</DepthOfKnowledge>
+    <AdministrationDate>Not Applicable</AdministrationDate>
+  </smarterAppMetadata>
+</metadata>

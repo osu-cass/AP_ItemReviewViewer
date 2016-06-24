@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item type="wordList" id="1750" version="0" bankkey="187">
+    <keywordList>
+      <keyword text="simultaneously" index="1">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">at the same time </p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+      <keyword text="crippling" index="2">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">damaging </p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+      <keyword text="solar power" index="3">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">using the sun to generate energy </p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+      <keyword text="residential" index="4">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">having to do with homes </p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+      <keyword text="dwindled" index="5">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">decreased or went down greatly </p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+    </keywordList>
+  </item>
+</itemrelease>

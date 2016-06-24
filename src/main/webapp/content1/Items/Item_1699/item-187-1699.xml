@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="er" id="1699" version="5" bankkey="187">
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>1699</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>ELA</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>57950 - SBAC_Field</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val>ELA Training HS::SP 14 (3); ELA Training HS::SP 14::Braille (3);</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val>
+        </val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>ER</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>11</val>
+        <desc>11</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>ER</val>
+        <desc>ER [7]</desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>8</val>
+        <desc>8 [7.2]</desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>PlainText</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>2 pts.</val>
+        <desc>2 Points</desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="1078" bankkey="187" />
+    <resourceslist>
+      <resource type="wordList" id="1752" index="1" bankkey="187" />
+    </resourceslist>
+    <statistic />
+    <content language="ENU" version="2.0" approvedVersion="5">
+      <rationaleoptlist />
+      <stem><![CDATA[<p style="">A high school student is writing a letter to the president of the city council about a proposed 9 p.m. <span id="item_1699_TAG_10" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="1"></span>curfew<span class="its-tag" data-tag-ref="item_1699_TAG_10" data-tag-boundary="end"></span> for anyone under the age of 18. Read the paragraphs from the letter and complete the task that follows.</p><p style="">&#xA0;</p><p style=""><br />Dear Mr. President:</p><p style=""><br />When considering the proposed 9 p.m. curfew for people under 18, please consider carefully the negative effects that such a curfew could have on parents, students and our local economy. Please also keep in mind that age does not define maturity. Many students are very responsible but have busy, unpredictable schedules that require them to be out past 9 p.m. For example, sports practices or team get-togethers can often run past that time. For those balancing sports or other extracurricular activities and a job, the only work shifts available are often those from 5:00 p.m. to 10:00 p.m. or 6:00 p.m. to 11:00 p.m., etc. With a curfew in place, these options are no longer available, and students may find themselves forced to drop extracurricular activities, which could in turn affect college applications.</p><p style=""><br /><span style="text-decoration:underline; ">In addition to harming the high school students, the proposed curfew could hurt the community as a whole.</span></p><p style=""><br />Those who say that the curfew will prevent crime by keeping teens off the streets are unfairly <span id="item_1699_TAG_11" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>mischaracterizing<span class="its-tag" data-tag-ref="item_1699_TAG_11" data-tag-boundary="end"></span> most young people. Most teens are responsible and do not break the law. Rather than the government <span id="item_1699_TAG_12" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="3"></span>imposing<span class="its-tag" data-tag-ref="item_1699_TAG_12" data-tag-boundary="end"></span> a curfew, why not leave it up to parents to set and enforce such rules for their teenagers? If underage drinking and the illegal distribution of drugs and alcohol are problems that you believe are associated with late-night teen activity, focus on those activities and the small minority of teens who engage in them. Don't punish local business people, parents, and the vast majority of teens who act responsibly for the misbehavior of a few.</p><p style=""><br />Sincerely,</p><p style=""><br />Greg <span id="item_1699_TAG_1_BEGIN">Madden</span></p><p style=""><br /><span style="font-weight:bold; ">Student notes:</span></p><ul style="padding-left:1.5000em; "><li><p style="">New methods of instruction being instituted by colleges and universities; teachers requiring students to work on group projects.</p></li><li><p style="">Students <span id="item_1699_TAG_8_BEGIN">working/studying</span> in the evening after extracurricular <span id="item_1699_TAG_2_BEGIN">activities</span></p></li><li><p style="">Families struggling in tough economic times; some students needing part-time jobs to help support <span id="item_1699_TAG_3_BEGIN">families</span></p></li><li><p style="">City council president announced last week that she <span id="item_1699_TAG_13" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="4"></span>opposes<span class="its-tag" data-tag-ref="item_1699_TAG_13" data-tag-boundary="end"></span> <span id="item_1699_TAG_14" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="5"></span>penalizing<span class="its-tag" data-tag-ref="item_1699_TAG_14" data-tag-boundary="end"></span> students for being involved in <span id="item_1699_TAG_9_BEGIN">sports/extracurricular</span> <span id="item_1699_TAG_4_BEGIN">activities</span></p></li><li><p style="">Supporters of the curfew: according to a study commissioned by the district attorney, it will prevent crime; most teens responsible and don't break the <span id="item_1699_TAG_5_BEGIN">law</span></p></li><li><p style="">The U.S. secretary of labor acknowledged that these are harsh economic times; local businesses can't afford to lose <span id="item_1699_TAG_6_BEGIN">customers</span></p></li><li><p style="">If students have to give up extracurricular activities to take earlier shifts, it could hurt their college prospects; with new college and career standards, colleges and universities raising standards for admission: we should not create more obstacles for college qualification.</p></li><li><p style="">A recent <span id="item_1699_TAG_7_BEGIN">countywide</span> survey found that a majority of parents with both high school and younger children believe that the proposed curfew will force them to drive students who could drive themselves, making it difficult for them to care for younger children at home.</p></li></ul><p style=""><br />Using the underlined topic sentence, complete the second paragraph. Use information from the student's notes in your paragraph.</p>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="4">
+          <name>
+        Rubric 4</name>
+          <val><![CDATA[<p style="font-style:normal; font-weight:normal; ">&#xA0;</p>]]></val>
+        </rubric>
+        <samplelist maxval="4" minval="4">
+          <sample purpose="OtherExemplar" scorepoint="4">
+            <name>4-Point Other Official Sample Answers
+      </name>
+            <annotation />
+            <samplecontent><![CDATA[<p style="">&#xA0;</p>]]></samplecontent>
+          </sample>
+        </samplelist>
+        <rubric scorepoint="3">
+          <name>
+        Rubric 3</name>
+          <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+        </rubric>
+        <samplelist maxval="3" minval="3">
+          <sample purpose="Exemplar" scorepoint="3">
+            <name>3-Point Official Sample Answer
+      </name>
+            <annotation />
+            <samplecontent><![CDATA[<p style="">&#xA0;</p>]]></samplecontent>
+          </sample>
+        </samplelist>
+        <rubric scorepoint="2">
+          <name>
+        Rubric 2</name>
+          <val><![CDATA[<p style="">The response:<br />• provides logical arguments supporting the claim about a proposed 9 p.m. curfew for anyone under the age of 18 and relevant evidence <br />• clearly and effectively elaborates arguments using precise words/language</p>]]></val>
+        </rubric>
+        <samplelist maxval="2" minval="2">
+          <sample purpose="Exemplar" scorepoint="2">
+            <name>2-Point Official Sample Answer
+      </name>
+            <annotation />
+            <samplecontent><![CDATA[<p style="">Local businesses would be hurt by the proposed curfew. Many fast food chains and grocery stores are open late, and young people make up a large part of their clientele. If you ban young people from grabbing food at night, you will see a noticeable hit to the local economics. Also, as suggested earlier, many of these businesses rely on teens as employees. The curfew would also be a burden on parents. Although many students 16 and over have drivers licenses, their parents would have to accompany them to any events lasting past 9 p.m.</p>]]></samplecontent>
+          </sample>
+        </samplelist>
+        <rubric scorepoint="1">
+          <name>
+        Rubric 1</name>
+          <val><![CDATA[<p style="">The response:<br />• provides discernible arguments supporting the claim about a proposed 9 p.m. curfew for anyone under the age of 18 and mostly general and/or limited evidence. The arguments may be illogical and/or the evidence may be extraneous or loosely related to the arguments and/or the claim.<br />• elaborates arguments using general words/language</p>]]></val>
+        </rubric>
+        <samplelist maxval="1" minval="1">
+          <sample purpose="Exemplar" scorepoint="1">
+            <name>1-Point Official Sample Answer
+      </name>
+            <annotation />
+            <samplecontent><![CDATA[<p style="">Businesses might suffer, and parents would be affected, too. They would have to stay with their teens after 9 P.M.</p>]]></samplecontent>
+          </sample>
+        </samplelist>
+        <rubric scorepoint="0">
+          <name>
+        Rubric 0</name>
+          <val><![CDATA[<p style="">The response:<br />• provides illogical arguments or no discernible argument for the claim and minimal or no supporting evidence. The evidence that is included may be vague, repetitive, incorrect, or interfere with the meaning of the text.<br />• conveys arguments using inappropriate words/language</p>]]></val>
+        </rubric>
+        <samplelist maxval="0" minval="0">
+          <sample purpose="Exemplar" scorepoint="0">
+            <name>0-Point Official Sample Answer
+      </name>
+            <annotation />
+            <samplecontent><![CDATA[<p style="">A curfew is a good idea because kids need more sleep.</p>]]></samplecontent>
+          </sample>
+        </samplelist>
+      </rubriclist>
+      <attachmentlist>
+        <attachment id="braillefile1" type="BRF" subtype="contracted" file="item_1699_enu_contracted.brf" />
+        <attachment id="braillefile2" type="BRF" subtype="uncontracted" file="item_1699_enu_uncontracted.brf" />
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae4">
+            <contentLinkInfo itsLinkIdentifierRef="item_1699_TAG_1_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Madden.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Madden.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>Madden</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae5">
+            <contentLinkInfo itsLinkIdentifierRef="item_1699_TAG_8_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>working, slash studying</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>working, slash studying</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>working/studying</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae6">
+            <contentLinkInfo itsLinkIdentifierRef="item_1699_TAG_2_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>activities.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>activities.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>activities</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae7">
+            <contentLinkInfo itsLinkIdentifierRef="item_1699_TAG_3_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>families.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>families.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>families</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae10">
+            <contentLinkInfo itsLinkIdentifierRef="item_1699_TAG_9_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>sports, slash extracurricular</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>sports, slash extracurricular</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>sports/extracurricular</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae11">
+            <contentLinkInfo itsLinkIdentifierRef="item_1699_TAG_4_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>activities.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>activities.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>activities</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae12">
+            <contentLinkInfo itsLinkIdentifierRef="item_1699_TAG_5_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>law.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>law.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>law</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae13">
+            <contentLinkInfo itsLinkIdentifierRef="item_1699_TAG_6_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>customers.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>customers.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>customers</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae14">
+            <contentLinkInfo itsLinkIdentifierRef="item_1699_TAG_7_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>county-wide</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>county-wide</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>countywide</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

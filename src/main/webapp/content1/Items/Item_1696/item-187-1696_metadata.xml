@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadata>
+  <smarterAppMetadata xmlns="http://www.smarterapp.org/ns/1/assessment_item_metadata">
+    <Identifier>1696</Identifier>
+    <InteractionType>MC</InteractionType>
+    <Version>2</Version>
+    <Subject>ELA</Subject>
+    <SecurityStatus>Non-secure</SecurityStatus>
+    <MinimumGrade>11</MinimumGrade>
+    <IntendedGrade>11</IntendedGrade>
+    <MaximumGrade>11</MaximumGrade>
+    <BrailleType>BRF</BrailleType>
+    <SufficientEvidenceOfClaim >5. The student will integrate content from a presentation with material external to the presentation.</SufficientEvidenceOfClaim >
+    <AssociatedStimulus>3713</AssociatedStimulus>
+    <MaximumNumberOfPoints>1</MaximumNumberOfPoints>
+    <ScorePoints>"0,1"</ScorePoints>
+    <ItemSpecFormat>SmarterApp</ItemSpecFormat>
+    <EvidenceStatement>5. The student will integrate content from a presentation with material external to the presentation.</EvidenceStatement>
+    <StimulusGraphic>No</StimulusGraphic>
+    <StimulusFormat>Standard</StimulusFormat>
+    <EducationalDifficulty>Hard</EducationalDifficulty>
+    <DepthOfKnowledge>3</DepthOfKnowledge>
+    <AdministrationDate>Pilot</AdministrationDate>
+  </smarterAppMetadata>
+</metadata>

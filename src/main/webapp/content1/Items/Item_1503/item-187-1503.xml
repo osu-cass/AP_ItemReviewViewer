@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item type="wordList" id="1503" version="3" bankkey="187">
+    <keywordList>
+      <keyword text="selecting" index="1">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">choosing </p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+      <keyword text="classify" index="2">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">tell what kind they are</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+      <keyword text="Look" index="3">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">Observa</p>]]></html>
+        <html listType="arabicGlossary" listCode="TDS_WL_ArabicGloss"><![CDATA[<p style="">ينظر</p>]]></html>
+        <html listType="vietnameseGlossary" listCode="TDS_WL_VietnameseGloss"><![CDATA[<p style="">Nhìn</p>]]></html>
+        <html listType="cantoneseGlossary" listCode="TDS_WL_CantoneseGloss"><![CDATA[<p style="">请看, 請看</p>]]></html>
+        <html listType="mandarinGlossary" listCode="TDS_WL_MandarinGloss"><![CDATA[<p style="">看</p>]]></html>
+        <html listType="tagalGlossary" listCode="TDS_WL_TagalGloss"><![CDATA[<p style="">Tingnan, Kitaen</p>]]></html>
+        <html listType="russianGlossary" listCode="TDS_WL_RussianGloss"><![CDATA[<p style="">Посмотри</p>]]></html>
+        <html listType="koreanGlossary" listCode="TDS_WL_KoreanGloss"><![CDATA[<p style="">보다</p>]]></html>
+        <html listType="punjabiGlossary" listCode="TDS_WL_PunjabiGloss"><![CDATA[<p style="">ویکھو, ਵੇਖੋ </p>]]></html>
+        <html listType="ukrainianGlossary" listCode="TDS_WL_UkrainianGloss"><![CDATA[<p style="">Подивіться</p>]]></html>
+      </keyword>
+    </keywordList>
+  </item>
+</itemrelease>

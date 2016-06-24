@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="mc" id="1485" version="7" bankkey="187">
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>1485</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>MATH</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>Cloned from ITS 650</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val>PracTest::MG6::S2::SP13::BRAILLE (2); Math Training 6-8::SP 14::Braille (5); Math Training6::SP13::Braille (5);</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val>
+        </val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>B</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>6</val>
+        <desc>6</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>MC</val>
+        <desc>MC4 [1]</desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>8</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>Stacked</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>1 pt.</val>
+        <desc>1 Point</desc>
+      </attrib>
+    </attriblist>
+    <resourceslist />
+    <statistic />
+    <content language="ENU" version="2.0" approvedVersion="7">
+      <concept>
+        <name>What Knowledge Do Students Need to Understand This Concept?</name>
+        <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+      </concept>
+      <es>
+        <name>Explanation of Correct Answer</name>
+        <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+      </es>
+      <himi>
+        <name>Explanation of Correct Answer</name>
+        <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+      </himi>
+      <rationaleoptlist>
+        <rationale>
+          <name>Rationale for Option A</name>
+          <val><![CDATA[<p style="">If a student chooses A,</p>]]></val>
+        </rationale>
+        <rationale>
+          <name>Rationale for Option B</name>
+          <val><![CDATA[<p style="">If a student chooses B,</p>]]></val>
+        </rationale>
+        <rationale>
+          <name>Rationale for Option C</name>
+          <val><![CDATA[<p style="">If a student chooses C,</p>]]></val>
+        </rationale>
+        <rationale>
+          <name>Rationale for Option D</name>
+          <val><![CDATA[<p style="">If a student chooses D,</p>]]></val>
+        </rationale>
+      </rationaleoptlist>
+      <stem><![CDATA[<p style="">Two ordered pairs on a coordinate plane are shown.</p><p style="">&#xA0;</p><p style="text-align:center; "><img id="item_1485_graphics1" src="item_1485_v7_graphics1_png256.png" width="301" height="312" style="vertical-align:baseline;" /></p><p style="">&#xA0;</p><p style="">Which coordinate plane correctly shows the placement of the points <img id="item_1485_Object1" style="vertical-align:middle;" src="item_1485_v7_Object1_png16malpha.png" width="208" height="16" /></p>]]></stem>
+      <optionlist>
+        <option>
+          <name>Option A</name>
+          <val><![CDATA[<p style=""><img id="item_1485_graphics2" src="item_1485_v7_graphics2_png256.png" width="253" height="264" style="vertical-align:baseline;" /></p>]]></val>
+          <feedback><![CDATA[<p style="">&#xA0;</p>]]></feedback>
+        </option>
+        <option>
+          <name>Option B</name>
+          <val><![CDATA[<p style=""><img id="item_1485_graphics3" src="item_1485_v7_graphics3_png256.png" width="253" height="264" style="vertical-align:baseline;" /></p>]]></val>
+          <feedback><![CDATA[<p style="">&#xA0;</p>]]></feedback>
+        </option>
+        <option>
+          <name>Option C</name>
+          <val><![CDATA[<p style=""><img id="item_1485_graphics4" src="item_1485_v7_graphics4_png256.png" width="253" height="264" style="vertical-align:baseline;" /></p>]]></val>
+          <feedback><![CDATA[<p style="">&#xA0;</p>]]></feedback>
+        </option>
+        <option>
+          <name>Option D</name>
+          <val><![CDATA[<p style=""><img id="item_1485_graphics5" src="item_1485_v7_graphics5_png256.png" width="253" height="264" style="vertical-align:baseline;" /></p>]]></val>
+          <feedback><![CDATA[<p style="">&#xA0;</p>]]></feedback>
+        </option>
+      </optionlist>
+      <attachmentlist>
+        <attachment id="braillefile2" type="PRN" subtype="nemeth" file="item_1485_enu_nemeth.prn" />
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="item_1485_graphics1" type="Graphic" subtype="Generic">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioText>From left to right the points on the graph reed: C comma D, A. comma Bee;</audioText>
+              </readAloud>
+              <brailleText />
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae2">
+            <contentLinkInfo itsLinkIdentifierRef="item_1485_Object1" type="Equation">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioShortDesc>Negative A. , comma B. A. , comma negative B. Negative C comma Negative D.</audioShortDesc>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>UNKNOWN  UNKNOWN  a  comma  b  UNKNOWN  comma  UNKNOWN  a  comma  UNKNOWN  b  UNKNOWN  comma  UNKNOWN  UNKNOWN  c  comma  UNKNOWN  d  UNKNOWN  UNKNOWN</brailleTextString>
+                <brailleCode type="Nemeth">( -a, b ),  (a, -b ),  ( -c, -d ) ?</brailleCode>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae3">
+            <contentLinkInfo itsLinkIdentifierRef="item_1485_graphics2" type="Graphic" subtype="Generic">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioText>Clockwise from the left the points on the graph reed: negative c comma negative d, c comma d, negative A. , comma b, A. , comma B, A. , comma negative b.</audioText>
+              </readAloud>
+              <brailleText />
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae4">
+            <contentLinkInfo itsLinkIdentifierRef="item_1485_graphics3" type="Graphic" subtype="Generic">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioText>Clockwise from the left the points on the graph reed: c comma d, negative A. , comma b, A. , comma B, negative c comma negative d,  A. , comma negative b.</audioText>
+              </readAloud>
+              <brailleText />
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae5">
+            <contentLinkInfo itsLinkIdentifierRef="item_1485_graphics4" type="Graphic" subtype="Generic">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioText>Clockwise from the left the points on the graph reed: negative c comma negative d, c comma d, A. , comma B,  A.  comma negative b, negative A. , comma b.</audioText>
+              </readAloud>
+              <brailleText />
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae6">
+            <contentLinkInfo itsLinkIdentifierRef="item_1485_graphics5" type="Graphic" subtype="Generic">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioText>Clockwise from the left the points on the graph reed: negative c comma negative d, c comma d, negative A. , comma b, A. , comma B, A. , comma negative b.</audioText>
+              </readAloud>
+              <brailleText />
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

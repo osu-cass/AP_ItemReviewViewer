@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item type="wordList" id="1722" version="2" bankkey="187">
+    <keywordList>
+      <keyword text="Enter" index="1">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">Escribe</p>]]></html>
+        <html listType="arabicGlossary" listCode="TDS_WL_ArabicGloss"><![CDATA[<p style="">"دون" "أدخل" "اكتب", "دون" "أدخل" "اكتب"</p>]]></html>
+        <html listType="vietnameseGlossary" listCode="TDS_WL_VietnameseGloss"><![CDATA[<p style="">Điền, Nhập</p>]]></html>
+        <html listType="cantoneseGlossary" listCode="TDS_WL_CantoneseGloss"><![CDATA[<p style="">輸入, 输入</p>]]></html>
+        <html listType="mandarinGlossary" listCode="TDS_WL_MandarinGloss"><![CDATA[<p style="">填寫, 输入</p>]]></html>
+        <html listType="tagalGlossary" listCode="TDS_WL_TagalGloss"><![CDATA[<p style="">Ilagay, Ipasok</p>]]></html>
+        <html listType="russianGlossary" listCode="TDS_WL_RussianGloss"><![CDATA[<p style=""><span style="color:#000000; language:ru; country:RU; font-weight:bold; font-size:1.0000em; font-family:'Times New Roman'; ">Введите</span> &#xA0;</p>]]></html>
+        <html listType="koreanGlossary" listCode="TDS_WL_KoreanGloss"><![CDATA[<p style="">쓰다, 입력하다</p>]]></html>
+        <html listType="punjabiGlossary" listCode="TDS_WL_PunjabiGloss"><![CDATA[<p style="">پاؤ, ਦਰਜ਼ ਕਰੋ</p>]]></html>
+        <html listType="ukrainianGlossary" listCode="TDS_WL_UkrainianGloss"><![CDATA[<p style="">Введіть</p>]]></html>
+      </keyword>
+      <keyword text="applying" index="2">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">using </p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+    </keywordList>
+  </item>
+</itemrelease>

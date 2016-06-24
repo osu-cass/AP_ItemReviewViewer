@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="gi" id="766" version="26" bankkey="187">
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>766</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>MATH</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>MAT.08.TE.1.000EE.C.xxx - SB OP</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val>PracTest::MG8::S2::SP13 (5); Math Training HS::SP 14 (8); Math Training HS::SP 14::Spanish (8);</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val>
+        </val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>GI</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>8</val>
+        <desc>8</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>GI</val>
+        <desc>GI [2]</desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>22</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>Grid</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>1 pt.</val>
+        <desc>1 Point</desc>
+      </attrib>
+      <attrib attid="itm_att_Cloze Answers">
+        <name>Item: Cloze Answers</name>
+        <val>
+        </val>
+        <desc>
+        </desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="1075" bankkey="187" />
+    <resourceslist>
+      <resource type="wordList" id="1342" index="1" bankkey="187" />
+    </resourceslist>
+    <statistic />
+    <MachineRubric filename="Item_766_v26.grx" />
+    <gridanswerspace><![CDATA[
+					<Question id="766" ITSVer="4" ScoreEngineVer="1" version="2.0"><Description></Description><QuestionPart id="1"><Options><ShowButtons>delete,point,arrow</ShowButtons><GridColor>LightBlue</GridColor><GridSpacing>40,Y</GridSpacing><CenterImage>false</CenterImage><ScaleImage>false</ScaleImage></Options><Text></Text><ObjectMenuIcons></ObjectMenuIcons><ImageSpec><FileSpec>item_766_v26_background_png16malpha.png</FileSpec><Position>0,0</Position></ImageSpec></QuestionPart><PreSetAnswerPart></PreSetAnswerPart></Question>
+						]]></gridanswerspace>
+    <content language="ENU" version="2.0" approvedVersion="26">
+      <rationaleoptlist />
+      <stem><![CDATA[<p style="">Coffee costs $2.00 per pound at a coffee shop.</p><p style="">&#xA0;</p><p style=""><span id="item_766_TAG_1_BEGIN"><span id="item_766_TAG_1" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="4"></span>Use<span class="its-tag" data-tag-ref="item_766_TAG_1" data-tag-boundary="end"></span></span> the <span id="item_766_TAG_12" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="9"></span>Add Arrow tool<span class="its-tag" data-tag-ref="item_766_TAG_12" data-tag-boundary="end"></span> to draw a line that shows the proportional relationship between the number of pounds of coffee purchased and the total cost.</p>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="">
+          <name>
+        Rubric </name>
+          <val><![CDATA[<p style="">Exemplar:</p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="">a ray with a vertex at the origin and a slope of 2</p></li></ul><p style="">&#xA0;</p><p style="">For this item, a full-credit response includes</p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="background-color:transparent; ">a correct graph (1 point).</p></li></ul>]]></val>
+        </rubric>
+        <samplelist maxval="" minval="" />
+      </rubriclist>
+      <attachmentlist>
+        <attachment pass="true" id="aslfile1" type="ASL" subtype="STEM" file="item_766_ASL_STEM.MP4" />
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="item_766_TAG_1_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Ewes</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Use</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>Use</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+    <content language="ESN" version="2.0" approvedVersion="26">
+      <stem><![CDATA[<p style="">Una tienda de café vende el café a $2.00 por libra.</p><p style="">&#xA0;</p><p style="">Usa la herramienta “Agregar flecha” para dibujar una línea que muestre la relación proporcional entre el número de libras de café compradas y el costo total.</p><p class="languagedivider">&#xA0;</p><p style="">Coffee costs $2.00 per pound at a coffee shop.</p><p style="">&#xA0;</p><p style=""><span id="item_766_TAG_1_BEGIN"><span id="item_766_TAG_1" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="4"></span>Use<span class="its-tag" data-tag-ref="item_766_TAG_1" data-tag-boundary="end"></span></span> the <span id="item_766_TAG_12" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="9"></span>Add Arrow tool<span class="its-tag" data-tag-ref="item_766_TAG_12" data-tag-boundary="end"></span> to draw a line that shows the proportional relationship between the number of pounds of coffee purchased and the total cost.</p>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="_Spanish">
+          <name>
+        Rubric _Spanish</name>
+          <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+        </rubric>
+        <samplelist maxval="_Spanish" minval="_Spanish" />
+      </rubriclist>
+      <attachmentlist />
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="item_766_TAG_1_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Ewes</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Use</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>Use</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

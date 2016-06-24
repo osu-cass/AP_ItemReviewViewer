@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <passage id="3709" version="2" bankkey="187">
+    <attriblist>
+      <attrib attid="stm_pass_id">
+        <name>Stim: ITS ID</name>
+        <val>3709</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="stm_pass_subject">
+        <name>Stim: Subject</name>
+        <val>ELA</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="stm_pass_desc">
+        <name>Stim: Description</name>
+        <val>6024 - SBAC_Field</val>
+        <desc>
+        </desc>
+      </attrib>
+    </attriblist>
+    <resourceslist>
+      <resource type="wordList" id="1756" index="1" bankkey="187" />
+    </resourceslist>
+    <content language="ENU" version="2.0" approvedVersion="2">
+      <title><![CDATA[&#xA0;]]></title>
+      <author><![CDATA[&#xA0;]]></author>
+      <stem><![CDATA[<p style="font-weight:bold; ">A Family of <span id="passage_3709_TAG_1_BEGIN">Artists</span></p><p style=""><br />"I think we should paint a mural," suggested Beth.</p><p style=""><br />"What's a mural?" Sam asked.</p><p style=""><br />"A mural is a huge picture that is painted on a wall," Grandma said. "It's something that is sure to attract more customers to our store."</p><p style=""><br />For the last two weeks Beth, Sam, and Tim had been busy redecorating the shoe store their grandparents owned on Main Street. They had finished painting the inside of the store and were pleased with how it looked all fresh and clean. Now, they needed to focus on the outside of the building.</p><p style=""><br />At first their grandparents were not sure how to improve the outside; there was just a large, plain wall that faced the street. They asked their grandchildren if they had any ideas how to grab the attention of people who passed the store. Beth suggested a mural.</p><p style=""><br />Grandpa had been a little wary of painting on the wall, but everyone else in the family agreed that a mural was a great idea, even Sam. He was not as enthusiastic as his brother and sister, but he had helped paint the walls inside and had found it to be fun. The outside of the building was different though; it required creativity, and he was not sure he would be a great help.</p><p style=""><br />It wasn't that Sam didn't like painting. It was just that when he attempted to transfer the images from his mind onto a piece of paper, things never looked quite like he wanted them to.</p><p style=""><br /><span id="passage_3709_TAG_2" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="3"></span>On the other hand<span class="its-tag" data-tag-ref="passage_3709_TAG_2" data-tag-boundary="end"></span>, Tim, Sam's older brother, made painting seem easy. Many of Tim's paintings could be found throughout their grandparents' apartment on the second floor of the shoe store. Tim could study an object and his painting would look exactly like the real thing. Beth, their sister, did not like to use color, but she was a terrific sketch artist. She liked drawing people and buildings.</p><p style=""><br />Grandpa called down the hall, "Sam, come on. We need to go help the others soon."</p><p style=""><br />"Okay, Grandpa," replied Sam. "I'll meet you downstairs in a minute."</p><p style=""><br />Beth, Tim, and Grandpa had gone outside to the store earlier in the morning to complete some tasks before beginning to paint. Beth began to sketch the design on the wall while Tim walked to the hardware store across the street to buy different colors of paint. Beth sketched people trying on shoes. She created rows of shoes just like the ones inside the store. Across the top of the wall Grandma wrote, "Simmons Shoe Sales" in large letters. Tim returned with the paint, ready to begin painting.</p><p style=""><br />Sam was not sure what his <span id="passage_3709_TAG_3" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="4"></span>role<span class="its-tag" data-tag-ref="passage_3709_TAG_3" data-tag-boundary="end"></span> would be. He wanted to help but did not think there would be anything for him to do. By the time Sam and Grandpa came outside, Tim was opening the cans of paint.</p><p style=""><br />Grandpa and Grandma went inside the store to finish some paperwork, and Tim started painting. Sam sat on the ground and watched him.</p><p style=""><br />"Sam, you can't just sit there. We need your help to complete this project," Tim Said. "You work on painting the bottom sections of the picture while I work on the top."</p><p style=""><br />"I'm not sure," Sam said. "I don't want to <span id="passage_3709_TAG_4" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="5"></span>ruin<span class="its-tag" data-tag-ref="passage_3709_TAG_4" data-tag-boundary="end"></span> any of your ideas."</p><p style=""><br />Tim reached down and handed Sam a paintbrush and said, "Be creative with the colors, and just paint the objects Beth drew."<br />Sam grabbed the paintbrush and began to paint. Sam was having so much fun that he was surprised to see that he had finished the bottom of the wall.</p><p style=""><br />"Great job, Sam," Grandpa said as he came out to check on their progress.</p><p style=""><br />"Maybe, just maybe, I am an artist after all," thought Sam.</p>]]></stem>
+      <attachmentlist>
+        <attachment id="braillefile1" type="BRF" subtype="contracted" file="passage_3709_enu_contracted.brf" />
+        <attachment id="braillefile2" type="BRF" subtype="uncontracted" file="passage_3709_enu_uncontracted.brf" />
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="passage_3709_TAG_1_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Artists.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Artists.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>Artists</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </passage>
+</itemrelease>

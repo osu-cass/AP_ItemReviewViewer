@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item type="wordList" id="788" version="10" bankkey="187">
+    <keywordList>
+      <keyword text="Each" index="1">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">Cada</p>]]></html>
+        <html listType="arabicGlossary" listCode="TDS_WL_ArabicGloss"><![CDATA[<p style="line-height:115%; "><span style="">كل</span> </p>]]></html>
+        <html listType="vietnameseGlossary" listCode="TDS_WL_VietnameseGloss"><![CDATA[<p style="line-height:115%; font-size:0.8333em; font-family:Calibri, sans-serif; "><span style="font-family:'Times New Roman'; ">Mỗi</span> </p>]]></html>
+        <html listType="cantoneseGlossary" listCode="TDS_WL_CantoneseGloss"><![CDATA[<p style="line-height:115%; "><span style="">每一</span> </p>]]></html>
+        <html listType="mandarinGlossary" listCode="TDS_WL_MandarinGloss"><![CDATA[<p style="line-height:115%; "><span style="">每</span> </p>]]></html>
+        <html listType="tagalGlossary" listCode="TDS_WL_TagalGloss"><![CDATA[<p style=""><span style="color:#000000; language:es; country:MX; font-size:1.0000em; font-family:'Times New Roman'; ">tunggal, bawat</span><span style="color:#ff0000; language:es; country:MX; font-size:0.6667em; font-family:'Arial Narrow', sans-serif; "> </span>&#xA0;</p>]]></html>
+        <html listType="russianGlossary" listCode="TDS_WL_RussianGloss"><![CDATA[<p style=""><span style="color:#000000; language:ru; country:RU; font-weight:bold; font-size:1.0000em; font-family:'Times New Roman'; ">каждая</span><span style="color:#ff0000; font-weight:bold; "> </span>&#xA0;</p>]]></html>
+        <html listType="koreanGlossary" listCode="TDS_WL_KoreanGloss"><![CDATA[<p style="line-height:115%; font-family:'Times New Roman'; "><span style="">각각</span><span style="font-size:0.6667em; ">, </span><span style="">각각의</span> </p>]]></html>
+        <html listType="punjabiGlossary" listCode="TDS_WL_PunjabiGloss"><![CDATA[<p style="line-height:115%; "><span style="font-size:1.0000em; ">ہر اک</span></p><p style="line-height:115%; "><span style="font-size:1.0000em; ">ਹਰ ਇਕ</span><span style="font-size:1.0000em; "> </span><span style="font-size:1.0000em; "> </span>&#xA0;</p>]]></html>
+        <html listType="ukrainianGlossary" listCode="TDS_WL_UkrainianGloss"><![CDATA[<p style="line-height:115%; "><span style="language:uk; country:UA; font-size:0.8333em; font-family:Arial, sans-serif; ">Кожна</span> </p>]]></html>
+      </keyword>
+      <keyword text="picture album" index="2">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">picture album - a book that is used to hold pictures</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">picture album - book</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">álbum fotográfico</p>]]></html>
+      </keyword>
+      <keyword text="fit" index="3">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">fit - to be of the right size and shape</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">fit - right size</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">caben</p>]]></html>
+      </keyword>
+      <keyword text="rows" index="4">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">hileras</p>]]></html>
+      </keyword>
+      <keyword text="each" index="5">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">cada</p>]]></html>
+      </keyword>
+      <keyword text="row" index="6">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">row - a &#xA0;number of persons or things arranged in a line</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">row - line</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">hilera</p>]]></html>
+      </keyword>
+      <keyword text="How many" index="7">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">Cuántas </p>]]></html>
+        <html listType="arabicGlossary" listCode="TDS_WL_ArabicGloss"><![CDATA[<p style="">كم عدد </p>]]></html>
+        <html listType="vietnameseGlossary" listCode="TDS_WL_VietnameseGloss"><![CDATA[<p style="">bao nhiêu </p>]]></html>
+        <html listType="cantoneseGlossary" listCode="TDS_WL_CantoneseGloss"><![CDATA[<p style=""><span style="">几多幅</span> &#xA0;</p>]]></html>
+        <html listType="mandarinGlossary" listCode="TDS_WL_MandarinGloss"><![CDATA[<p style=""><span style="">多少</span> &#xA0;</p>]]></html>
+        <html listType="tagalGlossary" listCode="TDS_WL_TagalGloss"><![CDATA[<p style=""><span style="color:#000000; language:es; country:MX; font-size:1.0000em; font-family:'Times New Roman'; ">Mano, Ilan</span><span style="color:#ff0000; language:es; country:MX; font-size:0.6667em; font-family:'Arial Narrow', sans-serif; "> </span>&#xA0;</p>]]></html>
+        <html listType="russianGlossary" listCode="TDS_WL_RussianGloss"><![CDATA[<p style="">сколько </p>]]></html>
+        <html listType="koreanGlossary" listCode="TDS_WL_KoreanGloss"><![CDATA[<p style=""><span style="font-family:'Times New Roman'; ">몇 개,몇 </span>&#xA0;&#xA0;</p>]]></html>
+        <html listType="punjabiGlossary" listCode="TDS_WL_PunjabiGloss"><![CDATA[<p style="">کنے, ਕਿੰਨੇ </p>]]></html>
+        <html listType="ukrainianGlossary" listCode="TDS_WL_UkrainianGloss"><![CDATA[<p style="">скільки </p>]]></html>
+      </keyword>
+    </keywordList>
+  </item>
+</itemrelease>

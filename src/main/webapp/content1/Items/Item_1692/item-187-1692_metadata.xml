@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadata>
+  <smarterAppMetadata xmlns="http://www.smarterapp.org/ns/1/assessment_item_metadata">
+    <Identifier>1692</Identifier>
+    <InteractionType>SA</InteractionType>
+    <Version>3</Version>
+    <Subject>ELA</Subject>
+    <SecurityStatus>Non-secure</SecurityStatus>
+    <MinimumGrade>03</MinimumGrade>
+    <IntendedGrade>03</IntendedGrade>
+    <MaximumGrade>03</MaximumGrade>
+    <BrailleType>BRF</BrailleType>
+    <EnemyItem>58468</EnemyItem>
+    <SufficientEvidenceOfClaim >The student will make an inference about a literary text or texts and identify details within the text or texts that support that inference.</SufficientEvidenceOfClaim >
+    <AssociatedStimulus>3709</AssociatedStimulus>
+    <MaximumNumberOfPoints>2</MaximumNumberOfPoints>
+    <ScorePoints>"0,1,2"</ScorePoints>
+    <ItemSpecFormat>SmarterApp</ItemSpecFormat>
+    <EvidenceStatement>The student will make an inference about a literary text or texts and identify details within the text or texts that support that inference.</EvidenceStatement>
+    <StimulusGraphic>No</StimulusGraphic>
+    <StimulusFormat>Standard</StimulusFormat>
+    <EducationalDifficulty>Medium</EducationalDifficulty>
+    <DepthOfKnowledge>3</DepthOfKnowledge>
+    <AdministrationDate>Pilot</AdministrationDate>
+  </smarterAppMetadata>
+</metadata>

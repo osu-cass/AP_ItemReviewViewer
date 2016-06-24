@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="mi" id="1685" version="14" bankkey="187">
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>1685</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>MATH</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>73720</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val>Math Training 6-8::SP 14 (6); Math Training 6-8::SP 14::Braille (6); Math Training 6::SP13 (6); Math Training6::SP13::Braille (6); Math Training 6-8::SP 14::Spanish (6); Math Training 6::SP 14::Spanish (6);</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val>
+        </val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>MI</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>7</val>
+        <desc>7</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>MI</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>8</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>TableMatch</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>1</val>
+        <desc>
+        </desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="1080" bankkey="187" />
+    <resourceslist>
+      <resource type="wordList" id="1726" index="1" bankkey="187" />
+    </resourceslist>
+    <statistic />
+    <MachineRubric filename="Item_1685_v14.mrx" />
+    <content language="ENU" version="2.0" approvedVersion="14">
+      <qti spec="itemBody"><![CDATA[<matchInteraction responseIdentifier="RESPONSE" minAssociations="1" maxAssociations="0"><prompt /><simpleMatchSet><simpleAssociableChoice identifier="1" matchMax="0"><p style=""><img id="item_1685_Object1" style="vertical-align:middle;" src="item_1685_v14_Object1_png16malpha.png" width="51" height="13" /> measures 148°.</p></simpleAssociableChoice><simpleAssociableChoice identifier="2" matchMax="0"><p style="">An angle supplementary to <img id="item_1685_Object2" style="vertical-align:middle;" src="item_1685_v14_Object2_png16malpha.png" width="47" height="13" /> measures 142°.</p></simpleAssociableChoice><simpleAssociableChoice identifier="3" matchMax="0"><p style="">An angle complementary to <img id="item_1685_Object3" style="vertical-align:middle;" src="item_1685_v14_Object3_png16malpha.png" width="47" height="13" /> measures 42°.</p></simpleAssociableChoice></simpleMatchSet><simpleMatchSet><simpleAssociableChoice identifier="a" matchMax="0"><p style="">True</p></simpleAssociableChoice><simpleAssociableChoice identifier="b" matchMax="0"><p style="">False</p></simpleAssociableChoice></simpleMatchSet></matchInteraction>]]></qti>
+      <stem><![CDATA[<p style="">In this two-dimensional diagram line <span style="font-style:italic; ">WY</span> intersects  at point <span id="item_1685_TAG_6_BEGIN"><span style="font-style:italic; ">A</span>.</span></p><p style=""><br /><img id="item_1685_graphics1" src="item_1685_v14_graphics1_png256.png" width="242" height="254" style="vertical-align:baseline;" /></p><p style=""><br />Based on the diagram, determine <span id="item_1685_TAG_8" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>whether<span class="its-tag" data-tag-ref="item_1685_TAG_8" data-tag-boundary="end"></span> each statement is True or False.</p>]]></stem>
+      <attachmentlist>
+        <attachment id="braillefile2" type="PRN" subtype="nemeth" file="item_1685_enu_nemeth.prn" />
+        <attachment pass="true" id="aslfile1" type="ASL" subtype="STEM" file="item_1685_ASL_STEM.MP4" />
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="item_1685_TAG_6_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>A. , Clockwise from the top the lines on the diagram are labeled: Z, Y, X, W. From top to bottom the diagram reeds: open parenthesis 3 x plus 4 closed parenthesis degrees. Open parenthesis 2 x plus 6 closed parenthesis degrees. The point is labeled A. ,</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>A.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>A.</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae2">
+            <contentLinkInfo itsLinkIdentifierRef="item_1685_graphics1" type="Graphic" subtype="Generic">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioText>Clockwise from the top the lines on the diagram are labeled: Z, Y, X, W. 
+From top to bottom the diagram reeds: open parenthesis 3 x plus 4 closed parenthesis degrees. Open parenthesis 2 x plus 6 closed parenthesis degrees. The point is labeled A. ,</audioText>
+              </readAloud>
+              <brailleText />
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae4">
+            <contentLinkInfo itsLinkIdentifierRef="item_1685_Object1" type="Equation">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioShortDesc>∠  WAZ</audioShortDesc>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>∠  WAZ</brailleTextString>
+                <brailleCode type="Nemeth">${,w,a,z
+</brailleCode>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae5">
+            <contentLinkInfo itsLinkIdentifierRef="item_1685_Object2" type="Equation">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioShortDesc>∠  XAY</audioShortDesc>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>∠  XAY</brailleTextString>
+                <brailleCode type="Nemeth">${,x,a,y
+</brailleCode>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae6">
+            <contentLinkInfo itsLinkIdentifierRef="item_1685_Object3" type="Equation">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioShortDesc>∠  XAY</audioShortDesc>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>∠  XAY</brailleTextString>
+                <brailleCode type="Nemeth">${,x,a,y
+</brailleCode>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+    <content language="ESN" version="2.0" approvedVersion="14">
+      <qti spec="itemBody"><![CDATA[<matchInteraction responseIdentifier="RESPONSE" minAssociations="1" maxAssociations="0"><prompt /><simpleMatchSet><simpleAssociableChoice identifier="1" matchMax="0"><p style="">El <img id="item_1685_Object5" style="vertical-align:middle;" src="item_1685_v14_Object5_png16malpha.png" width="51" height="13" /> mide 148°.</p></simpleAssociableChoice><simpleAssociableChoice identifier="2" matchMax="0"><p style="">Un ángulo suplementario del <img id="item_1685_Object6" style="vertical-align:middle;" src="item_1685_v14_Object6_png16malpha.png" width="47" height="13" /> mide 142°.</p></simpleAssociableChoice><simpleAssociableChoice identifier="3" matchMax="0"><p style="">Un ángulo complementario del <img id="item_1685_Object4" style="vertical-align:middle;" src="item_1685_v14_Object4_png16malpha.png" width="47" height="13" /> mide 42°.</p></simpleAssociableChoice></simpleMatchSet><simpleMatchSet><simpleAssociableChoice identifier="a" matchMax="0"><p style="">Verdadera</p></simpleAssociableChoice><simpleAssociableChoice identifier="b" matchMax="0"><p style="">Falsa</p></simpleAssociableChoice></simpleMatchSet></matchInteraction>]]></qti>
+      <stem><![CDATA[<p style="">En este diagrama de dos dimensiones, la línea <span style="font-style:italic; ">WY</span> interseca  en el punto <span style="font-style:italic; ">A</span>.</p><p style=""><br /><img id="item_1685_graphics2" src="item_1685_v14_graphics2_png256.png" width="242" height="254" style="vertical-align:baseline;" /></p><p style=""><br />Basándote en el diagrama, determina si cada afirmación es verdadera o falsa.</p><p class="languagedivider">&#xA0;</p><p style="">In this two-dimensional diagram line <span style="font-style:italic; ">WY</span> intersects  at point <span id="item_1685_TAG_6_BEGIN"><span style="font-style:italic; ">A</span>.</span></p><p style=""><br /><img id="item_1685_graphics1" src="item_1685_v14_graphics1_png256.png" width="242" height="254" style="vertical-align:baseline;" /></p><p style=""><br />Based on the diagram, determine <span id="item_1685_TAG_8" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>whether<span class="its-tag" data-tag-ref="item_1685_TAG_8" data-tag-boundary="end"></span> each statement is True or False.</p>]]></stem>
+      <attachmentlist />
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="item_1685_TAG_6_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>A. , Clockwise from the top the lines on the diagram are labeled: Z, Y, X, W. From top to bottom the diagram reeds: open parenthesis 3 x plus 4 closed parenthesis degrees. Open parenthesis 2 x plus 6 closed parenthesis degrees. The point is labeled A. ,</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>A.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>A.</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae2">
+            <contentLinkInfo itsLinkIdentifierRef="item_1685_graphics1" type="Graphic" subtype="Generic">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioText>Clockwise from the top the lines on the diagram are labeled: Z, Y, X, W. 
+From top to bottom the diagram reeds: open parenthesis 3 x plus 4 closed parenthesis degrees. Open parenthesis 2 x plus 6 closed parenthesis degrees. The point is labeled A. ,</audioText>
+              </readAloud>
+              <brailleText />
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

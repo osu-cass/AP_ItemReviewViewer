@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadata>
+  <smarterAppMetadata xmlns="http://www.smarterapp.org/ns/1/assessment_item_metadata">
+    <Identifier>769</Identifier>
+    <SmarterAppItemDescriptor>MAT.08.SR.2.000RP.A.xxx</SmarterAppItemDescriptor>
+    <InteractionType>GI</InteractionType>
+    <Version>19</Version>
+    <Subject>MATH</Subject>
+    <SecurityStatus>Non-secure</SecurityStatus>
+    <MinimumGrade>07</MinimumGrade>
+    <IntendedGrade>08</IntendedGrade>
+    <MaximumGrade>08</MaximumGrade>
+    <AllowCalculator>No</AllowCalculator>
+    <MathematicalPractice>1</MathematicalPractice>
+    <Notes>"G7 Item moved to G8, Claim 2."</Notes>
+    <MaximumNumberOfPoints>2</MaximumNumberOfPoints>
+    <ScorePoints>"0,1,2"</ScorePoints>
+    <ItemSpecFormat>SmarterApp</ItemSpecFormat>
+    <StimulusFormat>Standard</StimulusFormat>
+    <EducationalDifficulty>Medium</EducationalDifficulty>
+    <DepthOfKnowledge>2</DepthOfKnowledge>
+    <AdministrationDate>Pilot</AdministrationDate>
+  </smarterAppMetadata>
+</metadata>

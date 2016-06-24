@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadata>
+  <smarterAppMetadata xmlns="http://www.smarterapp.org/ns/1/assessment_item_metadata">
+    <Identifier>1673</Identifier>
+    <InteractionType>TI</InteractionType>
+    <Version>12</Version>
+    <Subject>MATH</Subject>
+    <SecurityStatus>Non-secure</SecurityStatus>
+    <MinimumGrade>06</MinimumGrade>
+    <IntendedGrade>06</IntendedGrade>
+    <MaximumGrade>06</MaximumGrade>
+    <BrailleType>BRF</BrailleType>
+    <AllowCalculator>Yes</AllowCalculator>
+    <MathematicalPractice>None</MathematicalPractice>
+    <MaximumNumberOfPoints>2</MaximumNumberOfPoints>
+    <ScorePoints>"0,1,2"</ScorePoints>
+    <ItemSpecFormat>SmarterApp</ItemSpecFormat>
+    <StimulusFormat>Standard</StimulusFormat>
+    <EducationalDifficulty>Medium</EducationalDifficulty>
+    <DepthOfKnowledge>2</DepthOfKnowledge>
+    <AdministrationDate>Not Applicable</AdministrationDate>
+  </smarterAppMetadata>
+</metadata>

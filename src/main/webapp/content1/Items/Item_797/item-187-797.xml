@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item type="wordList" id="797" version="6" bankkey="187">
+    <keywordList>
+      <keyword text="model" index="1">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+      <keyword text="each" index="2">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">cada</p>]]></html>
+      </keyword>
+      <keyword text="create" index="3">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+      <keyword text="divide" index="4">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+      <keyword text="up into" index="5">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+      <keyword text="to show" index="6">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+      <keyword text="Select" index="7">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+      </keyword>
+      <keyword text="correct location" index="8">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">lugar correcto</p>]]></html>
+      </keyword>
+      <keyword text="Drag" index="9">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">Arrastra </p>]]></html>
+        <html listType="arabicGlossary" listCode="TDS_WL_ArabicGloss"><![CDATA[<p style=""><span style="">اسحب</span> &#xA0;</p>]]></html>
+        <html listType="vietnameseGlossary" listCode="TDS_WL_VietnameseGloss"><![CDATA[<p style=""><span style="font-size:0.8333em; font-family:'Times New Roman'; ">Kéo</span> &#xA0;</p>]]></html>
+        <html listType="cantoneseGlossary" listCode="TDS_WL_CantoneseGloss"><![CDATA[<p style="">拖放 </p>]]></html>
+        <html listType="mandarinGlossary" listCode="TDS_WL_MandarinGloss"><![CDATA[<p style="line-height:115%; "><span style="font-family:'Times New Roman'; ">拖拽</span><span style="font-size:0.6667em; font-family:'Times New Roman'; ">,</span><span style="font-family:'Times New Roman'; "> </span><span style="font-family:'Times New Roman'; ">拖拽</span> </p>]]></html>
+        <html listType="tagalGlossary" listCode="TDS_WL_TagalGloss"><![CDATA[<p style="font-size:1.0000em; "><span style="font-family:'Times New Roman'; ">I-drag</span><span style="font-size:0.6667em; font-family:'Times New Roman'; "> </span><span style="font-family:'Times New Roman'; ">&#xA0;&#xA0;</span>&#xA0;</p>]]></html>
+        <html listType="russianGlossary" listCode="TDS_WL_RussianGloss"><![CDATA[<p style="font-size:1.0000em; "><span style="color:#000000; language:ru; country:RU; font-weight:bold; font-family:'Times New Roman'; ">Перенесите</span> &#xA0;</p>]]></html>
+        <html listType="koreanGlossary" listCode="TDS_WL_KoreanGloss"><![CDATA[<p style="">끌다, 드래그하다, 끌고 가다 </p>]]></html>
+        <html listType="punjabiGlossary" listCode="TDS_WL_PunjabiGloss"><![CDATA[<p style="">گھسیٹنا, ਖਿੱਚੋ  </p>]]></html>
+        <html listType="ukrainianGlossary" listCode="TDS_WL_UkrainianGloss"><![CDATA[<p style=""><span style="language:uk; country:UA; font-size:0.8333em; font-family:'Times New Roman'; ">Перетягніть</span> &#xA0;</p>]]></html>
+      </keyword>
+    </keywordList>
+  </item>
+</itemrelease>

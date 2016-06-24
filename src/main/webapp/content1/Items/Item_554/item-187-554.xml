@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="gi" id="554" version="36" bankkey="187">
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>554</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>MATH</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>MAT.03.TE.1.000MD.I.xxx - SB OP</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val>PracTest::MG3::S1::SP13 (1); Math Training 3-5::SP 14 (7); Math Training 3-5::SP 14::Spanish (7);</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val>
+        </val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>GI</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>3</val>
+        <desc>3</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>GI</val>
+        <desc>GI [2]</desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>22</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>Grid</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>3 pts.</val>
+        <desc>3 Points</desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="1075" bankkey="187" />
+    <resourceslist>
+      <resource type="wordList" id="1710" index="1" bankkey="187" />
+    </resourceslist>
+    <statistic />
+    <MachineRubric filename="Item_554_v36.grx" />
+    <gridanswerspace><![CDATA[
+					<Question id="554" ITSVer="4" ScoreEngineVer="1" version="2.0"><Description></Description><QuestionPart id="1"><Options><ShowButtons>connect,delete,point</ShowButtons><GridColor>None</GridColor><GridSpacing>10,N</GridSpacing><CenterImage>true</CenterImage><ScaleImage>false</ScaleImage></Options><Text></Text><ObjectMenuIcons><IconSpec><FileSpec>item_554_v36_0_png16malpha.png</FileSpec><Label>0</Label></IconSpec><IconSpec><FileSpec>item_554_v36_1_png16malpha.png</FileSpec><Label>1</Label></IconSpec><IconSpec><FileSpec>item_554_v36_2_png16malpha.png</FileSpec><Label>2</Label></IconSpec><IconSpec><FileSpec>item_554_v36_3_png16malpha.png</FileSpec><Label>3</Label></IconSpec><IconSpec><FileSpec>item_554_v36_4_png16malpha.png</FileSpec><Label>4</Label></IconSpec><IconSpec><FileSpec>item_554_v36_5_png16malpha.png</FileSpec><Label>5</Label></IconSpec><IconSpec><FileSpec>item_554_v36_6_png16malpha.png</FileSpec><Label>6</Label></IconSpec><IconSpec><FileSpec>item_554_v36_7_png16malpha.png</FileSpec><Label>7</Label></IconSpec><IconSpec><FileSpec>item_554_v36_8_png16malpha.png</FileSpec><Label>8</Label></IconSpec><IconSpec><FileSpec>item_554_v36_9_png16malpha.png</FileSpec><Label>9</Label></IconSpec></ObjectMenuIcons><ImageSpec><FileSpec>item_554_v36_background_png16malpha.png</FileSpec><Position>0,0</Position></ImageSpec></QuestionPart><PreSetAnswerPart><AnswerSet><Question id="554"><QuestionPart id="1"><ObjectSet /><SnapPoint>40@93,181;307,173;252,382;265,382</SnapPoint></QuestionPart></Question></AnswerSet></PreSetAnswerPart></Question>
+						]]></gridanswerspace>
+    <content language="ENU" version="2.0" approvedVersion="36">
+      <rationaleoptlist />
+      <stem><![CDATA[<p style="">David wants to create the <span id="item_554_TAG_21" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="3"></span>L-shaped<span class="its-tag" data-tag-ref="item_554_TAG_21" data-tag-boundary="end"></span> desk shown. He decides to buy two rectangular desks and put them together. </p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style=""><span id="item_554_TAG_19" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>Drag<span class="its-tag" data-tag-ref="item_554_TAG_19" data-tag-boundary="end"></span> numbers into the boxes to show the missing dimensions. </p></li></ul><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style=""><span id="item_554_TAG_17" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="12"></span><span id="item_554_TAG_1_BEGIN">Use</span><span class="its-tag" data-tag-ref="item_554_TAG_17" data-tag-boundary="end"></span> the Connect Line tool to draw a line dividing the diagram into two desks. Make each desk 5 feet by 2 feet.</p></li></ul><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="">What is the total area of the L-shaped desk? <span id="item_554_TAG_20" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>Drag<span class="its-tag" data-tag-ref="item_554_TAG_20" data-tag-boundary="end"></span> numbers into the box to show your answer.</p></li></ul>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="">
+          <name>
+        Rubric </name>
+          <val><![CDATA[<p style="">Exemplar:</p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="">a vertical line extending the 3 ft side</p></li><li><p style="">two 5 ft labels</p></li><li><p style="">20 ft²</p></li></ul><p style="">&#xA0;</p><p style="">For this item, a full-credit response includes</p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style=""><span style="background-color:transparent; ">a correctly divided diagram </span>(1 point)</p></li></ul><p style="">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;AND</p><ul style="padding-left:1.5000em; "><li><p style="background-color:transparent; ">the correct missing dimensions (1 point)</p><p style="">AND</p></li><li><p style="background-color:transparent; ">the correct area (1 point).</p></li></ul><p style="background-color:transparent; ">&#xA0;</p><p style="background-color:transparent; ">The student may earn credit for a correct area based on incorrect dimensions identified in part A.</p>]]></val>
+        </rubric>
+        <samplelist maxval="" minval="" />
+      </rubriclist>
+      <attachmentlist>
+        <attachment id="braillefile2" type="PRN" subtype="nemeth" file="item_554_enu_nemeth.prn" />
+        <attachment pass="true" id="aslfile1" type="ASL" subtype="STEM" file="item_554_ASL_STEM.MP4" />
+      </attachmentlist>
+      <constraints />
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae4">
+            <contentLinkInfo itsLinkIdentifierRef="item_554_TAG_1_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>ewes</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Use</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>Use</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+    <content language="ESN" version="2.0" approvedVersion="36">
+      <stem><![CDATA[<p style="language:es; country:ES; ">David quiere construir el escritorio en forma de L que se muestra. Él decide comprar dos escritorios rectangulares y unirlos. </p><p style="language:es; country:ES; ">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="language:es; country:ES; ">Arrastra números a las casillas para mostrar las dimensiones &#xA0;faltantes. </p></li></ul><p style="language:es; country:ES; ">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="language:es; country:ES; ">Usa la herramienta Conectar línea para dibujar una línea que divida el diagrama en dos escritorios. Haz que cada escritorio mida 5 pies por 2 pies. </p></li></ul><p style="language:es; country:ES; ">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="language:es; country:ES; ">¿Cuál es el área total del escritorio en forma de L? Arrastra números a la casilla para mostrar tu respuesta.</p></li></ul><p class="languagedivider">&#xA0;</p><p style="">David wants to create the <span id="item_554_TAG_21" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="3"></span>L-shaped<span class="its-tag" data-tag-ref="item_554_TAG_21" data-tag-boundary="end"></span> desk shown. He decides to buy two rectangular desks and put them together. </p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style=""><span id="item_554_TAG_19" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>Drag<span class="its-tag" data-tag-ref="item_554_TAG_19" data-tag-boundary="end"></span> numbers into the boxes to show the missing dimensions. </p></li></ul><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style=""><span id="item_554_TAG_17" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="12"></span><span id="item_554_TAG_1_BEGIN">Use</span><span class="its-tag" data-tag-ref="item_554_TAG_17" data-tag-boundary="end"></span> the Connect Line tool to draw a line dividing the diagram into two desks. Make each desk 5 feet by 2 feet.</p></li></ul><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="">What is the total area of the L-shaped desk? <span id="item_554_TAG_20" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>Drag<span class="its-tag" data-tag-ref="item_554_TAG_20" data-tag-boundary="end"></span> numbers into the box to show your answer.</p></li></ul>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="_Spanish">
+          <name>
+        Rubric _Spanish</name>
+          <val><![CDATA[<p style="">Exemplar:</p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="">a vertical line extending the 3 ft side</p></li><li><p style="">two 5 ft labels</p></li><li><p style="">20 ft²</p></li></ul><p style="">&#xA0;</p><p style="">For this item, a full-credit response includes</p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style=""><span style="background-color:transparent; ">a correctly divided diagram </span>(1 point)</p></li></ul><p style="">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;AND</p><ul style="padding-left:1.5000em; "><li><p style="background-color:transparent; ">the correct missing dimensions (1 point)</p><p style="">AND</p></li><li><p style="background-color:transparent; ">the correct area (1 point).</p></li></ul><p style="background-color:transparent; ">&#xA0;</p><p style="background-color:transparent; ">The student may earn credit for a correct area based on incorrect dimensions identified in part A.</p><p style="background-color:transparent; ">&#xA0;</p>]]></val>
+        </rubric>
+        <samplelist maxval="_Spanish" minval="_Spanish" />
+      </rubriclist>
+      <attachmentlist />
+      <constraints />
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae4">
+            <contentLinkInfo itsLinkIdentifierRef="item_554_TAG_1_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>ewes</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Use</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>Use</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadata>
+  <smarterAppMetadata xmlns="http://www.smarterapp.org/ns/1/assessment_item_metadata">
+    <Identifier>1704</Identifier>
+    <InteractionType>MC</InteractionType>
+    <Version>5</Version>
+    <Subject>ELA</Subject>
+    <SecurityStatus>Non-secure</SecurityStatus>
+    <MinimumGrade>11</MinimumGrade>
+    <IntendedGrade>11</IntendedGrade>
+    <MaximumGrade>11</MaximumGrade>
+    <BrailleType>BRF</BrailleType>
+    <SufficientEvidenceOfClaim >"  (Organization) The student will revise informational/explanatory text by identifying improved organizational elements such as: Providing a conclusion that follows from and supports the information or explanation presented (e.g., articulating implications or the significance of a topic)."</SufficientEvidenceOfClaim >
+    <Claim2RevisionCategory>R</Claim2RevisionCategory>
+    <MaximumNumberOfPoints>1</MaximumNumberOfPoints>
+    <ScorePoints>"0,1"</ScorePoints>
+    <ItemSpecFormat>SmarterApp</ItemSpecFormat>
+    <EvidenceStatement>"  (Organization) The student will revise informational/explanatory text by identifying improved organizational elements such as: Providing a conclusion that follows from and supports the information or explanation presented (e.g., articulating implications or the significance of a topic)."</EvidenceStatement>
+    <StimulusFormat>Standard</StimulusFormat>
+    <EducationalDifficulty>Low</EducationalDifficulty>
+    <DepthOfKnowledge>2</DepthOfKnowledge>
+    <AdministrationDate>Pilot</AdministrationDate>
+  </smarterAppMetadata>
+</metadata>

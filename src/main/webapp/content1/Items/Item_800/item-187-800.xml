@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item type="wordList" id="800" version="7" bankkey="187">
+    <keywordList>
+      <keyword text="all" index="1">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">todas</p>]]></html>
+        <html listType="arabicGlossary" listCode="TDS_WL_ArabicGloss"><![CDATA[<p style="line-height:115%; "><span style="">كل، جميع</span> </p>]]></html>
+        <html listType="vietnameseGlossary" listCode="TDS_WL_VietnameseGloss"><![CDATA[<p style="line-height:115%; font-size:0.8333em; font-family:Calibri, sans-serif; ">tất cả </p>]]></html>
+        <html listType="cantoneseGlossary" listCode="TDS_WL_CantoneseGloss"><![CDATA[<p style="line-height:115%; "><span style="">所有</span> </p>]]></html>
+        <html listType="mandarinGlossary" listCode="TDS_WL_MandarinGloss"><![CDATA[<p style="line-height:115%; "><span style="">所有</span> </p>]]></html>
+        <html listType="tagalGlossary" listCode="TDS_WL_TagalGloss"><![CDATA[<p style="">lahat, amin </p>]]></html>
+        <html listType="russianGlossary" listCode="TDS_WL_RussianGloss"><![CDATA[<p style="">все </p>]]></html>
+        <html listType="koreanGlossary" listCode="TDS_WL_KoreanGloss"><![CDATA[<p style="line-height:115%; "><span style="">모든</span><span style="font-size:0.6667em; font-family:Batang, serif; ">, </span><span style="">모두</span> </p>]]></html>
+        <html listType="punjabiGlossary" listCode="TDS_WL_PunjabiGloss"><![CDATA[<p style="line-height:115%; font-size:1.0000em; ">چنو <span style="">ਸਾਰੇ</span> </p>]]></html>
+        <html listType="ukrainianGlossary" listCode="TDS_WL_UkrainianGloss"><![CDATA[<p style="line-height:115%; "><span style="language:uk; country:UA; font-size:0.8333em; font-family:Arial, sans-serif; ">усі</span> </p>]]></html>
+      </keyword>
+      <keyword text="shapes" index="2">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">figuras</p>]]></html>
+      </keyword>
+      <keyword text="Choose" index="3">
+        <html listType="glossary" listCode="TDS_WL_Glossary"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="thesaurus" listCode="TDS_WL_THES"><![CDATA[<p style="">&#xA0;</p>]]></html>
+        <html listType="esnGlossary" listCode="TDS_WL_ESNGlossary"><![CDATA[<p style="">Selecciona, Escoge, Elige </p>]]></html>
+        <html listType="arabicGlossary" listCode="TDS_WL_ArabicGloss"><![CDATA[<p style="">اختر </p>]]></html>
+        <html listType="vietnameseGlossary" listCode="TDS_WL_VietnameseGloss"><![CDATA[<p style="">Chọn </p>]]></html>
+        <html listType="cantoneseGlossary" listCode="TDS_WL_CantoneseGloss"><![CDATA[<p style="">选择, 選擇 </p>]]></html>
+        <html listType="mandarinGlossary" listCode="TDS_WL_MandarinGloss"><![CDATA[<p style="">选择, 選擇 </p>]]></html>
+        <html listType="tagalGlossary" listCode="TDS_WL_TagalGloss"><![CDATA[<p style="font-size:1.0000em; "><span style="color:#000000; language:es; country:MX; font-family:'Times New Roman'; ">Piliin, Pilien</span><span style="color:#ff0000; language:es; country:MX; font-family:'Arial Narrow', sans-serif; "> </span>&#xA0;</p>]]></html>
+        <html listType="russianGlossary" listCode="TDS_WL_RussianGloss"><![CDATA[<p style="font-size:1.0000em; "><span style="color:#000000; language:ru; country:RU; font-weight:bold; font-family:'Times New Roman'; ">Выберите</span> &#xA0;</p>]]></html>
+        <html listType="koreanGlossary" listCode="TDS_WL_KoreanGloss"><![CDATA[<p style="">선택하다 </p>]]></html>
+        <html listType="punjabiGlossary" listCode="TDS_WL_PunjabiGloss"><![CDATA[<p style="">منتخب کرنا, <span style="font-size:1.0000em; ">ਚੁਣੋ</span><span style=""> </span>&#xA0;</p>]]></html>
+        <html listType="ukrainianGlossary" listCode="TDS_WL_UkrainianGloss"><![CDATA[<p style="">Виберіть </p>]]></html>
+      </keyword>
+    </keywordList>
+  </item>
+</itemrelease>

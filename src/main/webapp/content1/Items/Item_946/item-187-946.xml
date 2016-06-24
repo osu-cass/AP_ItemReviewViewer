@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="mc" id="946" version="12" bankkey="187">
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>946</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>ELA</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>ELA.06.SR.2.W.01.xxx - SB OP</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val>PracTest::ELAG6::SP13 (14); PracTest::ELAG6::SP13::Braille (14); ELA Training 6-8::SP 14 (6);</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val>
+        </val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>D</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>6</val>
+        <desc>6</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>MC</val>
+        <desc>MC4 [1]</desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>8</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>Vertical</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>1 pt.</val>
+        <desc>1 Point</desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="1072" bankkey="187" />
+    <resourceslist>
+      <resource type="wordList" id="1737" index="1" bankkey="187" />
+    </resourceslist>
+    <statistic />
+    <content language="ENU" version="2.0" approvedVersion="12">
+      <concept>
+        <name>What Knowledge Do Students Need to Understand This Concept?</name>
+        <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+      </concept>
+      <es>
+        <name>Explanation of Correct Answer</name>
+        <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+      </es>
+      <himi>
+        <name>Explanation of Correct Answer</name>
+        <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+      </himi>
+      <rationaleoptlist>
+        <rationale>
+          <name>Rationale for Option A</name>
+          <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+        </rationale>
+        <rationale>
+          <name>Rationale for Option B</name>
+          <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+        </rationale>
+        <rationale>
+          <name>Rationale for Option C</name>
+          <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+        </rationale>
+        <rationale>
+          <name>Rationale for Option D</name>
+          <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+        </rationale>
+      </rationaleoptlist>
+      <stem><![CDATA[<p style="">Tammy wrote a narrative for a creative writing contest. Her teacher suggested she add a <span id="item_946_TAG_3" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="1"></span>transition<span class="its-tag" data-tag-ref="item_946_TAG_3" data-tag-boundary="end"></span> sentence to connect the paragraphs below. <span id="item_946_TAG_1_BEGIN">Read</span> the paragraphs from the narrative and the directions that follow.</p><p style="">&#xA0;</p><p style="margin-left:0.5in; margin-right:0.5in; text-indent:0.25in; ">On the first day of middle school, Grace marched onto the school bus and slid into an empty seat. She wondered how many more times she would have to ride the bus without her best friend Alex. The noisy bus filled with laughter and the chirping sounds of <span id="item_946_TAG_4" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>chatter<span class="its-tag" data-tag-ref="item_946_TAG_4" data-tag-boundary="end"></span>. The bus driver started the old, tired engine and, with a grumpy tone, told all the students to find a seat. Grace opened her book bag in search of her library book. Unable to locate the book, she sat back in her seat and tried to <span id="item_946_TAG_7" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="5"></span>relax<span class="its-tag" data-tag-ref="item_946_TAG_7" data-tag-boundary="end"></span>.</p><p style="margin-left:0.5in; margin-right:0.5in; text-indent:0.25in; ">&#xA0;</p><p style="margin-left:0.5in; margin-right:0.5in; text-indent:0.25in; ">Her kindergarten teacher had a bright smile and sang songs to the class every morning. He made school exciting and Grace remembered enjoying every minute of her time in the bright, colorful classroom. She thought about meeting Alex the first day of kindergarten during lunch. They had the same lunch box and, after a brief <span id="item_946_TAG_5" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="3"></span>introduction<span class="its-tag" data-tag-ref="item_946_TAG_5" data-tag-boundary="end"></span>, they decided to swap sandwiches.</p><p style="">&#xA0;</p><p style="">Select the sentence that <span id="item_946_TAG_2_BEGIN"><span style="font-weight:bold; ">best</span></span> adds a transition between the two paragraphs.</p>]]></stem>
+      <optionlist>
+        <option>
+          <name>Option A</name>
+          <val><![CDATA[<p style="">Grace began to daydream about her other teachers, friends, and favorite subjects.</p>]]></val>
+          <feedback><![CDATA[<p style="">Incorrect: Grace thinks about her kindergarten teacher in the second paragraph, but this is only the first part of what the paragraph is about, so the transition would be too specific to connect the two.</p>]]></feedback>
+        </option>
+        <option>
+          <name>Option B</name>
+          <val><![CDATA[<p style="">Grace felt a sense of <span id="item_946_TAG_6" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="4"></span>relief<span class="its-tag" data-tag-ref="item_946_TAG_6" data-tag-boundary="end"></span> as she thought about all the books she had read.</p>]]></val>
+          <feedback><![CDATA[<p style="">Incorrect: Grace does not think about books in the second paragraph, so this sentence is an inappropriate transition between the two paragraphs.</p>]]></feedback>
+        </option>
+        <option>
+          <name>Option C</name>
+          <val><![CDATA[<p style="">Grace’s mind began to focus on her lunch as her stomach grumbled loudly.</p>]]></val>
+          <feedback><![CDATA[<p style="">Incorrect: The second paragraph contains details about lunch only at the end of the paragraph, so this sentence would be an inappropriate transition to the beginning of it. </p>]]></feedback>
+        </option>
+        <option>
+          <name>Option D</name>
+          <val><![CDATA[<p style="">Grace’s thoughts slowly led her back to another, happier first day of school.</p>]]></val>
+          <feedback><![CDATA[<p style="">Correct: This sentence is the most appropriate transition between the two paragraphs.</p>]]></feedback>
+        </option>
+      </optionlist>
+      <attachmentlist>
+        <attachment id="braillefile1" type="BRF" subtype="contracted" file="item_946_enu_contracted.brf" />
+        <attachment id="braillefile2" type="BRF" subtype="uncontracted" file="item_946_enu_uncontracted.brf" />
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae2">
+            <contentLinkInfo itsLinkIdentifierRef="item_946_TAG_1_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Reed</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Read</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>Read</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae6">
+            <contentLinkInfo itsLinkIdentifierRef="item_946_TAG_2_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>, best,</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>best</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>best</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

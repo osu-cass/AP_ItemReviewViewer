@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="er" id="174" version="4" bankkey="187">
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>174</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>MATH</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>Circle 1 SAMPLER</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val>Math Training HS::SP 14 (2); Math Training HS::SP 14::Braille (2); Math Training HS::SP 14::Spanish (2);</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val>Math Training HS::SP 13 (1);</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>ER</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>10</val>
+        <desc>10</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>ER</val>
+        <desc>ER [7]</desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>8</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>PlainText</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>2 pts.</val>
+        <desc>2 Points</desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="1078" bankkey="187" />
+    <resourceslist>
+      <resource type="wordList" id="1706" index="1" bankkey="187" />
+    </resourceslist>
+    <statistic />
+    <content language="ENU" version="2.0" approvedVersion="4">
+      <rationaleoptlist />
+      <stem><![CDATA[<p style="">A circle has its center at <span id="item_174_TAG_1_BEGIN">(6, 7)</span> and goes through the point <span id="item_174_TAG_2_BEGIN">(1, 4).</span> A second circle is tangent to the first circle at the point <span id="item_174_TAG_3_BEGIN">(1, 4)</span> and has the same area.</p><p style="">&#xA0;</p><p style="">What are the possible coordinates for the center of the second circle? Show your work or explain how you found your answer.</p>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="4">
+          <name>
+        Rubric 4</name>
+          <val><![CDATA[<p style="">The focus of this item is to (DESCRIPTION OF SPECIFIC ACTIONS USING INDICATOR LANGUAGE). The response (ALL OF THE PIECES REQUIRED IN THE ANSWER DOCUMENT FOR 4 POINTS).</p>]]></val>
+        </rubric>
+        <samplelist maxval="4" minval="4">
+          <sample purpose="Exemplar" scorepoint="4">
+            <name>4-Point Official Sample Answer
+      </name>
+            <annotation />
+            <samplecontent><![CDATA[<p style="">&#xA0;</p>]]></samplecontent>
+          </sample>
+          <sample purpose="OtherExemplar" scorepoint="4">
+            <name>4-Point Other Official Sample Answers
+      </name>
+            <annotation />
+            <samplecontent><![CDATA[<p style="">N/A for Math</p>]]></samplecontent>
+          </sample>
+        </samplelist>
+        <rubric scorepoint="3">
+          <name>
+        Rubric 3</name>
+          <val><![CDATA[<p style="">The response clearly addresses the key aspects of the task; however, it includes minor flaws.</p>]]></val>
+        </rubric>
+        <samplelist maxval="3" minval="3">
+          <sample purpose="Exemplar" scorepoint="3">
+            <name>3-Point Official Sample Answer
+      </name>
+            <annotation />
+            <samplecontent><![CDATA[<p style="">For example, the response may:</p><ul style="padding-left:3.0000em; "><li><p style="">&#xA0;</p></li></ul>]]></samplecontent>
+          </sample>
+        </samplelist>
+        <rubric scorepoint="2">
+          <name>
+        Rubric 2</name>
+          <val><![CDATA[<p style="">The response provides evidence of a partially correct answer and/or solution process. The response may adequately address some of the components of the task, but contain gaps or flaws in other components.</p>]]></val>
+        </rubric>
+        <samplelist maxval="2" minval="2">
+          <sample purpose="Exemplar" scorepoint="2">
+            <name>2-Point Official Sample Answer
+      </name>
+            <annotation />
+            <samplecontent><![CDATA[<p style="">For example, the response may:</p><ul style="padding-left:3.0000em; "><li><p style="">&#xA0;</p></li></ul>]]></samplecontent>
+          </sample>
+        </samplelist>
+        <rubric scorepoint="1">
+          <name>
+        Rubric 1</name>
+          <val><![CDATA[<p style="">The response omits significant aspects of the task. There is evidence of minimal understanding of the concepts involved in the task and/or solution process; however, the response includes significant errors in most of the components of the task.</p>]]></val>
+        </rubric>
+        <samplelist maxval="1" minval="1">
+          <sample purpose="Exemplar" scorepoint="1">
+            <name>1-Point Official Sample Answer
+      </name>
+            <annotation />
+            <samplecontent><![CDATA[<p style="">For example, the response may:</p><ul style="padding-left:3.0000em; "><li><p style="">&#xA0;</p></li></ul>]]></samplecontent>
+          </sample>
+        </samplelist>
+        <rubric scorepoint="0">
+          <name>
+        Rubric 0</name>
+          <val><![CDATA[<p style="">The response indicates inadequate understanding of the task and the response does not meet the criteria required to earn one point.</p>]]></val>
+        </rubric>
+        <samplelist maxval="0" minval="0">
+          <sample purpose="Exemplar" scorepoint="0">
+            <name>0-Point Official Sample Answer
+      </name>
+            <annotation />
+            <samplecontent><![CDATA[<p style="">For example, the response may:</p><ul style="padding-left:3.0000em; "><li><p style="">&#xA0;</p></li><li><p style="">Include unrelated statements or work. </p></li></ul>]]></samplecontent>
+          </sample>
+        </samplelist>
+      </rubriclist>
+      <attachmentlist>
+        <attachment id="braillefile1" type="BRF" subtype="nemeth" file="item_174_enu_nemeth.brf" />
+        <attachment pass="true" id="aslfile1" type="ASL" subtype="STEM" file="item_174_ASL_STEM.MP4" />
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="item_174_TAG_1_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>6 comma 7</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>6 comma 7</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>(6, 7)</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae2">
+            <contentLinkInfo itsLinkIdentifierRef="item_174_TAG_2_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>1 comma 4.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>1 comma 4.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>(1, 4).</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae3">
+            <contentLinkInfo itsLinkIdentifierRef="item_174_TAG_3_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>1 comma 4</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>1 comma 4</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>(1, 4)</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+    <content language="ESN" version="2.0" approvedVersion="4">
+      <stem><![CDATA[<p style="">Un círculo tiene su centro en (6, 7) y pasa por el punto (1, 4). Un segundo círculo es tangente del primer círculo en el punto (1, 4) y tiene la misma área.</p><p style="">&#xA0;</p><p style="">¿Cuáles son las coordenadas posibles para el centro del segundo círculo? Muestra tu trabajo o explica cómo encontraste tu respuesta.</p><p class="languagedivider">&#xA0;</p><p style="">A circle has its center at <span id="item_174_TAG_1_BEGIN">(6, 7)</span> and goes through the point <span id="item_174_TAG_2_BEGIN">(1, 4).</span> A second circle is tangent to the first circle at the point <span id="item_174_TAG_3_BEGIN">(1, 4)</span> and has the same area.</p><p style="">&#xA0;</p><p style="">What are the possible coordinates for the center of the second circle? Show your work or explain how you found your answer.</p>]]></stem>
+      <rubriclist />
+      <attachmentlist />
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="item_174_TAG_1_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>6 comma 7</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>6 comma 7</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>(6, 7)</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae2">
+            <contentLinkInfo itsLinkIdentifierRef="item_174_TAG_2_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>1 comma 4.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>1 comma 4.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>(1, 4).</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae3">
+            <contentLinkInfo itsLinkIdentifierRef="item_174_TAG_3_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>1 comma 4</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>1 comma 4</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>(1, 4)</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

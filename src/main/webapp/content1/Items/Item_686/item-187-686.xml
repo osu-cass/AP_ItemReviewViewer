@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="eq" id="686" version="22" bankkey="187">
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>686</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>MATH</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>MAT.HS.CR.1.0AREI.J.xxx - SB OP</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val>PracTest::MG11::S2::SP13 (18); PracTest::MG11::S2::SP13::BRAILLE (19); Math Training HS::SP 14 (4); Math Training HS::SP 14::Braille (4); Math Training HS::SP 14::Spanish (4);</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val>
+        </val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>EQ</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>11</val>
+        <desc>11</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>EQ</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>8</val>
+        <desc>8 [9.16]</desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>EquationEditor</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>1 pt.</val>
+        <desc>
+        </desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="1074" bankkey="187" />
+    <resourceslist>
+      <resource type="wordList" id="792" index="1" bankkey="187" />
+    </resourceslist>
+    <statistic />
+    <MachineRubric filename="Item_686_v22.erx" />
+    <RendererSpec filename="Item_686_v22.eax" />
+    <content language="ENU" version="2.0" approvedVersion="22">
+      <rationaleoptlist />
+      <stem><![CDATA[<p style="">The graph of exponential function <span style="font-style:italic; ">f</span>(<span style="font-style:italic; ">x</span>) is shown.</p><p style=""><br /><img id="item_686_graphics1" src="item_686_v22_graphics1_png256.png" width="302" height="309" style="vertical-align:baseline;" /></p><p style=""><br />What is the value of <span style="font-style:italic; ">f</span>(6)?</p>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="">
+          <name>
+        Rubric </name>
+          <val><![CDATA[<p style="">Correct Responses:</p><p style="">&#xA0;</p><p style="">&#xA0;</p><p style="">2 Point Text:</p><p style="">&#xA0;</p><p style="">&#xA0;</p><p style="">1 Point Text:</p><p style="">&#xA0;</p><p style="">The response demonstrates a full and complete understanding that the set of all points that make up the graph of an equation in two variables is the solution set of that equation. The response contains the following evidence:</p><p style="">&#xA0;</p><p style="">1 Point Sample Answer:</p><p style="">&#xA0;</p><p style="">64</p><p style="">&#xA0;</p><p style="">0 Point Text:</p><p style="">&#xA0;</p>]]></val>
+        </rubric>
+        <samplelist maxval="" minval="" />
+      </rubriclist>
+      <attachmentlist>
+        <attachment id="braillefile2" type="PRN" subtype="nemeth" file="item_686_enu_nemeth.prn" />
+        <attachment pass="true" id="aslfile1" type="ASL" subtype="STEM" file="item_686_ASL_STEM.MP4" />
+      </attachmentlist>
+    </content>
+    <content language="ESN" version="2.0" approvedVersion="22">
+      <stem><![CDATA[<p style="language:es; country:ES; ">Se muestra la gráfica de la función exponencial <span style="font-style:italic; ">f</span><span style="font-style:normal; ">(</span><span style="font-style:italic; ">x</span><span style="font-style:normal; ">)</span>. </p><p style="language:es; country:ES; ">&#xA0;</p><p style="language:es; country:ES; "><img id="item_686_graphics2" src="item_686_v22_graphics2_png256.png" width="302" height="309" style="vertical-align:baseline;" /></p><p style="language:es; country:ES; "><br />¿Cuál es el valor de <span style="font-style:italic; ">f</span><span style="font-style:normal; ">(6)</span>?</p><p class="languagedivider">&#xA0;</p><p style="">The graph of exponential function <span style="font-style:italic; ">f</span>(<span style="font-style:italic; ">x</span>) is shown.</p><p style=""><br /><img id="item_686_graphics1" src="item_686_v22_graphics1_png256.png" width="302" height="309" style="vertical-align:baseline;" /></p><p style=""><br />What is the value of <span style="font-style:italic; ">f</span>(6)?</p>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="_Spanish">
+          <name>
+        Rubric _Spanish</name>
+          <val><![CDATA[<p style="">Correct Responses:</p><p style="">&#xA0;</p><p style="">&#xA0;</p><p style="">2 Point Text:</p><p style="">&#xA0;</p><p style="">&#xA0;</p><p style="">1 Point Text:</p><p style="">&#xA0;</p><p style="">The response demonstrates a full and complete understanding that the set of all points that make up the graph of an equation in two variables is the solution set of that equation. The response contains the following evidence.</p><p style="">&#xA0;</p><p style="">1 Point Sample Answer:</p><p style="">&#xA0;</p><p style="">64</p><p style="">&#xA0;</p><p style="">0 Point Text:</p><p style="">&#xA0;</p>]]></val>
+        </rubric>
+        <samplelist maxval="_Spanish" minval="_Spanish" />
+      </rubriclist>
+      <attachmentlist />
+    </content>
+  </item>
+</itemrelease>

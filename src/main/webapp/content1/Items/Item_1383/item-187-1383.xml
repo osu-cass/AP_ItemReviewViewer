@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="eq" id="1383" version="6" bankkey="187">
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>1383</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>MATH</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>Cloned from ITS 652</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val>PracTest::MG6::S2::SP13::BRAILLE (7); Math Training 6-8::SP 14::Braille (9); Math Training6::SP13::Braille (9);</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val>
+        </val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>EQ</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>6</val>
+        <desc>6</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>EQ</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>8</val>
+        <desc>8 [9.16]</desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>EquationEditor</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>1 pt.</val>
+        <desc>
+        </desc>
+      </attrib>
+    </attriblist>
+    <resourceslist />
+    <statistic />
+    <MachineRubric filename="Item_1383_v6.erx" />
+    <RendererSpec filename="Item_1383_v6.eax" />
+    <content language="ENU" version="2.0" approvedVersion="6">
+      <rationaleoptlist />
+      <stem><![CDATA[<p style="">Tana fills a prism with <img id="item_1383_Object1" style="vertical-align:middle;" src="item_1383_v6_Object1_png16malpha.png" width="69" height="30" /> of liquid. The base of the prism has a length of <img id="item_1383_Object2" style="vertical-align:middle;" src="item_1383_v6_Object2_png16malpha.png" width="41" height="30" /> and a width of <img id="item_1383_Object3" style="vertical-align:baseline;" src="item_1383_v6_Object3_png16malpha.png" width="29" height="13" />. The height of the prism is <img id="item_1383_Object4" style="vertical-align:baseline;" src="item_1383_v6_Object4_png16malpha.png" width="36" height="13" />.</p><p style="">&#xA0;</p><p style="">What is the height of the liquid in the prism, in inches?</p>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="">
+          <name>
+        Rubric </name>
+          <val><![CDATA[<p style="">Exemplar:</p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style=""><img id="item_1383_Object5" style="vertical-align:middle;" src="item_1383_v6_Object5_png16malpha.png" width="22" height="30" /></p></li></ul><p style="">&#xA0;</p><p style="">Other Correct Responses:</p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="">N/A</p></li></ul><p style="">&#xA0;</p><p style="">For this item, a full-credit response includes</p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="">the correct height (1 point).</p></li></ul>]]></val>
+        </rubric>
+        <samplelist maxval="" minval="" />
+      </rubriclist>
+      <attachmentlist>
+        <attachment id="braillefile1" type="BRF" subtype="nemeth" file="item_1383_enu_nemeth.brf" />
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="item_1383_Object1" type="Equation">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioShortDesc>1 hundred 10 and 1 half cubic inches</audioShortDesc>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>1 1 0  UNKNOWN    UNKNOWN  raised to the power of 3</brailleTextString>
+                <brailleCode type="Nemeth">#110_?1/2# in~3"</brailleCode>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae2">
+            <contentLinkInfo itsLinkIdentifierRef="item_1383_Object2" type="Equation">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioShortDesc>3 and 1 fourth inches.</audioShortDesc>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>3 UNKNOWN    UNKNOWN</brailleTextString>
+                <brailleCode type="Nemeth">#3_?1/4# in</brailleCode>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae3">
+            <contentLinkInfo itsLinkIdentifierRef="item_1383_Object3" type="Equation">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioShortDesc>4  inches,</audioShortDesc>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>4   UNKNOWN</brailleTextString>
+                <brailleCode type="Nemeth">#4 in</brailleCode>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae4">
+            <contentLinkInfo itsLinkIdentifierRef="item_1383_Object4" type="Equation">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioShortDesc>10  inches</audioShortDesc>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>10   UNKNOWN</brailleTextString>
+                <brailleCode type="Nemeth">#10 in</brailleCode>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae5">
+            <contentLinkInfo itsLinkIdentifierRef="item_1383_Object5" type="Equation">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioShortDesc>8 UNKNOWN</audioShortDesc>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>8 UNKNOWN</brailleTextString>
+                <brailleCode type="Nemeth">#8_?1/2#
+</brailleCode>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="gi" id="557" version="29" bankkey="187">
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>557</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>MATH</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>MAT.03.TE.1.000OA.D.xxx - SB OP</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val>PracTest::MG3::S1::SP13 (20); Math Training 3-5::SP 14 (5); Math Training 3-5::SP 14::Spanish (5);</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val>
+        </val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>GI</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>3</val>
+        <desc>3</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>GI</val>
+        <desc>GI [2]</desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>22</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>Grid</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>1 pt.</val>
+        <desc>1 Point</desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="1075" bankkey="187" />
+    <resourceslist>
+      <resource type="wordList" id="787" index="1" bankkey="187" />
+    </resourceslist>
+    <statistic />
+    <MachineRubric filename="Item_557_v29.grx" />
+    <gridanswerspace><![CDATA[
+					<Question id="557" ITSVer="4" ScoreEngineVer="1" version="2.0"><Description></Description><QuestionPart id="1"><Options><ShowButtons></ShowButtons><GridColor>None</GridColor><GridSpacing>10,N</GridSpacing><CenterImage>false</CenterImage><ScaleImage>false</ScaleImage></Options><Text></Text><ObjectMenuIcons></ObjectMenuIcons><ImageSpec><FileSpec>item_557_v29_background_png16malpha.png</FileSpec><Position>0,0</Position></ImageSpec><HotSpots><Regions><Region name="B5" shape="rect" coords="145, 300, 226, 325"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_blue1_png16malpha.png" x="168" y="79" /></Event></Region><Region name="B10" shape="rect" coords="145, 276, 226, 300"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_blue2_png16malpha.png" x="168" y="79" /></Event></Region><Region name="B15" shape="rect" coords="145, 251, 226, 276"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_blue3_png16malpha.png" x="168" y="79" /></Event></Region><Region name="B20" shape="rect" coords="145, 226, 226, 251"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_blue4_png16malpha.png" x="168" y="79" /></Event></Region><Region name="B25" shape="rect" coords="145, 202, 226, 226"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_blue5_png16malpha.png" x="168" y="79" /></Event></Region><Region name="B30" shape="rect" coords="145, 177, 226, 202"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_blue6_png16malpha.png" x="168" y="79" /></Event></Region><Region name="B35" shape="rect" coords="145, 152, 226, 177"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_blue7_png16malpha.png" x="168" y="79" /></Event></Region><Region name="B40" shape="rect" coords="145, 127, 226, 152"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_blue8_png16malpha.png" x="168" y="79" /></Event></Region><Region name="B45" shape="rect" coords="145, 103, 226, 127"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_blue9_png16malpha.png" x="168" y="79" /></Event></Region><Region name="B50" shape="rect" coords="145, 78, 226, 103"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_blue10_png16malpha.png" x="168" y="79" /></Event></Region><Region name="G5" shape="rect" coords="292, 300, 386, 325"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_green1_png16malpha.png" x="321" y="79" /></Event></Region><Region name="G10" shape="rect" coords="292, 276, 386, 300"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_green2_png16malpha.png" x="321" y="79" /></Event></Region><Region name="G15" shape="rect" coords="292, 251, 386, 276"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_green3_png16malpha.png" x="321" y="79" /></Event></Region><Region name="G20" shape="rect" coords="292, 226, 386, 251"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_green4_png16malpha.png" x="321" y="79" /></Event></Region><Region name="G25" shape="rect" coords="292, 202, 386, 226"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_green5_png16malpha.png" x="321" y="79" /></Event></Region><Region name="G30" shape="rect" coords="292, 177, 386, 202"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_green6_png16malpha.png" x="321" y="79" /></Event></Region><Region name="G35" shape="rect" coords="292, 152, 386, 177"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_green7_png16malpha.png" x="321" y="79" /></Event></Region><Region name="G40" shape="rect" coords="292, 127, 386, 152"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_green8_png16malpha.png" x="321" y="79" /></Event></Region><Region name="G45" shape="rect" coords="292, 103, 386, 127"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_green9_png16malpha.png" x="321" y="79" /></Event></Region><Region name="G50" shape="rect" coords="292, 78, 386, 103"><Event name="select"><Styles fill="white" fill-opacity="0" stroke="white" stroke-width="0" stroke-opacity="" stroke-dasharray="" /><Image src="item_557_v29_green10_png16malpha.png" x="321" y="79" /></Event></Region></Regions><RegionGroups><RegionGroup name="BlueP" min="0" max="1"><Include region="B5" /><Include region="B10" /><Include region="B15" /><Include region="B20" /><Include region="B25" /><Include region="B30" /><Include region="B35" /><Include region="B40" /><Include region="B45" /><Include region="B50" /></RegionGroup><RegionGroup name="GreenP" min="0" max="1"><Include region="G5" /><Include region="G10" /><Include region="G15" /><Include region="G20" /><Include region="G25" /><Include region="G30" /><Include region="G35" /><Include region="G40" /><Include region="G45" /><Include region="G50" /></RegionGroup></RegionGroups></HotSpots></QuestionPart><PreSetAnswerPart></PreSetAnswerPart></Question>
+						]]></gridanswerspace>
+    <content language="ENU" version="2.0" approvedVersion="29">
+      <rationaleoptlist />
+      <stem><![CDATA[<p style="">Nicky has 4 packs of <span id="item_557_TAG_22" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="1"></span>pencils<span class="its-tag" data-tag-ref="item_557_TAG_22" data-tag-boundary="end"></span>. Each pack contains 15 pencils. In each pack, 5 pencils are blue and the rest green. </p><p style="">&#xA0;</p><p style=""><span id="item_557_TAG_20" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>Create<span class="its-tag" data-tag-ref="item_557_TAG_20" data-tag-boundary="end"></span> a bar graph to show how many of each color pencil Nicky has. </p><p style="">&#xA0;</p><p style=""><span id="item_557_TAG_21" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="3"></span>Click<span class="its-tag" data-tag-ref="item_557_TAG_21" data-tag-boundary="end"></span> the graph to show where the top of the bar should go.</p>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="">
+          <name>
+        Rubric </name>
+          <val><![CDATA[<p style="">Exemplar:</p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="">40 green and 20 blue</p></li></ul><p style="">&#xA0;</p><p style="">For this item, a full-credit response includes</p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style=""><span style="background-color:transparent; ">correct bar graph created </span>(1 point).</p></li></ul>]]></val>
+        </rubric>
+        <samplelist maxval="" minval="" />
+      </rubriclist>
+      <attachmentlist>
+        <attachment pass="true" id="aslfile1" type="ASL" subtype="STEM" file="item_557_ASL_STEM.MP4" />
+      </attachmentlist>
+      <constraints />
+      <apipAccessibility>
+        <accessibilityInfo />
+      </apipAccessibility>
+    </content>
+    <content language="ESN" version="2.0" approvedVersion="29">
+      <stem><![CDATA[<p style="">Nicky tiene 4 paquetes de lápices. Cada paquete contiene 15 lápices. En cada paquete, 5 lápices son azules y el resto son verdes. </p><p style="">&#xA0;</p><p style="">Crea una gráfica de barras para mostrar cuántos lápices de cada color tiene Nicky. </p><p style="">&#xA0;</p><p style="">Haz clic en la gráfica para mostrar dónde debe ir la parte superior de la barra.</p><p class="languagedivider">&#xA0;</p><p style="">Nicky has 4 packs of <span id="item_557_TAG_22" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="1"></span>pencils<span class="its-tag" data-tag-ref="item_557_TAG_22" data-tag-boundary="end"></span>. Each pack contains 15 pencils. In each pack, 5 pencils are blue and the rest green. </p><p style="">&#xA0;</p><p style=""><span id="item_557_TAG_20" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>Create<span class="its-tag" data-tag-ref="item_557_TAG_20" data-tag-boundary="end"></span> a bar graph to show how many of each color pencil Nicky has. </p><p style="">&#xA0;</p><p style=""><span id="item_557_TAG_21" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="3"></span>Click<span class="its-tag" data-tag-ref="item_557_TAG_21" data-tag-boundary="end"></span> the graph to show where the top of the bar should go.</p>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="_Spanish">
+          <name>
+        Rubric _Spanish</name>
+          <val><![CDATA[<p style="">Exemplar:</p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="">40 green and 20 blue</p></li></ul><p style="">&#xA0;</p><p style="">For this item, a full-credit response includes</p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style=""><span style="background-color:transparent; ">correct bar graph created </span>(1 point).</p></li></ul><p style="">&#xA0;</p>]]></val>
+        </rubric>
+        <samplelist maxval="_Spanish" minval="_Spanish" />
+      </rubriclist>
+      <attachmentlist />
+      <constraints />
+      <apipAccessibility>
+        <accessibilityInfo />
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

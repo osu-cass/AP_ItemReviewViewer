@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <passage id="3717" version="3" bankkey="187">
+    <attriblist>
+      <attrib attid="stm_pass_id">
+        <name>Stim: ITS ID</name>
+        <val>3717</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="stm_pass_subject">
+        <name>Stim: Subject</name>
+        <val>ELA</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="stm_pass_desc">
+        <name>Stim: Description</name>
+        <val>Around the World in Seventy-Two Days</val>
+        <desc>
+        </desc>
+      </attrib>
+    </attriblist>
+    <resourceslist>
+      <resource type="wordList" id="1758" index="1" bankkey="187" />
+    </resourceslist>
+    <content language="ENU" version="2.0" approvedVersion="3">
+      <title><![CDATA[&#xA0;]]></title>
+      <author><![CDATA[&#xA0;]]></author>
+      <stem><![CDATA[<p style="font-weight:bold; ">Around the World in Seventy-Two <span id="passage_3717_TAG_1_BEGIN">Days</span></p><p style="font-weight:normal; ">&#xA0;</p><p style="font-weight:normal; ">Listen to the presentation. Then answer the questions.</p><p style="font-weight:normal; ">&#xA0;</p><p style="font-weight:normal; "><a href="passage_3717_v3_3717_audio.ogg" type="audio/ogg" class="sound_explicit" autoplay="False" visible="True"></a></p><p style="font-weight:normal; ">&#xA0;</p><p style=""><span id="passage_3717_TAG_2" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="1"></span>Excerpt<span class="its-tag" data-tag-ref="passage_3717_TAG_2" data-tag-boundary="end"></span> from <span style="font-style:italic; ">Around the World in Seventy-Two Days</span> by Nellie Bly. In the <span id="passage_3717_TAG_3" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>public domain<span class="its-tag" data-tag-ref="passage_3717_TAG_3" data-tag-boundary="end"></span>.</p>]]></stem>
+      <attachmentlist>
+        <attachment id="braillefile1" type="BRF" subtype="contracted" file="passage_3717_enu_contracted.brf" />
+        <attachment id="braillefile2" type="BRF" subtype="uncontracted" file="passage_3717_enu_uncontracted.brf" />
+        <attachment pass="true" id="aslfile1" type="ASL" subtype="STEM" file="passage_3717_ASL_STEM.MP4" />
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="passage_3717_TAG_1_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Days.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Days</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>Days</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </passage>
+</itemrelease>

@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:tds="http://airast.org/jsfcustom"
+	xmlns:p="http://java.sun.com/jsf/passthrough">
+<h:head>
+	<title>Smarter Balanced - Item Viewer</title>
+	<!-- Required by CTB and only scripts required for reference purposes -->
+	<tds:ScriptLink
+		source="~/Scripts/Libraries/jquery/jquery-1.10.2.min.js"
+		type="text/javascript"></tds:ScriptLink>
+	<tds:ScriptLink source="~/Scripts/Utilities/util_xdm.js"
+		type="text/javascript"></tds:ScriptLink>
+	<tds:ScriptLink source="~/Scripts/client.js" type="text/javascript"></tds:ScriptLink>
+	<!-- Styling for this page only and not for IRiS interface. -->
+	<tds:CSSLink href="~/IrisStyles/style.css" media="screen"
+		type="text/css" rel="stylesheet" />
+	<tds:CSSLink href="~/IrisStyles/pagenavi-css.css" media="screen"
+		type="text/css" rel="stylesheet" />
+	<tds:CSSLink href="~/IrisStyles/jd.css" media="screen" type="text/css"
+		rel="stylesheet" />
+	<tds:CSSLink href="~/IrisStyles/jd_002.css" media="screen"
+		type="text/css" rel="stylesheet" />
+
+		<!-- Custom Bootstrap Core CSS -->
+	<link rel="stylesheet" href="../bootstrap-3.3.5/css/bootstrap.min.css"/>
+
+		<!-- Custom Fonts -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"
+		rel="stylesheet" type="text/css"/>
+
+		<!-- Bootstrap Core JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+	<style>
+		.container {
+			width: 1400px;
+		}
+	</style>
+
+</h:head>
+<h:body>
+
+
+
+	<div class="container">
+		<nav class="navbar navbar-default">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#"> <img
+				src="../images/SmarterBalanced_logo-01.png" width="165" height="64" />
+			</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse pull-right">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false"> <i class="fa fa-user fa-fw"></i> <span
+						class="hidden-xs">Guest</span> <i class="fa fa-caret-down"></i>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a href="#"><i class="fa fa-sign-out fa-fw"></i>
+								Logout</a></li>
+					</ul></li>
+			</ul>
+		</div>
+		</nav>
+		<hr />
+
+
+
+
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<input id="txtToken" type="text" placeholder="Enter Item ID EX:1059"
+					class="form-control"/>
+			</div>
+			<div class="col-md-2">
+				<button id="btnLoadToken" class="btn btn-primary pull-left">Load</button>
+			</div>
+		</div>
+
+	
+		<div class="row">
+			<div class="col-md-2">
+				<label><a href="#versions" data-toggle="collapse">Version List</a></label>
+				<ul id="versions" class="collapse">
+					<li>Version 1.0</li>
+					<li>Version 1.1</li>
+					<li>Version 1.2</li>
+					<li>Version 1.3</li>
+					<li>Version 1.4</li>
+					<li>Version 1.5</li>
+					<li>Version 1.6</li>
+					<li>Version 1.7</li>
+					<li>Version 1.8</li>
+					<li>Version 1.9</li>
+				</ul>
+			</div>
+			<div class="col-md-10">
+				<iframe src="#{request.contextPath}/" width="100%" height="700"
+					frameborder="0"></iframe>
+			</div>
+		</div>
+	
+
+
+		<div class="row">
+			<div class="col-md-12">
+				<p class="pull-right">© The Regents of the University of
+					California – Smarter Balanced Assessment Consortium</p>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+	
+		// In our case the first frame is the content frame but use whichever frame is the content frame in your particular application.
+		IRiS.setFrame(frames[0]);
+
+		// set the vendor guid.
+		//Note: in the OSS IRiS case we do not care for this.
+		var vendorId = '2B3C34BF-064C-462A-93EA-41E9E3EB8333';
+
+		function disableAll() {
+			$('#btnLoadItem').attr('disabled', true);
+			$('#btnGetResponse').attr('disabled', true);
+		}
+
+		function enableAll() {
+			$('#btnLoadItem').attr('disabled', false);
+			$('#btnGetResponse').attr('disabled', false);
+		}
+
+		function processError(err) {
+			var msg = err.message || err.responseText || 'Unknown';
+			alert(msg);
+		}
+
+		// load secure token
+		$('#btnLoadToken').on('click', function() {
+			var token = $('#txtToken').val();
+			IRiS.loadToken(vendorId, token).done(function() {
+				enableAll();
+			}).fail(function(err) {
+				processError(err);
+			}).always(function() {
+				enableAll();
+			});
+		});
+
+		$('#btnSetResponse').on('click', function(evt) {
+			var value = $('#txtResponse').val();
+			IRiS.setResponse(value);
+		});
+
+		$('#btnGetResponse').on('click', function(evt) {
+			IRiS.getResponse().then(function(value) {
+				if (value) {
+					$('#txtResponse').val(value);
+				}
+			}, function(ex) {
+				alert('Error setting response: ' + ex.message);
+			});
+		});
+	</script>
+
+</h:body>
+</html>
+

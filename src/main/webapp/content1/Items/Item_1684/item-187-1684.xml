@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="mi" id="1684" version="6" bankkey="187">
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>1684</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>MATH</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>66513</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val>Math Training 3-5::SP 14 (4); Math Training 3-5::SP 14::Braille (4); Math Training 3-5::SP 14::Spanish (4);</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val>
+        </val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>MI</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>4</val>
+        <desc>4</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>MI</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>8</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>TableMatch</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>2</val>
+        <desc>
+        </desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="1080" bankkey="187" />
+    <resourceslist>
+      <resource type="wordList" id="1725" index="1" bankkey="187" />
+    </resourceslist>
+    <statistic />
+    <MachineRubric filename="Item_1684_v6.mrx" />
+    <content language="ENU" version="2.0" approvedVersion="6">
+      <qti spec="itemBody"><![CDATA[<matchInteraction responseIdentifier="RESPONSE" minAssociations="1" maxAssociations="0"><prompt /><simpleMatchSet><simpleAssociableChoice identifier="1" matchMax="0"><p style="">1</p></simpleAssociableChoice><simpleAssociableChoice identifier="2" matchMax="0"><p style="">2</p></simpleAssociableChoice><simpleAssociableChoice identifier="3" matchMax="0"><p style="">3</p></simpleAssociableChoice><simpleAssociableChoice identifier="4" matchMax="0"><p style="">6</p></simpleAssociableChoice><simpleAssociableChoice identifier="5" matchMax="0"><p style="">8</p></simpleAssociableChoice><simpleAssociableChoice identifier="6" matchMax="0"><p style="">12</p></simpleAssociableChoice></simpleMatchSet><simpleMatchSet><simpleAssociableChoice identifier="a" matchMax="0"><p style="">Multiple of 6</p></simpleAssociableChoice><simpleAssociableChoice identifier="b" matchMax="0"><p style="">Factor of 6</p></simpleAssociableChoice><simpleAssociableChoice identifier="c" matchMax="0"><p style="">Neither a Multiple nor a Factor of 6</p></simpleAssociableChoice></simpleMatchSet></matchInteraction>]]></qti>
+      <stem><![CDATA[<p style=""><span id="item_1684_TAG_2" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="1"></span>Decide<span class="its-tag" data-tag-ref="item_1684_TAG_2" data-tag-boundary="end"></span> <span id="item_1684_TAG_3" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>whether<span class="its-tag" data-tag-ref="item_1684_TAG_3" data-tag-boundary="end"></span> each number is a multiple of 6, a factor of 6, or neither. <span id="item_1684_TAG_4" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="3"></span>Each<span class="its-tag" data-tag-ref="item_1684_TAG_4" data-tag-boundary="end"></span> number may be matched to more than one description. <span id="item_1684_TAG_5" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="4"></span>Click<span class="its-tag" data-tag-ref="item_1684_TAG_5" data-tag-boundary="end"></span> in the table to respond.</p>]]></stem>
+      <attachmentlist>
+        <attachment id="braillefile1" type="BRF" subtype="nemeth" file="item_1684_enu_nemeth.brf" />
+        <attachment pass="true" id="aslfile1" type="ASL" subtype="STEM" file="item_1684_ASL_STEM.MP4" />
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo />
+      </apipAccessibility>
+    </content>
+    <content language="ESN" version="2.0" approvedVersion="6">
+      <qti spec="itemBody"><![CDATA[<matchInteraction responseIdentifier="RESPONSE" minAssociations="1" maxAssociations="0"><prompt /><simpleMatchSet><simpleAssociableChoice identifier="1" matchMax="0"><p style="">1</p></simpleAssociableChoice><simpleAssociableChoice identifier="2" matchMax="0"><p style="">2</p></simpleAssociableChoice><simpleAssociableChoice identifier="3" matchMax="0"><p style="">3</p></simpleAssociableChoice><simpleAssociableChoice identifier="4" matchMax="0"><p style="">6</p></simpleAssociableChoice><simpleAssociableChoice identifier="5" matchMax="0"><p style="">8</p></simpleAssociableChoice><simpleAssociableChoice identifier="6" matchMax="0"><p style="">12</p></simpleAssociableChoice></simpleMatchSet><simpleMatchSet><simpleAssociableChoice identifier="a" matchMax="0"><p style="">Múltiplo de 6</p></simpleAssociableChoice><simpleAssociableChoice identifier="b" matchMax="0"><p style="">Factor de 6</p></simpleAssociableChoice><simpleAssociableChoice identifier="c" matchMax="0"><p style="">Ni múltiplo ni factor de 6</p></simpleAssociableChoice></simpleMatchSet></matchInteraction>]]></qti>
+      <stem><![CDATA[<p style="">Decide si cada número es múltiplo de 6, factor de 6 o ninguno de los dos. Cada número puede relacionarse con más de una descripción. Haz clic en la tabla para responder.</p><p class="languagedivider">&#xA0;</p><p style=""><span id="item_1684_TAG_2" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="1"></span>Decide<span class="its-tag" data-tag-ref="item_1684_TAG_2" data-tag-boundary="end"></span> <span id="item_1684_TAG_3" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>whether<span class="its-tag" data-tag-ref="item_1684_TAG_3" data-tag-boundary="end"></span> each number is a multiple of 6, a factor of 6, or neither. <span id="item_1684_TAG_4" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="3"></span>Each<span class="its-tag" data-tag-ref="item_1684_TAG_4" data-tag-boundary="end"></span> number may be matched to more than one description. <span id="item_1684_TAG_5" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="4"></span>Click<span class="its-tag" data-tag-ref="item_1684_TAG_5" data-tag-boundary="end"></span> in the table to respond.</p>]]></stem>
+      <attachmentlist />
+      <apipAccessibility>
+        <accessibilityInfo />
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

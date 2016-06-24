@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadata>
+  <smarterAppMetadata xmlns="http://www.smarterapp.org/ns/1/assessment_item_metadata">
+    <Identifier>654</Identifier>
+    <SmarterAppItemDescriptor>MAT.06.SR.1.000SP.J.xxx</SmarterAppItemDescriptor>
+    <InteractionType>MC</InteractionType>
+    <Version>12</Version>
+    <Subject>MATH</Subject>
+    <SecurityStatus>Non-secure</SecurityStatus>
+    <MinimumGrade>06</MinimumGrade>
+    <IntendedGrade>06</IntendedGrade>
+    <MaximumGrade>06</MaximumGrade>
+    <BrailleType>PRN</BrailleType>
+    <CopyrightAndOtherRestrictions>Commissioned</CopyrightAndOtherRestrictions>
+    <AllowCalculator>Yes</AllowCalculator>
+    <MathematicalPractice>4</MathematicalPractice>
+    <PrimaryStandard>SBAC-MA-V1:1|SP|J-6|a/s|6.SP.5c</PrimaryStandard>
+    <MaximumNumberOfPoints>1</MaximumNumberOfPoints>
+    <ScorePoints>"0,1"</ScorePoints>
+    <ItemSpecFormat>SmarterApp</ItemSpecFormat>
+    <StimulusFormat>Standard</StimulusFormat>
+    <EducationalDifficulty>Low</EducationalDifficulty>
+    <DepthOfKnowledge>1</DepthOfKnowledge>
+    <AdministrationDate>Pilot</AdministrationDate>
+  </smarterAppMetadata>
+</metadata>

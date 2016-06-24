@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadata>
+  <smarterAppMetadata xmlns="http://www.smarterapp.org/ns/1/assessment_item_metadata">
+    <Identifier>1691</Identifier>
+    <InteractionType>MI</InteractionType>
+    <Version>11</Version>
+    <Subject>ELA</Subject>
+    <SecurityStatus>Non-secure</SecurityStatus>
+    <MinimumGrade>06</MinimumGrade>
+    <IntendedGrade>06</IntendedGrade>
+    <MaximumGrade>06</MaximumGrade>
+    <BrailleType>BRF</BrailleType>
+    <SufficientEvidenceOfClaim >"The student will cite evidence to support analyses, arguments, or critiques."</SufficientEvidenceOfClaim >
+    <MaximumNumberOfPoints>1</MaximumNumberOfPoints>
+    <ScorePoints>"0,1"</ScorePoints>
+    <ItemSpecFormat>SmarterApp</ItemSpecFormat>
+    <EvidenceStatement>"The student will cite evidence to support analyses, arguments, or critiques."</EvidenceStatement>
+    <StimulusFormat>Standard</StimulusFormat>
+    <EducationalDifficulty>Low</EducationalDifficulty>
+    <DepthOfKnowledge>2</DepthOfKnowledge>
+    <AdministrationDate>Pilot</AdministrationDate>
+  </smarterAppMetadata>
+</metadata>

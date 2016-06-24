@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="eq" id="631" version="19" bankkey="187">
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>631</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>MATH</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>MAT.06.TE.1.0000G.H.xxx - SB OP</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val>PracTest::MG6::S2::SP13 (1); PracTest::MG6::S2::SP13::BRAILLE (1); Math Training 6-8::SP 14 (2); Math Training 6-8::SP 14::Braille (2); Math Training 6::SP13 (2); Math Training6::SP13::Braille (2); Math Training 6-8::SP 14::Spanish (2); Math Training 6::SP 14::Spanish (2);</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val>
+        </val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>EQ</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>6</val>
+        <desc>6</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>EQ</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>1</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>EquationEditor</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>1 pt.</val>
+        <desc>
+        </desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="1074" bankkey="187" />
+    <resourceslist>
+      <resource type="wordList" id="1774" index="1" bankkey="187" />
+    </resourceslist>
+    <statistic />
+    <MachineRubric filename="Item_631_v19.erx" />
+    <RendererSpec filename="Item_631_v19.eax" />
+    <content language="ENU" version="2.0" approvedVersion="19">
+      <rationaleoptlist />
+      <stem><![CDATA[<p style="">The trapezoid shown is divided into a right triangle and a rectangle. </p><p style="">&#xA0;</p><p style="text-align:center; "><img id="item_631_stem" src="item_631_v19_stem_png256.png" width="269" height="155" style="vertical-align:baseline;" /></p><p style="">&#xA0;</p><p style=""><span id="item_631_TAG_15" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>Use<span class="its-tag" data-tag-ref="item_631_TAG_15" data-tag-boundary="end"></span> the Equation Tool to create an expression that could be used to <span id="item_631_TAG_16" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="1"></span>determine<span class="its-tag" data-tag-ref="item_631_TAG_16" data-tag-boundary="end"></span> the area of the trapezoid. </p>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="">
+          <name>
+        Rubric </name>
+          <val><![CDATA[<p style="">Exemplar:</p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style=""><img id="item_631_Object1" style="vertical-align:middle;" src="item_631_v19_Object1_png16malpha.png" width="138" height="34" /></p></li></ul><p style="">&#xA0;</p><p style="">Other Correct Responses:</p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="">any equivalent expression to <img id="item_631_Object2" style="vertical-align:middle;" src="item_631_v19_Object2_png16malpha.png" width="138" height="34" /></p></li></ul><p style="">&#xA0;</p><p style="">For this item, a full-credit response includes</p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="">a correct expression (1 point).</p></li></ul>]]></val>
+        </rubric>
+        <samplelist maxval="" minval="" />
+      </rubriclist>
+      <attachmentlist>
+        <attachment id="braillefile2" type="PRN" subtype="nemeth" file="item_631_enu_nemeth.prn" />
+        <attachment pass="true" id="aslfile1" type="ASL" subtype="STEM" file="item_631_ASL_STEM.MP4" />
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="item_631_stem" type="Graphic" subtype="Generic">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioText>Clockwise from the left, the trapezoid reeds, H, 6 inches, 9 inches.</audioText>
+              </readAloud>
+              <brailleText />
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae4">
+            <contentLinkInfo itsLinkIdentifierRef="item_631_Object1" type="Equation">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioShortDesc>the fraction 1 over 2,    the quantity    3   times     h   ,     plus     the quantity    h    times     6  ,</audioShortDesc>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>the fraction 1 over 2,    the quantity    3   times     h   ,     plus     the quantity    h    times     6  ,</brailleTextString>
+                <brailleCode type="Nemeth">?1/2#(3*h)+(h*6)
+</brailleCode>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae5">
+            <contentLinkInfo itsLinkIdentifierRef="item_631_Object2" type="Equation">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioShortDesc>the fraction 1 over 2,    the quantity    3   times     h   ,     plus     the quantity    h    times     6  ,</audioShortDesc>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>the fraction 1 over 2,    the quantity    3   times     h   ,     plus     the quantity    h    times     6  ,</brailleTextString>
+                <brailleCode type="Nemeth">?1/2#(3*h)+(h*6)
+</brailleCode>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+    <content language="ESN" version="2.0" approvedVersion="19">
+      <stem><![CDATA[<p style="">El trapecio que se muestra está dividido en un <span style="color:#000000; ">triángulo</span><span style="color:#000000; "> rectángulo</span> &#xA0;y un rectángulo.</p><p style="">&#xA0;</p><p style=""><img id="item_631_graphics1" src="item_631_v19_graphics1_png256.png" width="269" height="155" style="vertical-align:baseline;" /></p><p style="">&#xA0;</p><p style="">Usa la herramienta “Ecuación” para crear una expresión que pueda usarse para determinar el área del trapecio. </p><p class="languagedivider">&#xA0;</p><p style="">The trapezoid shown is divided into a right triangle and a rectangle. </p><p style="">&#xA0;</p><p style="text-align:center; "><img id="item_631_stem" src="item_631_v19_stem_png256.png" width="269" height="155" style="vertical-align:baseline;" /></p><p style="">&#xA0;</p><p style=""><span id="item_631_TAG_15" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>Use<span class="its-tag" data-tag-ref="item_631_TAG_15" data-tag-boundary="end"></span> the Equation Tool to create an expression that could be used to <span id="item_631_TAG_16" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="1"></span>determine<span class="its-tag" data-tag-ref="item_631_TAG_16" data-tag-boundary="end"></span> the area of the trapezoid. </p>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="_Spanish">
+          <name>
+        Rubric _Spanish</name>
+          <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+        </rubric>
+        <samplelist maxval="_Spanish" minval="_Spanish" />
+      </rubriclist>
+      <attachmentlist />
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="item_631_stem" type="Graphic" subtype="Generic">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioText>Clockwise from the left, the trapezoid reeds, H, 6 inches, 9 inches.</audioText>
+              </readAloud>
+              <brailleText />
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

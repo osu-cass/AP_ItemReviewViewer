@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadata>
+  <smarterAppMetadata xmlns="http://www.smarterapp.org/ns/1/assessment_item_metadata">
+    <Identifier>946</Identifier>
+    <SmarterAppItemDescriptor>ELA.06.SR.2.W.01.xxx</SmarterAppItemDescriptor>
+    <InteractionType>MC</InteractionType>
+    <Version>12</Version>
+    <Subject>ELA</Subject>
+    <SecurityStatus>Non-secure</SecurityStatus>
+    <MinimumGrade>06</MinimumGrade>
+    <IntendedGrade>06</IntendedGrade>
+    <MaximumGrade>06</MaximumGrade>
+    <BrailleType>BRF</BrailleType>
+    <CopyrightAndOtherRestrictions>Commissioned</CopyrightAndOtherRestrictions>
+    <SufficientEvidenceOfClaim >"When writing or revising short narrative texts, students make revisions to improve text structures and transitions."</SufficientEvidenceOfClaim >
+    <Claim2Category>O</Claim2Category>
+    <Claim2RevisionCategory>R</Claim2RevisionCategory>
+    <PrimaryStandard>SBAC-ELA-v1:2-W</PrimaryStandard>
+    <MaximumNumberOfPoints>1</MaximumNumberOfPoints>
+    <ScorePoints>"0,1"</ScorePoints>
+    <ItemSpecFormat>SmarterApp</ItemSpecFormat>
+    <EvidenceStatement>"When writing or revising short narrative texts, students make revisions to improve text structures and transitions."</EvidenceStatement>
+    <StimulusFormat>Standard</StimulusFormat>
+    <EducationalDifficulty>Medium</EducationalDifficulty>
+    <DepthOfKnowledge>2</DepthOfKnowledge>
+    <AdministrationDate>Pilot</AdministrationDate>
+  </smarterAppMetadata>
+</metadata>

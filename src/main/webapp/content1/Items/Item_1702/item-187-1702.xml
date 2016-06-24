@@ -1,0 +1,448 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="er" id="1702" version="10" bankkey="187">
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>1702</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>ELA</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>59643 - SBAC_Field</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val>ELA Training 6-8::SP 14 (1); ELA Training 6-8::SP 14::Braille (1);</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val>
+        </val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>ER</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>6</val>
+        <desc>6</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>ER</val>
+        <desc>ER [7]</desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>8</val>
+        <desc>8 [7.2]</desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>PlainText</val>
+        <desc>
+        </desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>2 pts.</val>
+        <desc>2 Points</desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="1078" bankkey="187" />
+    <resourceslist>
+      <resource type="wordList" id="1766" index="1" bankkey="187" />
+    </resourceslist>
+    <statistic />
+    <content language="ENU" version="2.0" approvedVersion="10">
+      <rationaleoptlist />
+      <stem><![CDATA[<p style="">A student is writing a report for English class about <span id="item_1702_TAG_22" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="1"></span>folk heroes<span class="its-tag" data-tag-ref="item_1702_TAG_22" data-tag-boundary="end"></span>. Read the draft of his introduction and conclusion and complete the task that follows.</p><p style=""><br />You may never have heard of John Chapman, but you probably have heard of Johnny Appleseed. He was an American folk hero and <span id="item_1702_TAG_23" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>pioneer<span class="its-tag" data-tag-ref="item_1702_TAG_23" data-tag-boundary="end"></span> who was born in Massachusetts in <span id="item_1702_TAG_1_BEGIN">1774</span>. When he was eighteen years old, he decided to help the pioneers who were moving west. He had a dream of growing apple trees and giving apple seeds to them. That way, they would never go hungry.</p><p style=""><br />Many people said that Johnny was a cheerful and <span id="item_1702_TAG_24" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="3"></span>generous<span class="its-tag" data-tag-ref="item_1702_TAG_24" data-tag-boundary="end"></span> man who loved the wilderness and was gentle with animals. What he is most known for today, though, is walking the countryside and planting apples. He did this for almost fifty years. To this day, many <span id="item_1702_TAG_25" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="4"></span>festivals<span class="its-tag" data-tag-ref="item_1702_TAG_25" data-tag-boundary="end"></span> are held every year to honor him. Next time you bite into a crispy, juicy apple, thank Johnny Appleseed.</p><p style=""><br /><span style="font-weight:bold; ">The student took these notes from credible sources:</span></p><p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="">Planted seeds along roadways, forests, and near <span id="item_1702_TAG_2_BEGIN">rivers</span></p></li><li><p style="">Traveled from Massachusetts to <span id="item_1702_TAG_3_BEGIN">Pennsylvania</span></p></li><li><p style="">Spent 50 years walking the <span id="item_1702_TAG_4_BEGIN">countryside</span></p></li><li><p style="">Stayed ahead of <span id="item_1702_TAG_5_BEGIN">settlers</span></p></li><li><p style="">Planted apple seeds along roadways and in forests as he moved <span id="item_1702_TAG_6_BEGIN">west</span></p></li><li><p style="">Planted seeds anywhere pioneers would <span id="item_1702_TAG_7_BEGIN">settle</span></p></li><li><p style="">Got seeds for free from <span id="item_1702_TAG_26" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="5"></span>cider mills<span class="its-tag" data-tag-ref="item_1702_TAG_26" data-tag-boundary="end"></span> and kept them in leather <span id="item_1702_TAG_8_BEGIN">bags</span></p></li><li><p style="">First nickname was the <span id="item_1702_TAG_9_BEGIN">“apple seed man”</span></p></li><li><p style="">Later called <span id="item_1702_TAG_10_BEGIN">“Johnny Appleseed”</span></p></li><li><p style="">Made friends with Indian <span id="item_1702_TAG_11_BEGIN">tribes</span></p></li><li><p style="">Learned some Indian <span id="item_1702_TAG_12_BEGIN">languages</span></p></li><li><p style="">Lots of festivals named after <span id="item_1702_TAG_13_BEGIN">him</span></p></li><li><p style="">Children loved him and listened to his <span id="item_1702_TAG_14_BEGIN">stories</span></p></li><li><p style="">Was generous and <span id="item_1702_TAG_15_BEGIN">kind</span></p></li><li><p style="">When invited for a meal, would not eat until the whole family had had enough <span id="item_1702_TAG_16_BEGIN">food</span></p></li><li><p style="">Was kind to <span id="item_1702_TAG_17_BEGIN">animals</span></p></li><li><p style="">Bought a horse that was going to be put to sleep and gave the horse to someone needy to keep his promise to treat the horse <span id="item_1702_TAG_18_BEGIN">kindly</span></p></li><li><p style="">Wore apple sacks for clothing and gave nice clothes to <span id="item_1702_TAG_19_BEGIN">settlers</span></p></li></ul><p style="">&#xA0;</p><p style="">Write one or two body paragraphs using appropriate details from the student's notes to explain the <span id="item_1702_TAG_20_BEGIN">“man</span> behind the <span id="item_1702_TAG_21_BEGIN">legend”</span> without repeating the ideas presented in the first and last paragraphs.</p>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="4">
+          <name>
+        Rubric 4</name>
+          <val><![CDATA[<p style="font-style:normal; font-weight:normal; ">&#xA0;</p>]]></val>
+        </rubric>
+        <samplelist maxval="4" minval="4">
+          <sample purpose="OtherExemplar" scorepoint="4">
+            <name>4-Point Other Official Sample Answers
+      </name>
+            <annotation />
+            <samplecontent><![CDATA[<p style="">&#xA0;</p>]]></samplecontent>
+          </sample>
+        </samplelist>
+        <rubric scorepoint="3">
+          <name>
+        Rubric 3</name>
+          <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+        </rubric>
+        <samplelist maxval="3" minval="3">
+          <sample purpose="Exemplar" scorepoint="3">
+            <name>3-Point Official Sample Answer
+      </name>
+            <annotation />
+            <samplecontent><![CDATA[<p style="">&#xA0;</p>]]></samplecontent>
+          </sample>
+        </samplelist>
+        <rubric scorepoint="2">
+          <name>
+        Rubric 2</name>
+          <val><![CDATA[<p style="">The response:<br /><span style="font-weight:bold; ">• </span>provides logical and relevant points/reasons/details and/or evidence supporting main idea/thesis/controlling idea about the real person behind the Johnny Appleseed legend to enhance the content<br />• clearly and effectively elaborates ideas using precise words/language</p>]]></val>
+        </rubric>
+        <samplelist maxval="2" minval="2">
+          <sample purpose="Exemplar" scorepoint="2">
+            <name>2-Point Official Sample Answer
+      </name>
+            <annotation />
+            <samplecontent><![CDATA[<p style="">John Chapman traveled from Massachusetts to Pennsylvania, keeping ahead of the settlements. Every year, he planted apple seeds farther west. He carried a leather bag filled with apple seeds that he collected from cider mills. He would take the seeds from the bag and plant them along roadways, in forests, and in other places where pioneers settled. He was soon known as the “apple seed man” and later as “Johnny Appleseed.” Sometimes on his travels, he would be invited to have a meal with a pioneer family. He would not start eating, though, until he knew the whole family would have enough food. The children loved his stories, and their parents enjoyed listening to him, too. Chapman also made friends with several Indian tribes and learned some of their languages. He also loved animals and was always kind to them. One day he bought a horse that was going to be put to sleep and gave it to a person who needed one. <br /></p>]]></samplecontent>
+          </sample>
+        </samplelist>
+        <rubric scorepoint="1">
+          <name>
+        Rubric 1</name>
+          <val><![CDATA[<p style="">The response:<br /><span style="font-weight:bold; ">•</span> provides mostly general and/or limited points/reasons/details or evidence supporting main idea/thesis/controlling idea about the real person behind the Johnny Appleseed legend. Those points/reasons/details may be extraneous or loosely related to the main idea.<br />• elaborates ideas using general words/language</p>]]></val>
+        </rubric>
+        <samplelist maxval="1" minval="1">
+          <sample purpose="Exemplar" scorepoint="1">
+            <name>1-Point Official Sample Answer
+      </name>
+            <annotation />
+            <samplecontent><![CDATA[<p style="">Johnny went west planting apples. He told stories and preached sermons. He liked Indians and animals. Pretty soon people were calling him Johnny Appleseed. He was a great American hero. Because of him, apple trees now grow everywhere in America. Without Johnny Appleseed, we would only have oranges and bananas.</p>]]></samplecontent>
+          </sample>
+        </samplelist>
+        <rubric scorepoint="0">
+          <name>
+        Rubric 0</name>
+          <val><![CDATA[<p style="">The response:<br />• provides minimal or no supporting points/reasons/details or evidence supporting main ideas/thesis/controlling about the real person behind the Johnny Appleseed legend. Those points/reasons/details that are included may be unclear, repetitive, incorrect, or interfere with the meaning of the text.<br />• may use poor word choice for audience and purpose</p>]]></val>
+        </rubric>
+        <samplelist maxval="0" minval="0">
+          <sample purpose="Exemplar" scorepoint="0">
+            <name>0-Point Official Sample Answer
+      </name>
+            <annotation />
+            <samplecontent><![CDATA[<p style="">He drank apple cider from a leather bag and slept with horses.</p>]]></samplecontent>
+          </sample>
+        </samplelist>
+      </rubriclist>
+      <attachmentlist>
+        <attachment id="braillefile1" type="BRF" subtype="contracted" file="item_1702_enu_contracted.brf" />
+        <attachment id="braillefile2" type="BRF" subtype="uncontracted" file="item_1702_enu_uncontracted.brf" />
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae3">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_1_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>17 74</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>17 74</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>1774</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae6">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_2_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>rivers.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>rivers.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>rivers</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae7">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_3_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Pennsylvania.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Pennsylvania.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>Pennsylvania</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae8">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_4_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>countryside.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>countryside.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>countryside</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae9">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_5_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>settlers.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>settlers.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>settlers</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae10">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_6_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>west.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>west.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>west</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae11">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_7_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>settle.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>settle.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>settle</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae13">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_8_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>bags.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>bags.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>bag</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae14">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_9_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Quote, apple seed man, End quote.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Quote, apple seed man, End quote.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>“apple seed man”</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae15">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_10_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Quote, Johnny Appleseed, End Quote.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Quote, Johnny Appleseed, End Quote.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>“Johnny Appleseed”</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae16">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_11_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>tribes.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>tribes.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>tribes</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae17">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_12_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>languages.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>languages.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>languages</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae18">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_13_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>him.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>him.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>him</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae19">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_14_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>stories.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>stories.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>stories</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae20">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_15_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>kind.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>kind.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>kind</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae21">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_16_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>food.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>food.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>food</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae22">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_17_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>animals.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>animals.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>animals</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae23">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_18_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>kindly.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>kindly.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>kindly</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae24">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_19_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>settlers.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>settlers.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>settlers</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae25">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_20_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>quote, man</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>quote, man</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>“man</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae26">
+            <contentLinkInfo itsLinkIdentifierRef="item_1702_TAG_21_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>legend, end quote,</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>legend, end quote,</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>legend”</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<metadata>
+  <smarterAppMetadata xmlns="http://www.smarterapp.org/ns/1/assessment_item_metadata">
+    <Identifier>793</Identifier>
+    <InteractionType>WORDLIST</InteractionType>
+    <Version>4</Version>
+    <Subject>Student Help</Subject>
+    <SecurityStatus>Non-secure</SecurityStatus>
+    <MinimumGrade>NA</MinimumGrade>
+    <IntendedGrade>NA</IntendedGrade>
+    <MaximumGrade>NA</MaximumGrade>
+    <Description>43877 - SB OP</Description>
+    <PrimaryStandard>"SBAC-SH-v1:SH-Undesignated, SH-Undesignated"</PrimaryStandard>
+    <MaximumNumberOfPoints>NA</MaximumNumberOfPoints>
+    <ScorePoints>NA</ScorePoints>
+    <ItemSpecFormat>SmarterApp</ItemSpecFormat>
+    <StimulusFormat>Standard</StimulusFormat>
+    <DepthOfKnowledge>NA</DepthOfKnowledge>
+    <AdministrationDate>Not Applicable</AdministrationDate>
+  </smarterAppMetadata>
+</metadata>
