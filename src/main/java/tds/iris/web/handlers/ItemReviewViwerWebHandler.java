@@ -6,9 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.cassandra.utils.OutputHandler.SystemOutput;
 import org.apache.commons.lang3.StringUtils;
-import org.omg.stub.java.rmi._Remote_Stub;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import tds.blackbox.ContentRequestException;
 import tds.iris.abstractions.repository.IContentHelper;
+import tds.iris.data.ItemRendererResponse;
 import tds.iris.web.data.ContentRequest;
 import tds.iris.web.data.ContentRequestItem;
 import tds.itemrenderer.data.AccLookup;
@@ -64,6 +63,7 @@ public class ItemReviewViwerWebHandler extends BaseContentRendererController {
 		}
 		
 		String content = mockResponse.getContentAsString(); 
+		
 		return new ItemRendererResponse(content);
 	}
 	
