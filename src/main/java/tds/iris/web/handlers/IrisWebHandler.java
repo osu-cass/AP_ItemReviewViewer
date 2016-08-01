@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import AIR.Common.Json.JsonHelper;
+import AIR.Common.Web.ContentType;
 import AIR.Common.Web.TDSReplyCode;
 import AIR.Common.data.ResponseData;
 import tds.iris.abstractions.repository.ContentException;
@@ -41,8 +42,15 @@ import tds.iris.web.data.ContentRequest;
 import tds.iris.web.data.ContentRequestItem;
 import tds.iris.web.data.ContentRequestPassage;
 import tds.itemrenderer.data.AccLookup;
+import tds.itemrenderer.data.AccProperties;
 import tds.itemrenderer.data.ItemRenderGroup;
+import tds.itemrenderer.web.ITSDocumentXmlSerializable;
+import tds.itemrenderer.web.XmlWriter;
+import tds.itemrenderer.webcontrols.ErrorCategories;
+import tds.itemrenderer.webcontrols.PageLayout;
 import tds.itemrenderer.webcontrols.PageSettings.UniqueIdType;
+import tds.itemrenderer.webcontrols.rendererservlet.ContentRenderingException;
+import tds.itemrenderer.webcontrols.rendererservlet.RendererServlet;
 import tds.blackbox.ContentRequestException;
 import tds.student.web.handlers.BaseContentRendererController;
 
@@ -162,7 +170,7 @@ private  ContentRequest getContentRequest (InputStream inputStream) throws Conte
 try {
   BufferedReader bufferedReader = new BufferedReader (new InputStreamReader (inputStream));
   String line = null;
-  StringBuilder builder = new StringBuilder ("I-187-");
+  StringBuilder builder = new StringBuilder ();
   while ((line = bufferedReader.readLine ()) != null) {
     builder.append (line);
   }
@@ -179,4 +187,5 @@ try {
   throw new ContentRequestException ("Error deserializing ContentRequest from JSON. " + exp.getMessage ());
 }
 }
+
 }

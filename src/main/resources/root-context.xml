@@ -35,7 +35,7 @@
 		<beans:constructor-arg>
 			<util:map map-class="java.util.HashMap">
 				<beans:entry key="iris.ContentPath" value="${iris.ContentPath}" />
-				<beans:entry key="iris.GitLabUrl" value="${iris.GitLabUrl}" />
+				<beans:entry key="iris.GitLabItemUrl" value="${iris.GitLabItemUrl}" />
 				<beans:entry key="iris.ZipFileLocation" value="${iris.ZipFileLocation}" />
 			</util:map>
 		</beans:constructor-arg>

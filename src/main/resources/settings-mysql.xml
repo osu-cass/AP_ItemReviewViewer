@@ -19,8 +19,11 @@
 	<entry key="tds.itemPreview.configCache.minutes">0</entry>
 	<entry key="tds.itemPreview.configCache.id"></entry>
 	<entry key="iris.ContentPath">/usr/local/tomcat/content</entry>
-	<entry key="iris.GitLabUrl">http://localhost:8090/webapi/api/item/item_</entry>
+	<entry key="iris.GitLabItemUrl">http://localhost:8090/webapi/api/item/item-187-</entry>
 	<entry key="iris.ZipFileLocation">/usr/local/sbac/items/</entry>
+	<entry key="iris.GitLabStimuliUrl">http://localhost:8090/webapi/api/item/item-187-</entry>
+	<entry key="iris.GitLabStimuliVersionUrl">/usr/local/sbac/items/</entry>
+	<entry key="iris.GitLabItemVersionUrl">/usr/local/sbac/items/</entry>
 	<!-- End Item Preview Settings -->
 	<!-- Start BlackBox Settings -->
 	<!-- legacy settings -->

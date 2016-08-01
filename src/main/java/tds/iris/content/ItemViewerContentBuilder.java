@@ -33,11 +33,9 @@ import tds.itemrenderer.data.IITSDocument;
 @Scope("singleton")
 public class ItemViewerContentBuilder implements IContentBuilder {
 	private static final Logger _logger = LoggerFactory.getLogger(ItemViewerContentBuilder.class);
-	// private static final String SOURCE_FILE_URL =
-	// "http://localhost:8080/iris/content1/Items/Item_";//SOURCE_FILE_URL +
-	// temp + FILE_EXTENTION
-	private static  String GIT_LAB_URL ;//= AppSettingsHelper.get("iris.GitLabUrl");//iris.GitLabUrl"http://164.67.228.30/gitapi/api/git/Item_XXXX/trunk";
-	private static  String DESTINATION_ZIP_FILE_LOCATION;// = AppSettingsHelper.get("iris.ZipFileLocation");//"C:\\Users\\ssuryadevara\\tomcat\\content1\\Items\\";
+	
+	private static  String GIT_LAB_URL ;
+	private static  String DESTINATION_ZIP_FILE_LOCATION;
 	private static final int BUFFER_SIZE = 4096;
 	private static final String USER_AGENT = "User-Agent";
 	private static final String USER_AGENT_VALUE = "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0";
@@ -160,10 +158,7 @@ public class ItemViewerContentBuilder implements IContentBuilder {
 		
 		 try {
 			 DESTINATION_ZIP_FILE_LOCATION = AppSettingsHelper.get("iris.ZipFileLocation");
-			 GIT_LAB_URL = AppSettingsHelper.get("iris.GitLabUrl");
-//		  _contentPath = AppSettingsHelper.get("iris.ContentPath");
-//		 _directoryScanner = new ConfigBuilder(_contentPath);
-		
+			 GIT_LAB_URL = AppSettingsHelper.get("iris.GitLabItemUrl");
 		 } catch (Exception exp) {
 		 _logger.error("Error loading zip file location or git lab url", exp);
 		 throw new ContentException(exp);

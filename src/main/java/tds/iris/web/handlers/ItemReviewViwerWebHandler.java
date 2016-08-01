@@ -1,23 +1,20 @@
 package tds.iris.web.handlers;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.cassandra.utils.OutputHandler.SystemOutput;
 import org.apache.commons.lang3.StringUtils;
+import org.omg.stub.java.rmi._Remote_Stub;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +34,7 @@ import tds.student.web.handlers.BaseContentRendererController;
 public class ItemReviewViwerWebHandler extends BaseContentRendererController {
 	private static final Logger _logger = LoggerFactory.getLogger(IrisWebHandler.class);
 	private static List<ContentRequestItem> _items;
-	private static final String ITEM_PREFIX = "I-187-";
+	private static final String ITEM_PREFIX = "I-";
 	@Autowired
 	private IContentHelper _contentHelper;
 
@@ -46,24 +43,35 @@ public class ItemReviewViwerWebHandler extends BaseContentRendererController {
 		setPageSettingsUniqieIdType(UniqueIdType.GroupId);
 	}
 
-	@RequestMapping(value = "view/item/{itemID}", produces = "application/json")
+	@RequestMapping(value = "itemRenderer/item/{bankID},{itemID}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public void GetItemById(HttpServletResponse response, @PathVariable("itemID") String itemID)
+	public ItemRendererResponse GetItemById(HttpServletResponse response,@PathVariable("bankID") String bankID, @PathVariable("itemID") String itemID)
 			throws Exception {
-		ContentRequest contentRequest = getContentRequest(itemID);
+
+		MockHttpServletResponse mockResponse = new MockHttpServletResponse();
+
+		if(itemID!=null && !itemID.isEmpty()){
+			if(bankID==null || bankID.isEmpty()){
+				bankID="187";
+			}
+		ContentRequest contentRequest = getContentRequest(bankID,itemID);
 		ItemRenderGroup itemRenderGroup = _contentHelper.loadRenderGroup(contentRequest);
 
 		if (!StringUtils.isEmpty(contentRequest.getLayout()))
 			itemRenderGroup.setLayout(contentRequest.getLayout());
 
-		renderGroup(itemRenderGroup, new AccLookup(), response);
+		renderGroup(itemRenderGroup, new AccLookup(), mockResponse);
+		}
+		
+		String content = mockResponse.getContentAsString(); 
+		return new ItemRendererResponse(content);
 	}
 	
 	@RequestMapping(value = "view/stimuli/{stimuliID}", produces = "application/json")
 	@ResponseBody
 	public void GetStimuliById(HttpServletResponse response, @PathVariable("stimuliID") String stimuliID)
 			throws Exception {
-		ContentRequest contentRequest = getContentRequest(stimuliID);
+		ContentRequest contentRequest = getContentRequest(stimuliID, stimuliID);
 		ItemRenderGroup itemRenderGroup = _contentHelper.loadRenderGroup(contentRequest);
 
 		if (!StringUtils.isEmpty(contentRequest.getLayout()))
@@ -75,7 +83,7 @@ public class ItemReviewViwerWebHandler extends BaseContentRendererController {
 	@ResponseBody
 	public void GetItemVersionsById(HttpServletResponse response, @PathVariable("itemID") String itemID)
 			throws Exception {
-		ContentRequest contentRequest = getContentRequest(itemID);
+		ContentRequest contentRequest = getContentRequest(itemID, itemID);
 		ItemRenderGroup itemRenderGroup = _contentHelper.loadRenderGroup(contentRequest);
 
 		if (!StringUtils.isEmpty(contentRequest.getLayout()))
@@ -87,7 +95,7 @@ public class ItemReviewViwerWebHandler extends BaseContentRendererController {
 	@ResponseBody
 	public void GetStimuliVersionsById(HttpServletResponse response, @PathVariable("stimuliID") String stimuliID)
 			throws Exception {
-		ContentRequest contentRequest = getContentRequest(stimuliID);
+		ContentRequest contentRequest = getContentRequest(stimuliID, stimuliID);
 		ItemRenderGroup itemRenderGroup = _contentHelper.loadRenderGroup(contentRequest);
 
 		if (!StringUtils.isEmpty(contentRequest.getLayout()))
@@ -97,10 +105,10 @@ public class ItemReviewViwerWebHandler extends BaseContentRendererController {
 	}
 
 
-	private ContentRequest getContentRequest(String itemID) throws ContentRequestException {
+	private ContentRequest getContentRequest(String bankID,String itemID) throws ContentRequestException {
 		try {
 			ContentRequestItem cre = new ContentRequestItem();
-			cre.setId(ITEM_PREFIX + itemID);
+			cre.setId(ITEM_PREFIX +bankID+"-"+ itemID);
 			_items = new ArrayList<ContentRequestItem>();
 			_items.add(cre);
 			ContentRequest cr = new ContentRequest();
