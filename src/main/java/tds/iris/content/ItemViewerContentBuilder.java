@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.ObjectOutputStream;
 import java.net.MalformedURLException;
 import java.util.Date;
@@ -15,8 +14,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.http.HttpEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -170,7 +167,7 @@ public class ItemViewerContentBuilder implements IContentBuilder {
 		} else {
 			_logger.error("Downloaed File:" + zipFilePath + " to Location:" + destDirectory
 					+ " is corrupted.make sure Item Exists");
-			new File(zipFilePath).delete();
+	//		new File(zipFilePath).delete();
 			isSucceed = false;
 			return isSucceed;
 		}
