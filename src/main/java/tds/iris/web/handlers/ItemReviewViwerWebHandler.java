@@ -62,9 +62,11 @@ public class ItemReviewViwerWebHandler extends BaseContentRendererController {
 		renderGroup(itemRenderGroup, new AccLookup(), mockResponse);
 		}
 		
-		String content = mockResponse.getContentAsString(); 
+		String content = mockResponse.getContentAsString();
 		
-		return new ItemRendererResponse(content);
+		String htmlContent = content.substring(content.indexOf("<html>"), content.indexOf("</html>") + 7); 
+
+		return new ItemRendererResponse(htmlContent);
 	}
 	
 	@RequestMapping(value = "view/stimuli/{stimuliID}", produces = "application/json")
