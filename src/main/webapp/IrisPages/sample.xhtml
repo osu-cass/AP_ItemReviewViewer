@@ -82,20 +82,21 @@
 
 		<div class="row">
 			<div class="col-md-2 col-md-offset-3">
-				<select id="content">
+				<select id="content" value="Stimuli">
 					<option value="Item" class="form-control">Item</option>
 					<option value="Stimuli" class="form-control">Stimuli</option>
+
 
 				</select>
 			</div>
 			<div class="col-md-2">
 				<input id="bankToken" type="text" placeholder="Enter Bank ID EX:187"
-					class="form-control" />
+					class="form-control" value="#{param['bankId']}"/>
 			</div>
 
 			<div class="col-md-2">
 				<input id="txtToken" type="text" placeholder="Enter Item ID EX:1059"
-					class="form-control" />
+					class="form-control" value="#{param['id']}"/>
 			</div>
 			<div class="col-md-2">
 				<button id="btnLoadToken" class="btn btn-primary pull-left">Load</button>
@@ -145,6 +146,7 @@
 		// set the vendor guid.
 		//Note: in the OSS IRiS case we do not care for this.
 		var vendorId = '2B3C34BF-064C-462A-93EA-41E9E3EB8333';
+		
 
 		function disableAll() {
 			$('#btnLoadItem').attr('disabled', true);
@@ -160,7 +162,7 @@
 			var msg = err.message || err.responseText || 'Unknown';
 			alert(msg);
 		}
-
+		
 		// load secure token
 		$('#btnLoadToken').on('click', function() {
 			var token = $('#txtToken').val();
@@ -177,6 +179,22 @@
 			}
 		});
 
+		
+		$(window).load(function() {
+			var token = $('#txtToken').val();
+			var bankToken = $('#bankToken').val();
+			var content = $('#content').val();
+			if(content==='Item'){
+			IRiS.loadToken(vendorId, 'I-'+bankToken+'-'+token).done(function() {
+				enableAll();
+			}).fail(function(err) {
+				processError(err);
+			}).always(function() {
+				enableAll();
+			});
+			}
+		  });
+
 		$('#btnSetResponse').on('click', function(evt) {
 			var value = $('#txtResponse').val();
 			IRiS.setResponse(value);
@@ -191,6 +209,7 @@
 				alert('Error setting response: ' + ex.message);
 			});
 		});
+		
 	</script>
 </h:body>
 </html>
