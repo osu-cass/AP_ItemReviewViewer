@@ -184,7 +184,8 @@
 			var token = $('#txtToken').val();
 			var bankToken = $('#bankToken').val();
 			var content = $('#content').val();
-			if(content==='Item'){
+			if(content==='Item'&amp;&amp;!isEmpty(bankToken)&amp;&amp;!isEmpty(token)){
+				
 			IRiS.loadToken(vendorId, 'I-'+bankToken+'-'+token).done(function() {
 				enableAll();
 			}).fail(function(err) {
@@ -209,7 +210,9 @@
 				alert('Error setting response: ' + ex.message);
 			});
 		});
-		
+		function isEmpty(str) {
+		    return (!str || 0 === str.length);
+		}
 	</script>
 </h:body>
 </html>
