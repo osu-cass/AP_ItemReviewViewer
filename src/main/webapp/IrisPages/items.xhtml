@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:tds="http://airast.org/jsfcustom"
+	xmlns:p="http://java.sun.com/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Smarter Balanced - Item Viewer</title>
+	<!-- Required by CTB and only scripts required for reference purposes -->
+	<tds:ScriptLink
+		source="~/Scripts/Libraries/jquery/jquery-1.10.2.min.js"
+		type="text/javascript"></tds:ScriptLink>
+	<tds:ScriptLink source="~/Scripts/Utilities/util_xdm.js"
+		type="text/javascript"></tds:ScriptLink>
+	<tds:ScriptLink source="~/Scripts/client.js" type="text/javascript"></tds:ScriptLink>
+	<!-- Styling for this page only and not for IRiS interface. -->
+	<tds:CSSLink href="~/IrisStyles/style.css" media="screen"
+		type="text/css" rel="stylesheet" />
+	<tds:CSSLink href="~/IrisStyles/pagenavi-css.css" media="screen"
+		type="text/css" rel="stylesheet" />
+	<tds:CSSLink href="~/IrisStyles/jd.css" media="screen" type="text/css"
+		rel="stylesheet" />
+	<tds:CSSLink href="~/IrisStyles/jd_002.css" media="screen"
+		type="text/css" rel="stylesheet" />
+
+	<!-- Custom Bootstrap Core CSS -->
+	<link rel="stylesheet" href="../bootstrap-3.3.5/css/bootstrap.min.css" />
+
+	<!-- Custom Fonts -->
+	<link
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"
+		rel="stylesheet" type="text/css" />
+
+	<!-- Bootstrap Core JavaScript -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+	<style>
+.container {
+	padding: 0px;
+	border: 0px solid black;
+}
+
+.background {
+	background-color: #c0c0c0;
+	padding: 0;
+	color: #335500;
+}
+
+table#albums {
+	border-collapse: separate;
+	border-spacing: 50px 20px;
+	border: 1px solid black;
+}
+</style>
+
+</h:head>
+
+<h:body>
+
+	<div class="container"
+		style="position: absolute; top: 250px; left: 279px; width: 1300px; height: 550px">
+
+		<div class="col-md-9">
+
+			<table id="albums" cellspacing="0">
+			
+				<thead>
+					<h1>Please Select the  Item</h1>
+					<tr>
+						<th>Item Name</th>
+						<th>Link</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Item-187-1059</td>
+						<td><a
+							href="http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1059&amp;version="
+							target="_blank">http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1059&amp;version=
+						</a></td>
+					</tr>
+
+					<tr>
+						<td>Item-187-1167</td>
+						<td><a
+							href="http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1167&amp;version="
+							target="_blank">http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1167&amp;version=
+						</a></td>
+					</tr>
+
+					<tr>
+						<td>Item-187-174</td>
+						<td><a
+							href="http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=174&amp;version="
+							target="_blank">http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=174&amp;version=
+						</a></td>
+					</tr>
+					<tr>
+						<td>Item-187-540</td>
+						<td><a
+							href="http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=540&amp;version="
+							target="_blank">http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=540&amp;version=
+						</a></td>
+					</tr>
+					<tr>
+						<td>Item-187-1072</td>
+						<td><a
+							href="http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1072&amp;version="
+							target="_blank">http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1072&amp;version=
+						</a></td>
+					</tr>
+					<tr>
+						<td>Item-187-1073</td>
+						<td><a
+							href="http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1073&amp;version="
+							target="_blank">http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1073&amp;version=
+						</a></td>
+					</tr>
+					<tr>
+						<td>Item-187-1075</td>
+						<td><a
+							href="http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1075&amp;version="
+							target="_blank">http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1075&amp;version=
+						</a></td>
+					</tr>
+					<tr>
+						<td>Item-187-652</td>
+						<td><a
+							href="http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=652&amp;version="
+							target="_blank">http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=652&amp;version=
+						</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</h:body>
+</html>

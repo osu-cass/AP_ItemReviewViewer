@@ -101,12 +101,6 @@
 			</div>
 			
 			<div class="col-md-2">
-				<input id="versionToken" type="text" placeholder="Enter Version Number:1.0"
-					class="form-control" value="#{param['version']}"/>
-			</div>
-			
-			
-			<div class="col-md-2">
 				<button id="btnLoadToken" class="btn btn-primary pull-left">Load</button>
 			</div>
 		</div>
@@ -182,11 +176,8 @@
 			var token = $('#txtToken').val();
 			var bankToken = $('#bankToken').val();
 			var content = $('#content').val();
-			var version = $('#versionToken').val();
-			
 			if(content==='Item'&amp;&amp;!isEmpty(bankToken)&amp;&amp;!isEmpty(token)){
-				
-			IRiS.loadToken(vendorId, 'I-'+bankToken+'-'+token +'-'+ version).done(function() {
+			IRiS.loadToken(vendorId, 'I-'+bankToken+'-'+token).done(function() {
 				enableAll();
 			}).fail(function(err) {
 				processError(err);
