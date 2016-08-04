@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import AIR.Common.Configuration.AppSettingsHelper;
 import tds.iris.abstractions.repository.ContentException;
@@ -55,16 +56,42 @@ public class ItemViewerContentBuilder implements IContentBuilder {
 		try {
 
 			_logger.info("Getting the Item with the ID:" + id + " in location:" + DESTINATION_ZIP_FILE_LOCATION);
+			String[] parts = id.split("-");
+			
+			String bankId = parts[1];
+			String itemNumber = parts[2];
+
+			String versionNumber = ""; 
+			if(parts.length > 3)
+				versionNumber = parts[3];
+			
+			String qualifiedItemNumber = null;
+			String itemNumberFromMetaData = parts[0] + "-" + bankId + "-" + itemNumber;
+
+			
+			if(StringUtils.isEmpty(versionNumber))
+				qualifiedItemNumber = parts[0] + "-" + bankId + "-" + itemNumber; 
+			else
+				qualifiedItemNumber = parts[0] + "-" + bankId + "-" + itemNumber + "-" + versionNumber;
+			
 			String temp = id.substring(6, id.length());
-			String zipFilePath = DESTINATION_ZIP_FILE_LOCATION + temp + FILE_EXTENTION;
+			String zipFilePath = DESTINATION_ZIP_FILE_LOCATION + qualifiedItemNumber + FILE_EXTENTION;
 			if (!fileExists(zipFilePath)) {
-				 getItems(new URL(populateUrl(temp)), zipFilePath);
+				
+				 String url = "";
+				 if(StringUtils.isEmpty(versionNumber))
+					 url = populateUrl(itemNumber);
+				 else
+					 url = populateUrl(itemNumber, versionNumber);
+				 getItems(new URL(url), zipFilePath);
 			}
 			if (unzip(zipFilePath, DESTINATION_ZIP_FILE_LOCATION)) {
 				_logger.info("Scanning the Directory for the Item Started");
 				_directoryScanner.create();
 				_logger.info("Scanning the Directory for the Item Complete");
-				return _directoryScanner.getRenderableDocument(id);
+				//return _directoryScanner.getRenderableDocument(id);
+				
+				return _directoryScanner.getRenderableDocument(itemNumberFromMetaData);
 			}
 
 		} catch (MalformedURLException e) {
@@ -79,12 +106,18 @@ public class ItemViewerContentBuilder implements IContentBuilder {
 		throw new ContentException(String.format("No content found by id %s", id));
 	}
 
-	 private String populateUrl(String temp) {
+	 private String populateUrl(String itemNumber) {
 	
-	 return GIT_LAB_URL+temp;
+	 return GIT_LAB_URL+itemNumber;
 	 }
 
-	private boolean fileExists(String zipFilePath) {
+	 private String populateUrl(String itemNumber, String versionNumber) {
+			
+	 return GIT_LAB_URL+itemNumber + "/" + versionNumber;
+	 }
+
+
+	 private boolean fileExists(String zipFilePath) {
 
 		File f = new File(zipFilePath);
 		_logger.info("Checking the File Already Exists:" + f.exists());

@@ -82,8 +82,8 @@
 
 
 		<div class="row">
-			<div class="col-md-2 col-md-offset-3">
-				<select id="content" value="Stimuli">
+			<div class="col-md-2 col-md-offset-2">
+				<select id="content" value="#{param[type]}" class="form-control">
 					<option value="Item" class="form-control">Item</option>
 					<option value="Stimuli" class="form-control">Stimuli</option>
 
@@ -99,6 +99,13 @@
 				<input id="txtToken" type="text" placeholder="Enter Item ID EX:1059"
 					class="form-control" value="#{param['id']}"/>
 			</div>
+			
+			<div class="col-md-2">
+				<input id="versionToken" type="text" placeholder="Enter Version Number:1.0"
+					class="form-control" value="#{param['version']}"/>
+			</div>
+			
+			
 			<div class="col-md-2">
 				<button id="btnLoadToken" class="btn btn-primary pull-left">Load</button>
 			</div>
@@ -107,11 +114,11 @@
 
 
 		<div class="row">
-			<div class="col-md-2">
+			<div class="col-md-1" >
 				<label><a href="#versions" data-toggle="collapse">Version List</a></label>
 				<ul id="versions" class="expand">
-				<ui:repeat value="#{versionsBacking.versions}" var="value">
-				     <li><a href="#{value}">Version Link</a></li>
+				<ui:repeat value="#{versionsBacking.itemVersions}" var="value">
+				     <li><a href="#{value.link}">#{value.name}</a></li>
 				</ui:repeat>
 				</ul>
 			</div>
@@ -120,8 +127,6 @@
 					frameborder="0"></iframe>
 			</div>
 		</div>
-
-
 
 		<div class="row">
 			<div class="col-md-12">
@@ -177,9 +182,11 @@
 			var token = $('#txtToken').val();
 			var bankToken = $('#bankToken').val();
 			var content = $('#content').val();
+			var version = $('#versionToken').val();
+			
 			if(content==='Item'&amp;&amp;!isEmpty(bankToken)&amp;&amp;!isEmpty(token)){
 				
-			IRiS.loadToken(vendorId, 'I-'+bankToken+'-'+token).done(function() {
+			IRiS.loadToken(vendorId, 'I-'+bankToken+'-'+token +'-'+ version).done(function() {
 				enableAll();
 			}).fail(function(err) {
 				processError(err);

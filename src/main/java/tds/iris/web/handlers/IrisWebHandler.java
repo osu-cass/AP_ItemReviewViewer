@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import AIR.Common.Json.JsonHelper;
+import AIR.Common.Utilities.SpringApplicationContext;
 import AIR.Common.Web.ContentType;
 import AIR.Common.Web.TDSReplyCode;
 import AIR.Common.data.ResponseData;
@@ -63,7 +64,7 @@ public class IrisWebHandler extends BaseContentRendererController
 
   @Autowired
   private IContentHelper      _contentHelper;
-
+  
   @PostConstruct
   public void init () {
     setPageSettingsUniqieIdType (UniqueIdType.GroupId);
@@ -81,9 +82,11 @@ public class IrisWebHandler extends BaseContentRendererController
       itemRenderGroup.setLayout (contentRequest.getLayout ());
 
     renderGroup (itemRenderGroup, new AccLookup (), response);
+    
   }
 
-  @RequestMapping (value = "content/reload")
+
+@RequestMapping (value = "content/reload")
   @ResponseBody
   public ResponseData<String> reloadContent (HttpServletRequest request, HttpServletResponse response) throws ContentRequestException, IOException {
     _contentHelper.reloadContent ();
@@ -187,5 +190,6 @@ try {
   throw new ContentRequestException ("Error deserializing ContentRequest from JSON. " + exp.getMessage ());
 }
 }
+
 
 }
