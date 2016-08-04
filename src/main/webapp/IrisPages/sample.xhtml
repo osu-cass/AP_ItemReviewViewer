@@ -100,6 +100,8 @@
 					class="form-control" value="#{param['id']}"/>
 			</div>
 			
+			<input id="versionToken" type="hidden" value="#{param['version']}"/>
+			
 			<div class="col-md-2">
 				<button id="btnLoadToken" class="btn btn-primary pull-left">Load</button>
 			</div>
@@ -176,8 +178,11 @@
 			var token = $('#txtToken').val();
 			var bankToken = $('#bankToken').val();
 			var content = $('#content').val();
+			var version = $('#versionToken').val();
+			
 			if(content==='Item'&amp;&amp;!isEmpty(bankToken)&amp;&amp;!isEmpty(token)){
-			IRiS.loadToken(vendorId, 'I-'+bankToken+'-'+token).done(function() {
+				
+			IRiS.loadToken(vendorId, 'I-'+bankToken+'-'+token +'-'+ version).done(function() {
 				enableAll();
 			}).fail(function(err) {
 				processError(err);
@@ -186,7 +191,8 @@
 			});
 			}
 		  });
-
+		
+		
 		$('#btnSetResponse').on('click', function(evt) {
 			var value = $('#txtResponse').val();
 			IRiS.setResponse(value);
