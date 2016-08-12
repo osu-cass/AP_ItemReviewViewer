@@ -9,7 +9,6 @@ import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -25,7 +24,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 
 import AIR.Common.Configuration.AppSettingsHelper;
-import tds.itemselection.base.ItemCandidatesData;
 
 /**
  * @author kthotti
@@ -43,10 +41,10 @@ public class VersionsBacking {
 	
 	private List<ItemCommit> itemCommits;
 
-	//http://localhost:8090/webapi/api/item/commits/item-187-1167
 	private String gitLabUrl;
+	private  final String GIT_LAB_ITEM_VERSION_URL="iris.GitLabItemVersionUrl";
+	private  final String ITEM_REVIEW_PAGE="iris.ItemReviewPage";
 
-	//http://localhost:8090/iris/IrisPages/sample.xhtml
 	private String irisPage;
 	
 	
@@ -54,7 +52,6 @@ public class VersionsBacking {
 	 * 
 	 */
 	public VersionsBacking() {
-		// TODO Auto-generated constructor stub
 
 	}
 	
@@ -69,8 +66,8 @@ public class VersionsBacking {
 			
 			String queryString = String.format("?type=%s&bankId=%s&id=%s", type, bankId, itemNumber) ;
 			
-			//gitLabUrl = AppSettingsHelper.get("iris.GitLabUrl");
-			//irisPage = AppSettingsHelper.get("iris.ItemReviewPage");
+			gitLabUrl = AppSettingsHelper.get(GIT_LAB_ITEM_VERSION_URL);
+			irisPage = AppSettingsHelper.get(ITEM_REVIEW_PAGE);
 			
 			gitLabUrl = gitLabUrl + "/" + id;
 			
@@ -107,7 +104,6 @@ public class VersionsBacking {
 
 			
 		} catch (Exception e) {
-			// TODO: handle exception
 			  _logger.error ("Error getting commits form GitLab", e);
 		}
 		
@@ -210,22 +206,7 @@ public class VersionsBacking {
 		itemVersions.add(itemVersion);
 	}
 
-	public String getGitLabUrl() {
-		return gitLabUrl;
-	}
-
-	public void setGitLabUrl(String gitLabUrl) {
-		this.gitLabUrl = gitLabUrl;
-	}
-
-	public String getIrisPage() {
-		return irisPage;
-	}
-
-	public void setIrisPage(String irisPage) {
-		this.irisPage = irisPage;
-	}
-
+	
 	public List<ItemCommit> getItemCommits() {
 		init("commits");
 		return itemCommits;

@@ -37,6 +37,8 @@
 				<beans:entry key="iris.ContentPath" value="${iris.ContentPath}" />
 				<beans:entry key="iris.GitLabItemUrl" value="${iris.GitLabItemUrl}" />
 				<beans:entry key="iris.ZipFileLocation" value="${iris.ZipFileLocation}" />
+				<beans:entry key="iris.GitLabItemVersionUrl" value="${iris.GitLabItemVersionUrl}" />
+				<beans:entry key="iris.ItemReviewPage" value="${iris.ItemReviewPage}" />
 			</util:map>
 		</beans:constructor-arg>
 	</beans:bean>
