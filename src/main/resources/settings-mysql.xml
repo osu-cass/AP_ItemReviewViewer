@@ -24,6 +24,9 @@
 	<entry key="iris.GitLabStimuliUrl">http://localhost:8090/webapi/api/item/item-187-</entry>
 	<entry key="iris.GitLabStimuliVersionUrl">/usr/local/sbac/items/</entry>
 	<entry key="iris.GitLabItemVersionUrl">/usr/local/sbac/items/</entry>
+	<entry key="iris.itemReviewPage">/IrisPages/sample.xhtml</entry>
+	<entry key="iris.gitLabUrl">http://ba-apps-t01.it.ucla.edu:8090/webapi/api/item/commits/</entry>
+
 	<!-- End Item Preview Settings -->
 	<!-- Start BlackBox Settings -->
 	<!-- legacy settings -->
