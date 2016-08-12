@@ -162,15 +162,11 @@
 			var token = $('#txtToken').val();
 			var bankToken = $('#bankToken').val();
 			var content = $('#content').val();
-			if(content==='Item'){
-			IRiS.loadToken(vendorId, 'I-'+bankToken+'-'+token).done(function() {
-				enableAll();
-			}).fail(function(err) {
-				processError(err);
-			}).always(function() {
-				enableAll();
-			});
-			}
+			
+			var queryString = 'type='+ content + '&amp;bankId=' + bankToken + '&amp;id=' + token;
+				
+			window.location.href = '#{request.contextPath}' + '/IrisPages/sample.xhtml?' + queryString;
+
 		});
 
 		
@@ -179,6 +175,7 @@
 			var bankToken = $('#bankToken').val();
 			var content = $('#content').val();
 			var version = $('#versionToken').val();
+			
 			
 			if(content==='Item'&amp;&amp;!isEmpty(bankToken)&amp;&amp;!isEmpty(token)){
 				
