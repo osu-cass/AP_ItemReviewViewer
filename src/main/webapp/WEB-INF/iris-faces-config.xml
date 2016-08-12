@@ -8,7 +8,7 @@
 		<managed-bean-scope>request</managed-bean-scope>
 		<managed-property>
 			<property-name>gitLabUrl</property-name>
-			<value>http://localhost:8090/webapi/api/item/version</value>
+			<value>http://localhost:8090/webapi/api/item/commits</value>
 		</managed-property>
 		<managed-property>
 			<property-name>irisPage</property-name>

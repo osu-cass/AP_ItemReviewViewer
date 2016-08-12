@@ -7,22 +7,6 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title>Smarter Balanced - Item Viewer</title>
-	<!-- Required by CTB and only scripts required for reference purposes -->
-	<tds:ScriptLink
-		source="~/Scripts/Libraries/jquery/jquery-1.10.2.min.js"
-		type="text/javascript"></tds:ScriptLink>
-	<tds:ScriptLink source="~/Scripts/Utilities/util_xdm.js"
-		type="text/javascript"></tds:ScriptLink>
-	<tds:ScriptLink source="~/Scripts/client.js" type="text/javascript"></tds:ScriptLink>
-	<!-- Styling for this page only and not for IRiS interface. -->
-	<tds:CSSLink href="~/IrisStyles/style.css" media="screen"
-		type="text/css" rel="stylesheet" />
-	<tds:CSSLink href="~/IrisStyles/pagenavi-css.css" media="screen"
-		type="text/css" rel="stylesheet" />
-	<tds:CSSLink href="~/IrisStyles/jd.css" media="screen" type="text/css"
-		rel="stylesheet" />
-	<tds:CSSLink href="~/IrisStyles/jd_002.css" media="screen"
-		type="text/css" rel="stylesheet" />
 
 	<!-- Custom Bootstrap Core CSS -->
 	<link rel="stylesheet" href="../bootstrap-3.3.5/css/bootstrap.min.css" />
@@ -59,81 +43,113 @@ table#albums {
 
 <h:body>
 
-	<div class="container"
-		style="position: absolute; top: 250px; left: 279px; width: 1300px; height: 550px">
+	<div class="container">
 
-		<div class="col-md-9">
+		<nav class="navbar navbar-default">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#"> <img
+				src="../images/SmarterBalanced_logo-01.png" width="165" height="64" />
+			</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse pull-right">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false"> <i class="fa fa-user fa-fw"></i> <span
+						class="hidden-xs">Guest</span> <i class="fa fa-caret-down"></i>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a href="#"><i class="fa fa-sign-out fa-fw"></i>
+								Logout</a></li>
+					</ul></li>
+			</ul>
+		</div>
+		</nav>
+		<hr />
 
-			<table id="albums" cellspacing="0">
-			
-				<thead>
-					<h1>Please Select the  Item</h1>
-					<tr>
-						<th>Item Name</th>
-						<th>Link</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Item-187-1059</td>
-						<td><a
-							href="http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1059"
-							target="_blank">http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1059
-						</a></td>
-					</tr>
+		<div class="row">
+			<div class="col-md-9">
 
-					<tr>
-						<td>Item-187-1167</td>
-						<td><a
-							href="http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1167"
-							target="_blank">http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1167
-						</a></td>
-					</tr>
+				<table id="albums" cellspacing="0">
 
-					<tr>
-						<td>Item-187-174</td>
-						<td><a
-							href="http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=174"
-							target="_blank">http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=174
-						</a></td>
-					</tr>
-					<tr>
-						<td>Item-187-540</td>
-						<td><a
-							href="http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=540"
-							target="_blank">http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=540
-						</a></td>
-					</tr>
-					<tr>
-						<td>Item-187-1072</td>
-						<td><a
-							href="http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1072"
-							target="_blank">http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1072
-						</a></td>
-					</tr>
-					<tr>
-						<td>Item-187-1073</td>
-						<td><a
-							href="http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1073"
-							target="_blank">http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1073
-						</a></td>
-					</tr>
-					<tr>
-						<td>Item-187-1075</td>
-						<td><a
-							href="http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1075"
-							target="_blank">http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1075
-						</a></td>
-					</tr>
-					<tr>
-						<td>Item-187-652</td>
-						<td><a
-							href="http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=652"
-							target="_blank">http://localhost:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=652
-						</a></td>
-					</tr>
-				</tbody>
-			</table>
+					<thead>
+						<h1>Please Select the Item</h1>
+						<tr>
+							<th>Item Name</th>
+							<th>Link</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Item-187-1059</td>
+							<td><a
+								href="http://ba-apps-t01.it.ucla.edu:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1059"
+								target="_blank">http://ba-apps-t01.it.ucla.edu:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1059
+							</a></td>
+						</tr>
+
+						<tr>
+							<td>Item-187-1167</td>
+							<td><a
+								href="http://ba-apps-t01.it.ucla.edu:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1167"
+								target="_blank">http://ba-apps-t01.it.ucla.edu:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1167
+							</a></td>
+						</tr>
+
+						<tr>
+							<td>Item-187-174</td>
+							<td><a
+								href="http://ba-apps-t01.it.ucla.edu:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=174"
+								target="_blank">http://ba-apps-t01.it.ucla.edu:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=174
+							</a></td>
+						</tr>
+						<tr>
+							<td>Item-187-540</td>
+							<td><a
+								href="http://ba-apps-t01.it.ucla.edu:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=540"
+								target="_blank">http://ba-apps-t01.it.ucla.edu:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=540
+							</a></td>
+						</tr>
+						<tr>
+							<td>Item-187-1072</td>
+							<td><a
+								href="http://ba-apps-t01.it.ucla.edu:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1072"
+								target="_blank">http://ba-apps-t01.it.ucla.edu:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1072
+							</a></td>
+						</tr>
+						<tr>
+							<td>Item-187-1073</td>
+							<td><a
+								href="http://ba-apps-t01.it.ucla.edu:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1073"
+								target="_blank">http://ba-apps-t01.it.ucla.edu:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1073
+							</a></td>
+						</tr>
+						<tr>
+							<td>Item-187-1075</td>
+							<td><a
+								href="http://ba-apps-t01.it.ucla.edu:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1075"
+								target="_blank">http://ba-apps-t01.it.ucla.edu:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=1075
+							</a></td>
+						</tr>
+						<tr>
+							<td>Item-187-652</td>
+							<td><a
+								href="http://ba-apps-t01.it.ucla.edu:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=652"
+								target="_blank">http://ba-apps-t01.it.ucla.edu:8090/iris/IrisPages/sample.xhtml?type=Item&amp;bankId=187&amp;id=652
+							</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
 		</div>
 	</div>
 </h:body>

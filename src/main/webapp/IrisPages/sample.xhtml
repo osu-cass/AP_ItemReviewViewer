@@ -113,8 +113,8 @@
 			<div class="col-md-1" >
 				<label><a href="#versions" data-toggle="collapse">Version List</a></label>
 				<ul id="versions" class="expand">
-				<ui:repeat value="#{versionsBacking.itemVersions}" var="value">
-				     <li><a href="#{value.link}">#{value.name}</a></li>
+				<ui:repeat value="#{versionsBacking.itemCommits}" var="value">
+				     <li><a href="#{value.link}">Version #{value.id}</a></li>
 				</ui:repeat>
 				</ul>
 			</div>
