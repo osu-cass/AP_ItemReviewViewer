@@ -44,10 +44,10 @@ public class VersionsBacking {
 	private List<ItemCommit> itemCommits;
 
 	//http://localhost:8090/webapi/api/item/commits/item-187-1167
-	private String gitLabUrl = AppSettingsHelper.get("iris.gitLabUrl");
+	private String gitLabUrl;
 
 	//http://localhost:8090/iris/IrisPages/sample.xhtml
-	private String irisPage = AppSettingsHelper.get("iris.itemReviewPage");
+	private String irisPage;
 	
 	
 	/**
@@ -68,6 +68,9 @@ public class VersionsBacking {
 			String id = type+ "-" + bankId + "-" + itemNumber;
 			
 			String queryString = String.format("?type=%s&bankId=%s&id=%s", type, bankId, itemNumber) ;
+			
+			//gitLabUrl = AppSettingsHelper.get("iris.GitLabUrl");
+			//irisPage = AppSettingsHelper.get("iris.ItemReviewPage");
 			
 			gitLabUrl = gitLabUrl + "/" + id;
 			

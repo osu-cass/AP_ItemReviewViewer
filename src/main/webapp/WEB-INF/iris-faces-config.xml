@@ -6,6 +6,15 @@
 		<managed-bean-name>versionsBacking</managed-bean-name>
 		<managed-bean-class>tds.iris.web.handlers.VersionsBacking</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>gitLabUrl</property-name>
+			<value>http://localhost:8090/webapi/api/item/commits</value>
+		</managed-property>
+		<managed-property>
+			<property-name>irisPage</property-name>
+			<value>/IrisPages/sample.xhtml</value>
+		</managed-property>
+
 	</managed-bean>
 	<application>
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
