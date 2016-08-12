@@ -15,6 +15,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -23,6 +24,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 
+import AIR.Common.Configuration.AppSettingsHelper;
 import tds.itemselection.base.ItemCandidatesData;
 
 /**
@@ -42,10 +44,10 @@ public class VersionsBacking {
 	private List<ItemCommit> itemCommits;
 
 	//http://localhost:8090/webapi/api/item/commits/item-187-1167
-	private String gitLabUrl;
+	private String gitLabUrl = AppSettingsHelper.get("iris.gitLabUrl");
 
 	//http://localhost:8090/iris/IrisPages/sample.xhtml
-	private String irisPage;
+	private String irisPage = AppSettingsHelper.get("iris.itemReviewPage");
 	
 	
 	/**
@@ -56,48 +58,9 @@ public class VersionsBacking {
 
 	}
 	
-	private void versionsInit() {
+	private void init(String versionsType) {
 		try {
-			String type = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("type");
-			String bankId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("bankId");
-			String itemNumber = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
-
-			String id = type+ "-" + bankId + "-" + itemNumber;
-			
-			String queryString = String.format("?type=%s&bankId=%s&id=%s", type, bankId, itemNumber) ;
-			
-			gitLabUrl = gitLabUrl + "/" + id;
-			
-			URL url = new URL(gitLabUrl);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Accept", "application/json");
-			
-			if (conn.getResponseCode() != 200) {
-				throw new RuntimeException("Failed to connect to GitLab: HTTP error code :" + conn.getResponseCode());
-			}
-
-			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-
-			itemVersions = getItemVersions(br);
-			
-			for (ItemVersion itemVersion : itemVersions) {
-				itemVersion.setLink(irisPage +  queryString + "&version=" + itemVersion.getCommitId());
-			}
-
-			br.close();
-			conn.disconnect();
-			
-
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			  _logger.error ("Error getting tags form GitLab", e);
-		}
-		
-	}
-	private void commitsInit() {
-		try {
+			HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
 			String type = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("type");
 			String bankId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("bankId");
 			String itemNumber = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
@@ -119,10 +82,20 @@ public class VersionsBacking {
 
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 
-			itemCommits = getItemCommits(br);
-			
-			for (ItemCommit itemCommit : itemCommits) {
-				itemCommit.setLink(irisPage +  queryString + "&version=" + itemCommit.getCommitId());
+			if(versionsType.equalsIgnoreCase("commits")) {
+				itemCommits = getItemCommits(br);
+				
+				for (ItemCommit itemCommit : itemCommits) {
+					itemCommit.setLink(request.getContextPath() + irisPage +  queryString + "&version=" + itemCommit.getCommitId());
+				}
+			}
+
+			else if(versionsType.equalsIgnoreCase("tags")) {
+				itemVersions = getItemVersions(br);
+				
+				for (ItemVersion itemVersion : itemVersions) {
+					itemVersion.setLink(request.getContextPath() + irisPage +  queryString + "&version=" + itemVersion.getCommitId());
+				}
 			}
 
 			br.close();
@@ -222,7 +195,7 @@ public class VersionsBacking {
 
 	
 	public List<ItemVersion> getItemVersions() {
-		versionsInit();
+		init("tags");
 		return itemVersions;
 	}
 
@@ -251,7 +224,7 @@ public class VersionsBacking {
 	}
 
 	public List<ItemCommit> getItemCommits() {
-		commitsInit();;
+		init("commits");
 		return itemCommits;
 	}
 
