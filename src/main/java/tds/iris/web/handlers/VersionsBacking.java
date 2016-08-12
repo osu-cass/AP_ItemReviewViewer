@@ -19,6 +19,8 @@ import javax.faces.context.FacesContext;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 
 import tds.itemselection.base.ItemCandidatesData;
@@ -30,6 +32,9 @@ import tds.itemselection.base.ItemCandidatesData;
 @ManagedBean(name="versionsBacking")
 @Scope(value="request")
 public class VersionsBacking {
+	
+	private static final Logger _logger = LoggerFactory.getLogger (VersionsBacking.class);
+
 	
 	private List<ItemVersion> itemVersions;
 
@@ -69,8 +74,7 @@ public class VersionsBacking {
 			conn.setRequestProperty("Accept", "application/json");
 			
 			if (conn.getResponseCode() != 200) {
-				throw new RuntimeException("Failed to connect to GitLab: HTTP error code : "
-						+ conn.getResponseCode());
+				throw new RuntimeException("Failed to connect to GitLab: HTTP error code :" + conn.getResponseCode());
 			}
 
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
@@ -88,6 +92,7 @@ public class VersionsBacking {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+			  _logger.error ("Error getting tags form GitLab", e);
 		}
 		
 	}
@@ -109,8 +114,7 @@ public class VersionsBacking {
 			conn.setRequestProperty("Accept", "application/json");
 			
 			if (conn.getResponseCode() != 200) {
-				throw new RuntimeException("Failed to connect to GitLab: HTTP error code : "
-						+ conn.getResponseCode());
+				throw new RuntimeException("Failed to connect to GitLab: HTTP error code : " + conn.getResponseCode());
 			}
 
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
@@ -128,6 +132,7 @@ public class VersionsBacking {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+			  _logger.error ("Error getting commits form GitLab", e);
 		}
 		
 	}
@@ -164,6 +169,8 @@ public class VersionsBacking {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+			  _logger.error ("Error getting tags form GitLab", e);
+
 		}
 		return itemVersions;
 
@@ -186,16 +193,6 @@ public class VersionsBacking {
 				ItemCommit itemCommit = new ItemCommit();
 				JSONObject innerObj = (JSONObject) i.next();				
 				
-				/*
-				private String id;
-				private String shortId;
-				private String title;
-				private String authorName;
-				private String authorEmail;
-				private Date creationDate;
-				private String message;
-				*/
-				
 				itemCommit.setId(count--);
 				itemCommit.setCommitId((String)innerObj.get("id"));
 				itemCommit.setTitle((String)innerObj.get("title"));
@@ -216,6 +213,8 @@ public class VersionsBacking {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+			  _logger.error ("Error getting commits form GitLab", e);
+
 		}
 		return itemCommits_;
 
