@@ -45,6 +45,7 @@
             <value>artifact</value>
         </list>
     </property>
+    
     <property name="entityId" value="ItemReviewViewer"/>
 </bean>
 
