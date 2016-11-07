@@ -13,6 +13,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,28 +33,17 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import AIR.Common.Json.JsonHelper;
-import AIR.Common.Utilities.SpringApplicationContext;
-import AIR.Common.Web.ContentType;
-import AIR.Common.Web.TDSReplyCode;
-import AIR.Common.data.ResponseData;
+import tds.blackbox.ContentRequestException;
 import tds.iris.abstractions.repository.ContentException;
 import tds.iris.abstractions.repository.IContentHelper;
 import tds.iris.web.data.ContentRequest;
 import tds.iris.web.data.ContentRequestItem;
-import tds.iris.web.data.ContentRequestPassage;
 import tds.itemrenderer.data.AccLookup;
-import tds.itemrenderer.data.AccProperties;
 import tds.itemrenderer.data.ItemRenderGroup;
-import tds.itemrenderer.web.ITSDocumentXmlSerializable;
-import tds.itemrenderer.web.XmlWriter;
-import tds.itemrenderer.webcontrols.ErrorCategories;
-import tds.itemrenderer.webcontrols.PageLayout;
 import tds.itemrenderer.webcontrols.PageSettings.UniqueIdType;
-import tds.itemrenderer.webcontrols.rendererservlet.ContentRenderingException;
-import tds.itemrenderer.webcontrols.rendererservlet.RendererServlet;
-import tds.blackbox.ContentRequestException;
 import tds.student.web.handlers.BaseContentRendererController;
+import AIR.Common.Web.TDSReplyCode;
+import AIR.Common.data.ResponseData;
 
 @Scope ("prototype")
 @Controller
@@ -61,6 +51,7 @@ public class IrisWebHandler extends BaseContentRendererController
 {
   private static final Logger _logger = LoggerFactory.getLogger (IrisWebHandler.class);
   private static List<ContentRequestItem> _items;
+
 
   @Autowired
   private IContentHelper      _contentHelper;
@@ -74,14 +65,43 @@ public class IrisWebHandler extends BaseContentRendererController
   @ResponseBody
   public void loadContentRequest (HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-    ContentRequest contentRequest = getContentRequest (modifyPostData (request));
-    ItemRenderGroup itemRenderGroup = _contentHelper.loadRenderGroup (contentRequest);
+    //String type = request.getParameter("type");
+    //String bankId = request.getParameter("bankId");
+    //String item = request.getParameter("id");
 
+	ContentRequest contentRequest = getContentRequest (modifyPostData (request));
+	
+    if(contentRequest.getItems().size() > 0) {
+    	ContentRequestItem item = contentRequest.getItems().get(0);
+    	_logger.info("Received the request to load item: " + item.getId());
+    	
+    }
+
+    ItemRenderGroup itemRenderGroup = _contentHelper.loadRenderGroup (contentRequest);
+    _logger.info("Got ItemRendererGroup " + itemRenderGroup.getId());
    
     if (!StringUtils.isEmpty (contentRequest.getLayout ()))
       itemRenderGroup.setLayout (contentRequest.getLayout ());
 
-    renderGroup (itemRenderGroup, new AccLookup (), response);
+    renderGroup(itemRenderGroup, new AccLookup (), response);
+    
+    Runtime runtime = Runtime.getRuntime();
+
+    NumberFormat format = NumberFormat.getInstance();
+
+    StringBuilder sb = new StringBuilder();
+    long maxMemory = runtime.maxMemory();
+    long allocatedMemory = runtime.totalMemory();
+    long freeMemory = runtime.freeMemory();
+
+    sb.append("Free Memory: " + format.format(freeMemory / 1024) + ";");
+    sb.append("Allocated Memory: " + format.format(allocatedMemory / 1024) + ";");
+    sb.append("Max Memory: " + format.format(maxMemory / 1024) + ";");
+    sb.append("Total Free Memory: " + format.format((freeMemory + (maxMemory - allocatedMemory)) / 1024) + ";");
+    
+    _logger.info(sb.toString());
+    
+    _logger.info("Item Renderer content is written to HttpServletResponse object ");
     
   }
 
@@ -168,28 +188,37 @@ public class IrisWebHandler extends BaseContentRendererController
     
     return new ByteArrayInputStream (postData.getBytes ());
   }
+  
+  
  // creating first pull request 
-private  ContentRequest getContentRequest (InputStream inputStream) throws ContentRequestException {
-try {
-  BufferedReader bufferedReader = new BufferedReader (new InputStreamReader (inputStream));
-  String line = null;
-  StringBuilder builder = new StringBuilder ();
-  while ((line = bufferedReader.readLine ()) != null) {
-    builder.append (line);
-  }
-  ContentRequestItem cre = new ContentRequestItem();
-  cre.setId(builder.toString());
-  _items= new ArrayList<ContentRequestItem>();
-  _items.add( cre);
-  ContentRequest cr = new ContentRequest();
-  cr.setItems(_items);
-  return cr;
-//  return JsonHelper.deserialize (builder.toString (), ContentRequest.class);
-} catch (Exception exp) {
-  _logger.error ("Error deserializing ContentRequest from JSON", exp);
-  throw new ContentRequestException ("Error deserializing ContentRequest from JSON. " + exp.getMessage ());
-}
-}
-
-
+	private ContentRequest getContentRequest(InputStream inputStream)
+			throws ContentRequestException {
+		try {
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+			String line = null;
+			StringBuilder builder = new StringBuilder();
+			while ((line = bufferedReader.readLine()) != null) {
+				builder.append(line);
+			}
+			ContentRequestItem cre = new ContentRequestItem();
+			cre.setId(builder.toString());
+			_items = new ArrayList<ContentRequestItem>();
+			_items.add(cre);
+			ContentRequest cr = new ContentRequest();
+			cr.setItems(_items);
+			return cr;
+			// return JsonHelper.deserialize (builder.toString (),
+			// ContentRequest.class);
+		} catch (Exception exp) {
+			_logger.error("Error deserializing ContentRequest from JSON", exp);
+			throw new ContentRequestException(
+					"Error deserializing ContentRequest from JSON. "
+							+ exp.getMessage());
+		}
+		
+		
+		
+		
+	}
+	
 }

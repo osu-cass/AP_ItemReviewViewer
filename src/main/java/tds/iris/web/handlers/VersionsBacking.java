@@ -22,6 +22,7 @@ import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
+import org.springframework.util.StringUtils;
 
 import AIR.Common.Configuration.AppSettingsHelper;
 
@@ -61,45 +62,49 @@ public class VersionsBacking {
 			String type = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("type");
 			String bankId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("bankId");
 			String itemNumber = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
-
-			String id = type+ "-" + bankId + "-" + itemNumber;
 			
-			String queryString = String.format("?type=%s&bankId=%s&id=%s", type, bankId, itemNumber) ;
-			
-			gitLabUrl = AppSettingsHelper.get(GIT_LAB_ITEM_VERSION_URL);
-			irisPage = AppSettingsHelper.get(ITEM_REVIEW_PAGE);
-			
-			gitLabUrl = gitLabUrl + "/" + id;
-			
-			URL url = new URL(gitLabUrl);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Accept", "application/json");
-			
-			if (conn.getResponseCode() != 200) {
-				throw new RuntimeException("Failed to connect to GitLab: HTTP error code : " + conn.getResponseCode());
-			}
-
-			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-
-			if(versionsType.equalsIgnoreCase("commits")) {
-				itemCommits = getItemCommits(br);
+			if(StringUtils.hasLength(type) && StringUtils.hasLength(bankId) && StringUtils.hasLength(itemNumber)) {
 				
-				for (ItemCommit itemCommit : itemCommits) {
-					itemCommit.setLink(request.getContextPath() + irisPage +  queryString + "&version=" + itemCommit.getCommitId());
-				}
-			}
-
-			else if(versionsType.equalsIgnoreCase("tags")) {
-				itemVersions = getItemVersions(br);
+				String id = type+ "-" + bankId + "-" + itemNumber;
 				
-				for (ItemVersion itemVersion : itemVersions) {
-					itemVersion.setLink(request.getContextPath() + irisPage +  queryString + "&version=" + itemVersion.getCommitId());
+				String queryString = String.format("?type=%s&bankId=%s&id=%s", type, bankId, itemNumber) ;
+				
+				gitLabUrl = AppSettingsHelper.get(GIT_LAB_ITEM_VERSION_URL);
+				irisPage = AppSettingsHelper.get(ITEM_REVIEW_PAGE);
+				
+				gitLabUrl = gitLabUrl + "/" + id;
+				
+				URL url = new URL(gitLabUrl);
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				conn.setRequestMethod("GET");
+				conn.setRequestProperty("Accept", "application/json");
+				
+				if (conn.getResponseCode() != 200) {
+					
+					throw new RuntimeException("Failed to connect to GitLab URL: " + url + " HTTP error code : " + conn.getResponseCode());
 				}
-			}
-
-			br.close();
-			conn.disconnect();
+	
+				BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+	
+				if(versionsType.equalsIgnoreCase("commits")) {
+					itemCommits = getItemCommits(br);
+					
+					for (ItemCommit itemCommit : itemCommits) {
+						itemCommit.setLink(request.getContextPath() + irisPage +  queryString + "&version=" + itemCommit.getCommitId());
+					}
+				}
+	
+				else if(versionsType.equalsIgnoreCase("tags")) {
+					itemVersions = getItemVersions(br);
+					
+					for (ItemVersion itemVersion : itemVersions) {
+						itemVersion.setLink(request.getContextPath() + irisPage +  queryString + "&version=" + itemVersion.getCommitId());
+					}
+				}
+	
+				br.close();
+				conn.disconnect();
+			}	
 			
 
 			
