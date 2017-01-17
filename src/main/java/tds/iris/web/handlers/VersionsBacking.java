@@ -14,6 +14,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
 
 import org.json.simple.JSONArray;
@@ -75,11 +76,67 @@ public class VersionsBacking {
 				gitLabUrl = gitLabUrl + "/" + id;
 				
 				URL url = new URL(gitLabUrl);
-				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				
+				boolean isHttps = false;
+				
+				if(gitLabUrl.startsWith("https"))
+					isHttps = true;
+				
+				HttpURLConnection conn = null;
+				
+				if(isHttps)
+					conn = (HttpURLConnection) url.openConnection();
+				else
+					conn = (HttpsURLConnection) url.openConnection();
+
+				
 				conn.setRequestMethod("GET");
 				conn.setRequestProperty("Accept", "application/json");
 				
-				if (conn.getResponseCode() != 200) {
+				boolean redirect = false;
+				
+				// normally, 3xx is redirect
+				int status = conn.getResponseCode();
+				if (status != HttpURLConnection.HTTP_OK) {
+					if (status == HttpURLConnection.HTTP_MOVED_TEMP
+						|| status == HttpURLConnection.HTTP_MOVED_PERM
+							|| status == HttpURLConnection.HTTP_SEE_OTHER
+							|| status == 307)
+					redirect = true;
+				}
+
+				_logger.info("Response Code ... " + status);
+				
+				if (redirect) {
+
+					// get redirect url from "location" header field
+					String newUrl = conn.getHeaderField("Location");
+					
+					isHttps = false;
+					
+					if(newUrl.startsWith("https"))
+						isHttps = true;
+
+					// get the cookie if need, for login
+					//String cookies = conn.getHeaderField("Set-Cookie");
+
+					// open the new connnection again
+					if(isHttps)
+						conn = (HttpsURLConnection) new URL(newUrl).openConnection();
+					else
+						conn = (HttpURLConnection) new URL(newUrl).openConnection();
+
+					//conn.setRequestProperty("Cookie", cookies);
+					conn.addRequestProperty("Accept-Language", "en-US,en;q=0.8");
+					conn.addRequestProperty("User-Agent", "Mozilla");
+					conn.addRequestProperty("Referer", "google.com");
+
+					_logger.info("Redirect to URL : " + newUrl);
+
+				}
+
+				
+				if (status > 400) {
 					
 					throw new RuntimeException("Failed to connect to GitLab URL: " + url + " HTTP error code : " + conn.getResponseCode());
 				}
