@@ -18,13 +18,23 @@
 	<entry key="tds.itemPreview.passageLayout"></entry>
 	<entry key="tds.itemPreview.configCache.minutes">0</entry>
 	<entry key="tds.itemPreview.configCache.id"></entry>
+	
+	<!-- Item Review Viewer Properties -->
 	<entry key="iris.ContentPath">/usr/local/tomcat/content</entry>
-	<entry key="iris.GitLabItemUrl">http://ba-apps-t01.it.ucla.edu:8090/webapi/api/item/item-187-</entry>
-	<entry key="iris.ZipFileLocation">/usr/local/sbac/items/</entry>
-	<entry key="iris.GitLabStimuliUrl">http://ba-apps-t01.it.ucla.edu:8090/webapi/api/item/item-187-</entry>
-	<entry key="iris.GitLabStimuliVersionUrl">/usr/local/sbac/items/</entry>
+	<entry key="iris.GitLabItemUrl">http://itemreview-stage.smarterbalanced.org:8080/webapi/api/item/item-187-</entry>
+	<entry key="iris.ZipFileLocation">/usr/local/tomcat/sbac/items/</entry>
+	<entry key="iris.GitLabStimuliUrl">http://itemreview-stage.smarterbalanced.org:8080/webapi/api/item/item-187-</entry>
+	<entry key="iris.GitLabStimuliVersionUrl">/usr/local/tomcat/sbac/items/</entry>
 	<entry key="iris.ItemReviewPage">/IrisPages/sample.xhtml</entry>
-	<entry key="iris.GitLabItemVersionUrl">http://localhost:8090/webapi/api/item/commits</entry>
+	<entry key="iris.GitLabItemVersionUrl">http://itemreview-stage.smarterbalanced.org:8080/webapi/api/item/commits</entry>
+	<entry key="iris.security.idp">https://sso-amptest.smarterbalanced.org/auth/saml2/jsp/exportmetadata.jsp?realm=/sbac</entry>
+	<entry key="iris.security.idp.logout">https://art-amptest.smarterbalanced.org:8443/saml/logout</entry>
+	<entry key="iris.security.idp.entity.id">itemreview_view_stage</entry>
+	<entry key="iris.security.saml.keystore.cert">apollo</entry>
+	<entry key="iris.security.saml.keystore.pass">nalle123</entry>
+	<entry key="iris.security.saml.privatekey.pass">nalle123</entry>
+	<entry key="iris.security.dir">/usr/local/tomcat/webapps/iris/WEB-INF/classes/security</entry>
+	
 	<!--<entry key="iris.gitLabItemVersionUrl">http://ba-apps-t01.it.ucla.edu:8090/webapi/api/item/commits/</entry> -->
 	<!-- End Item Preview Settings -->
 	<!-- Start BlackBox Settings -->
