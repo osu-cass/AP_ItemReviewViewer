@@ -6,8 +6,12 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
               http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
+
     <!-- Enable auto-wiring -->
     <context:annotation-config/>
+    
+    <context:property-placeholder location="classpath:settings-mysql.xml" ignore-unresolvable="true" order="900" local-override="true" />
+    
 
     <!-- Scan for auto-wiring classes in spring saml packages -->
     <context:component-scan base-package="org.springframework.security.saml"/>
@@ -87,14 +91,15 @@
 
     <!-- Central storage of cryptographic keys -->
     <bean id="keyManager" class="org.springframework.security.saml.key.JKSKeyManager">
-        <constructor-arg value="classpath:security/samlKeystore.jks"/>
-        <constructor-arg type="java.lang.String" value="nalle123"/>
+        <!--  <constructor-arg value="${iris.security.dir}/samlKeystore.jks"/> -->
+        <constructor-arg value="classpath:samlKeystore.jks"/>
+        <constructor-arg type="java.lang.String" value="${iris.security.saml.keystore.pass}" />
         <constructor-arg>
             <map>
-                <entry key="apollo" value="nalle123"/>
+                <entry key="${iris.security.saml.keystore.cert}" value="${iris.security.saml.privatekey.pass}" />
             </map>
         </constructor-arg>
-        <constructor-arg type="java.lang.String" value="apollo"/>
+        <constructor-arg type="java.lang.String" value="${iris.security.saml.keystore.cert}" />
     </bean>
 
     <!-- Entry point to initialize authentication, default values taken from properties file -->
@@ -135,7 +140,7 @@
 	            <value>artifact</value>
 	        </list>
 	    </property>
-	    <property name="entityId" value="item_review_viewer"/>
+	    <property name="entityId" value="${iris.security.idp.entity.id}"/>
 	</bean>
     
 
@@ -177,7 +182,7 @@
                 <bean class="org.opensaml.saml2.metadata.provider.HTTPMetadataProvider">
                     <!-- URL containing the metadata -->
                     <constructor-arg>
-                        <value type="java.lang.String">https://sso-amptest.smarterbalanced.org/auth/saml2/jsp/exportmetadata.jsp?realm=/sbac</value>
+                        <value type="java.lang.String">${iris.security.idp}</value>
                     </constructor-arg>
                     <!-- Timeout for metadata loading in ms -->
                     <constructor-arg>

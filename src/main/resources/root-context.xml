@@ -7,13 +7,19 @@
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
 		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
+
+<context:property-placeholder location="classpath:settings-mysql.xml" ignore-unresolvable="true" order="900" local-override="true" />
+
+<!-- Start : Added for SSO Integration -->
+	<beans:import resource="classpath:security-context.xml"/>
+<!-- End : Added for SSO Integration -->
+
 	<annotation-driven />
 	<task:annotation-driven />
 	<context:annotation-config />
 
 	<context:property-placeholder ignore-unresolvable="true" order="10" local-override="true" />
 
-	<context:property-placeholder location="classpath:settings-mysql.xml" ignore-unresolvable="true" order="900" local-override="true" />
 
 	<context:property-placeholder ignore-unresolvable="true" ignore-resource-not-found="true" order="110" local-override="true"
 		location="${student-override-properties:file:///${user.home}/student-settings.xml}" />
