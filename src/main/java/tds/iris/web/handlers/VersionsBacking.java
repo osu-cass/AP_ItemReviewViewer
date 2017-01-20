@@ -85,9 +85,9 @@ public class VersionsBacking {
 				HttpURLConnection conn = null;
 				
 				if(isHttps)
-					conn = (HttpURLConnection) url.openConnection();
-				else
 					conn = (HttpsURLConnection) url.openConnection();
+				else
+					conn = (HttpURLConnection) url.openConnection();
 
 				
 				conn.setRequestMethod("GET");
