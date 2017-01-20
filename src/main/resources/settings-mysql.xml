@@ -21,15 +21,15 @@
 	
 	<!-- Item Review Viewer Properties -->
 	<entry key="iris.ContentPath">/usr/local/tomcat/content</entry>
-	<entry key="iris.GitLabItemUrl">http://itemreview-stage.smarterbalanced.org:8080/webapi/api/item/item-187-</entry>
+	<entry key="iris.GitLabItemUrl">http://itemreview.smarterbalanced.org:8080/webapi/api/item/item-187-</entry>
 	<entry key="iris.ZipFileLocation">/usr/local/tomcat/sbac/items/</entry>
-	<entry key="iris.GitLabStimuliUrl">http://itemreview-stage.smarterbalanced.org:8080/webapi/api/item/item-187-</entry>
+	<entry key="iris.GitLabStimuliUrl">http://itemreview.smarterbalanced.org:8080/webapi/api/item/item-187-</entry>
 	<entry key="iris.GitLabStimuliVersionUrl">/usr/local/tomcat/sbac/items/</entry>
 	<entry key="iris.ItemReviewPage">/IrisPages/sample.xhtml</entry>
-	<entry key="iris.GitLabItemVersionUrl">http://itemreview-stage.smarterbalanced.org:8080/webapi/api/item/commits</entry>
-	<entry key="iris.security.idp">https://sso-amptest.smarterbalanced.org/auth/saml2/jsp/exportmetadata.jsp?realm=/sbac</entry>
-	<entry key="iris.security.idp.logout">https://art-amptest.smarterbalanced.org:8443/saml/logout</entry>
-	<entry key="iris.security.idp.entity.id">itemreview_view_stage</entry>
+	<entry key="iris.GitLabItemVersionUrl">http://itemreview.smarterbalanced.org:8080/webapi/api/item/commits</entry>
+	<entry key="iris.security.idp">http://sso.smarterbalanced.org/auth/saml2/jsp/exportmetadata.jsp?realm=/sbac</entry>
+	<entry key="iris.security.idp.logout">http://art.smarterbalanced.org/saml/logout</entry>
+	<entry key="iris.security.idp.entity.id">itemreview_view</entry>
 	<entry key="iris.security.saml.keystore.cert">apollo</entry>
 	<entry key="iris.security.saml.keystore.pass">nalle123</entry>
 	<entry key="iris.security.saml.privatekey.pass">nalle123</entry>
