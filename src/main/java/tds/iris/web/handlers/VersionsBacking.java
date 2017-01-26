@@ -79,6 +79,8 @@ public class VersionsBacking {
 				
 				boolean isHttps = false;
 				
+				//handle https connections
+				
 				if(gitLabUrl.startsWith("https"))
 					isHttps = true;
 				
