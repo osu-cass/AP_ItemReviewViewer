@@ -55,6 +55,7 @@ public class MetadataBacking {
 		return contentBuilder.getMetadata(id.toString());
 		}catch(Exception e){
 			_logger.error("exception occcurred while getting metadata", e);
+			return null;
 		}
 		
 	}
