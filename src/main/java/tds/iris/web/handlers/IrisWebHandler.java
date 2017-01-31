@@ -33,6 +33,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import AIR.Common.Web.TDSReplyCode;
+import AIR.Common.data.ResponseData;
 import tds.blackbox.ContentRequestException;
 import tds.iris.abstractions.repository.ContentException;
 import tds.iris.abstractions.repository.IContentHelper;
@@ -42,10 +44,8 @@ import tds.itemrenderer.data.AccLookup;
 import tds.itemrenderer.data.ItemRenderGroup;
 import tds.itemrenderer.webcontrols.PageSettings.UniqueIdType;
 import tds.student.web.handlers.BaseContentRendererController;
-import AIR.Common.Web.TDSReplyCode;
-import AIR.Common.data.ResponseData;
 
-@Scope ("prototype")
+@Scope ("request")
 @Controller
 public class IrisWebHandler extends BaseContentRendererController
 {
@@ -79,10 +79,9 @@ public class IrisWebHandler extends BaseContentRendererController
 
     ItemRenderGroup itemRenderGroup = _contentHelper.loadRenderGroup (contentRequest);
     _logger.info("Got ItemRendererGroup " + itemRenderGroup.getId());
-   
     if (!StringUtils.isEmpty (contentRequest.getLayout ()))
       itemRenderGroup.setLayout (contentRequest.getLayout ());
-
+    
     renderGroup(itemRenderGroup, new AccLookup (), response);
     
     Runtime runtime = Runtime.getRuntime();
@@ -102,7 +101,6 @@ public class IrisWebHandler extends BaseContentRendererController
     _logger.info(sb.toString());
     
     _logger.info("Item Renderer content is written to HttpServletResponse object ");
-    
   }
 
 

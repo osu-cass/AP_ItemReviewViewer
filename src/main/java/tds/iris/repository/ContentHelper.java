@@ -13,36 +13,32 @@ import java.util.UUID;
 import javax.annotation.PostConstruct;
 
 import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import AIR.Common.Utilities.SpringApplicationContext;
 import tds.iris.abstractions.repository.ContentException;
-import tds.iris.abstractions.repository.IContentBuilder;
 import tds.iris.abstractions.repository.IContentHelper;
+import tds.iris.content.IrisIContentBuilder;
 import tds.iris.web.data.ContentRequest;
 import tds.iris.web.data.ContentRequestItem;
 import tds.itemrenderer.data.IITSDocument;
 import tds.itemrenderer.data.IItemRender;
+import tds.itemrenderer.data.ITSTypes.ITSEntityType;
 import tds.itemrenderer.data.ItemRender;
 import tds.itemrenderer.data.ItemRenderGroup;
 import tds.itemrenderer.data.ItsItemIdUtil;
-import tds.itemrenderer.data.ITSTypes.ITSEntityType;
 
 @Component
 @Scope ("singleton")
 public class ContentHelper implements IContentHelper
 {
-  private static final Logger _logger = LoggerFactory.getLogger (ContentHelper.class);
 
-  private IContentBuilder     _contentBuilder;
+  private IrisIContentBuilder     _contentBuilder;
 
   @PostConstruct
   public synchronized void init () throws ContentException {
-    _contentBuilder = SpringApplicationContext.getBean ("iContentBuilder", IContentBuilder.class);
+    _contentBuilder = SpringApplicationContext.getBean ("iContentBuilder", IrisIContentBuilder.class);
     reloadContent ();
   }
 
@@ -97,4 +93,5 @@ public class ContentHelper implements IContentHelper
     _contentBuilder.init ();
     return true;
   }
+  
 }

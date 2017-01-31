@@ -7,9 +7,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Collection;
 import java.util.Date;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.http.HttpEntity;
@@ -25,128 +30,93 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import AIR.Common.Configuration.AppSettingsHelper;
+import AIR.Common.Utilities.Path;
 import tds.iris.abstractions.repository.ContentException;
-import tds.iris.abstractions.repository.IContentBuilder;
+import tds.iris.data.MetaData;
 import tds.itempreview.ConfigBuilder;
 import tds.itemrenderer.data.IITSDocument;
 
 @Component
 @Scope("singleton")
-public class ItemViewerContentBuilder implements IContentBuilder {
+public class ItemViewerContentBuilder implements IrisIContentBuilder {
 	private static final Logger _logger = LoggerFactory.getLogger(ItemViewerContentBuilder.class);
 
-	 private static String GIT_LAB_URL ;
+	private static String GIT_LAB_URL;
 	private static String DESTINATION_ZIP_FILE_LOCATION;
 	private static final int BUFFER_SIZE = 4096;
-	 private static final String USER_AGENT = "User-Agent";
-	 private static final String USER_AGENT_VALUE = "Mozilla/5.0 (Windows NT6.3; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0";
-	 private static final String REFERRER = "Referer";
-	 private static final String REFERRER_VALUE = "https://www.google.com";
+	private static final String USER_AGENT = "User-Agent";
+	private static final String USER_AGENT_VALUE = "Mozilla/5.0 (Windows NT6.3; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0";
+	private static final String REFERRER = "Referer";
+	private static final String REFERRER_VALUE = "https://www.google.com";
 	private static final String FILE_EXTENTION = ".zip";
 	private String _contentPath;
 	private ConfigBuilder _directoryScanner = null;
+	private static boolean download = false;
 
 	public ItemViewerContentBuilder() {
 		init();
 	}
 
-
 	@Override
 	public IITSDocument getITSDocument(String id) throws ContentException {
 		try {
 
-			_logger.info("Getting the Item with the ID:" + id + " in location:" + DESTINATION_ZIP_FILE_LOCATION);
 			String[] parts = id.split("-");
-			
 			String bankId = parts[1];
 			String itemNumber = parts[2];
-
-			String versionNumber = ""; 
-			if(parts.length > 3)
-				versionNumber = parts[3];
-			
-			String qualifiedItemNumber = null;
 			String itemNumberFromMetaData = parts[0] + "-" + bankId + "-" + itemNumber;
-
-			
-			if(StringUtils.isEmpty(versionNumber))
-				qualifiedItemNumber = parts[0] + "-" + bankId + "-" + itemNumber; 
-			else
-				qualifiedItemNumber = parts[0] + "-" + bankId + "-" + itemNumber + "-" + versionNumber;
-			
-			String temp = id.substring(6, id.length());
-			String zipFilePath = DESTINATION_ZIP_FILE_LOCATION + qualifiedItemNumber + FILE_EXTENTION;
-			if (!fileExists(zipFilePath)) {
-				
-				 String url = "";
-				 if(StringUtils.isEmpty(versionNumber))
-					 url = populateUrl(itemNumber);
-				 else
-					 url = populateUrl(itemNumber, versionNumber);
-				 getItems(new URL(url), zipFilePath);
-			}
-			if (unzip(zipFilePath, DESTINATION_ZIP_FILE_LOCATION)) {
+			if (download) {
 				_logger.info("Scanning the Directory for the Item Started");
 				_directoryScanner.create();
 				_logger.info("Scanning the Directory for the Item Complete");
-				//return _directoryScanner.getRenderableDocument(id);
-				
 				return _directoryScanner.getRenderableDocument(itemNumberFromMetaData);
 			}
-
-		} catch (MalformedURLException e) {
-			_logger.error("Error Getting Item File.Check the URL:" + DESTINATION_ZIP_FILE_LOCATION, e);
-			throw new ContentException(e);
-
-		} catch (Exception e) {
-			_logger.error("Un known Error while getting or loading  ITEM from GITLAB.", e);
+		}  catch (Exception e) {
+			_logger.error("Un known Error while scanning or loading  ITEM.", e);
 			throw new ContentException(String.format("UnKnown Exception Occurred while getting item ID: %s", id));
 
 		}
 		throw new ContentException(String.format("No content found by id %s", id));
 	}
 
-	 private String populateUrl(String itemNumber) {
-	
-	 return GIT_LAB_URL+itemNumber;
-	 }
+	private String populateUrl(String itemNumber) {
 
-	 private String populateUrl(String itemNumber, String versionNumber) {
-			
-	 return GIT_LAB_URL+itemNumber + "/" + versionNumber;
-	 }
+		return GIT_LAB_URL + itemNumber;
+	}
 
+	private String populateUrl(String itemNumber, String versionNumber) {
 
-	 private boolean fileExists(String zipFilePath) {
+		return GIT_LAB_URL + itemNumber + "/" + versionNumber;
+	}
+
+	private boolean fileExists(String zipFilePath) {
 
 		File f = new File(zipFilePath);
 		_logger.info("Checking the File Already Exists:" + f.exists());
 		return f.exists();
 	}
 
-	 private boolean getItems(URL fileURL, String fileSavePath) {
-	 _logger.info("Getting the Item with URL:"+fileURL+" with file name:"+fileSavePath+" Started");
-	 boolean isSucceed = true;
-	 CloseableHttpClient httpClient = HttpClients.createDefault();
-	 HttpGet httpGet = new HttpGet(fileURL.toString());
-	 httpGet.addHeader(USER_AGENT, USER_AGENT_VALUE);
-	 httpGet.addHeader(REFERRER, REFERRER_VALUE);
-	 try {
-	 CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
-	 HttpEntity fileEntity = httpResponse.getEntity();
-	 if (fileEntity != null) {
-	 FileUtils.copyInputStreamToFile(fileEntity.getContent(), new
-	 File(fileSavePath));
-	 }
-	 } catch (IOException e) {
-	 _logger.error("IO Exception occurred while Getting the Item with URL:"+fileURL+ e.getMessage());
-	 throw new ContentException(String.format("UnKnown Exception Occurred while getting item ID: %s",e.getMessage()));
-	 }
-	 httpGet.releaseConnection();
-	 _logger.info("Getting the Item with URL:"+fileURL+" with file name:"+fileSavePath+" Success");
-	 return isSucceed;
-	 }
-	
+	private boolean getItems(URL fileURL, String fileSavePath) {
+		_logger.info("Getting the Item with URL:" + fileURL + " with file name:" + fileSavePath + " Started");
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+		HttpGet httpGet = new HttpGet(fileURL.toString());
+		httpGet.addHeader(USER_AGENT, USER_AGENT_VALUE);
+		httpGet.addHeader(REFERRER, REFERRER_VALUE);
+		try {
+			CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
+			HttpEntity fileEntity = httpResponse.getEntity();
+			if (fileEntity != null) {
+				FileUtils.copyInputStreamToFile(fileEntity.getContent(), new File(fileSavePath));
+			}
+		} catch (IOException e) {
+			_logger.error("IO Exception occurred while Getting the Item with URL:" + fileURL + e.getMessage());
+			throw new ContentException(
+					String.format("UnKnown Exception Occurred while getting item ID: %s", e.getMessage()));
+		}
+		httpGet.releaseConnection();
+		_logger.info("Getting the Item with URL:" + fileURL + " with file name:" + fileSavePath + " Success");
+		return true;
+	}
 
 	public boolean unzip(String zipFilePath, String destDirectory) throws IOException {
 		_logger.info("Unzipping the File:" + zipFilePath + " to Location:" + destDirectory + " Started");
@@ -196,7 +166,7 @@ public class ItemViewerContentBuilder implements IContentBuilder {
 
 		try {
 			DESTINATION_ZIP_FILE_LOCATION = AppSettingsHelper.get("iris.ZipFileLocation");
-			 GIT_LAB_URL = AppSettingsHelper.get("iris.GitLabItemUrl");
+			GIT_LAB_URL = AppSettingsHelper.get("iris.GitLabItemUrl");
 		} catch (Exception exp) {
 			_logger.error("Error loading zip file location or git lab url", exp);
 			throw new ContentException(exp);
@@ -225,6 +195,69 @@ public class ItemViewerContentBuilder implements IContentBuilder {
 		dir.mkdir();
 		long end = System.currentTimeMillis();
 		_logger.info("Directory created in " + (end - start) + " milli seconds at " + new Date());
+	}
+
+	public MetaData getMetadata(String id) {
+		downloadItem(id);
+		Collection<File> xmlFiles = Path.getFilesMatchingExtensions(_contentPath, new String[] { "xml" });
+		MetaData metaData = null;
+		for (File file : xmlFiles) {
+			String xmlFile = file.getAbsolutePath();
+			if (xmlFile.contains("metadata")) {
+				try {
+					_logger.info("unmarshalling metadata file started");
+					JAXBContext jc = JAXBContext.newInstance(MetaData.class);
+					Unmarshaller unmarshaller = jc.createUnmarshaller();
+					File xml = new File(xmlFile);
+					metaData = (MetaData) unmarshaller.unmarshal(xml);
+					_logger.info("unmarshalling metadata file completed");
+				} catch (JAXBException e) {
+					_logger.error("Error parsing metadata file.", e);
+				} catch (Exception e) {
+					_logger.error("unknown error occurred while parsing metadata file.", e);
+				}
+			}
+
+		}
+		return metaData;
+	}
+
+	public void downloadItem(String id) throws ContentException {
+		try {
+
+			_logger.info("Getting the Item with the ID:" + id + " in location:" + DESTINATION_ZIP_FILE_LOCATION);
+			String[] parts = id.split("-");
+			String bankId = parts[1];
+			String itemNumber = parts[2];
+			String versionNumber = "";
+			if (parts.length > 3)
+				versionNumber = parts[3];
+			String qualifiedItemNumber = null;
+			if (StringUtils.isEmpty(versionNumber))
+				qualifiedItemNumber = parts[0] + "-" + bankId + "-" + itemNumber;
+			else
+				qualifiedItemNumber = parts[0] + "-" + bankId + "-" + itemNumber + "-" + versionNumber;
+			String zipFilePath = DESTINATION_ZIP_FILE_LOCATION + qualifiedItemNumber + FILE_EXTENTION;
+			if (!fileExists(zipFilePath)) {
+				String url = "";
+				if (StringUtils.isEmpty(versionNumber))
+					url = populateUrl(itemNumber);
+				else
+					url = populateUrl(itemNumber, versionNumber);
+				getItems(new URL(url), zipFilePath);
+			}
+			if (unzip(zipFilePath, DESTINATION_ZIP_FILE_LOCATION)) {
+				download = true;
+			}
+		} catch (MalformedURLException e) {
+			_logger.error("Error Getting Item File.Check the URL:" + DESTINATION_ZIP_FILE_LOCATION, e);
+			throw new ContentException(e);
+
+		} catch (Exception e) {
+			_logger.error("Un known Error while getting or loading  ITEM from GITLAB.", e);
+			throw new ContentException(String.format("UnKnown Exception Occurred while getting item ID: %s", id));
+
+		}
 	}
 
 }

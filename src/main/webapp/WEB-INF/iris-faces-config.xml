@@ -9,6 +9,13 @@
 		
 
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>metadatBacking</managed-bean-name>
+		<managed-bean-class>tds.iris.web.handlers.MetadataBacking</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		
+
+	</managed-bean>
 	<application>
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
 	</application>

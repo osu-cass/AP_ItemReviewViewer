@@ -6,7 +6,7 @@
 	xmlns:p="http://java.sun.com/jsf/passthrough"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<title>Smarter Balanced - Item Viewer</title>
+	<title>Smarter Balanced- Item Viewer</title>
 	<!-- Required by CTB and only scripts required for reference purposes -->
 	<tds:ScriptLink
 		source="~/Scripts/Libraries/jquery/jquery-1.10.2.min.js"
@@ -92,43 +92,82 @@
 			</div>
 			<div class="col-md-2">
 				<input id="bankToken" type="text" placeholder="Enter Bank ID EX:187"
-					class="form-control" value="#{param['bankId']}"/>
+					class="form-control" value="#{param['bankId']}" />
 			</div>
 
 			<div class="col-md-2">
 				<input id="txtToken" type="text" placeholder="Enter Item ID EX:1059"
-					class="form-control" value="#{param['id']}"/>
+					class="form-control" value="#{param['id']}" />
 			</div>
-			
-			<input id="versionToken" type="hidden" value="#{param['version']}"/>
-			
+
+			<input id="versionToken" type="hidden" value="#{param['version']}" />
+
 			<div class="col-md-2">
 				<button id="btnLoadToken" class="btn btn-primary pull-left">Load</button>
 			</div>
 		</div>
 
+		<div class="row  col-md-offset-2">
+			<h:outputText value="Metadata" />
+		</div>
 
-<!-- Required for versions -->
+		<div class="row  col-md-offset-2">
+			<h:outputText value="Identifier:" />
+			<h:outputText
+				value="#{metadatBacking.metadata.smarterAppMetadata.identifier}" />
+			<h:outputText value="; smarterAppItemDescriptor:" />
+			<h:outputText
+				value="#{metadatBacking.metadata.smarterAppMetadata.smarterAppItemDescriptor}" />
+			<h:outputText value="; Subject:" />
+			<h:outputText
+				value="#{metadatBacking.metadata.smarterAppMetadata.subject}" />
+			<h:outputText value="; Version:" />
+			<h:outputText
+				value="#{metadatBacking.metadata.smarterAppMetadata.version}" />
+
+			<h:outputText value="; IntendedGrade:" />
+			<h:outputText
+				value="#{metadatBacking.metadata.smarterAppMetadata.intendedGrade}" />
+			<h:outputText value="; MinimumGrade:" />
+			<h:outputText
+				value="#{metadatBacking.metadata.smarterAppMetadata.minimumGrade}" />
+				<h:outputText value="; MaximumGrade" />
+			<h:outputText
+				value="#{metadatBacking.metadata.smarterAppMetadata.maximumGrade}" />
+				<h:outputText value="; InteractionType:" />
+			<h:outputText
+				value="#{metadatBacking.metadata.smarterAppMetadata.interactionType}" />
+				<h:outputText value="; Publication:" />
+			<h:outputText
+				value="#{metadatBacking.metadata.smarterAppMetadata.standardPublication.publication}" />
+				<h:outputText value="; PrimaryStandard:" />
+			<h:outputText
+				value="#{metadatBacking.metadata.smarterAppMetadata.standardPublication.primaryStandard}" />
+		</div>
+		<!-- Required for versions -->
 		<div class="row">
-			<div class="col-md-1" >
-				<label><a href="#versions" data-toggle="collapse">Version List</a></label>
+			<div class="col-md-1">
+				<label><a href="#versions" data-toggle="collapse">Version
+						List</a></label>
 				<ul id="versions" class="expand">
-				<ui:repeat value="#{versionsBacking.itemCommits}" var="value">
-				     <li><a href="#{value.link}">Version #{value.id}</a></li>
-				</ui:repeat>
+					<ui:repeat value="#{versionsBacking.itemCommits}" var="value">
+						<li><a href="#{value.link}">Version #{value.id}</a></li>
+					</ui:repeat>
 				</ul>
 			</div>
 			<div class="col-md-10">
 				<iframe src="#{request.contextPath}/" width="100%" height="700"
 					frameborder="0"></iframe>
 			</div>
+
 		</div>
 
-		<div class="row">
-			<div class="col-md-12">
-				<p class="pull-right">© The Regents of the University of
-					California – Smarter Balanced Assessment Consortium</p>
-			</div>
+
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<p class="pull-right">© The Regents of the University of
+				California – Smarter Balanced Assessment Consortium</p>
 		</div>
 	</div>
 
