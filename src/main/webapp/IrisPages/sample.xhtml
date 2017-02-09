@@ -75,10 +75,119 @@
 					</ul></li>
 			</ul>
 		</div>
+
 		</nav>
 		<hr />
 
-
+		<div class="row  col-md-offset-2">
+			<label><a href="#Metadata" data-toggle="collapse"
+				onClick="javascript:toggle(this);">Show Metadata</a></label>
+			<ul id="Metadata" class="collapse">
+				<h:panelGrid id="panel" columns="2" border="1" cellpadding="0"
+					cellspacing="1">
+					<h:outputText value="Identifier:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.identifier}"
+						style="font-weight:bold" />
+					<h:outputText value="ItemAuthorIdentifier:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.itemAuthorIdentifier}"
+						style="font-weight:bold" />
+					<h:outputText value="ItemSpecFormat:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.itemSpecFormat}"
+						style="font-weight:bold" />
+					<h:outputText value="LastModifiedBy:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.lastModifiedBy}"
+						style="font-weight:bold" />
+					<h:outputText value="SecurityStatus:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.securityStatus}"
+						style="font-weight:bold" />
+					<h:outputText value="SmarterAppItemDescriptor:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.smarterAppItemDescriptor}"
+						style="font-weight:bold" />
+					<h:outputText value="Status:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.status}"
+						style="font-weight:bold" />
+					<h:outputText value="StimulusFormat:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.stimulusFormat}"
+						style="font-weight:bold" />
+					<h:outputText value="Subject:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.subject}"
+						style="font-weight:bold" />
+					<h:outputText value="Version:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.version}"
+						style="font-weight:bold" />
+					<h:outputText value="IntendedGrade:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.intendedGrade}"
+						style="font-weight:bold" />
+					<h:outputText value="MinimumGrade:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.minimumGrade}"
+						style="font-weight:bold" />
+					<h:outputText value="MaximumGrade:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.maximumGrade}"
+						style="font-weight:bold" />
+					<h:outputText value="DepthOfKnowledge:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.depthOfKnowledge}"
+						style="font-weight:bold" />
+					<h:outputText value="InteractionType:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.interactionType}"
+						style="font-weight:bold" />
+					<h:outputText value="MaximumNumberOfPoints:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.maximumNumberOfPoints}"
+						style="font-weight:bold" />
+					<h:outputText value="AllowCalculator:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.allowCalculator}"
+						style="font-weight:bold" />
+					<h:outputText value="CopyrightAndOtherRestrictions:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.copyrightAndOtherRestrictions}"
+						style="font-weight:bold" />
+					<h:outputText value="BrailleType:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.brailleType}"
+						style="font-weight:bold" />
+					<h:outputText value="EnemyItem:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.enemyItem}"
+						style="font-weight:bold" />
+					<h:outputText value="Standard Publication 1:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.standardPublication.publication}"
+						style="font-weight:bold" />
+					<h:outputText value="Standard Publication 2:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.standardPublication.primaryStandard}"
+						style="font-weight:bold" />
+					<h:outputText value="AssociatedTutorial:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.associatedTutorial}"
+						style="font-weight:bold" />
+					<h:outputText value="AssociatedWordlist:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.associatedWordlist}"
+						style="font-weight:bold" />
+					<h:outputText value="Language:" />
+					<h:outputText
+						value="#{metadatBacking.metadata.smarterAppMetadata.language}"
+						style="font-weight:bold" />
+				</h:panelGrid>
+			</ul>
+		</div>
 
 
 		<div class="row">
@@ -107,49 +216,15 @@
 			</div>
 		</div>
 
-		<div class="row  col-md-offset-2">
-			<h:outputText value="Metadata" />
-		</div>
 
-		<div class="row  col-md-offset-2">
-			<h:outputText value="Identifier:" />
-			<h:outputText
-				value="#{metadatBacking.metadata.smarterAppMetadata.identifier}" />
-			<h:outputText value="; smarterAppItemDescriptor:" />
-			<h:outputText
-				value="#{metadatBacking.metadata.smarterAppMetadata.smarterAppItemDescriptor}" />
-			<h:outputText value="; Subject:" />
-			<h:outputText
-				value="#{metadatBacking.metadata.smarterAppMetadata.subject}" />
-			<h:outputText value="; Version:" />
-			<h:outputText
-				value="#{metadatBacking.metadata.smarterAppMetadata.version}" />
 
-			<h:outputText value="; IntendedGrade:" />
-			<h:outputText
-				value="#{metadatBacking.metadata.smarterAppMetadata.intendedGrade}" />
-			<h:outputText value="; MinimumGrade:" />
-			<h:outputText
-				value="#{metadatBacking.metadata.smarterAppMetadata.minimumGrade}" />
-				<h:outputText value="; MaximumGrade" />
-			<h:outputText
-				value="#{metadatBacking.metadata.smarterAppMetadata.maximumGrade}" />
-				<h:outputText value="; InteractionType:" />
-			<h:outputText
-				value="#{metadatBacking.metadata.smarterAppMetadata.interactionType}" />
-				<h:outputText value="; Publication:" />
-			<h:outputText
-				value="#{metadatBacking.metadata.smarterAppMetadata.standardPublication.publication}" />
-				<h:outputText value="; PrimaryStandard:" />
-			<h:outputText
-				value="#{metadatBacking.metadata.smarterAppMetadata.standardPublication.primaryStandard}" />
-		</div>
+
 		<!-- Required for versions -->
 		<div class="row">
 			<div class="col-md-1">
 				<label><a href="#versions" data-toggle="collapse">Version
 						List</a></label>
-				<ul id="versions" class="expand">
+				<ul id="versions" class="collapse">
 					<ui:repeat value="#{versionsBacking.itemCommits}" var="value">
 						<li><a href="#{value.link}">Version #{value.id}</a></li>
 					</ui:repeat>
@@ -227,7 +302,9 @@
 			});
 			}
 		  });
-		
+		function toggle(lnk_obj){
+		    lnk_obj.innerHTML = (lnk_obj.innerHTML == 'Hide Metadata') ? 'Show Metadata' : 'Hide Metadata' ;
+		}
 		
 		$('#btnSetResponse').on('click', function(evt) {
 			var value = $('#txtResponse').val();
@@ -246,6 +323,7 @@
 		function isEmpty(str) {
 		    return (!str || 0 === str.length);
 		}
+		
 	</script>
 </h:body>
 </html>
