@@ -40,6 +40,20 @@
 .container {
 	width: 1400px;
 }
+
+table.meta td {
+	margin: 12px 12px 12px 12px;
+	padding: 10px 10px 10px 10px;
+	
+}
+
+table.meta {
+	background-color: #efefef;
+	border-collapse: separate;
+	border-spacing: 10px;
+	*border-collapse: expression('separate', cellSpacing = '10px');
+}
+
 </style>
 
 </h:head>
@@ -61,193 +75,427 @@
 				src="../images/SmarterBalanced_logo-01.png" width="165" height="64" />
 			</a>
 		</div>
-		<div id="navbar" class="navbar-collapse collapse pull-right">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false"> <i class="fa fa-user fa-fw"></i> <span
-						class="hidden-xs">Guest</span> <i class="fa fa-caret-down"></i>
-				</a>
-					<ul class="dropdown-menu">
-						<li><a href="#"><i class="fa fa-sign-out fa-fw"></i>
-								Logout</a></li>
-					</ul></li>
-			</ul>
-		</div>
+		
 
 		</nav>
 		<hr />
-
-		<div class="row  col-md-offset-2">
-			<label><a href="#Metadata" data-toggle="collapse"
-				onClick="javascript:toggle(this);">Show Metadata</a></label>
-			<ul id="Metadata" class="collapse">
-				<h:panelGrid id="panel" columns="2" border="1" cellpadding="0"
-					cellspacing="1">
-					<h:outputText value="Identifier:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.identifier}"
-						style="font-weight:bold" />
-					<h:outputText value="ItemAuthorIdentifier:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.itemAuthorIdentifier}"
-						style="font-weight:bold" />
-					<h:outputText value="ItemSpecFormat:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.itemSpecFormat}"
-						style="font-weight:bold" />
-					<h:outputText value="LastModifiedBy:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.lastModifiedBy}"
-						style="font-weight:bold" />
-					<h:outputText value="SecurityStatus:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.securityStatus}"
-						style="font-weight:bold" />
-					<h:outputText value="SmarterAppItemDescriptor:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.smarterAppItemDescriptor}"
-						style="font-weight:bold" />
-					<h:outputText value="Status:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.status}"
-						style="font-weight:bold" />
-					<h:outputText value="StimulusFormat:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.stimulusFormat}"
-						style="font-weight:bold" />
-					<h:outputText value="Subject:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.subject}"
-						style="font-weight:bold" />
-					<h:outputText value="Version:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.version}"
-						style="font-weight:bold" />
-					<h:outputText value="IntendedGrade:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.intendedGrade}"
-						style="font-weight:bold" />
-					<h:outputText value="MinimumGrade:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.minimumGrade}"
-						style="font-weight:bold" />
-					<h:outputText value="MaximumGrade:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.maximumGrade}"
-						style="font-weight:bold" />
-					<h:outputText value="DepthOfKnowledge:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.depthOfKnowledge}"
-						style="font-weight:bold" />
-					<h:outputText value="InteractionType:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.interactionType}"
-						style="font-weight:bold" />
-					<h:outputText value="MaximumNumberOfPoints:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.maximumNumberOfPoints}"
-						style="font-weight:bold" />
-					<h:outputText value="AllowCalculator:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.allowCalculator}"
-						style="font-weight:bold" />
-					<h:outputText value="CopyrightAndOtherRestrictions:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.copyrightAndOtherRestrictions}"
-						style="font-weight:bold" />
-					<h:outputText value="BrailleType:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.brailleType}"
-						style="font-weight:bold" />
-					<h:outputText value="EnemyItem:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.enemyItem}"
-						style="font-weight:bold" />
-					<h:outputText value="Standard Publication 1:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.standardPublication.publication}"
-						style="font-weight:bold" />
-					<h:outputText value="Standard Publication 2:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.standardPublication.primaryStandard}"
-						style="font-weight:bold" />
-					<h:outputText value="AssociatedTutorial:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.associatedTutorial}"
-						style="font-weight:bold" />
-					<h:outputText value="AssociatedWordlist:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.associatedWordlist}"
-						style="font-weight:bold" />
-					<h:outputText value="Language:" />
-					<h:outputText
-						value="#{metadatBacking.metadata.smarterAppMetadata.language}"
-						style="font-weight:bold" />
-				</h:panelGrid>
-			</ul>
+		<div class="btn-group mr-2 pull-right" role="group"
+			aria-label="Second group">
+			<a type="button" class="accessibility-btn btn btn-primary"
+				data-toggle="modal" data-target="#accessibility-modal-container"
+				tabindex="0"><span class="glyphicon glyphicon-collapse-down"
+				aria-hidden="true"></span> <!-- react-text: 16 -->Accessibility<!-- /react-text --></a>
 		</div>
+		<div class="container body-content">
+			<div id="item-container">
+				<div data-reactroot="">
+					<div class="modal fade" id="accessibility-modal-container"
+						tabindex="-1" role="dialog"
+						aria-labelledby="Accessibility Options Modal" aria-hidden="true"
+						style="display: none;">
+						<div class="modal-dialog accessibility-modal" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">×</span>
+									</button>
+									<h4 class="modal-title" id="myModalLabel">Accessibility
+										Options</h4>
+								</div>
+								<div class="modal-body">
+									<p>
+										<span>Options highlighted in grey are not available for
+											this item.</span>
+									</p>
+									<form id="accessibility-form">
+										<div class="accessibility-groups">
+											<div>
+												<h3>Designated Support</h3>
+												<div class="accessibility-dropdowns">
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Color Choices</label><select class="form-control"><option
+																value="TDS_CC0" class="option-enabled">Black on
+																White</option>
+															<option value="TDS_CCInvert" class="option-enabled">Reverse
+																Contrast</option>
+															<option value="TDS_CCMagenta" class="option-enabled">Black
+																on Rose</option>
+															<option value="TDS_CCMedGrayLtGray"
+																class="option-enabled">Medium Gray on Light
+																Gray</option>
+															<option value="TDS_CCYellowB" class="option-enabled">Yellow
+																on Blue</option></select>
+													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Masking</label><select class="form-control"><option
+																value="TDS_Masking0" class="option-enabled">Masking
+																Not Available</option>
+															<option value="TDS_Masking1" class="option-enabled">Masking
+																Available</option></select>
+													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Translation</label><select class="form-control"><option
+																value="TDS_WL_Glossary" class="option-enabled">English</option>
+															<option value="TDS_WL_ArabicGloss" class="option-enabled">Arabic</option>
+															<option value="TDS_WL_CantoneseGloss"
+																class="option-enabled">Cantonese</option>
+															<option value="TDS_WL_ESNGlossary" class="option-enabled">Spanish</option>
+															<option value="TDS_WL_KoreanGloss" class="option-enabled">Korean</option>
+															<option value="TDS_WL_MandarinGloss"
+																class="option-enabled">Mandarin</option>
+															<option value="TDS_WL_PunjabiGloss"
+																class="option-enabled">Punjabi</option>
+															<option value="TDS_WL_RussianGloss"
+																class="option-enabled">Russian</option>
+															<option value="TDS_WL_TagalGloss" class="option-enabled">Filipino
+																(Ilokano and Tagalog)</option>
+															<option value="TDS_WL_UkrainianGloss"
+																class="option-enabled">Ukrainian</option>
+															<option value="TDS_WL_VietnameseGloss"
+																class="option-enabled">Vietnamese</option>
+															<option value="TDS_WL_ArabicGloss&amp;TDS_WL_Glossary"
+																class="option-enabled">Arabic &amp; English</option>
+															<option value="TDS_WL_CantoneseGloss&amp;TDS_WL_Glossary"
+																class="option-enabled">Cantonese &amp; English</option>
+															<option value="TDS_WL_ESNGlossary&amp;TDS_WL_Glossary"
+																class="option-enabled">Spanish &amp; English</option>
+															<option value="TDS_WL_KoreanGloss&amp;TDS_WL_Glossary"
+																class="option-enabled">Korean &amp; English</option>
+															<option value="TDS_WL_MandarinGloss&amp;TDS_WL_Glossary"
+																class="option-enabled">Mandarin &amp; English</option>
+															<option value="TDS_WL_PunjabiGloss&amp;TDS_WL_Glossary"
+																class="option-enabled">Punjabi &amp; English</option>
+															<option value="TDS_WL_RussianGloss&amp;TDS_WL_Glossar"
+																class="option-enabled">Russian &amp; English</option>
+															<option value="TDS_WL_TagalGloss&amp;TDS_WL_Glossary"
+																class="option-enabled">Filipino (Ilokano and
+																Tagalog) and English</option>
+															<option value="TDS_WL_UkrainianGloss&amp;TDS_WL_Glossary"
+																class="option-enabled">Ukrainian &amp; English</option>
+															<option
+																value="TDS_WL_VietnameseGloss&amp;TDS_WL_Glossary"
+																class="option-enabled">Vietnamese &amp; English</option>
+															<option value="TDS_WL0" class="option-enabled">None</option></select>
+													</div>
+												</div>
+											</div>
+											<div>
+												<h3>Universal Tools</h3>
+												<div class="accessibility-dropdowns">
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Digital Notepad</label><select class="form-control"><option
+																value="TDS_SCNotepad" class="option-enabled">Notepad
+																on</option>
+															<option value="TDS_SC0" class="option-enabled">Notepad
+																off</option></select>
+													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>English Glossary</label><select
+															class="form-control"><option
+																value="TDS_WL_Glossary" class="option-enabled">English
+																Glossary on</option>
+															<option value="TDS_WL0" class="option-enabled">English
+																Glossary off</option></select>
+													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Highlighter</label><select class="form-control"><option
+																value="TDS_Highlight1" class="option-enabled">Highlight
+																on</option>
+															<option value="TDS_Highlight0" class="option-enabled">Highlight
+																off</option></select>
+													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Mark for Review</label><select class="form-control"><option
+																value="TDS_MfR1" class="option-enabled">Mark
+																for review on</option>
+															<option value="TDS_MfR0" class="option-enabled">Mark
+																for review off</option></select>
+													</div>
+												</div>
+												<a class="expand-button">Show all</a>
+											</div>
+											<div>
+												<h3>Accommodations</h3>
+												<div class="accessibility-dropdowns">
+													<div
+														class="accessibility-dropdown form-group selection-disabled">
+														<label>American Sign Language</label><select
+															class="form-control" disabled=""><option
+																value="TDS_ASL0" disabled="" class="option-disabled">Do
+																not show ASL videos</option>
+															<option value="TDS_ASL1" disabled=""
+																class="option-disabled">Show ASL videos</option></select>
+													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Braille Type</label><select class="form-control"><option
+																value="TDS_BT0" class="option-enabled">No
+																Braille</option>
+															<option value="TDS_BT_EXN" class="option-enabled">EBAE
+																- Uncontracted - Nemeth Math</option>
+															<option value="TDS_BT_ECN" class="option-enabled">EBAE
+																- Contracted - Nemeth Math</option>
+															<option value="TDS_BT_EXT" class="option-enabled">EBAE
+																- Uncontracted - UEB Math</option>
+															<option value="TDS_BT_ECT" class="option-enabled">EBAE
+																- Contracted - UEB Math</option>
+															<option value="TDS_BT_UXN" class="option-enabled">UEB
+																- Uncontracted - Nemeth Math</option>
+															<option value="TDS_BT_UCN" class="option-enabled">UEB
+																- Contracted - Nemeth Math</option>
+															<option value="TDS_BT_UXT" class="option-enabled">UEB
+																- Uncontracted - UEB Math</option>
+															<option value="TDS_BT_UCT" class="option-enabled">UEB
+																- Contracted - UEB Math</option></select>
+													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Closed Captioning</label><select
+															class="form-control"><option
+																value="TDS_ClosedCap0" class="option-enabled">Closed
+																Captioning Not Available</option>
+															<option value="TDS_ClosedCap1" class="option-enabled">Closed
+																Captioning Available</option></select>
+													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Streamlined Interface</label><select
+															class="form-control"><option value="TDS_SLM0"
+																class="option-enabled">Standard</option>
+															<option value="TDS_SLM1" class="option-enabled">Streamlined</option></select>
+													</div>
+												</div>
+												<a class="expand-button">Show all</a>
+											</div>
+											<div>
+												<h3>Other</h3>
+												<div class="accessibility-dropdowns">
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Language</label><select class="form-control"><option
+																value="ENU" class="option-enabled">English</option>
+															<option value="ESN" class="option-enabled">Spanish
+																(Stacked Translation)</option></select>
+													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Illustration Glossary</label><select
+															class="form-control"><option value="TDS_ILG0"
+																class="option-enabled">Do not show Illustration
+																Glossary</option>
+															<option value="TDS_ILG1" class="option-enabled">Show
+																Illustration Glossary</option></select>
+													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Zoom</label><select class="form-control"><option
+																value="TDS_PS_L0" class="option-enabled">No
+																default zoom applied</option>
+															<option value="TDS_PS_L1" class="option-enabled">Level
+																1</option>
+															<option value="TDS_PS_L2" class="option-enabled">Level
+																2</option>
+															<option value="TDS_PS_L3" class="option-enabled">Level
+																3</option>
+															<option value="TDS_PS_L4" class="option-enabled">Level
+																4</option></select>
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button class="btn btn-primary" form="accessibility-form"
+										data-dismiss="modal">Update</button>
+									<button class="btn btn-primary" data-dismiss="modal">Reset
+										to Default</button>
+									<button class="btn btn-primary btn-cancel" data-dismiss="modal">Cancel</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row ">
+				<div class="col-md-4 col-md-offset-4">
+					<table >
+						<tr>
+							<th>
+								<button type="button" class="btn btn-info"
+									data-toggle="collapse" data-target="#Metadata"
+									onClick="javascript:toggle(this);">Show Metadata</button>
+							</th>
+						</tr>
+					</table>
+					</div></div><br></br>
+					<div id="Metadata" class="collapse col-md-41 col-md-offset-1 ">
+						<table class="meta">
+							<tr>
+								<td><h:outputText value="Identifier: " /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.identifier}"
+										style="font-weight:bold" /></td>
+								<td><h:outputText value="ItemAuthorIdentifier: " /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.itemAuthorIdentifier}"
+										style="font-weight:bold" /></td>
+								<td><h:outputText value="ItemSpecFormat:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.itemSpecFormat}"
+										style="font-weight:bold" /></td>
+								<td><h:outputText value="LastModifiedBy:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.lastModifiedBy}"
+										style="font-weight:bold" /></td>
+							</tr>
+
+							<tr>
+								<td><h:outputText value="SecurityStatus:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.securityStatus}"
+										style="font-weight:bold" /></td>
+								<td><h:outputText value="SmarterAppItemDescriptor:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.smarterAppItemDescriptor}"
+										style="font-weight:bold" /></td>
+								<td><h:outputText value="Status:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.status}"
+										style="font-weight:bold" /></td>
+								<td><h:outputText value="StimulusFormat:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.stimulusFormat}"
+										style="font-weight:bold" /></td>
+							</tr>
+							<tr>
+								<td><h:outputText value="Subject:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.subject}"
+										style="font-weight:bold" /></td>
+								<td><h:outputText value="Version:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.version}"
+										style="font-weight:bold" /></td>
+								<td><h:outputText value="IntendedGrade:" />
+								<h:outputText
+									value="#{metadatBacking.metadata.smarterAppMetadata.intendedGrade}"
+									style="font-weight:bold" /></td>
+								<td><h:outputText value="MinimumGrade:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.minimumGrade}"
+										style="font-weight:bold" /></td>
+							</tr>
+							<tr>
+								<td><h:outputText value="MaximumGrade:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.maximumGrade}"
+										style="font-weight:bold" /></td>
+								<td><h:outputText value="DepthOfKnowledge:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.depthOfKnowledge}"
+										style="font-weight:bold" /></td>
+								<td><h:outputText value="InteractionType:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.interactionType}"
+										style="font-weight:bold" /></td>
+								<td><h:outputText value="MaximumNumberOfPoints:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.maximumNumberOfPoints}"
+										style="font-weight:bold" /></td>
+							</tr>
+							<tr>
+								<td><h:outputText value="AllowCalculator:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.allowCalculator}"
+										style="font-weight:bold" /></td>
+								<td><h:outputText value="CopyrightAndOtherRestrictions:" />
+									<h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.copyrightAndOtherRestrictions}"
+										style="font-weight:bold" /></td>
+								<td><h:outputText value="BrailleType:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.brailleType}"
+										style="font-weight:bold" /></td>
+								<td><h:outputText value="EnemyItem:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.enemyItem}"
+										style="font-weight:bold" /></td>
+							</tr>
+							<tr>
+								<td><h:outputText value="Standard Publication 1:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.standardPublication.publication}"
+										style="font-weight:bold" /></td>
+								<td><h:outputText value="Standard Publication 2:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.standardPublication.primaryStandard}"
+										style="font-weight:bold" /></td>
+								<td><h:outputText value="AssociatedTutorial:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.associatedTutorial}"
+										style="font-weight:bold" /></td>
+								<td><h:outputText value="AssociatedWordlist:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.associatedWordlist}"
+										style="font-weight:bold" /></td>
+								<td><h:outputText value="Language:" /> <h:outputText
+										value="#{metadatBacking.metadata.smarterAppMetadata.language}"
+										style="font-weight:bold" /></td>
+							</tr>
+						</table>
+					</div>
+				
 
 
+			<p></p>
+			<div class="row">
+				<div class="col-md-2 col-md-offset-2">
+					<select id="content" value="#{param[type]}" class="form-control">
+						<option value="Item" class="form-control">Item</option>
+						<option value="Stimuli" class="form-control">Stimulus</option>
+
+
+					</select>
+				</div>
+				<div class="col-md-2">
+					<input id="bankToken" type="text"
+						placeholder="Enter Bank ID EX:187" class="form-control"
+						value="#{param['bankId']}" />
+				</div>
+
+				<div class="col-md-2">
+					<input id="txtToken" type="text"
+						placeholder="Enter Item ID EX:1059" class="form-control"
+						value="#{param['id']}" />
+				</div>
+
+				<input id="versionToken" type="hidden" value="#{param['version']}" />
+
+				<div class="col-md-2">
+					<button id="btnLoadToken" class="btn btn-primary pull-left">Load</button>
+				</div>
+			</div>
+
+
+
+
+			<!-- Required for versions -->
+			<div class="row">
+				<div class="col-md-1">
+					<label><a href="#versions" data-toggle="collapse">Version
+							List</a></label>
+					<ul id="versions" class="collapse">
+						<ui:repeat value="#{versionsBacking.itemCommits}" var="value">
+							<li><a href="#{value.link}">Version #{value.id}</a></li>
+						</ui:repeat>
+					</ul>
+				</div>
+				<div class="col-md-10">
+					<iframe src="#{request.contextPath}/" width="100%" height="700"
+						frameborder="0"></iframe>
+				</div>
+
+			</div>
+
+
+		</div>
 		<div class="row">
-			<div class="col-md-2 col-md-offset-2">
-				<select id="content" value="#{param[type]}" class="form-control">
-					<option value="Item" class="form-control">Item</option>
-					<option value="Stimuli" class="form-control">Stimulus</option>
-
-
-				</select>
-			</div>
-			<div class="col-md-2">
-				<input id="bankToken" type="text" placeholder="Enter Bank ID EX:187"
-					class="form-control" value="#{param['bankId']}" />
-			</div>
-
-			<div class="col-md-2">
-				<input id="txtToken" type="text" placeholder="Enter Item ID EX:1059"
-					class="form-control" value="#{param['id']}" />
-			</div>
-
-			<input id="versionToken" type="hidden" value="#{param['version']}" />
-
-			<div class="col-md-2">
-				<button id="btnLoadToken" class="btn btn-primary pull-left">Load</button>
+			<div class="col-md-12">
+				<p class="pull-right">© The Regents of the University of
+					California – Smarter Balanced Assessment Consortium</p>
 			</div>
 		</div>
 
 
-
-
-		<!-- Required for versions -->
-		<div class="row">
-			<div class="col-md-1">
-				<label><a href="#versions" data-toggle="collapse">Version
-						List</a></label>
-				<ul id="versions" class="collapse">
-					<ui:repeat value="#{versionsBacking.itemCommits}" var="value">
-						<li><a href="#{value.link}">Version #{value.id}</a></li>
-					</ui:repeat>
-				</ul>
-			</div>
-			<div class="col-md-10">
-				<iframe src="#{request.contextPath}/" width="100%" height="700"
-					frameborder="0"></iframe>
-			</div>
-
-		</div>
-
-
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<p class="pull-right">© The Regents of the University of
-				California – Smarter Balanced Assessment Consortium</p>
-		</div>
-	</div>
-
-
-	<script type="text/javascript">
+		<script type="text/javascript">
 		// In our case the first frame is the content frame but use whichever frame is the content frame in your particular application.
 		IRiS.setFrame(frames[0]);
 
@@ -325,6 +573,7 @@
 		}
 		
 	</script>
+	</div>
 </h:body>
 </html>
 
