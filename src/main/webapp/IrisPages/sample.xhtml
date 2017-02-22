@@ -42,7 +42,7 @@
 }
 
 table.meta td {
-	font-size:1.2em;
+	font-size: 1.2em;
 	padding: 5px 5px 5px 5px;
 	font-family: "PT Serif";
 }
@@ -78,20 +78,35 @@ table.meta {
 
 		</nav>
 		<hr />
+		<div class="btn-group mr-2 pull-right" style="width: 9%; ">
+
+			<a type="button" class="accessibility-btn btn btn-primary"
+				data-toggle="collapse" id="123" data-target="#Metadata"
+				onClick="javascript:toggle(this);"><span class="glyphicon glyphicon-collapse-down"
+				aria-hidden="true"></span>Show Metadata</a>
+
+		</div>
+
+
+		
 		<div class="btn-group mr-2 pull-right" role="group"
-			aria-label="Second group">
+			aria-label="Second group" style="width: 9%;">
+
 			<a type="button" class="accessibility-btn btn btn-primary"
 				data-toggle="modal" data-target="#accessibility-modal-container"
 				tabindex="0"><span class="glyphicon glyphicon-collapse-down"
 				aria-hidden="true"></span> <!-- react-text: 16 -->Accessibility<!-- /react-text --></a>
+
 		</div>
 		<div class="container body-content">
+
 			<div id="item-container">
 				<div data-reactroot="">
 					<div class="modal fade" id="accessibility-modal-container"
 						tabindex="-1" role="dialog"
 						aria-labelledby="Accessibility Options Modal" aria-hidden="true"
 						style="display: none;">
+
 						<div class="modal-dialog accessibility-modal" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -102,6 +117,7 @@ table.meta {
 									<h4 class="modal-title" id="myModalLabel">Accessibility
 										Options</h4>
 								</div>
+
 								<div class="modal-body">
 									<p>
 										<span>Options highlighted in grey are not available for
@@ -325,20 +341,33 @@ table.meta {
 				</div>
 			</div>
 
-			<div class="row ">
-				<div class="col-md-4 col-md-offset-4">
-					<table>
-						<tr>
-							<th>
-								<button type="button" class="btn btn-info"
-									data-toggle="collapse" data-target="#Metadata"
-									onClick="javascript:toggle(this);">Show Metadata</button>
-							</th>
-						</tr>
-					</table>
+			<br></br>
+			<p></p>
+			<div class="row">
+				<div class="col-md-2 col-md-offset-2">
+					<select id="content" value="#{param[type]}" class="form-control">
+						<option value="Item" class="form-control">Item</option>
+						<option value="Stimuli" class="form-control">Stimulus</option>
+					</select>
+				</div>
+				<div class="col-md-2">
+					<input id="bankToken" type="text"
+						placeholder="Enter Bank ID EX:187" class="form-control"
+						value="#{param['bankId']}" />
+				</div>
+				<div class="col-md-2">
+					<input id="txtToken" type="text"
+						placeholder="Enter Item ID EX:1059" class="form-control"
+						value="#{param['id']}" />
+				</div>
+
+				<input id="versionToken" type="hidden" value="#{param['version']}" />
+				<div class="col-md-2">
+					<button id="btnLoadToken" class="btn btn-primary pull-left">Load</button>
 				</div>
 			</div>
 			<br></br>
+			
 			<div id="Metadata" class="collapse col-md-41 col-md-offset-1 ">
 				<table class="meta">
 					<tr>
@@ -436,41 +465,6 @@ table.meta {
 					</tr>
 				</table>
 			</div>
-
-
-
-			<p></p>
-			<div class="row">
-				<div class="col-md-2 col-md-offset-2">
-					<select id="content" value="#{param[type]}" class="form-control">
-						<option value="Item" class="form-control">Item</option>
-						<option value="Stimuli" class="form-control">Stimulus</option>
-
-
-					</select>
-				</div>
-				<div class="col-md-2">
-					<input id="bankToken" type="text"
-						placeholder="Enter Bank ID EX:187" class="form-control"
-						value="#{param['bankId']}" />
-				</div>
-
-				<div class="col-md-2">
-					<input id="txtToken" type="text"
-						placeholder="Enter Item ID EX:1059" class="form-control"
-						value="#{param['id']}" />
-				</div>
-
-				<input id="versionToken" type="hidden" value="#{param['version']}" />
-
-				<div class="col-md-2">
-					<button id="btnLoadToken" class="btn btn-primary pull-left">Load</button>
-				</div>
-			</div>
-
-
-
-
 			<!-- Required for versions -->
 			<div class="row">
 				<div class="col-md-1">
@@ -555,6 +549,7 @@ table.meta {
 			}
 		  });
 		function toggle(lnk_obj){
+			
 		    lnk_obj.innerHTML = (lnk_obj.innerHTML == 'Hide Metadata') ? 'Show Metadata' : 'Hide Metadata' ;
 		}
 		
@@ -573,9 +568,10 @@ table.meta {
 			});
 		});
 		function isEmpty(str) {
-		    return (!str || 0 === str.length);
 		}
-		
+		$('#secondaryButton').click(function(){
+		    $("#primaryButton").click();
+		})	
 	</script>
 	</div>
 </h:body>
