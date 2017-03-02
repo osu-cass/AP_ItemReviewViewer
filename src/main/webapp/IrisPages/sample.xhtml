@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -35,7 +35,12 @@
 	<!-- Bootstrap Core JavaScript -->
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
+	<script src="/scripts/Polyfill.js"></script>
+	<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.3.min.js"> </script>
+	<script
+		src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js">
+        </script>
+	<script src="/iris/scripts/AccessibilityModal.min.js"></script>
 	<style>
 .container {
 	width: 1400px;
@@ -62,33 +67,34 @@ table.meta {
 
 	<div class="container">
 		<nav class="navbar navbar-default">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-				aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#"> <img
-				src="../images/SmarterBalanced_logo-01.png" width="165" height="64" />
-			</a>
-		</div>
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"> <img
+					src="../images/SmarterBalanced_logo-01.png" width="165" height="64" />
+				</a>
+			</div>
 
 
 		</nav>
 		<hr />
-		<div class="btn-group mr-2 pull-right" style="width: 9%; ">
+		<div class="btn-group mr-2 pull-right" style="width: 9%;">
 
 			<a type="button" class="accessibility-btn btn btn-primary"
 				data-toggle="collapse" id="123" data-target="#Metadata"
-				onClick="javascript:toggle(this);"><span class="glyphicon glyphicon-collapse-down"
-				aria-hidden="true"></span>Show Metadata</a>
+				onClick="javascript:toggle(this);"><span
+				class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span>Show
+				Metadata</a>
 
 		</div>
 
 
-		
+
 		<div class="btn-group mr-2 pull-right" role="group"
 			aria-label="Second group" style="width: 9%;">
 
@@ -117,7 +123,6 @@ table.meta {
 									<h4 class="modal-title" id="myModalLabel">Accessibility
 										Options</h4>
 								</div>
-
 								<div class="modal-body">
 									<p>
 										<span>Options highlighted in grey are not available for
@@ -234,8 +239,69 @@ table.meta {
 															<option value="TDS_MfR0" class="option-enabled">Mark
 																for review off</option></select>
 													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Calculator</label> <br></br> <select
+															class="form-control"><option
+																value="TDS_CalcBasic" class="option-enabled">Calculator
+																on</option>
+															<option value="TDS_Calc0" class="option-enabled">Calculator
+																off</option></select>
+													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>English Dictionary</label><br></br> <select
+															class="form-control"><option
+																value="TDS_Dict_SD4" class="option-enabled">Merriam
+																Websters School Dictionary on</option>
+															<option value="TDS_Dict0" class="option-enabled">Merriam
+																Websters School Dictionary off</option></select>
+													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Expandable Passages</label><br></br> <select
+															class="form-control"><option
+																value="TDS_ExpandablePassages1" class="option-enabled">Expandable
+																Passages on</option>
+															<option value="TDS_ExpandablePassages0"
+																class="option-enabled">Expandable Passages off</option></select>
+													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Global Notes</label><br></br> <select
+															class="form-control"><option value="TDS_GN1"
+																class="option-enabled">Global Notes on</option>
+															<option value="TDS_GN0" class="option-enabled">Global
+																Notes off</option></select>
+													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Strikethrough</label><br></br> <select
+															class="form-control"><option value="TDS_ST1"
+																class="option-enabled">Strikethrough on</option>
+															<option value="TDS_ST0" class="option-enabled">Strikethrough
+																off</option></select>
+													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Writing Tools</label><br></br> <select
+															class="form-control"><option value="TDS_ITM1"
+																class="option-enabled">Item tools on</option>
+															<option value="TDS_ITM0" class="option-enabled">Item
+																tools off</option></select>
+													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Thesaurus</label><br></br> <select
+															class="form-control"><option value="TDS_TH_TA"
+																class="option-enabled">Merriam Websters
+																Intermediate Thesaurus on</option>
+															<option value="TDS_TH0" class="option-enabled">Merriam
+																Websters Intermediate Thesaurus off</option></select>
+													</div>
+
 												</div>
-												<a class="expand-button">Show all</a>
+												<a class="expand-button">Show less</a>
 											</div>
 											<div>
 												<h3>Accommodations</h3>
@@ -287,8 +353,41 @@ table.meta {
 																class="option-enabled">Standard</option>
 															<option value="TDS_SLM1" class="option-enabled">Streamlined</option></select>
 													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Permissive Mode</label><br></br> <select
+															class="form-control"><option value="TDS_PM0"
+																class="option-enabled">Permissive Mode Disabled</option>
+															<option value="TDS_PM1" class="option-enabled">Permissive
+																Mode Enabled</option></select>
+													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Print On Demand</label><br></br> <select
+															class="form-control"><option value="TDS_PoD0"
+																class="option-enabled">None</option>
+															<option value="TDS_PoD_Stim" class="option-enabled">PT
+																Stimuli and CAT Reading Passages</option>
+															<option value="TDS_PoD_Item" class="option-enabled">Items</option>
+															<option value="TDS_PoD_Stim&amp;TDS_PoD_Item"
+																class="option-enabled">PT Stimuli and CAT
+																Reading Passages and Items</option></select>
+													</div>
+													<div
+														class="accessibility-dropdown form-group selection-enabled">
+														<label>Text to Speech</label><br></br> <select
+															class="form-control"><option value="TDS_TTS0"
+																class="option-enabled">None</option>
+															<option value="TDS_TTS_Item " class="option-enabled">Items
+																Only</option>
+															<option value="TDS_TTS_Stim" class="option-enabled">PT
+																Stimuli and CAT Reading Passages Only</option>
+															<option value="TDS_TTS_Stim&amp;TDS_TTS_Item"
+																class="option-enabled">PT Stimuli and CAT
+																Reading Passages and Items</option></select>
+													</div>
 												</div>
-												<a class="expand-button">Show all</a>
+												<a class="expand-button">Show less</a>
 											</div>
 											<div>
 												<h3>Other</h3>
@@ -356,7 +455,7 @@ table.meta {
 						value="#{param['bankId']}" />
 				</div>
 				<div class="col-md-2">
-					<input id="txtToken" type="text"
+					<input id="itemToken" type="text"
 						placeholder="Enter Item ID EX:1059" class="form-control"
 						value="#{param['id']}" />
 				</div>
@@ -367,7 +466,7 @@ table.meta {
 				</div>
 			</div>
 			<br></br>
-			
+
 			<div id="Metadata" class="collapse col-md-41 col-md-offset-1 ">
 				<table class="meta">
 					<tr>
@@ -519,26 +618,23 @@ table.meta {
 		
 		// load secure token
 		$('#btnLoadToken').on('click', function() {
-			var token = $('#txtToken').val();
+			var token = $('#itemToken').val();
 			var bankToken = $('#bankToken').val();
 			var content = $('#content').val();
-			
-			var queryString = 'type='+ content + '&amp;bankId=' + bankToken + '&amp;id=' + token;
 				
+			var queryString = 'type='+ content + '&amp;bankId=' + bankToken + '&amp;id=' + token;
 			window.location.href = '#{request.contextPath}' + '/IrisPages/sample.xhtml?' + queryString;
-
 		});
+		
 
 		
 		$(window).load(function() {
-			var token = $('#txtToken').val();
+			var token = $('#itemToken').val();
 			var bankToken = $('#bankToken').val();
 			var content = $('#content').val();
 			var version = $('#versionToken').val();
 			
-			
 			if(content==='Item'&amp;&amp;!isEmpty(bankToken)&amp;&amp;!isEmpty(token)){
-				
 			IRiS.loadToken(vendorId, 'I-'+bankToken+'-'+token +'-'+ version).done(function() {
 				enableAll();
 			}).fail(function(err) {
@@ -548,6 +644,8 @@ table.meta {
 			});
 			}
 		  });
+		
+		
 		function toggle(lnk_obj){
 			
 		    lnk_obj.innerHTML = (lnk_obj.innerHTML == 'Hide Metadata') ? 'Show Metadata' : 'Hide Metadata' ;
@@ -568,11 +666,15 @@ table.meta {
 			});
 		});
 		function isEmpty(str) {
+			 return (!str || 0 === str.length);
 		}
 		$('#secondaryButton').click(function(){
 		    $("#primaryButton").click();
 		})	
-	</script>
+		
+	
+		
+		</script>
 	</div>
 </h:body>
 </html>

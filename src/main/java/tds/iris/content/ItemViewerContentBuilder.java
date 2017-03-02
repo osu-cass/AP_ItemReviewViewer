@@ -51,7 +51,7 @@ public class ItemViewerContentBuilder implements IrisIContentBuilder {
 	private static final String FILE_EXTENTION = ".zip";
 	private String _contentPath;
 	private ConfigBuilder _directoryScanner = null;
-	private static boolean download = false;
+	private static boolean download = true;
 
 	public ItemViewerContentBuilder() {
 		init();
@@ -65,7 +65,7 @@ public class ItemViewerContentBuilder implements IrisIContentBuilder {
 			String bankId = parts[1];
 			String itemNumber = parts[2];
 			String itemNumberFromMetaData = parts[0] + "-" + bankId + "-" + itemNumber;
-			if (download) {
+			if (true) {
 				_logger.info("Scanning the Directory for the Item Started");
 				_directoryScanner.create();
 				_logger.info("Scanning the Directory for the Item Complete");
