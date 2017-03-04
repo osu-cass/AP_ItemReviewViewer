@@ -688,8 +688,9 @@ table.meta {
 			var token = $('#txtToken').val();
 			var bankToken = $('#bankToken').val();
 			var content = $('#content').val();
+			var version = $('#versionToken').val();
 			
-			var queryString = 'type='+ content + '&amp;bankId=' + bankToken + '&amp;id=' + token + '&amp;isaap=' + buildAccessibilityString();
+			var queryString = 'type='+ content + '&amp;bankId=' + bankToken + '&amp;id=' + token + '&amp;version=' + version + '&amp;isaap=' + buildAccessibilityString();
 				
 			window.location.href = '#{request.contextPath}' + '/IrisPages/sample.xhtml?' + queryString;
 		});
