@@ -15,7 +15,7 @@
 	</listener>
 
 	<!-- Start:  Following filter is added for integrating SSO --> 
-	  <!-- <filter>
+	  <filter>
 	      <filter-name>springSecurityFilterChain</filter-name>
 	      <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	  </filter>
@@ -23,7 +23,7 @@
 	      <filter-name>springSecurityFilterChain</filter-name>
 	      <url-pattern>/IrisPages/*</url-pattern>
 	      <url-pattern>/saml/*</url-pattern>
-	  </filter-mapping>-->
+	  </filter-mapping>
 	  <!-- End:  Following filter is added for integrating SSO  -->
 	 
 	<servlet>
