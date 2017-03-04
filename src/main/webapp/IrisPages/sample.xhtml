@@ -96,6 +96,7 @@ table.meta {
 			</div>
 			<div class="col-md-1 form-group">
 				<input id="versionToken" type="hidden" value="#{param['version']}" />
+				<input id="isaapToken" type="hidden" value="#{param['isaap']}" />
 				<button id="btnLoadToken" class="btn btn-primary pull-left">Load</button>
 			</div>
 			<div class="col-md-2 form-group">
@@ -701,73 +702,73 @@ table.meta {
 			// using dot notation due to fields having generic names that could conflict with item element ids.
 			
 			if(!document.getElementById('accessibility.digitalNotepad').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.digitalNotepad').value + "%3";
+				accessibility += document.getElementById('accessibility.digitalNotepad').value + ";";
 			
 			if(!document.getElementById('accessibility.englishGlossary').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.englishGlossary').value + "%3";
+				accessibility += document.getElementById('accessibility.englishGlossary').value + ";";
 			
 			if(!document.getElementById('accessibility.highlighter').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.highlighter').value + "%3";
+				accessibility += document.getElementById('accessibility.highlighter').value + ";";
 			
 			if(!document.getElementById('accessibility.markForReview').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.markForReview').value + "%3";
+				accessibility += document.getElementById('accessibility.markForReview').value + ";";
 			
 			if(!document.getElementById('accessibility.calculator').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.calculator').value + "%3";
+				accessibility += document.getElementById('accessibility.calculator').value + ";";
 			
 			if(!document.getElementById('accessibility.englishDictionary').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.englishDictionary').value + "%3";
+				accessibility += document.getElementById('accessibility.englishDictionary').value + ";";
 			
 			if(!document.getElementById('accessibility.expandablePassages').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.expandablePassages').value + "%3";
+				accessibility += document.getElementById('accessibility.expandablePassages').value + ";";
 			
 			if(!document.getElementById('accessibility.globalNotes').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.globalNotes').value + "%3";
+				accessibility += document.getElementById('accessibility.globalNotes').value + ";";
 			
 			if(!document.getElementById('accessibility.strikethrough').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.strikethrough').value + "%3";
+				accessibility += document.getElementById('accessibility.strikethrough').value + ";";
 			
 			if(!document.getElementById('accessibility.writingTools').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.writingTools').value + "%3";
+				accessibility += document.getElementById('accessibility.writingTools').value + ";";
 			
 			if(!document.getElementById('accessibility.thesaurus').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.thesaurus').value + "%3";
+				accessibility += document.getElementById('accessibility.thesaurus').value + ";";
 			
 			if(!document.getElementById('accessibility.colorChoices').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.colorChoices').value + "%3";
+				accessibility += document.getElementById('accessibility.colorChoices').value + ";";
 			
 			if(!document.getElementById('accessibility.masking').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.masking').value + "%3";
+				accessibility += document.getElementById('accessibility.masking').value + ";";
 			
 			if(!document.getElementById('accessibility.translation').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.translation').value + "%3";
+				accessibility += document.getElementById('accessibility.translation').value + ";";
 			
 			if(!document.getElementById('accessibility.americanSignLanguage').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.americanSignLanguage').value + "%3";
+				accessibility += document.getElementById('accessibility.americanSignLanguage').value + ";";
 			
 			if(!document.getElementById('accessibility.brailleType').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.brailleType').value + "%3";
+				accessibility += document.getElementById('accessibility.brailleType').value + ";";
 			
 			if(!document.getElementById('accessibility.closedCaptioning').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.closedCaptioning').value + "%3";
+				accessibility += document.getElementById('accessibility.closedCaptioning').value + ";";
 			
 			if(!document.getElementById('accessibility.streamlinedInterface').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.streamlinedInterface').value + "%3";
+				accessibility += document.getElementById('accessibility.streamlinedInterface').value + ";";
 			
 			if(!document.getElementById('accessibility.permissiveMode').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.permissiveMode').value + "%3";
+				accessibility += document.getElementById('accessibility.permissiveMode').value + ";";
 			
 			if(!document.getElementById('accessibility.printOnDemand').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.printOnDemand').value + "%3";
+				accessibility += document.getElementById('accessibility.printOnDemand').value + ";";
 			
 			if(!document.getElementById('accessibility.textToSpeech').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.textToSpeech').value + "%3";
+				accessibility += document.getElementById('accessibility.textToSpeech').value + ";";
 			
 			if(!document.getElementById('accessibility.language').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.language').value + "%3";
+				accessibility += document.getElementById('accessibility.language').value + ";";
 			
 			if(!document.getElementById('accessibility.illustrationGlossary').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.illustrationGlossary').value + "%3";
+				accessibility += document.getElementById('accessibility.illustrationGlossary').value + ";";
 			
 			if(!document.getElementById('accessibility.zoom').hasAttribute('disabled'))
 				accessibility += document.getElementById('accessibility.zoom').value;
@@ -781,10 +782,11 @@ table.meta {
 			var bankToken = $('#bankToken').val();
 			var content = $('#content').val();
 			var version = $('#versionToken').val();
+			var isaap = $('#isaapToken').val();
 			
 			if(content==='Item'&amp;&amp;!isEmpty(bankToken)&amp;&amp;!isEmpty(token)){
 				
-			IRiS.loadToken(vendorId, 'I-'+bankToken+'-'+token +'-'+ version + '-' + buildAccessibilityString()).done(function() {
+			IRiS.loadToken(vendorId, 'I-'+bankToken+'-'+token +'-'+ version + '-' + isaap).done(function() {
 				enableAll();
 			}).fail(function(err) {
 				processError(err);
