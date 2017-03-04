@@ -73,6 +73,21 @@ public class IrisWebHandler extends BaseContentRendererController {
 
 
 		ContentRequest contentRequest = getContentRequest(modifyPostData(request));
+		
+		AccLookup accommodations = new AccLookup ();
+
+	    // add any accommodations from request
+	    if (contentRequest.getAccommodations () != null) {
+	      for (ContentRequestAccommodation acc : contentRequest.getAccommodations ()) {
+	        if (acc != null && !org.apache.commons.lang.StringUtils.isEmpty (acc.getType ())) {
+	          for (String code : acc.getCodes ()) {
+	            if (!org.apache.commons.lang.StringUtils.isEmpty (code)) {
+	              accommodations.add (acc.getType (), code);
+	            }
+	          }
+	        }
+	      }
+	    }
 
 		if (contentRequest.getItems().size() > 0) {
 			ContentRequestItem item = contentRequest.getItems().get(0);
@@ -80,12 +95,15 @@ public class IrisWebHandler extends BaseContentRendererController {
 
 		}
 
-		ItemRenderGroup itemRenderGroup = _contentHelper.loadRenderGroup(contentRequest);
+		//ItemRenderGroup itemRenderGroup = _contentHelper.loadRenderGroup(contentRequest);
+		
+		 ItemRenderGroup itemRenderGroup = _contentHelper.loadRenderGroupAcc (contentRequest, accommodations);
+		
 		_logger.info("Got ItemRendererGroup " + itemRenderGroup.getId());
 		if (!StringUtils.isEmpty(contentRequest.getLayout()))
 			itemRenderGroup.setLayout(contentRequest.getLayout());
 
-		renderGroup(itemRenderGroup, new AccLookup(), response);
+		renderGroup(itemRenderGroup, accommodations, response);
 
 		Runtime runtime = Runtime.getRuntime();
 
@@ -201,12 +219,13 @@ public class IrisWebHandler extends BaseContentRendererController {
 			
 			String isaap = params[4];
 			String[] featureCodes = isaap.split(";");
-			AccLookup accommodations = getAccommodations(featureCodes);
+			ContentRequest cr = new ContentRequest();
+			 cr.setAccommodations(getAccommodations(featureCodes));
 			
-			cre.setId(token);
+			cre.setId(params[0] + "-" + params[1] + "-" + params[2] + "-" + params[3]);
 			_items = new ArrayList<ContentRequestItem>();
 			_items.add(cre);
-			ContentRequest cr = new ContentRequest();
+			
 			cr.setItems(_items);
 			return cr;
 		} catch (Exception exp) {
@@ -215,13 +234,12 @@ public class IrisWebHandler extends BaseContentRendererController {
 		}
 	}
 	
-	  private  AccLookup getAccommodations(String[] featureCodes) {
+	  private  List<ContentRequestAccommodation> getAccommodations(String[] featureCodes) {
 
-		  AccLookup accommodations = new AccLookup();
+		  List<ContentRequestAccommodation> accommodationsList = new ArrayList<ContentRequestAccommodation>();
 
 		  try {
 			
-			  List<ContentRequestAccommodation> accommodationsList = new ArrayList<ContentRequestAccommodation>();
 			    HashMap<String, List<String>> accomms = new HashMap<>();
 			    for (String code: featureCodes) {
 			      String type = AccommodationTypeLookup.getType(code);
@@ -254,21 +272,12 @@ public class IrisWebHandler extends BaseContentRendererController {
 			      accommodationsList.add(accommodation);
 			    }
 
-			    for (ContentRequestAccommodation acc : accommodationsList) {
-					if (acc != null && !StringUtils.isEmpty(acc.getType())) {
-						for (String code : acc.getCodes()) {
-							if (!StringUtils.isEmpty(code)) {
-								accommodations.add(acc.getType(), code);
-							}
-						}
-					}
-				}
 			  
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		  
-		    return accommodations;
+		    return accommodationsList;
 
 	  }
 

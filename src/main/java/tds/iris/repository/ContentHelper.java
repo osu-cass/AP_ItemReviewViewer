@@ -22,6 +22,8 @@ import tds.iris.abstractions.repository.IContentHelper;
 import tds.iris.content.IrisIContentBuilder;
 import tds.iris.web.data.ContentRequest;
 import tds.iris.web.data.ContentRequestItem;
+import tds.itemrenderer.data.AccLookup;
+import tds.itemrenderer.data.AccProperties;
 import tds.itemrenderer.data.IITSDocument;
 import tds.itemrenderer.data.IItemRender;
 import tds.itemrenderer.data.ITSTypes.ITSEntityType;
@@ -87,11 +89,64 @@ public class ContentHelper implements IContentHelper
 
     return itemRenderGroup;
   }
+  
+  
+  
 
-  @Override
-  public boolean reloadContent () throws ContentException{
-    _contentBuilder.init ();
-    return true;
+@Override
+public ItemRenderGroup loadRenderGroupAcc(ContentRequest contentRequest, AccLookup accLookup) {
+    String id = "Page-" + UUID.randomUUID ().toString ();
+    AccProperties accProperties = new AccProperties(accLookup);
+    ItemRenderGroup itemRenderGroup = new ItemRenderGroup (id, "default", accProperties.getLanguage());
+
+    // load passage
+    boolean reloadPassage = true;
+    if (contentRequest.getPassage () != null) {
+      String requestedPassageId = contentRequest.getPassage ().getId ();
+      // we will not attempt to load a passage
+      // if we already have a passage as part of the request or if we have
+      // been explicity asked not to load a passage
+      if (!StringUtils.isEmpty (requestedPassageId)) {
+        itemRenderGroup.setPassage (_contentBuilder.getITSDocumentAcc (requestedPassageId,  accLookup));
+        reloadPassage = false;
+      } else if (!contentRequest.getPassage ().getAutoLoad ()) {
+        reloadPassage = false;
+      }
+    }
+
+    if (contentRequest.getItems () != null) {
+      long stimulusKey = 0;
+      long bankKey = 0;
+
+      for (ContentRequestItem item : contentRequest.getItems ()) {
+        IITSDocument document = _contentBuilder.getITSDocumentAcc (item.getId (), accLookup);
+        if (document != null) {
+          IItemRender itemRender = new ItemRender (document, (int) document.getItemKey ());
+
+          itemRender.setDisabled (false);
+
+          itemRenderGroup.add (itemRender);
+
+
+          if (stimulusKey == 0 && document.getStimulusKey () > 0) {
+            // set to the first non-zero stimulus
+            stimulusKey = document.getStimulusKey ();
+            bankKey = document.getBankKey ();
+          }
+        }
+      }
+
+      if (reloadPassage && stimulusKey > 0)
+        itemRenderGroup.setPassage (_contentBuilder.getITSDocumentAcc (ItsItemIdUtil.getItsDocumentId (bankKey, stimulusKey, ITSEntityType.Passage), accLookup));
+    }
+
+    return itemRenderGroup;
   }
+
+@Override
+public boolean reloadContent () throws ContentException{
+  _contentBuilder.init ();
+  return true;
+}
   
 }

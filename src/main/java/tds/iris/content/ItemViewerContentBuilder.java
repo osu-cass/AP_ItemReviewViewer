@@ -34,6 +34,7 @@ import AIR.Common.Utilities.Path;
 import tds.iris.abstractions.repository.ContentException;
 import tds.iris.data.MetaData;
 import tds.itempreview.ConfigBuilder;
+import tds.itemrenderer.data.AccLookup;
 import tds.itemrenderer.data.IITSDocument;
 
 @Component
@@ -70,6 +71,30 @@ public class ItemViewerContentBuilder implements IrisIContentBuilder {
 				_directoryScanner.create();
 				_logger.info("Scanning the Directory for the Item Complete");
 				return _directoryScanner.getRenderableDocument(itemNumberFromMetaData);
+			}
+		}  catch (Exception e) {
+			_logger.error("Un known Error while scanning or loading  ITEM.", e);
+			throw new ContentException(String.format("UnKnown Exception Occurred while getting item ID: %s", id));
+
+		}
+		throw new ContentException(String.format("No content found by id %s", id));
+	}
+	
+	
+	@Override
+	public IITSDocument getITSDocumentAcc(String id, AccLookup accLookup) {
+		// TODO Auto-generated method stub
+		try {
+
+			String[] parts = id.split("-");
+			String bankId = parts[1];
+			String itemNumber = parts[2];
+			String itemNumberFromMetaData = parts[0] + "-" + bankId + "-" + itemNumber;
+			if (true) {
+				_logger.info("Scanning the Directory for the Item Started");
+				_directoryScanner.create();
+				_logger.info("Scanning the Directory for the Item Complete");
+				return _directoryScanner.getRenderableDocument(itemNumberFromMetaData, accLookup);
 			}
 		}  catch (Exception e) {
 			_logger.error("Un known Error while scanning or loading  ITEM.", e);

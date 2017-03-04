@@ -26,6 +26,7 @@ import tds.blackbox.ContentRequestException;
 import tds.iris.abstractions.repository.ContentException;
 import tds.iris.abstractions.repository.IContentBuilder;
 import tds.itempreview.ConfigBuilder;
+import tds.itemrenderer.data.AccLookup;
 import tds.itemrenderer.data.IITSDocument;
 import tds.itemrenderer.data.IrisITSDocument;
 import tds.itemrenderer.data.ItsItemIdUtil;
@@ -55,4 +56,12 @@ public class ContentBuilder implements IContentBuilder
   public IITSDocument getITSDocument (String id) throws ContentRequestException {
     return _directoryScanner.getRenderableDocument (id);
   }
+
+@Override
+public IITSDocument getITSDocumentAcc(String id, AccLookup accLookup) {
+	// TODO Auto-generated method stub
+    return _directoryScanner.getRenderableDocument (id, accLookup);
+}
+  
+  
 }
