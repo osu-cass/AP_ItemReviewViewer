@@ -702,73 +702,73 @@ table.meta {
 			// using dot notation due to fields having generic names that could conflict with item element ids.
 			
 			if(!document.getElementById('accessibility.digitalNotepad').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.digitalNotepad').value + ";";
+				accessibility += document.getElementById('accessibility.digitalNotepad').value + "%3B";
 			
 			if(!document.getElementById('accessibility.englishGlossary').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.englishGlossary').value + ";";
+				accessibility += document.getElementById('accessibility.englishGlossary').value + "%3B";
 			
 			if(!document.getElementById('accessibility.highlighter').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.highlighter').value + ";";
+				accessibility += document.getElementById('accessibility.highlighter').value + "%3B";
 			
 			if(!document.getElementById('accessibility.markForReview').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.markForReview').value + ";";
+				accessibility += document.getElementById('accessibility.markForReview').value + "%3B";
 			
 			if(!document.getElementById('accessibility.calculator').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.calculator').value + ";";
+				accessibility += document.getElementById('accessibility.calculator').value + "%3B";
 			
 			if(!document.getElementById('accessibility.englishDictionary').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.englishDictionary').value + ";";
+				accessibility += document.getElementById('accessibility.englishDictionary').value + "%3B";
 			
 			if(!document.getElementById('accessibility.expandablePassages').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.expandablePassages').value + ";";
+				accessibility += document.getElementById('accessibility.expandablePassages').value + "%3B";
 			
 			if(!document.getElementById('accessibility.globalNotes').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.globalNotes').value + ";";
+				accessibility += document.getElementById('accessibility.globalNotes').value + "%3B";
 			
 			if(!document.getElementById('accessibility.strikethrough').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.strikethrough').value + ";";
+				accessibility += document.getElementById('accessibility.strikethrough').value + "%3B";
 			
 			if(!document.getElementById('accessibility.writingTools').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.writingTools').value + ";";
+				accessibility += document.getElementById('accessibility.writingTools').value + "%3B";
 			
 			if(!document.getElementById('accessibility.thesaurus').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.thesaurus').value + ";";
+				accessibility += document.getElementById('accessibility.thesaurus').value + "%3B";
 			
 			if(!document.getElementById('accessibility.colorChoices').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.colorChoices').value + ";";
+				accessibility += document.getElementById('accessibility.colorChoices').value + "%3B";
 			
 			if(!document.getElementById('accessibility.masking').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.masking').value + ";";
+				accessibility += document.getElementById('accessibility.masking').value + "%3B";
 			
 			if(!document.getElementById('accessibility.translation').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.translation').value + ";";
+				accessibility += document.getElementById('accessibility.translation').value + "%3B";
 			
 			if(!document.getElementById('accessibility.americanSignLanguage').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.americanSignLanguage').value + ";";
+				accessibility += document.getElementById('accessibility.americanSignLanguage').value + "%3B";
 			
 			if(!document.getElementById('accessibility.brailleType').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.brailleType').value + ";";
+				accessibility += document.getElementById('accessibility.brailleType').value + "%3B";
 			
 			if(!document.getElementById('accessibility.closedCaptioning').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.closedCaptioning').value + ";";
+				accessibility += document.getElementById('accessibility.closedCaptioning').value + "%3B";
 			
 			if(!document.getElementById('accessibility.streamlinedInterface').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.streamlinedInterface').value + ";";
+				accessibility += document.getElementById('accessibility.streamlinedInterface').value + "%3B";
 			
 			if(!document.getElementById('accessibility.permissiveMode').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.permissiveMode').value + ";";
+				accessibility += document.getElementById('accessibility.permissiveMode').value + "%3B";
 			
 			if(!document.getElementById('accessibility.printOnDemand').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.printOnDemand').value + ";";
+				accessibility += document.getElementById('accessibility.printOnDemand').value + "%3B";
 			
 			if(!document.getElementById('accessibility.textToSpeech').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.textToSpeech').value + ";";
+				accessibility += document.getElementById('accessibility.textToSpeech').value + "%3B";
 			
 			if(!document.getElementById('accessibility.language').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.language').value + ";";
+				accessibility += document.getElementById('accessibility.language').value + "%3B";
 			
 			if(!document.getElementById('accessibility.illustrationGlossary').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.illustrationGlossary').value + ";";
+				accessibility += document.getElementById('accessibility.illustrationGlossary').value + "%3B";
 			
 			if(!document.getElementById('accessibility.zoom').hasAttribute('disabled'))
 				accessibility += document.getElementById('accessibility.zoom').value;
@@ -818,6 +818,7 @@ table.meta {
 			});
 		});
 		function isEmpty(str) {
+			return (!str || 0 === str.length);
 		}
 		$('#secondaryButton').click(function(){
 		    $("#primaryButton").click();

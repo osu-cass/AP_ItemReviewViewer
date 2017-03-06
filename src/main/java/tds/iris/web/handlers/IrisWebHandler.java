@@ -44,6 +44,7 @@ import tds.blackbox.ContentRequestAccommodation;
 import tds.blackbox.ContentRequestException;
 import tds.iris.abstractions.repository.ContentException;
 import tds.iris.abstractions.repository.IContentHelper;
+import tds.iris.data.AccommodationModel;
 import tds.iris.data.AccommodationTypeLookup;
 import tds.iris.data.ItemRequestModel;
 import tds.iris.web.data.ContentRequest;
@@ -214,15 +215,19 @@ public class IrisWebHandler extends BaseContentRendererController {
 				builder.append(line);
 			}
 			ContentRequestItem cre = new ContentRequestItem();
+			ContentRequest cr = new ContentRequest();
 			String token = builder.toString();
 			String[] params = token.split("-");
-			
+			if(params.length>=5){
 			String isaap = params[4];
 			String[] featureCodes = isaap.split(";");
-			ContentRequest cr = new ContentRequest();
 			 cr.setAccommodations(getAccommodations(featureCodes));
-			
+			}
+			if(params.length>=4){
 			cre.setId(params[0] + "-" + params[1] + "-" + params[2] + "-" + params[3]);
+			}else{
+				cre.setId(params[0] + "-" + params[1] + "-" + params[2]) ;
+			}
 			_items = new ArrayList<ContentRequestItem>();
 			_items.add(cre);
 			
@@ -261,14 +266,9 @@ public class IrisWebHandler extends BaseContentRendererController {
 			    for (Map.Entry<String, List<String>> entry: accomms.entrySet()) {
 			      String type = entry.getKey();
 			      List<String> codes = entry.getValue();
-			      //AccommodationModel accommodation = new AccommodationModel(type, codes);
 			      ContentRequestAccommodation accommodation = new ContentRequestAccommodation();
 			      accommodation.setType(type);
-			      String[] codesString = new String[codes.size()];
-			      for (int i=0; i<codes.size(); i++) {
-					codesString[i] = codes.get(i);
-				}
-			      accommodation.setCodes(codesString);
+			      accommodation.setCodes(codes.toArray(new String[codes.size()]));
 			      accommodationsList.add(accommodation);
 			    }
 
@@ -282,58 +282,8 @@ public class IrisWebHandler extends BaseContentRendererController {
 	  }
 
 
-	private ContentRequest getContentRequest(ItemRequestModel itemRequestModel) throws ContentRequestException {
-		try {
-			ContentRequestItem cre = new ContentRequestItem();
-			cre.setId(itemRequestModel.getItem());
-			_items = new ArrayList<ContentRequestItem>();
-			_items.add(cre);
-			ContentRequest cr = new ContentRequest();
-			cr.setItems(_items);
-			return cr;
-		} catch (Exception exp) {
-			_logger.error("Error deserializing ContentRequest from JSON", exp);
-			throw new ContentRequestException("Error deserializing ContentRequest from JSON. " + exp.getMessage());
-		}
-	}
 	
 	
-	@RequestMapping(value = "/{item:\\d+[-]\\d+}", method = RequestMethod.GET)
-	@ResponseBody
-	public void getContent(@PathVariable("item") String itemId,
-			@RequestParam(value = "isaap", required = false, defaultValue = "") String accommodationCodes,
-			HttpServletResponse response) {
-		try {
-			String[] codes = accommodationCodes.split(";");
-			ItemRequestModel itemRequestModel = new ItemRequestModel("I-" + itemId + "-", codes);
-			ContentRequest contentRequest = getContentRequest(itemRequestModel);
-			if (contentRequest.getItems().size() > 0) {
-				ContentRequestItem item = contentRequest.getItems().get(0);
-				_logger.info("Received the request to load item: " + item.getId());
-
-			}
-			AccLookup accommodations = new AccLookup();
-			if (itemRequestModel.getAccommodations() != null) {
-				for (ContentRequestAccommodation acc : itemRequestModel.getAccommodations()) {
-					if (acc != null && !StringUtils.isEmpty(acc.getType())) {
-						for (String code : acc.getCodes()) {
-							if (!StringUtils.isEmpty(code)) {
-								accommodations.add(acc.getType(), code);
-							}
-						}
-					}
-				}
-			}
-
-			ItemRenderGroup itemRenderGroup = _contentHelper.loadRenderGroup(contentRequest);
-			_logger.info("Got ItemRendererGroup " + itemRenderGroup.getId());
-			if (!StringUtils.isEmpty(contentRequest.getLayout()))
-				itemRenderGroup.setLayout(contentRequest.getLayout());
-
-			renderGroup(itemRenderGroup, accommodations, response);
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-	}	
+	
+	
 }
