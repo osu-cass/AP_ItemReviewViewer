@@ -25,12 +25,15 @@
         frame = frameWindow;
     };
 
-    api.loadToken = function (vendorId, token) {
-        return XDM(frame).post('IRiS:loadToken', vendorId, token);
+    api.loadTokenAccess = function (queryString) {
+        return XDM(frame).post('IRiS:loadTokenAccess', queryString);
     };
 
     api.loadContent = function (vendorId, token) {
         return XDM(frame).post('IRiS:loadContent', vendorId, token);
+    };
+    api.loadToken = function (vendorId, token) {
+        return XDM(frame).post('IRiS:loadToken', vendorId, token);
     };
     
     api.loadAccessibilityToken = function (vendorId, token) {
@@ -39,9 +42,6 @@
 
     api.loadAccessibilityContent = function (vendorId, token) {
         return XDM(frame).post('IRiS:loadAccessibilityContent', vendorId, token);
-    };
-    api.loadTokenAccess = function (queryString) {
-        return XDM(frame).post('IRiS:loadTokenAccess', queryString);
     };
 
     api.setResponse = function (value) {

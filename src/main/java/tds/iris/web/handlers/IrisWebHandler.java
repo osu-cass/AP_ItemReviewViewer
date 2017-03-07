@@ -37,6 +37,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import AIR.Common.Web.TDSReplyCode;
 import AIR.Common.data.ResponseData;
@@ -72,23 +73,22 @@ public class IrisWebHandler extends BaseContentRendererController {
 	@ResponseBody
 	public void loadContentRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-
 		ContentRequest contentRequest = getContentRequest(modifyPostData(request));
-		
-		AccLookup accommodations = new AccLookup ();
 
-	    // add any accommodations from request
-	    if (contentRequest.getAccommodations () != null) {
-	      for (ContentRequestAccommodation acc : contentRequest.getAccommodations ()) {
-	        if (acc != null && !org.apache.commons.lang.StringUtils.isEmpty (acc.getType ())) {
-	          for (String code : acc.getCodes ()) {
-	            if (!org.apache.commons.lang.StringUtils.isEmpty (code)) {
-	              accommodations.add (acc.getType (), code);
-	            }
-	          }
-	        }
-	      }
-	    }
+		AccLookup accommodations = new AccLookup();
+
+		// add any accommodations from request
+		if (contentRequest.getAccommodations() != null) {
+			for (ContentRequestAccommodation acc : contentRequest.getAccommodations()) {
+				if (acc != null && !org.apache.commons.lang.StringUtils.isEmpty(acc.getType())) {
+					for (String code : acc.getCodes()) {
+						if (!org.apache.commons.lang.StringUtils.isEmpty(code)) {
+							accommodations.add(acc.getType(), code);
+						}
+					}
+				}
+			}
+		}
 
 		if (contentRequest.getItems().size() > 0) {
 			ContentRequestItem item = contentRequest.getItems().get(0);
@@ -96,10 +96,11 @@ public class IrisWebHandler extends BaseContentRendererController {
 
 		}
 
-		//ItemRenderGroup itemRenderGroup = _contentHelper.loadRenderGroup(contentRequest);
-		
-		 ItemRenderGroup itemRenderGroup = _contentHelper.loadRenderGroupAcc (contentRequest, accommodations);
-		
+		// ItemRenderGroup itemRenderGroup =
+		// _contentHelper.loadRenderGroup(contentRequest);
+
+		ItemRenderGroup itemRenderGroup = _contentHelper.loadRenderGroupAcc(contentRequest, accommodations);
+
 		_logger.info("Got ItemRendererGroup " + itemRenderGroup.getId());
 		if (!StringUtils.isEmpty(contentRequest.getLayout()))
 			itemRenderGroup.setLayout(contentRequest.getLayout());
@@ -218,19 +219,19 @@ public class IrisWebHandler extends BaseContentRendererController {
 			ContentRequest cr = new ContentRequest();
 			String token = builder.toString();
 			String[] params = token.split("-");
-			if(params.length>=5){
-			String isaap = params[4];
-			String[] featureCodes = isaap.split(";");
-			 cr.setAccommodations(getAccommodations(featureCodes));
+			if (params.length >= 5) {
+				String isaap = params[4];
+				String[] featureCodes = isaap.split(";");
+				cr.setAccommodations(getAccommodations(featureCodes));
 			}
-			if(params.length>=4){
-			cre.setId(params[0] + "-" + params[1] + "-" + params[2] + "-" + params[3]);
-			}else{
-				cre.setId(params[0] + "-" + params[1] + "-" + params[2]) ;
+			if (params.length >= 4) {
+				cre.setId(params[0] + "-" + params[1] + "-" + params[2] + "-" + params[3]);
+			} else {
+				cre.setId(params[0] + "-" + params[1] + "-" + params[2]);
 			}
 			_items = new ArrayList<ContentRequestItem>();
 			_items.add(cre);
-			
+
 			cr.setItems(_items);
 			return cr;
 		} catch (Exception exp) {
@@ -238,52 +239,87 @@ public class IrisWebHandler extends BaseContentRendererController {
 			throw new ContentRequestException("Error deserializing ContentRequest from JSON. " + exp.getMessage());
 		}
 	}
-	
-	  private  List<ContentRequestAccommodation> getAccommodations(String[] featureCodes) {
 
-		  List<ContentRequestAccommodation> accommodationsList = new ArrayList<ContentRequestAccommodation>();
+	private List<ContentRequestAccommodation> getAccommodations(String[] featureCodes) {
 
-		  try {
-			
-			    HashMap<String, List<String>> accomms = new HashMap<>();
-			    for (String code: featureCodes) {
-			      String type = AccommodationTypeLookup.getType(code);
-			      //If type is null then the accommodation is not found. Do not add it to the list.
-			      if (type != null) {
-			        if (accomms.containsKey(type)) {
-			          List<String> accomCodes = accomms.get(type);
-			          accomCodes.add(code);
-			          accomms.put(type, accomCodes);
-			        } else {
-			          List<String> accomCodes = new ArrayList<String>();
-			          accomCodes.add(code);
-			          accomms.put(type, accomCodes);
-			        }
-			      } else {
-			        _logger.info("Unknown accommodation code requested for item " + "" + " code: "+ code);
-			      }
-			    }
-			    for (Map.Entry<String, List<String>> entry: accomms.entrySet()) {
-			      String type = entry.getKey();
-			      List<String> codes = entry.getValue();
-			      ContentRequestAccommodation accommodation = new ContentRequestAccommodation();
-			      accommodation.setType(type);
-			      accommodation.setCodes(codes.toArray(new String[codes.size()]));
-			      accommodationsList.add(accommodation);
-			    }
+		List<ContentRequestAccommodation> accommodationsList = new ArrayList<ContentRequestAccommodation>();
 
-			  
+		try {
+
+			HashMap<String, List<String>> accomms = new HashMap<>();
+			for (String code : featureCodes) {
+				String type = AccommodationTypeLookup.getType(code);
+				// If type is null then the accommodation is not found. Do not
+				// add it to the list.
+				if (type != null) {
+					if (accomms.containsKey(type)) {
+						List<String> accomCodes = accomms.get(type);
+						accomCodes.add(code);
+						accomms.put(type, accomCodes);
+					} else {
+						List<String> accomCodes = new ArrayList<String>();
+						accomCodes.add(code);
+						accomms.put(type, accomCodes);
+					}
+				} else {
+					_logger.info("Unknown accommodation code requested for item " + "" + " code: " + code);
+				}
+			}
+			for (Map.Entry<String, List<String>> entry : accomms.entrySet()) {
+				String type = entry.getKey();
+				List<String> codes = entry.getValue();
+				ContentRequestAccommodation accommodation = new ContentRequestAccommodation();
+				accommodation.setType(type);
+				accommodation.setCodes(codes.toArray(new String[codes.size()]));
+				accommodationsList.add(accommodation);
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		  
-		    return accommodationsList;
 
-	  }
+		return accommodationsList;
 
+	}
 
-	
-	
-	
-	
+	@RequestMapping(value = "/{item:\\d+[-]\\d+}", method = RequestMethod.GET)
+	@ResponseBody
+	public String getContent(@PathVariable("item") String itemId,
+			@RequestParam(value = "isaap", required = false, defaultValue = "") String accommodationCodes,
+			HttpServletResponse response) {
+		String[] codes = accommodationCodes.split(";");
+		ItemRequestModel item = new ItemRequestModel("I-" + itemId, codes);
+		return item.generateJsonToken();
+	}
+
+	@RequestMapping(value = "content/accesibilityload", produces = "application/xml")
+	@ResponseBody
+	public void loadAccessibilityContentRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		ContentRequest contentRequest = ContentRequest.getContentRequest(modifyPostData(request));
+		AccLookup accommodations = new AccLookup();
+		if (contentRequest.getAccommodations() != null) {
+			for (ContentRequestAccommodation acc : contentRequest.getAccommodations()) {
+				if (acc != null && !org.apache.commons.lang.StringUtils.isEmpty(acc.getType())) {
+					for (String code : acc.getCodes()) {
+						if (!org.apache.commons.lang.StringUtils.isEmpty(code)) {
+							accommodations.add(acc.getType(), code);
+						}
+					}
+				}
+			}
+		}
+		if (contentRequest.getItems().size() > 0) {
+			ContentRequestItem item = contentRequest.getItems().get(0);
+			_logger.info("Received the request to load item: " + item.getId());
+
+		}
+		ItemRenderGroup itemRenderGroup = _contentHelper.loadRenderGroupAcc(contentRequest, accommodations);
+		if (!StringUtils.isEmpty(contentRequest.getLayout()))
+			itemRenderGroup.setLayout(contentRequest.getLayout());
+
+		renderGroup(itemRenderGroup, accommodations, response);
+
+	}
+
 }
