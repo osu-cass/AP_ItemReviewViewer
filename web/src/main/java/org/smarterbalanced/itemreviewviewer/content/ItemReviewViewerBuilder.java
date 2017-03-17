@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.model.MetaData;
 import org.smarterbalanced.itemreviewviewer.services.GitLabService;
 import org.smarterbalanced.itemviewerservice.dal.Config.SettingsReader;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -30,6 +31,9 @@ public class ItemReviewViewerBuilder implements IContentBuilder {
 	private static final Logger _logger = LoggerFactory.getLogger(ItemReviewViewerBuilder.class);
 
 	private ConfigBuilder _directoryScanner = null;
+
+	@Autowired
+	private GitLabService gitLabService;
 
 	/**
 	 * 
@@ -82,7 +86,7 @@ public class ItemReviewViewerBuilder implements IContentBuilder {
 			else
 				itemName = "stim" + itemNumber.substring(1);
 			
-			GitLabService gitLabService = new GitLabService();
+			//GitLabService gitLabService = new GitLabService();
 			
 			String[] parts = itemName.split("-");
     		boolean isItemMasterVersion = !(parts.length > 3 && parts[3].length() > 0);
@@ -127,6 +131,14 @@ public class ItemReviewViewerBuilder implements IContentBuilder {
 	public void init() throws ContentException {
 		// TODO Auto-generated method stub
 
+	}
+
+	public GitLabService getGitLabService() {
+		return gitLabService;
+	}
+
+	public void setGitLabService(GitLabService gitLabService) {
+		this.gitLabService = gitLabService;
 	}
 
 }
