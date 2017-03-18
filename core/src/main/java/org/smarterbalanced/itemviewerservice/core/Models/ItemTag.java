@@ -7,7 +7,7 @@ package org.smarterbalanced.itemviewerservice.core.Models;
  * @author kthotti
  *
  */
-public class ItemVersion {
+public class ItemTag {
 	
 	private String name;
 	private String tagName;
@@ -17,7 +17,7 @@ public class ItemVersion {
 	/**
 	 * 
 	 */
-	public ItemVersion() {
+	public ItemTag() {
 		// TODO Auto-generated constructor stub
 	}
 

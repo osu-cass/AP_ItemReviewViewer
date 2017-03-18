@@ -47,8 +47,9 @@ public class ItemReviewViewerBuilder implements IContentBuilder {
 	 */
 	public IITSDocument getITSDocument(String id) throws ContentException {
 		try {
+
 			getItem(id);
-			return _directoryScanner.getRenderableDocument(id);
+			return _directoryScanner.getRenderableDocument(getBaseItemName(id));
 
 		}  catch (Exception e) {
 			_logger.error("Un known Error while getting or loading  ITEM from GITLAB.", e);
@@ -66,13 +67,27 @@ public class ItemReviewViewerBuilder implements IContentBuilder {
 		// TODO Auto-generated method stub
 		try {
 			getItem(id);
-			return _directoryScanner.getRenderableDocument(id, accLookup);
+			return _directoryScanner.getRenderableDocument(getBaseItemName(id), accLookup);
 
 		}  catch (Exception e) {
 			_logger.error("Un known Error while getting or loading  ITEM from GITLAB.", e);
 			throw new ContentException(String.format("UnKnown Exception Occurred while getting item ID: %s", id, "Root Error " + e.getMessage()));
 
 		}
+	}
+	
+	private String getBaseItemName(String itemName) {
+		
+		String[] parts = itemName.split("-");
+		
+		String versionNumber = ""; 
+		if(parts.length > 3)
+			versionNumber = parts[3];
+		
+		String baseItemName = parts[0] + "-" + parts[1] + "-" + parts[2]; 
+		
+		return baseItemName;
+		
 	}
 
 	private void getItem(String itemNumber) throws ContentException {

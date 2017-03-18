@@ -1,13 +1,22 @@
 package org.smarterbalanced.itemreviewviewer.services;
 
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import javax.net.ssl.HttpsURLConnection;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -18,8 +27,13 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.smarterbalanced.itemreviewviewer.model.ItemCommit;
+import org.smarterbalanced.itemreviewviewer.model.ItemTag;
 import org.smarterbalanced.itemreviewviewer.model.MetaData;
 import org.smarterbalanced.itemviewerservice.dal.Config.SettingsReader;
 import org.springframework.context.annotation.Scope;
@@ -83,6 +97,41 @@ public class GitLabService {
 		return false;
 	}
 	
+	public MetaData getMetaData(String itemNumber) {
+		try {
+			
+			if(!isItemExistsLocally(itemNumber)) {
+				downloadItem(itemNumber);
+				unzip(itemNumber);
+			}	
+			
+			String metadataFilePath = DESTINATION_ZIP_FILE_LOCATION + itemNumber + File.separator + "metadata.xml";
+			File metadataFile = new File(metadataFilePath);
+				String xmlFile = metadataFile.getAbsolutePath();
+				MetaData metaData = null;
+				try {
+					_logger.info("unmarshalling metadata file started");
+					JAXBContext jc = JAXBContext.newInstance(MetaData.class);
+					Unmarshaller unmarshaller = jc.createUnmarshaller();
+					File xml = new File(xmlFile);
+					metaData = (MetaData) unmarshaller.unmarshal(xml);
+					_logger.info("unmarshalling metadata file completed");
+				} catch (JAXBException e) {
+					_logger.error("Error parsing metadata file.", e);
+				} catch (Exception e) {
+					_logger.error("unknown error occurred while parsing metadata file.", e);
+				}
+			return metaData;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return null;
+	}
+
+	
+
+	
 	public boolean isItemExistsLocally(String itemNumber) {
 
 		try {
@@ -99,7 +148,7 @@ public class GitLabService {
 		
 	}
 	
-
+	
 	public String unzip(String itemNumber) throws IOException {
 		
 		String zipFilePath = DESTINATION_ZIP_FILE_LOCATION + itemNumber + FILE_EXTENTION;
@@ -152,38 +201,6 @@ public class GitLabService {
 		return _contentPath;
 	}
 	
-	public MetaData getMetaData(String itemNumber) {
-		try {
-			
-			if(!isItemExistsLocally(itemNumber)) {
-				downloadItem(itemNumber);
-				unzip(itemNumber);
-			}	
-			
-			String metadataFilePath = DESTINATION_ZIP_FILE_LOCATION + itemNumber + File.separator + "metadata.xml";
-			File metadataFile = new File(metadataFilePath);
-				String xmlFile = metadataFile.getAbsolutePath();
-				MetaData metaData = null;
-				try {
-					_logger.info("unmarshalling metadata file started");
-					JAXBContext jc = JAXBContext.newInstance(MetaData.class);
-					Unmarshaller unmarshaller = jc.createUnmarshaller();
-					File xml = new File(xmlFile);
-					metaData = (MetaData) unmarshaller.unmarshal(xml);
-					_logger.info("unmarshalling metadata file completed");
-				} catch (JAXBException e) {
-					_logger.error("Error parsing metadata file.", e);
-				} catch (Exception e) {
-					_logger.error("unknown error occurred while parsing metadata file.", e);
-				}
-			return metaData;
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-		return null;
-	}
-
     public String getGitLabUrl() {
     	return SettingsReader.get("gitlab.url");
     }
@@ -213,6 +230,231 @@ public class GitLabService {
     	return "";
     }
 
+    
+	public List<ItemTag> getItemTags(String itemName) {
+		//init("tags");
+		return null;
+	}
+
+	public void add(ItemTag itemTag) {
+		//itemVersions.add(itemVersion);
+	}
+
+	
+	public List<ItemCommit> getItemCommits(String itemName) {
+		//init("commits");
+		
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+		return null;
+	}
+
+	
+	public List<ItemTag> getItemTags(String type, String bankId, String itemNumber) {
+		//init("tags");
+		return null;
+	}
+
+	public List<ItemCommit> getItemCommits(String type, String bankId, String itemNumber) {
+		//init("commits");
+		
+		List<ItemCommit> itemCommits = new ArrayList<ItemCommit>();
+		
+		try {
+			String id = type+ "-" + bankId + "-" + itemNumber;
+			
+			String queryString = String.format("?type=%s&bankId=%s&id=%s", type, bankId, itemNumber) ;
+			
+			String  gitLabUrl = getItemCommitsUrl(id);
+			URL url = new URL(gitLabUrl);
+			
+			boolean isHttps = false;
+			
+			//handle https connections
+			
+			if(gitLabUrl.startsWith("https"))
+				isHttps = true;
+			
+			HttpURLConnection conn = null;
+			
+			if(isHttps)
+				conn = (HttpsURLConnection) url.openConnection();
+			else
+				conn = (HttpURLConnection) url.openConnection();
+
+			
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Accept", "application/json");
+			
+			boolean redirect = false;
+			
+			// normally, 3xx is redirect
+			int status = conn.getResponseCode();
+			if (status != HttpURLConnection.HTTP_OK) {
+				if (status == HttpURLConnection.HTTP_MOVED_TEMP
+					|| status == HttpURLConnection.HTTP_MOVED_PERM
+						|| status == HttpURLConnection.HTTP_SEE_OTHER
+						|| status == 307)
+				redirect = true;
+			}
+
+			_logger.info("Response Code ... " + status);
+			
+			if (redirect) {
+
+				// get redirect url from "location" header field
+				String newUrl = conn.getHeaderField("Location");
+				
+				isHttps = false;
+				
+				if(newUrl.startsWith("https"))
+					isHttps = true;
+
+				// get the cookie if need, for login
+				//String cookies = conn.getHeaderField("Set-Cookie");
+
+				// open the new connnection again
+				if(isHttps)
+					conn = (HttpsURLConnection) new URL(newUrl).openConnection();
+				else
+					conn = (HttpURLConnection) new URL(newUrl).openConnection();
+
+				//conn.setRequestProperty("Cookie", cookies);
+				conn.addRequestProperty("Accept-Language", "en-US,en;q=0.8");
+				conn.addRequestProperty("User-Agent", "Mozilla");
+				conn.addRequestProperty("Referer", "google.com");
+
+				_logger.info("Redirect to URL : " + newUrl);
+
+			}
+
+			
+			if (status > 400) {
+				
+				throw new RuntimeException("Failed to connect to GitLab URL: " + url + " HTTP error code : " + conn.getResponseCode());
+			}
+
+			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+
+			//if(versionsType.equalsIgnoreCase("commits")) {
+				itemCommits = getItemCommits(br);
+				
+				for (ItemCommit itemCommit : itemCommits) {
+					//itemCommit.setLink(request.getContextPath() + irisPage +  queryString + "&version=" + itemCommit.getCommitId());
+				}
+			//}
+			/*
+			else if(versionsType.equalsIgnoreCase("tags")) {
+				itemVersions = getItemVersions(br);
+				
+				for (ItemTag itemVersion : itemVersions) {
+					itemVersion.setLink(request.getContextPath() + irisPage +  queryString + "&version=" + itemVersion.getCommitId());
+				}
+			}
+			*/
+
+			br.close();
+			conn.disconnect();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return itemCommits;
+		
+		
+	}
+	
+	
+	private List<ItemTag> getItemVersions(Reader reader) {
+
+		List<ItemTag> itemVersions = new ArrayList<ItemTag>();
+
+		try {
+			
+			JSONParser jsonParser = new JSONParser();
+			JSONArray names = (JSONArray) jsonParser.parse(reader);
+
+			Iterator i = names.iterator();
+			
+			// take each value from the json array separately
+			while (i.hasNext()) {
+				ItemTag itemVersion = new ItemTag();
+				JSONObject innerObj = (JSONObject) i.next();				
+				String tagName = (String)innerObj.get("name");
+				
+				JSONObject commitObj = (JSONObject) innerObj.get("commit");
+				String commiId = (String)commitObj.get("id");
+				
+				itemVersion.setTagName(tagName);
+				itemVersion.setCommitId(commiId);
+				itemVersion.setName("Version " + tagName);
+				
+				itemVersions.add(itemVersion);
+
+			}
+
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			  _logger.error ("Error getting tags form GitLab", e);
+
+		}
+		return itemVersions;
+
+	}
+
+	private List<ItemCommit> getItemCommits(Reader reader) {
+
+		List<ItemCommit> itemCommits_ = new ArrayList<ItemCommit>();
+
+		try {
+			
+			JSONParser jsonParser = new JSONParser();
+			JSONArray names = (JSONArray) jsonParser.parse(reader);
+
+			Iterator i = names.iterator();
+			
+			// take each value from the json array separately
+			int count = names.size();
+			while (i.hasNext()) {
+				ItemCommit itemCommit = new ItemCommit();
+				JSONObject innerObj = (JSONObject) i.next();				
+				
+				itemCommit.setId(count--);
+				itemCommit.setCommitId((String)innerObj.get("id"));
+				itemCommit.setTitle((String)innerObj.get("title"));
+				itemCommit.setShortId((String)innerObj.get("short_id"));
+				itemCommit.setAuthorName((String)innerObj.get("author_name"));
+				itemCommit.setAuthorEmail((String)innerObj.get("author_email"));
+				
+				//String creationDateStr = (String)innerObj.get("created_at");
+				
+				
+				//itemCommit.setCreationDate((String)innerObj.get("created_at"));
+				itemCommit.setMessage((String)innerObj.get("message"));
+
+				itemCommits_.add(itemCommit);
+
+			}
+
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			  _logger.error ("Error getting commits form GitLab", e);
+
+		}
+		return itemCommits_;
+
+	}
+
+
+    
     public String getItemUrl(String itemNumber) {
 		return getGitLabUrl() + itemNumber + "/repository/archive.zip?private_token=" + getPrivateToken();
     }
@@ -231,4 +473,5 @@ public class GitLabService {
     }
 
     
+
 }

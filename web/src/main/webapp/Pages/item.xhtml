@@ -687,7 +687,7 @@
 			var content = $('#content').val();
 			var version = $('#versionToken').val();
 			
-			var queryString = 'type='+ content + '&amp;bankId=' + bankId + '&amp;id=' + itemId + '&amp;isaap=' + buildAccessibilityString();
+			var queryString = 'type='+ content + '&amp;bankId=' + bankId + '&amp;id=' + itemId +  '&amp;version=' + version + '&amp;isaap=' + buildAccessibilityString();
 			//var queryString = 'type=' + content +  '&amp;bankId=' + bankId + '-' + itemId + '?isaap=' + buildAccessibilityString();	
 			window.location.href = '#{request.contextPath}' + '/Pages/item.xhtml?' + queryString;
 		});
@@ -704,7 +704,7 @@
 			var isaap = $('#isaapToken').val();
 			
 			if(!isEmpty(bankId)) {
-				$.get('#{request.contextPath}' + "/item/" + bankId + '-' + itemId + '?isaap=' + isaap).done(function(data) {
+				$.get('#{request.contextPath}' + "/item/" + bankId + '-' + itemId + '?version=' + version + '&amp;isaap=' + isaap).done(function(data) {
 					IRiS.loadToken(vendorId, data).done(function() {
 						enableAll();
 					}).fail(function(err) {

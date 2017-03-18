@@ -51,9 +51,16 @@ public class RenderItemController {
 	@ResponseBody
 	public String getContent(@PathVariable("item") String itemId,
 			@RequestParam(value = "isaap", required = false, defaultValue = "") String accommodationCodes,
+			@RequestParam(value = "version", required = false, defaultValue = "") String version,
 			HttpServletResponse response) {
 		String[] codes = accommodationCodes.split(";");
-		ItemRequestModel item = new ItemRequestModel("I-" + itemId, codes);
+		ItemRequestModel item = null;
+		
+		if(version!=null && version.trim().length()>0)
+			item = new ItemRequestModel("I-" + itemId + "-" + version, codes);
+		else
+			item = new ItemRequestModel("I-" + itemId, codes);
+		
 		return item.generateJsonToken();
 	}
 
