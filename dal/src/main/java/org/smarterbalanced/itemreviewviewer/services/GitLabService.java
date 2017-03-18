@@ -10,6 +10,12 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -21,12 +27,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.http.HttpEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -42,7 +42,7 @@ import org.springframework.util.StringUtils;
 
 @Component
 @Scope("singleton")
-public class GitLabService {
+public class GitLabService implements IGitLabService {
 	
 	private static String DESTINATION_ZIP_FILE_LOCATION;
 	private static final String FILE_EXTENTION = ".zip";
@@ -63,75 +63,85 @@ public class GitLabService {
 	}
 	
 
+	/* (non-Javadoc)
+	 * @see org.smarterbalanced.itemreviewviewer.services.IGitLabService#downloadItem(java.lang.String)
+	 */
+	@Override
 	public boolean downloadItem(String itemNumber) throws ContentException {
-
+		String itemURL = getGitLabItemUrl(itemNumber);
+		
 		try {
 
-			String itemURL = getGitLabItemUrl(itemNumber);
+			URL gitLabItemURL = new URL(itemURL);
 			
 			String downloadLocation = DESTINATION_ZIP_FILE_LOCATION + itemNumber + FILE_EXTENTION;
+			File zipFile = new File(downloadLocation);
 			_logger.info("Getting the Item with URL:" + itemURL + " with file name:" + downloadLocation + " Started");
 			boolean isSucceed = true;
-			CloseableHttpClient httpClient = HttpClients.createDefault();
-			HttpGet httpGet = new HttpGet(itemURL.toString());
-			httpGet.addHeader(USER_AGENT, USER_AGENT_VALUE);
-			// httpGet.addHeader(REFERRER, REFERRER_VALUE);
-			try {
-				CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
-				HttpEntity fileEntity = httpResponse.getEntity();
-				if (fileEntity != null) {
-					FileUtils.copyInputStreamToFile(fileEntity.getContent(), new File(downloadLocation));
-				}
-			} catch (IOException e) {
-				_logger.error("IO Exception occurred while Getting the Item with URL:" + itemURL + e.getMessage());
-				throw new ContentException(String.format("UnKnown Exception Occurred while getting item ID: %s" + e.getMessage()));
-			}
-			httpGet.releaseConnection();
+			
+			ReadableByteChannel rbc = Channels.newChannel(gitLabItemURL.openStream());
+			FileOutputStream fos = new FileOutputStream(downloadLocation);
+			fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+			
+			fos.close();
+			rbc.close();
+			
 			_logger.info("Getting the Item with URL:" + itemURL + " with file name:" + downloadLocation + " Success");
 			return isSucceed;
 
 		} catch (Exception e) {
 			// TODO: handle exception
+			_logger.error("IO Exception occurred while Getting the Item with URL:" + itemURL + e.getMessage());
+			throw new ContentException(String.format("UnKnown Exception Occurred while getting item ID: %s" + e.getMessage()));
+
 		}
 
-		return false;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.smarterbalanced.itemreviewviewer.services.IGitLabService#getMetaData(java.lang.String)
+	 */
+	@Override
 	public MetaData getMetaData(String itemNumber) {
 		try {
-			
-			if(!isItemExistsLocally(itemNumber)) {
-				downloadItem(itemNumber);
+
+			if (!isItemExistsLocally(itemNumber) && downloadItem(itemNumber))
 				unzip(itemNumber);
-			}	
-			
+
 			String metadataFilePath = DESTINATION_ZIP_FILE_LOCATION + itemNumber + File.separator + "metadata.xml";
-			File metadataFile = new File(metadataFilePath);
-				String xmlFile = metadataFile.getAbsolutePath();
-				MetaData metaData = null;
-				try {
-					_logger.info("unmarshalling metadata file started");
-					JAXBContext jc = JAXBContext.newInstance(MetaData.class);
-					Unmarshaller unmarshaller = jc.createUnmarshaller();
-					File xml = new File(xmlFile);
-					metaData = (MetaData) unmarshaller.unmarshal(xml);
-					_logger.info("unmarshalling metadata file completed");
-				} catch (JAXBException e) {
-					_logger.error("Error parsing metadata file.", e);
-				} catch (Exception e) {
-					_logger.error("unknown error occurred while parsing metadata file.", e);
-				}
+			//String xmlFile = metadataFile.getAbsolutePath();
+			MetaData metaData = null;
+			try {
+				
+				_logger.info("unmarshalling metadata file started");
+				
+				JAXBContext jc = JAXBContext.newInstance(MetaData.class);
+				Unmarshaller unmarshaller = jc.createUnmarshaller();
+				Path path = Paths.get(metadataFilePath);
+		    	BufferedReader reader = Files.newBufferedReader(path, Charset.forName("UTF-8"));
+				metaData = (MetaData) unmarshaller.unmarshal(reader);
+				reader.close();
+				_logger.info("unmarshalling metadata file completed");
+				
+			} catch (JAXBException e) {
+				_logger.error("Error parsing metadata file.", e);
+			} catch (Exception e) {
+				_logger.error("unknown error occurred while parsing metadata file.", e);
+			}
 			return metaData;
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 		return null;
 	}
-
 	
 
 	
+	/* (non-Javadoc)
+	 * @see org.smarterbalanced.itemreviewviewer.services.IGitLabService#isItemExistsLocally(java.lang.String)
+	 */
+	@Override
 	public boolean isItemExistsLocally(String itemNumber) {
 
 		try {
@@ -149,6 +159,10 @@ public class GitLabService {
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see org.smarterbalanced.itemreviewviewer.services.IGitLabService#unzip(java.lang.String)
+	 */
+	@Override
 	public String unzip(String itemNumber) throws IOException {
 		
 		String zipFilePath = DESTINATION_ZIP_FILE_LOCATION + itemNumber + FILE_EXTENTION;
@@ -209,7 +223,11 @@ public class GitLabService {
     	return SettingsReader.get("gitlab.private.token");
     }
     
-    public String getGitLabItemUrl(String itemName) {
+    /* (non-Javadoc)
+	 * @see org.smarterbalanced.itemreviewviewer.services.IGitLabService#getGitLabItemUrl(java.lang.String)
+	 */
+    @Override
+	public String getGitLabItemUrl(String itemName) {
     	try {
     		String[] parts = itemName.split("-");
     		
@@ -260,6 +278,10 @@ public class GitLabService {
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.smarterbalanced.itemreviewviewer.services.IGitLabService#getItemCommits(java.lang.String, java.lang.String, java.lang.String)
+	 */
+	@Override
 	public List<ItemCommit> getItemCommits(String type, String bankId, String itemNumber) {
 		//init("commits");
 		

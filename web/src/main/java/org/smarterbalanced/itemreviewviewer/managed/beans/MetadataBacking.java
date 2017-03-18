@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.model.MetaData;
 import org.smarterbalanced.itemreviewviewer.services.GitLabService;
+import org.smarterbalanced.itemreviewviewer.services.IGitLabService;
 import org.springframework.context.annotation.Scope;
 import org.springframework.util.StringUtils;
 
@@ -44,7 +45,7 @@ public class MetadataBacking {
 				}	
 				
 				if(StringUtils.hasLength(id.toString())) {
-					GitLabService gitLabService = new GitLabService();
+					IGitLabService gitLabService = new GitLabService();
 					metadata = gitLabService.getMetaData(id.toString());
 				}	
 

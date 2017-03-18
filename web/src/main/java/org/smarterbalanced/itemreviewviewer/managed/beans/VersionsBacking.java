@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.model.ItemCommit;
 import org.smarterbalanced.itemreviewviewer.model.ItemTag;
 import org.smarterbalanced.itemreviewviewer.services.GitLabService;
+import org.smarterbalanced.itemreviewviewer.services.IGitLabService;
 import org.smarterbalanced.itemviewerservice.dal.Config.SettingsReader;
 import org.springframework.context.annotation.Scope;
 import org.springframework.util.StringUtils;
@@ -56,7 +57,7 @@ public class VersionsBacking {
 				irisPage = SettingsReader.get(ITEM_REVIEW_PAGE);
 
 				String id = type+ "-" + bankId + "-" + itemNumber;
-				GitLabService gitLabService = new GitLabService();
+				IGitLabService gitLabService = new GitLabService();
 				
 				if(versionsType.equalsIgnoreCase("commits")) {
 					itemCommits = gitLabService.getItemCommits(type, bankId, itemNumber);

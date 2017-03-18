@@ -36,8 +36,8 @@
 	<entry key="iris.security.saml.keystore.pass">nalle123</entry>
 	<entry key="iris.security.saml.privatekey.pass">nalle123</entry>
 	<entry key="iris.security.dir">/usr/local/tomcat/webapps/iris/WEB-INF/classes/security</entry>
-	<entry key="gitlab.private.token">Gb_c4nLnUmKGy8VAWEy2</entry>
-	<entry key="gitlab.url">https://itembank.smarterbalanced.org/api/v3/projects/itemreviewapp%2F</entry>
+	<entry key="gitlab.private.token">xtcHXxrFBMsyPagvd8c9</entry>
+	<entry key="gitlab.url">http://ba-apps-t01.it.ucla.edu:9080/api/v3/projects/itemreviewapp%2F</entry>
 	
 	<entry key="iris.DictionaryUrl">http://dictionary.cass.oregonstate.edu/</entry>
 	<!-- End Item Preview Settings -->

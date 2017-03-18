@@ -7,8 +7,7 @@ import java.net.MalformedURLException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.smarterbalanced.itemreviewviewer.model.MetaData;
-import org.smarterbalanced.itemreviewviewer.services.GitLabService;
+import org.smarterbalanced.itemreviewviewer.services.IGitLabService;
 import org.smarterbalanced.itemviewerservice.dal.Config.SettingsReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -33,7 +32,7 @@ public class ItemReviewViewerBuilder implements IContentBuilder {
 	private ConfigBuilder _directoryScanner = null;
 
 	@Autowired
-	private GitLabService gitLabService;
+	private IGitLabService gitLabService;
 
 	/**
 	 * 
@@ -106,20 +105,24 @@ public class ItemReviewViewerBuilder implements IContentBuilder {
 			String[] parts = itemName.split("-");
     		boolean isItemMasterVersion = !(parts.length > 3 && parts[3].length() > 0);
 			
-			if(isItemMasterVersion) {
+    		if(!gitLabService.isItemExistsLocally(itemName)) {
+				gitLabService.downloadItem(itemName);
+				gitLabService.unzip(itemName);
+			}
+
+    		/*
+    		if(isItemMasterVersion) {
 				gitLabService.downloadItem(itemName);
 				gitLabService.unzip(itemName);
 			}
 			else {
 	    		if(!gitLabService.isItemExistsLocally(itemName)) {
 					gitLabService.downloadItem(itemName);
+					gitLabService.unzip(itemName);
 				}
-				gitLabService.unzip(itemName);
 			}
-    		
-			
-			MetaData metaData = gitLabService.getMetaData(itemName);
-			
+			*/
+
 			String contentPath = SettingsReader.getZipFileLocation() + itemName;
 			
 			_logger.info("Loading and scanning the  the Item in Directory Started");
@@ -148,11 +151,11 @@ public class ItemReviewViewerBuilder implements IContentBuilder {
 
 	}
 
-	public GitLabService getGitLabService() {
+	public IGitLabService getGitLabService() {
 		return gitLabService;
 	}
 
-	public void setGitLabService(GitLabService gitLabService) {
+	public void setGitLabService(IGitLabService gitLabService) {
 		this.gitLabService = gitLabService;
 	}
 
