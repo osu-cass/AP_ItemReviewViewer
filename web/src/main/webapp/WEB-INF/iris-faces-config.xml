@@ -4,13 +4,13 @@
 	version="2.1">
 	<managed-bean>
 		<managed-bean-name>versionsBacking</managed-bean-name>
-		<managed-bean-class>org.smarterbalanced.itemreviewviewer.managed.beans.VersionsBacking</managed-bean-class>
+		<managed-bean-class>org.smarterbalanced.irv.web.managed.beans.VersionsBacking</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 
 	<managed-bean>
 		<managed-bean-name>metadatBacking</managed-bean-name>
-		<managed-bean-class>org.smarterbalanced.itemreviewviewer.managed.beans.MetadataBacking</managed-bean-class>
+		<managed-bean-class>org.smarterbalanced.irv.web.managed.beans.MetadataBacking</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 
