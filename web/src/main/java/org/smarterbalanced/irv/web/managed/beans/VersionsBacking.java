@@ -3,6 +3,7 @@
  */
 package org.smarterbalanced.irv.web.managed.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -62,9 +63,12 @@ public class VersionsBacking {
 				if(versionsType.equalsIgnoreCase("commits")) {
 					itemCommits = gitLabService.getItemCommits(type, bankId, itemNumber);
 					
-					int index = 0;
+					if(itemCommits == null)
+						itemCommits = new ArrayList<ItemCommit>();
+					
+					int index = itemCommits.size();
 					for (ItemCommit itemCommit : itemCommits) {
-						itemCommit.setIndex(++index);
+						itemCommit.setIndex(index--);
 						itemCommit.setLink(request.getContextPath() + irisPage +  queryString + "&version=" + itemCommit.getId());
 					}
 				}
