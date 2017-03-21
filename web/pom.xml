@@ -124,7 +124,7 @@
     </dependencies>
 
     <build>
-        <finalName>itemreviewviewer</finalName>
+        <finalName>iris</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -142,7 +142,6 @@
                                 <exclude>WEB-INF/web.xml</exclude>
                                 <exclude>WEB-INF/classes/settings-mysql.xml</exclude>
                                 <exclude>WEB-INF/classes/root-context.xml</exclude>
-                                <exclude>/IrisPages/</exclude>
                             </excludes>
                         </overlay>
                     </overlays>

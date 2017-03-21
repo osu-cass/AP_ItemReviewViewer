@@ -5,7 +5,7 @@
   <artifactId>itemreviewviewer</artifactId>
   <packaging>pom</packaging>
   <version>1.1-SNAPSHOT</version>
-  <name>Itemreviewviewer Maven Webapp</name>
+  <name>Item Review Viewer Maven Webapp</name>
   <url>http://maven.apache.org</url>
 
   <!-- Version variables -->
@@ -17,7 +17,7 @@
   </properties>
 
   <modules>
-    <module>dal</module>
+    <module>gitlab</module>
     <module>core</module>
     <module>web</module>
   </modules>

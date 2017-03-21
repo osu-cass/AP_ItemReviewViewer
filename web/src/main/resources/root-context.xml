@@ -48,11 +48,11 @@
 	<context:component-scan base-package="tds.student.web" />
 	<context:component-scan base-package="tds.student.configuration" />
 	<context:component-scan base-package="tds.itemscoringengine" />
+	<context:component-scan base-package="org.smarterbalanced.irv" />
 
 	<beans:bean id="iTDSLogger" class="tds.iris.logger.IrisLogger" scope="singleton" />
-	<!--  <beans:bean id="iContentBuilder" class="org.smarterbalanced.itemreviewviewer.content.ItemViewerContentBuilder" scope="singleton" />-->
-	<beans:bean id="iContentBuilder" class="org.smarterbalanced.itemreviewviewer.content.ItemReviewViewerBuilder" scope="singleton" />
-
+	<!--  <beans:bean id="iContentBuilder" class="org.smarterbalanced.irv.web.content.ItemViewerContentBuilder" scope="singleton" />-->
+	<beans:bean id="iContentBuilder" class="org.smarterbalanced.irv.web.content.ItemReviewViewerBuilder" scope="singleton" />
 	<!-- HTTP web helper -->
 	<beans:bean id="httpWebHelper" class="AIR.Common.Web.HttpWebHelper" />
 

@@ -1,0 +1,68 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+          <!-- XML Schema Generated from XML Document on Tue Mar 21 2017 00:50:10 GMT-0700 (PDT) -->
+          <!-- with XmlGrid.net Free Online Service http://xmlgrid.net -->
+       <xs:element name="metadata">
+              <xs:complexType>
+                     <xs:sequence>
+                            <xs:element name="smarterAppMetadata">
+                                   <xs:complexType>
+                                          <xs:sequence>
+                                                 <xs:element name="Identifier" type="xs:int"></xs:element>
+                                                 <xs:element name="SmarterAppItemDescriptor" type="xs:string"></xs:element>
+                                                 <xs:element name="InteractionType" type="xs:string"></xs:element>
+                                                 <xs:element name="Version" type="xs:int"></xs:element>
+                                                 <xs:element name="Subject" type="xs:string"></xs:element>
+                                                 <xs:element name="Language" maxOccurs="unbounded" type="xs:string"></xs:element>
+                                                 <xs:element name="SecurityStatus" type="xs:string"></xs:element>
+                                                 <xs:element name="MinimumGrade" type="xs:int"></xs:element>
+                                                 <xs:element name="IntendedGrade" type="xs:int"></xs:element>
+                                                 <xs:element name="MaximumGrade" type="xs:int"></xs:element>
+                                                 <xs:element name="BrailleType" type="xs:string"></xs:element>
+                                                 <xs:element name="AllowCalculator" type="xs:string"></xs:element>
+                                                 <xs:element name="MathematicalPractice" type="xs:int"></xs:element>
+                                                 <xs:element name="AssociatedTutorial" type="xs:int"></xs:element>
+                                                 <xs:element name="AssociatedWordlist" type="xs:int"></xs:element>
+                                                 <xs:element name="StandardPublication" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                               <xs:sequence>
+                                                                      <xs:element name="Publication" type="xs:string"></xs:element>
+                                                                      <xs:element name="PrimaryStandard" type="xs:string"></xs:element>
+                                                                      <xs:element name="SecondaryStandard" maxOccurs="unbounded" type="xs:string"></xs:element>
+                                                                  </xs:sequence>
+                                                           </xs:complexType>
+                                                    </xs:element>
+                                                 <xs:element name="MaximumNumberOfPoints" type="xs:int"></xs:element>
+                                                 <xs:element name="ScorePoints" type="xs:string"></xs:element>
+                                                 <xs:element name="ItemSpecFormat" type="xs:string"></xs:element>
+                                                 <xs:element name="StimulusFormat" type="xs:string"></xs:element>
+                                                 <xs:element name="EducationalDifficulty" type="xs:string"></xs:element>
+                                                 <xs:element name="DepthOfKnowledge" type="xs:int"></xs:element>
+                                                 <xs:element name="AdministrationDate" type="xs:string"></xs:element>
+                                                 <xs:element name="IrtDimension" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                               <xs:sequence>
+                                                                      <xs:element name="IrtDimensionPurpose" type="xs:string"></xs:element>
+                                                                      <xs:element name="IrtModelType" type="xs:string"></xs:element>
+                                                                      <xs:element name="IrtStatDomain" type="xs:string"></xs:element>
+                                                                      <xs:element name="IrtScore" type="xs:int"></xs:element>
+                                                                      <xs:element name="IrtWeight" type="xs:int"></xs:element>
+                                                                      <xs:element name="IrtParameter" maxOccurs="unbounded">
+                                                                             <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                           <xs:element name="Name" type="xs:string"></xs:element>
+                                                                                           <xs:element name="Value" type="xs:int"></xs:element>
+                                                                                       </xs:sequence>
+                                                                                </xs:complexType>
+                                                                         </xs:element>
+                                                                  </xs:sequence>
+                                                           </xs:complexType>
+                                                    </xs:element>
+                                             </xs:sequence>
+                                      </xs:complexType>
+                               </xs:element>
+                            <xs:element name="OtherMetadata1" type="xs:string"></xs:element>
+                            <xs:element name="OtherMetadata2" type="xs:string"></xs:element>
+                        </xs:sequence>
+                 </xs:complexType>
+          </xs:element>
+   </xs:schema>
