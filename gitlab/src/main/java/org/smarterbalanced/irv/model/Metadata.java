@@ -3,9 +3,9 @@ package org.smarterbalanced.irv.model;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="metadata")
-public class MetaData {
+public class Metadata {
 	
-	public MetaData() {
+	public Metadata() {
 	}
 	
 	SmarterAppMetadata smarterAppMetadata;

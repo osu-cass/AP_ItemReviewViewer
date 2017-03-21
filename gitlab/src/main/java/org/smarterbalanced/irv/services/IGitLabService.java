@@ -3,14 +3,14 @@ package org.smarterbalanced.irv.services;
 import java.io.IOException;
 import java.util.List;
 
+import org.smarterbalanced.irv.model.Metadata;
 import org.smarterbalanced.irv.model.ItemCommit;
-import org.smarterbalanced.irv.model.MetaData;
 
 public interface IGitLabService {
 
 	boolean downloadItem(String itemNumber) throws GitLabException;
 
-	MetaData getMetaData(String itemNumber) throws GitLabException;
+	Metadata getMetadata(String itemNumber) throws GitLabException;
 
 	boolean isItemExistsLocally(String itemNumber);
 

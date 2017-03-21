@@ -1,7 +1,6 @@
 package org.smarterbalanced.irv.services;
 
 import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -9,25 +8,22 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import javax.annotation.Resource;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamReader;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smarterbalanced.irv.config.SettingsReader;
+import org.smarterbalanced.irv.model.Metadata;
 import org.smarterbalanced.irv.model.ItemCommit;
-import org.smarterbalanced.irv.model.MetaData;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -95,7 +91,7 @@ public class GitLabService implements IGitLabService {
 	 * @see org.smarterbalanced.irv.services.IGitLabService#getMetaData(java.lang.String)
 	 */
 	@Override
-	public MetaData getMetaData(String itemNumber) throws GitLabException  {
+	public Metadata getMetadata(String itemNumber) throws GitLabException  {
 		try {
 
 			if (!isItemExistsLocally(itemNumber) && downloadItem(itemNumber))
@@ -105,13 +101,16 @@ public class GitLabService implements IGitLabService {
 			try {
 				
 				_logger.info("unmarshalling metadata file started");
-				
-				JAXBContext jc = JAXBContext.newInstance(MetaData.class);
+
+		    	FileInputStream fis = new FileInputStream(metadataFilePath);
+		    	XMLStreamReader xsr = XMLInputFactory.newFactory().createXMLStreamReader(fis);
+		    	XMLReaderWithoutNamespace xr = new XMLReaderWithoutNamespace(xsr);
+		    	
+				JAXBContext jc = JAXBContext.newInstance(Metadata.class);
 				Unmarshaller unmarshaller = jc.createUnmarshaller();
-				Path path = Paths.get(metadataFilePath);
-		    	BufferedReader reader = Files.newBufferedReader(path, Charset.forName("UTF-8"));
-				MetaData metadata = (MetaData) unmarshaller.unmarshal(reader);
-				reader.close();
+				Metadata metadata = (Metadata) unmarshaller.unmarshal(xr);
+				fis.close();
+
 				_logger.info("unmarshalling metadata file completed");
 				
 				return metadata;

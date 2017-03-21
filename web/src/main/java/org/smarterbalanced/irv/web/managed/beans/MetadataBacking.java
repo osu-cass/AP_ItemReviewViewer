@@ -5,7 +5,7 @@ import javax.faces.context.FacesContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.smarterbalanced.irv.model.MetaData;
+import org.smarterbalanced.irv.model.Metadata;
 import org.smarterbalanced.irv.services.GitLabService;
 import org.smarterbalanced.irv.services.IGitLabService;
 import org.springframework.context.annotation.Scope;
@@ -20,13 +20,13 @@ import org.springframework.util.StringUtils;
 public class MetadataBacking {
 	
 	private static final Logger _logger = LoggerFactory.getLogger(MetadataBacking.class);
-	private MetaData metadata;
+	private Metadata metadata;
 
 	public MetadataBacking() {
 
 	}
 
-	public MetaData getMetadata() {
+	public Metadata getMetadata() {
 		if (metadata == null) {
 			try {
 				String type = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("type");
@@ -46,7 +46,7 @@ public class MetadataBacking {
 				
 				if(StringUtils.hasLength(id.toString())) {
 					IGitLabService gitLabService = new GitLabService();
-					metadata = gitLabService.getMetaData(id.toString());
+					metadata = gitLabService.getMetadata(id.toString());
 				}	
 
 			} catch (Exception e) {

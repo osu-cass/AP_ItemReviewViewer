@@ -4,6 +4,7 @@
 package org.smarterbalanced.irv.services;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,8 +12,10 @@ import java.nio.file.Paths;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamReader;
 
-import org.smarterbalanced.irv.model.MetaData;
+import org.smarterbalanced.irv.metadata.Metadata;;
 
 /**
  * @author kthotti
@@ -34,13 +37,15 @@ public class Test {
 		// TODO Auto-generated method stub
 		
 	    try{
-			JAXBContext jc = JAXBContext.newInstance(MetaData.class);
+	    	FileInputStream fis = new FileInputStream("/Users/kthotti/sbac/metadata.xml");
+	    	XMLStreamReader xsr = XMLInputFactory.newFactory().createXMLStreamReader(fis);
+	    	XMLReaderWithoutNamespace xr = new XMLReaderWithoutNamespace(xsr);
+	    	
+			JAXBContext jc = JAXBContext.newInstance(Metadata.class);
 			Unmarshaller unmarshaller = jc.createUnmarshaller();
-			Path path = Paths.get("/Users/kthotti/sbac/gitlab/item-187-3212/metadata.xml");
-	    	BufferedReader reader = Files.newBufferedReader(path, Charset.forName("UTF-8"));
-			MetaData metaData = (MetaData) unmarshaller.unmarshal(reader);
-			reader.close();
-			System.out.println(metaData.getSmarterAppMetadata().getAllowCalculator());
+			Metadata metaData = (Metadata) unmarshaller.unmarshal(xr);
+			fis.close();
+			System.out.println(metaData.getSmarterAppMetadata().getIdentifier());
 
 	    }catch(Exception ex){
 	      ex.printStackTrace(); //handle an exception here

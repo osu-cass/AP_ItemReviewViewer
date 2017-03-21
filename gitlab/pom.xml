@@ -103,4 +103,41 @@
 
   </dependencies>
 
+
+<build>
+    <pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </pluginManagement>
+    <!--  
+    <plugins>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>jaxb2-maven-plugin</artifactId>
+            <version>2.3.1</version>
+            <executions>
+                <execution>
+                    <id>xjc</id>
+                    <goals>
+                        <goal>xjc</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+			<sources>
+	             <source>src/main/resources/item_metadata.xsd</source>
+            </sources> 
+                <packageName>org.smarterbalanced.irv.metadata</packageName>
+            </configuration>
+        </plugin>
+    </plugins>-->
+</build>
 </project>

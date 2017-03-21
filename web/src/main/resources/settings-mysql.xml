@@ -23,7 +23,7 @@
 	
 	<!-- Item Review Viewer Properties -->
 	<entry key="iris.ContentPath">/Users/kthotti/sbac/content</entry>
-	<entry key="iris.GitLabItemUrl">http://localhost:8080/itemreviewviewer/api/item/item-187-</entry>
+	<entry key="iris.GitLabItemUrl">4</entry>
 	<entry key="iris.ZipFileLocation">/Users/kthotti/sbac/gitlab/</entry>
 	<entry key="iris.GitLabStimuliUrl">http://localhost:8080/webapi/api/item/item-187-</entry>
 	<entry key="iris.GitLabStimuliVersionUrl">http://localhost:8080/webapi/api/item/commits</entry>
