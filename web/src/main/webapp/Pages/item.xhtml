@@ -83,9 +83,9 @@
 						<input id="versionToken" type="hidden" value="#{param['version']}" />
 						<input id="isaapToken" type="hidden" value="#{param['isaap']}" />
 						<button id="btnLoadToken" class="btn btn-primary">Load</button>
-						<button class="btn btn-primary" data-toggle="modal"
+						<button class="btn btn-primary pull-right" data-toggle="modal"
 							data-target="#metadata-modal-container">Metadata</button>
-						<button class="btn btn-primary" data-toggle="modal"
+						<button class="btn btn-primary pull-right" style="margin-right: 2px;" data-toggle="modal"
 							data-target="#accessibility-modal-container">Accessibility</button>
 			</div>
 		</div>
@@ -137,171 +137,143 @@
 					<!-- First 2 rows grouping -->
 					<div class="row">
 						<div class="col-md-3 form-group">
-							<label>Identifier</label>
+							<label>Identifier: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.identifier}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.identifier}" />
 						</div>
 						<div class="col-md-3 form-group">
-							<label>ItemAuthorIdentifier</label>
+							<label>ItemAuthorIdentifier: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.itemAuthorIdentifier}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.itemAuthorIdentifier}" />
 						</div>
 						<div class="col-md-3 form-group">
-							<label>ItemSpecFormat</label>
+							<label>ItemSpecFormat: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.itemSpecFormat}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.itemSpecFormat}" />
 						</div>
 						<div class="col-md-3 form-group">
-							<label>LastModifiedBy</label>
+							<label>LastModifiedBy: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.lastModifiedBy}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.lastModifiedBy}" />
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-3">
-							<label>SecurityStatus</label>
+							<label>SecurityStatus: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.securityStatus}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.securityStatus}" />
 						</div>
 						<div class="col-md-3">
-							<label>SmarterAppItemDescriptor</label>
+							<label>SmarterAppItemDescriptor: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.smarterAppItemDescriptor}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.smarterAppItemDescriptor}" />
 						</div>
 						<div class="col-md-3">
-							<label>Status</label>
+							<label>Status: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.status}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.status}" />
 						</div>
 						<div class="col-md-3">
-							<label>StimulusFormat</label>
+							<label>StimulusFormat: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.stimulusFormat}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.stimulusFormat}" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-3">
-							<label>Subject</label>
+							<label>Subject: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.subject}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.subject}" />
 						</div>
 						<div class="col-md-3">
-							<label>Version</label>
+							<label>Version: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.version}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.version}" />
 						</div>
 						<div class="col-md-3">
-							<label>IntendedGrade</label>
+							<label>IntendedGrade: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.intendedGrade}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.intendedGrade}" />
 						</div>
 						<div class="col-md-3">
-							<label>MinimumGrade</label>
+							<label>MinimumGrade: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.minimumGrade}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.minimumGrade}" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-3">
-							<label>MaximumGrade</label>
+							<label>MaximumGrade: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.maximumGrade}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.maximumGrade}" />
 						</div>
 						<div class="col-md-3">
-							<label>DepthOfKnowledge</label>
+							<label>DepthOfKnowledge: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.depthOfKnowledge}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.depthOfKnowledge}" />
 						</div>
 						<div class="col-md-3">
-							<label>InteractionType</label>
+							<label>InteractionType: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.interactionType}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.interactionType}" />
 						</div>
 						<div class="col-md-3">
-							<label>MaximumNumberOfPoints</label>
+							<label>MaximumNumberOfPoints: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.maximumNumberOfPoints}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.maximumNumberOfPoints}" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-3">
-							<label>AllowCalculator</label>
+							<label>AllowCalculator: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.allowCalculator}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.allowCalculator}" />
 						</div>
 						<div class="col-md-3">
-							<label>CopyrightAndOtherRestrictions</label>
+							<label>CopyrightAndOtherRestrictions: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.copyrightAndOtherRestrictions}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.copyrightAndOtherRestrictions}" />
 						</div>
 						<div class="col-md-3">
-							<label>BrailleType</label>
+							<label>BrailleType: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.brailleType}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.brailleType}" />
 						</div>
 						<div class="col-md-3">
-							<label>EnemyItem</label>
+							<label>EnemyItem: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.enemyItem}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.enemyItem}" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-3">
-							<label>Standard Publication 1</label>
+							<label>Standard Publication 1: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.standardPublication.publication}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.standardPublication.publication}" />
 						</div>
 						<div class="col-md-3">
-							<label>Standard Publication 2</label>
+							<label>Standard Publication 2: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.standardPublication.primaryStandard}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.standardPublication.primaryStandard}" />
 						</div>
 						<div class="col-md-3">
-							<label>AssociatedTutorial</label>
+							<label>AssociatedTutorial: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.associatedTutorial}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.associatedTutorial}" />
 						</div>
 						<div class="col-md-3">
-							<label>AssociatedWordlist</label>
+							<label>AssociatedWordlist: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.associatedWordlist}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.associatedWordlist}" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-3">
-							<label>Language</label>
+							<label>Language: </label>
 							<h:outputText
-								value="#{metadatBacking.metadata.smarterAppMetadata.language}"
-								class="form-control" />
+								value="#{metadatBacking.metadata.smarterAppMetadata.language}" />
 						</div>
-						<div class="col-md-3"></div>
-						<div class="col-md-3"></div>
-						<div class="col-md-3"></div>
 					</div>
 				</div>
 				<div class="modal-footer">
