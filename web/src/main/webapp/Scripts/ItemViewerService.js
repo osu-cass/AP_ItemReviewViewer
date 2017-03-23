@@ -1,15 +1,14 @@
 /*
- This code implements the XDM API for use within item preview app.
- */
+This code implements the XDM API for use within item preview app.
+*/
 
 (function (XDM, CM) {
 
     // we load one page in advance, but we don't want that to cause a cascade of page show/load
-    Blackbox.getConfig().preventShowOnLoad = false;
+    Blackbox.getConfig().preventShowOnLoad = true;
     //Adding this onto TDS for now so it is available in the dictionary handler.
     var irisUrl = location.href;
     var buttonsLoaded = false;
-    CM.accessibilityEnabled = true;
     // Functions that are used by toolbar buttons
 
     //Calculator
@@ -44,7 +43,7 @@
     };
 
 
-    // setup cross domain api
+    // setup cross domain api 
     XDM.init(window);
 
 
@@ -143,6 +142,7 @@
         page.render();
         page.once('loaded', function () {
             TDS.Dialog.hideProgress();
+            CM.accessibilityEnabled = true;
             page.show();
             CM.accessibilityEnabled = false;
             deferred.resolve();
@@ -158,12 +158,115 @@
             Blackbox.showButton('btnDictionary', dictionaryBtn, true);
         }
 
+        /*
+         If the print size is specified we need to set it because the previous
+         If not set it to zero because this may not be the first item we are loading and the zoom level
+         may have been set when we loaded an item earlier.
+         */
         var printSize = CM.getAccProps().getPrintSize();
         if(printSize) {
             CM.getZoom().setLevel(printSize, true);
         } else {
             CM.getZoom().setLevel(0, true);
         }
+
+        return deferred.promise();
+    }
+
+    var loadedDefaultAccommodations = false;
+
+    function parseAccommodations(segmentId, position, label, segmentEl) {
+        var types = [];
+
+        $(segmentEl).find('accommodation').each(function () {
+            var $this = $(this);
+
+            types.push({
+                name: $this.attr('type'),
+
+                values: [{
+                    name: $this.attr('name'),
+                    code: $this.attr('code'),
+                    selected: $this.attr('selected') === 'true',
+                    isDefault: true
+                }]
+            });
+        });
+
+        // clone default accommodations
+        var accs = Accommodations.Manager.getDefault().clone();
+
+        // overwrite with segment-specific accommodations
+        accs.importJson({
+            id: segmentId,
+            position: position,
+            label: label,
+            types: types
+        });
+
+        // se the first segment's accommodations as default
+        if (!loadedDefaultAccommodations) {
+            loadedDefaultAccommodations = true;
+            Accommodations.Manager.setDefault(segmentId);
+        }
+
+        return accs;
+    }
+
+    function loadGroupedContent(xmlDoc) {
+
+        if (CM.getPages().length > 0) {
+            throw new Error("content has already been loaded; cannot load grouped content");
+        }
+
+        if (typeof xmlDoc == 'string') {
+            xmlDoc = Util.Xml.parseFromString(xmlDoc);
+        }
+
+        $(xmlDoc).find('segment').each(function () {
+
+            var segmentId = $(this).attr('id');
+
+            // parse accommodations
+            var accommodations = parseAccommodations(segmentId, 'position', 'label', this);
+            Accommodations.Manager.add(accommodations);
+
+            // parse content
+            var contents = CM.Xml.create(this);
+            for (var i = 0; i < contents.length; ++i) {
+                var content = contents[i];
+                var page = CM.createPage(content);
+
+                // when a page is shown, we want to begin rendering the following page
+                page.once('show', function () {
+                    var pages = CM.getPages(),
+                        nextPageIndex = pages.indexOf(this) + 1,
+                        nextPage = pages[nextPageIndex];
+
+                    if (nextPage) {
+                        nextPage.render();
+                    }
+                });
+            }
+        });
+
+        // render the first page, and notify the caller when it is ready
+        var pages = CM.getPages(),
+            pageCount = pages.length,
+            firstPage = pages[0],
+            deferred = $.Deferred();
+
+        firstPage.once('loaded', function () {
+            deferred.resolve();
+
+            TDS.Dialog.hideProgress();
+            firstPage.show();
+
+            var navigability = getNavigability();
+            sendNavUpdate(navigability);
+        });
+
+        firstPage.render();
 
         return deferred.promise();
     }
@@ -194,28 +297,179 @@
         setAccommodations(token);
         return $.post(url, token, null, 'text').then(function (data) {
             return loadContent(data);
-        }, function (data) {
-            window.alert("Unable to load item.\n" +
-                "Please make sure you entered the correct bank and item numbers.")
+        });
+    }
 
+    function loadGroupedContentToken(vendorId, token) {
+        TDS.Dialog.showProgress();
+        var url = location.href + '/Pages/API/content/loadContent?id=' + vendorId;
+        setAccommodations(token);
+        return $.post(url, token, null, 'text').then(function (data) {
+            return loadGroupedContent(data);
         });
     }
-    
-    /*
-    function getToken(queryString){
-    	var url = irisUrl + 'Pages/API/'+queryString;
-       $.get(url, null, null, 'text').done(function (data) {
-    	   var vendorId = '2B3C34BF-064C-462A-93EA-41E9E3EB8333';
-    	   loadToken(vendorId, data);
+
+    function setItemResponse(item, response) {
+        if (item && item instanceof ContentItem) {
+            item.setResponse(response);
+        } else {
+            throw new Error('invalid item; could not set response');
+        }
+    }
+
+    function setItemLabel(item, label) {
+        if (item && item instanceof ContentItem) {
+            item.setQuestionLabel(label);
+        } else {
+            throw new Error('invalid item; could not set label');
+        }
+    }
+
+    function setResponse(value) {
+        var entity = CM.getCurrentPage().getActiveEntity();
+        //Begin Hack: 1327 remove <p> from response with prev/next button
+        while(value.search("&amp;")!=-1) // '&' comes as '&amp;amp;' in response
+        	value = value.replace("&amp;", "&"); 
+		value = $('<div/>').html(value).text();
+		while(value.search("<p>")!=-1)
+			value = value.replace ("<p>", "");
+		while(value.search("</p>")!=-1)
+			value = value.replace ("</p>", "</br>");
+		//End Hack
+        setItemResponse(entity, value);
+    }
+
+    function setResponses(itemResponses) {
+        var items = CM.getCurrentPage().getItems();
+        itemResponses.forEach(function (itemResponse) {
+            var itemFromPosition, itemFromId;
+            if (typeof itemResponse.position === 'number') {
+                itemFromPosition = items[itemResponse.position - 1];
+            }
+
+            if (itemResponse.id) {
+                itemFromId = items.filter(function (item) {
+                    var itemId = getItemId(item);
+                    return itemId === itemResponse.id;
+                })[0];
+            }
+
+            if (itemFromPosition && itemFromId && itemFromPosition !== itemFromId) {
+                throw new Error('item position and id do not match');
+            }
+
+            setItemResponse(itemFromPosition || itemFromId, itemResponse.response);
+
+            if (itemResponse.label) {
+                setItemLabel(itemFromPosition || itemFromId, itemResponse.label);
+            }
         });
     }
-    */
+
+    function getResponse() {
+        var entity = CM.getCurrentPage().getActiveEntity();
+        if (entity instanceof ContentItem) {
+            return entity.getResponse().value;
+        }
+        return null;
+    }
+
+    function getIndexOfCurrentPage() {
+        var currentPage = CM.getCurrentPage(),
+            pages = CM.getPages(),
+            index = pages.indexOf(currentPage);
+    }
+
+    function getNavigability() {
+        var n = {
+            pages: null,
+            index: 0,
+
+            haveNextPage: false,
+            haveNextPaginatedItem: false,
+
+            havePrevPage: false,
+            havePrevPaginatedItem: false,
+
+            update: function () {
+                this.haveNextPage = false;
+                this.haveNextPaginatedItem = false;
+                this.havePrevPage = false;
+                this.havePrevPaginatedItem = false;
+
+                var currentPage = CM.getCurrentPage();
+
+                this.pages = this.pages || CM.getPages(),
+                this.index = this.pages.indexOf(currentPage);
+
+                this.haveNextPage = this.index < this.pages.length - 1;
+                this.havePrevPage = this.index > 0;
+
+                var pagination = currentPage.plugins.get('pagination');
+
+                if (pagination) {
+                    this.haveNextPaginatedItem = pagination.haveNext();
+                    this.havePrevPaginatedItem = pagination.havePrev();
+                }
+            }
+        };
+
+        n.update();
+
+        return n;
+    }
+
+    function go(direction) {
+        var n = getNavigability();
+
+        // too easy to take wrong branch if we use terse logic here,
+        // so we'll just use the clear version
+
+        if (direction === 'next' && n.haveNextPaginatedItem) {
+            CM.requestNextPage()
+        }
+        else if (direction === 'prev' && n.havePrevPaginatedItem) {
+            CM.requestPreviousPage();
+        }
+        else if (direction === 'next' && n.haveNextPage) {
+            n.pages[++n.index].show();
+        }
+        else if (direction === 'prev' && n.havePrevPage) {
+            n.pages[--n.index].show();
+        }
+
+        n.update();
+        sendNavUpdate(n);
+    }
+
+    function showNext() {
+        go('next');
+    }
+
+    function showPrev() {
+        go('prev');
+    }
+
+    function sendNavUpdate(navigability) {
+        var n = navigability;
+        XDM(window.parent).post('IRiS:navUpdate',
+            n.havePrevPage || n.havePrevPaginatedItem,
+            n.haveNextPage || n.haveNextPaginatedItem
+        );
+    }
 
     XDM.addListener('IRiS:loadToken', loadToken);
-    //XDM.addListener('IRiS:getToken', getToken);
+    XDM.addListener('IRiS:loadContent', loadGroupedContentToken);
+    XDM.addListener('IRiS:getResponse', getResponse);
+    XDM.addListener('IRiS:setResponse', setResponse);
+    XDM.addListener('IRiS:setResponses', setResponses);
 
-    Blackbox.events.on('ready', function () {
+    XDM.addListener('IRiS:showNext', showNext);
+    XDM.addListener('IRiS:showPrev', showPrev);
+
+    /* Following is throwing error, not a blocker though
+     * Blackbox.events.on('ready', function () {
         XDM(window.parent).post('IRiS:ready');
-    });
+    });*/
 
 })(window.Util.XDM, window.ContentManager);

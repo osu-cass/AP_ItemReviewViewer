@@ -56,5 +56,16 @@ public class MetadataBacking {
 		}
 		return metadata;
 	}
+	
+	
+	public boolean isDisableCalculator() {
+		return getMetadata().getSmarterAppMetadata().getAllowCalculator()==null || "N".equalsIgnoreCase(getMetadata().getSmarterAppMetadata().getAllowCalculator());
+	}
 
+	public boolean isDisableSpanish() {
+		return !("spa".equalsIgnoreCase(getMetadata().getSmarterAppMetadata().getLanguage()));
+
+	}
+	
+	
 }

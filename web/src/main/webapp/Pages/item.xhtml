@@ -44,6 +44,7 @@
 		}
 	}
 	</style>
+	
 
 </h:head>
 <h:body>
@@ -353,12 +354,21 @@
 
 					<div class="row">
 						<div class="col-md-3 form-group">
-							<label>Calculator</label><select id="accessibility.calculator"
-								class="form-control"><option value="TDS_CalcBasic"
-									class="option-enabled">Calculator on</option>
-								<option value="TDS_Calc0" class="option-enabled">Calculator
-									off</option></select>
+							<label>Calculator</label>
+							
+							<!--  
+							<select id="accessibility.calculator" class="form-control">
+								<option value="TDS_CalcBasic" class="option-enabled">Calculator on</option>
+								<option value="TDS_Calc0" class="option-enabled">Calculator off</option>
+							</select> -->
+
+							<h:selectOneMenu id="accessibility_calculator" styleClass="option-enabled" disabled="#{metadatBacking.disableCalculator}">
+								<f:selectItem itemValue="TDS_CalcBasic" itemLabel="Calculator on"  />
+								<f:selectItem itemValue="TDS_Calc0" itemLabel="Calculator off" />
+							</h:selectOneMenu>
+
 						</div>
+
 						<div class="col-md-3 form-group">
 							<label>English Dictionary</label><select
 								id="accessibility.englishDictionary" class="form-control"><option
@@ -578,12 +588,24 @@
 
 					<div class="row">
 						<div class="col-md-3 form-group">
-							<label>Language</label><select id="accessibility.language"
-								class="form-control"><option value="ENU"
-									class="option-enabled">English</option>
-								<option value="ESN" class="option-enabled">Spanish
-									(Stacked Translation)</option></select>
+							<label>Language</label>
+							
+							<!--  
+							<select id="accessibility.language" class="form-control">
+								<option value="ENU" class="option-enabled">English</option>
+								<option value="ESN" class="option-enabled">Spanish(Stacked Translation)</option>
+							</select> -->
+
+
+						<h:selectOneMenu id="accessibility_language" styleClass="option-enabled">
+							<f:selectItem itemValue="ENU" itemLabel="English"  />
+							<f:selectItem itemValue="ESN" itemLabel="Spanish(Stacked Translation)" itemDisabled="#{metadatBacking.disableSpanish}"/>
+						</h:selectOneMenu>
+
 						</div>
+						
+						
+						
 						<div class="col-md-3 form-group">
 							<label>Illustration Glossary</label><select
 								id="accessibility.illustrationGlossary" class="form-control"><option
@@ -707,8 +729,8 @@
 			if(!document.getElementById('accessibility.markForReview').hasAttribute('disabled'))
 				accessibility += document.getElementById('accessibility.markForReview').value + "%3B";
 			
-			if(!document.getElementById('accessibility.calculator').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.calculator').value + "%3B";
+			if(!document.getElementById('accessibility_calculator').hasAttribute('disabled'))
+				accessibility += document.getElementById('accessibility_calculator').value + "%3B";
 			
 			if(!document.getElementById('accessibility.englishDictionary').hasAttribute('disabled'))
 				accessibility += document.getElementById('accessibility.englishDictionary').value + "%3B";
@@ -758,8 +780,8 @@
 			if(!document.getElementById('accessibility.textToSpeech').hasAttribute('disabled'))
 				accessibility += document.getElementById('accessibility.textToSpeech').value + "%3B";
 			
-			if(!document.getElementById('accessibility.language').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.language').value + "%3B";
+			if(!document.getElementById('accessibility_language').hasAttribute('disabled'))
+				accessibility += document.getElementById('accessibility_language').value + "%3B";
 			
 			if(!document.getElementById('accessibility.illustrationGlossary').hasAttribute('disabled'))
 				accessibility += document.getElementById('accessibility.illustrationGlossary').value + "%3B";
