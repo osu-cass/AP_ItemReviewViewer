@@ -59,11 +59,25 @@ public class MetadataBacking {
 	
 	
 	public boolean isDisableCalculator() {
-		return getMetadata().getSmarterAppMetadata().getAllowCalculator()==null || "N".equalsIgnoreCase(getMetadata().getSmarterAppMetadata().getAllowCalculator());
+		try {
+			return getMetadata().getSmarterAppMetadata() == null || 
+				   getMetadata().getSmarterAppMetadata().getAllowCalculator()==null || 
+				   "N".equalsIgnoreCase(getMetadata().getSmarterAppMetadata().getAllowCalculator());
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
 	}
 
 	public boolean isDisableSpanish() {
-		return !("spa".equalsIgnoreCase(getMetadata().getSmarterAppMetadata().getLanguage()));
+		try {
+			return !("spa".equalsIgnoreCase(getMetadata().getSmarterAppMetadata().getLanguage()));
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			return true;
+		}
 
 	}
 	

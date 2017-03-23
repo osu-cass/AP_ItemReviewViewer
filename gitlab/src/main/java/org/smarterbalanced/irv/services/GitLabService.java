@@ -81,7 +81,7 @@ public class GitLabService implements IGitLabService {
 		} catch (Exception e) {
 			// TODO: handle exception
 			_logger.error("IO Exception occurred while Getting the Item with URL:" + itemURL + e.getMessage());
-			throw new GitLabException(String.format("UnKnown Exception Occurred while getting item ID: %s" + e.getMessage()));
+			throw new GitLabException("UnKnown Exception Occurred while getting item ID: %s" + e.getMessage());
 
 		}
 
