@@ -25,7 +25,10 @@
 		type="text/css" rel="stylesheet" />-->
 
 	<!-- Bootstrap Core CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		crossorigin="anonymous" />
 
 	<!-- Custom Fonts -->
 	<link
@@ -37,14 +40,14 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 	<style>
-	@media ( min-width : 768px) {
-		.modal-xl {
-			width: 90%;
-			max-width: 1200px;
-		}
+@media ( min-width : 768px) {
+	.modal-xl {
+		width: 90%;
+		max-width: 1200px;
 	}
-	</style>
-	
+}
+</style>
+
 
 </h:head>
 <h:body>
@@ -63,7 +66,7 @@
 			</a>
 		</div>
 		</nav>
-		
+
 		<!-- Lookup/Load Area -->
 		<div class="row">
 			<div class="col-md-2 col-md-offset-2 form-group">
@@ -81,13 +84,14 @@
 					class="form-control" value="#{param['id']}" />
 			</div>
 			<div class="col-md-4 form-group">
-						<input id="versionToken" type="hidden" value="#{param['version']}" />
-						<input id="isaapToken" type="hidden" value="#{param['isaap']}" />
-						<button id="btnLoadToken" class="btn btn-primary">Load</button>
-						<button class="btn btn-primary pull-right" data-toggle="modal"
-							data-target="#metadata-modal-container">Metadata</button>
-						<button class="btn btn-primary pull-right" style="margin-right: 2px;" data-toggle="modal"
-							data-target="#accessibility-modal-container">Accessibility</button>
+				<input id="versionToken" type="hidden" value="#{param['version']}" />
+				<input id="isaapToken" type="hidden" value="#{param['isaap']}" />
+				<button id="btnLoadToken" class="btn btn-primary">Load</button>
+				<button class="btn btn-primary pull-right" data-toggle="modal"
+					data-target="#metadata-modal-container">Metadata</button>
+				<button class="btn btn-primary pull-right"
+					style="margin-right: 2px;" data-toggle="modal"
+					data-target="#accessibility-modal-container">Accessibility</button>
 			</div>
 		</div>
 
@@ -103,7 +107,8 @@
 				</ul>
 			</div>
 			<div class="col-md-10">
-				<iframe src="#{request.contextPath}/" width="100%" height="650" frameBorder="2"></iframe>
+				<iframe src="#{request.contextPath}/" width="100%" height="650"
+					frameBorder="2"></iframe>
 			</div>
 		</div>
 
@@ -355,27 +360,18 @@
 					<div class="row">
 						<div class="col-md-3 form-group">
 							<label>Calculator</label>
-							
-							<!--  
-							<select id="accessibility.calculator" class="form-control">
-								<option value="TDS_CalcBasic" class="option-enabled">Calculator on</option>
-								<option value="TDS_Calc0" class="option-enabled">Calculator off</option>
-							</select> -->
-
-							<h:selectOneMenu id="accessibility_calculator" styleClass="option-enabled" disabled="#{metadatBacking.disableCalculator}">
-								<f:selectItem itemValue="TDS_CalcBasic" itemLabel="Calculator on"  />
+							<h:selectOneMenu id="accessibility_calculator" styleClass="option-enabled" disabled="#{metadatBacking.disableCalculator}" class="form-control">
+								<f:selectItem itemValue="TDS_CalcBasic" itemLabel="Calculator on" />
 								<f:selectItem itemValue="TDS_Calc0" itemLabel="Calculator off" />
 							</h:selectOneMenu>
-
 						</div>
 
 						<div class="col-md-3 form-group">
-							<label>English Dictionary</label><select
-								id="accessibility.englishDictionary" class="form-control"><option
-									value="TDS_Dict_SD4" class="option-enabled">Merriam
-									Websters School Dictionary on</option>
-								<option value="TDS_Dict0" class="option-enabled">Merriam
-									Websters School Dictionary off</option></select>
+							<label>English Dictionary</label>
+							<select id="accessibility.englishDictionary" class="form-control">
+							<option value="TDS_Dict_SD4" class="option-enabled">Merriam Websters School Dictionary on</option>
+							<option value="TDS_Dict0" class="option-enabled">Merriam Websters School Dictionary off</option>
+							</select>
 						</div>
 						<div class="col-md-3 form-group">
 							<label>Expandable Passages</label><select
@@ -589,7 +585,7 @@
 					<div class="row">
 						<div class="col-md-3 form-group">
 							<label>Language</label>
-							
+
 							<!--  
 							<select id="accessibility.language" class="form-control">
 								<option value="ENU" class="option-enabled">English</option>
@@ -597,15 +593,18 @@
 							</select> -->
 
 
-						<h:selectOneMenu id="accessibility_language" styleClass="option-enabled">
-							<f:selectItem itemValue="ENU" itemLabel="English"  />
-							<f:selectItem itemValue="ESN" itemLabel="Spanish(Stacked Translation)" itemDisabled="#{metadatBacking.disableSpanish}"/>
-						</h:selectOneMenu>
+							<h:selectOneMenu id="accessibility_language"
+								styleClass="option-enabled">
+								<f:selectItem itemValue="ENU" itemLabel="English" />
+								<f:selectItem itemValue="ESN"
+									itemLabel="Spanish(Stacked Translation)"
+									itemDisabled="#{metadatBacking.disableSpanish}" />
+							</h:selectOneMenu>
 
 						</div>
-						
-						
-						
+
+
+
 						<div class="col-md-3 form-group">
 							<label>Illustration Glossary</label><select
 								id="accessibility.illustrationGlossary" class="form-control"><option
@@ -648,7 +647,6 @@
 		// set the vendor guid.
 		//Note: in the OSS IRiS case we do not care for this.
 		var vendorId = '2B3C34BF-064C-462A-93EA-41E9E3EB8333';
-		
 
 		function disableAll() {
 			$('#btnLoadItem').attr('disabled', true);
@@ -664,138 +662,222 @@
 			var msg = err.message || err.responseText || 'Unknown';
 			alert(msg);
 		}
-		
-		// load secure token
-		$('#btnLoadToken').on('click', function() {
-			var token = $('#txtToken').val();
-			var bankToken = $('#bankToken').val();
-			var content = $('#content').val();
-			var queryString = 'type='+ content + '&amp;bankId=' + bankToken + '&amp;id=' + token;
-			window.location.href = '#{request.contextPath}' + '/Pages/item.xhtml?' + queryString;
-		});
-		
-		$('#btnUpdateAccessibility').on('click', function() {
-			var itemId = $('#txtToken').val();
-			var bankId = $('#bankToken').val();
-			
-			var content = $('#content').val();
-			var version = $('#versionToken').val();
-			
-			var queryString = 'type='+ content + '&amp;bankId=' + bankId + '&amp;id=' + itemId +  '&amp;version=' + version + '&amp;isaap=' + buildAccessibilityString();
-			//var queryString = 'type=' + content +  '&amp;bankId=' + bankId + '-' + itemId + '?isaap=' + buildAccessibilityString();	
-			window.location.href = '#{request.contextPath}' + '/Pages/item.xhtml?' + queryString;
-		});
-		
 
-		
-		$(window).load(function() {
-			
-			var bankId = $('#bankToken').val();
-			var itemId = $('#txtToken').val();
-			
-			var content = $('#content').val();
-			var version = $('#versionToken').val();
-			var isaap = $('#isaapToken').val();
-			
-			if(!isEmpty(bankId)) {
-				$.get('#{request.contextPath}' + "/item/" + bankId + '-' + itemId + '?version=' + version + '&amp;isaap=' + isaap).done(function(data) {
-					IRiS.loadToken(vendorId, data).done(function() {
-						enableAll();
-					}).fail(function(err) {
-						processError(err);
-					}).always(function() {
-						enableAll();
-					});
+		// load secure token
+		$('#btnLoadToken').on(
+				'click',
+				function() {
+					var token = $('#txtToken').val();
+					var bankToken = $('#bankToken').val();
+					var content = $('#content').val();
+					var queryString = 'type=' + content + '&amp;bankId='
+							+ bankToken + '&amp;id=' + token;
+					window.location.href = '#{request.contextPath}'
+							+ '/Pages/item.xhtml?' + queryString;
 				});
-			}
-			
-		});
-		
+
+		$('#btnUpdateAccessibility').on(
+				'click',
+				function() {
+					var itemId = $('#txtToken').val();
+					var bankId = $('#bankToken').val();
+
+					var content = $('#content').val();
+					var version = $('#versionToken').val();
+
+					var queryString = 'type=' + content + '&amp;bankId='
+							+ bankId + '&amp;id=' + itemId + '&amp;version='
+							+ version + '&amp;isaap='
+							+ buildAccessibilityString();
+					//var queryString = 'type=' + content +  '&amp;bankId=' + bankId + '-' + itemId + '?isaap=' + buildAccessibilityString();	
+					window.location.href = '#{request.contextPath}'
+							+ '/Pages/item.xhtml?' + queryString;
+				});
+
+		$(window).load(
+				function() {
+
+					var bankId = $('#bankToken').val();
+					var itemId = $('#txtToken').val();
+
+					var content = $('#content').val();
+					var version = $('#versionToken').val();
+					var isaap = $('#isaapToken').val();
+
+					if (!isEmpty(bankId)) {
+						$.get(
+								'#{request.contextPath}' + "/item/" + bankId
+										+ '-' + itemId + '?version=' + version
+										+ '&amp;isaap=' + isaap).done(
+								function(data) {
+									IRiS.loadToken(vendorId, data).done(
+											function() {
+												enableAll();
+											}).fail(function(err) {
+										processError(err);
+									}).always(function() {
+										enableAll();
+									});
+								});
+					}
+
+				});
 
 		function buildAccessibilityString() {
 			var accessibility = "";
-			
+
 			// using dot notation due to fields having generic names that could conflict with item element ids.
-			
-			if(!document.getElementById('accessibility.digitalNotepad').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.digitalNotepad').value + "%3B";
-			
-			if(!document.getElementById('accessibility.englishGlossary').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.englishGlossary').value + "%3B";
-			
-			if(!document.getElementById('accessibility.highlighter').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.highlighter').value + "%3B";
-			
-			if(!document.getElementById('accessibility.markForReview').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.markForReview').value + "%3B";
-			
-			if(!document.getElementById('accessibility_calculator').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility_calculator').value + "%3B";
-			
-			if(!document.getElementById('accessibility.englishDictionary').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.englishDictionary').value + "%3B";
-			
-			if(!document.getElementById('accessibility.expandablePassages').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.expandablePassages').value + "%3B";
-			
-			if(!document.getElementById('accessibility.globalNotes').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.globalNotes').value + "%3B";
-			
-			if(!document.getElementById('accessibility.strikethrough').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.strikethrough').value + "%3B";
-			
-			if(!document.getElementById('accessibility.writingTools').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.writingTools').value + "%3B";
-			
-			if(!document.getElementById('accessibility.thesaurus').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.thesaurus').value + "%3B";
-			
-			if(!document.getElementById('accessibility.colorChoices').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.colorChoices').value + "%3B";
-			
-			if(!document.getElementById('accessibility.masking').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.masking').value + "%3B";
-			
-			if(!document.getElementById('accessibility.translation').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.translation').value + "%3B";
-			
-			if(!document.getElementById('accessibility.americanSignLanguage').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.americanSignLanguage').value + "%3B";
-			
-			if(!document.getElementById('accessibility.brailleType').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.brailleType').value + "%3B";
-			
-			if(!document.getElementById('accessibility.closedCaptioning').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.closedCaptioning').value + "%3B";
-			
-			if(!document.getElementById('accessibility.streamlinedInterface').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.streamlinedInterface').value + "%3B";
-			
-			if(!document.getElementById('accessibility.permissiveMode').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.permissiveMode').value + "%3B";
-			
-			if(!document.getElementById('accessibility.printOnDemand').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.printOnDemand').value + "%3B";
-			
-			if(!document.getElementById('accessibility.textToSpeech').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.textToSpeech').value + "%3B";
-			
-			if(!document.getElementById('accessibility_language').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility_language').value + "%3B";
-			
-			if(!document.getElementById('accessibility.illustrationGlossary').hasAttribute('disabled'))
-				accessibility += document.getElementById('accessibility.illustrationGlossary').value + "%3B";
-			
-			if(!document.getElementById('accessibility.zoom').hasAttribute('disabled'))
+
+			if (!document.getElementById('accessibility.digitalNotepad')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.digitalNotepad').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.englishGlossary')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.englishGlossary').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.highlighter')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.highlighter').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.markForReview')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.markForReview').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility_calculator')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility_calculator').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.englishDictionary')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.englishDictionary').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.expandablePassages')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.expandablePassages').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.globalNotes')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.globalNotes').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.strikethrough')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.strikethrough').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.writingTools')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.writingTools').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.thesaurus')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.thesaurus').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.colorChoices')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.colorChoices').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.masking').hasAttribute(
+					'disabled'))
+				accessibility += document
+						.getElementById('accessibility.masking').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.translation')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.translation').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.americanSignLanguage')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.americanSignLanguage').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.brailleType')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.brailleType').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.closedCaptioning')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.closedCaptioning').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.streamlinedInterface')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.streamlinedInterface').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.permissiveMode')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.permissiveMode').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.printOnDemand')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.printOnDemand').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.textToSpeech')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.textToSpeech').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility_language')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility_language').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.illustrationGlossary')
+					.hasAttribute('disabled'))
+				accessibility += document
+						.getElementById('accessibility.illustrationGlossary').value
+						+ "%3B";
+
+			if (!document.getElementById('accessibility.zoom').hasAttribute(
+					'disabled'))
 				accessibility += document.getElementById('accessibility.zoom').value;
-			
+
 			return accessibility;
 		}
-		function toggle(lnk_obj){
-			
-		    lnk_obj.innerHTML = (lnk_obj.innerHTML == 'Hide Metadata') ? 'Show Metadata' : 'Hide Metadata' ;
+		function toggle(lnk_obj) {
+
+			lnk_obj.innerHTML = (lnk_obj.innerHTML == 'Hide Metadata') ? 'Show Metadata'
+					: 'Hide Metadata';
 		}
-		
+
 		$('#btnSetResponse').on('click', function(evt) {
 			var value = $('#txtResponse').val();
 			IRiS.setResponse(value);
@@ -813,9 +895,9 @@
 		function isEmpty(str) {
 			return (!str || 0 === str.length);
 		}
-		$('#secondaryButton').click(function(){
-		    $("#primaryButton").click();
-		})	
+		$('#secondaryButton').click(function() {
+			$("#primaryButton").click();
+		})
 	</script>
 </h:body>
 </html>
