@@ -18,7 +18,7 @@ import org.springframework.util.StringUtils;
 @ManagedBean(name = "metadataBacking")
 @Scope(value = "request")
 public class MetadataBacking {
-	
+
 	private static final Logger _logger = LoggerFactory.getLogger(MetadataBacking.class);
 	private Metadata metadata;
 
@@ -29,25 +29,29 @@ public class MetadataBacking {
 	public Metadata getMetadata() {
 		if (metadata == null) {
 			try {
-				String type = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("type");
-				String bankId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("bankId");
-				String itemNumber = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
-				
+				String type = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap()
+						.get("type");
+				String bankId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap()
+						.get("bankId");
+				String itemNumber = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap()
+						.get("id");
+
 				StringBuffer id = new StringBuffer();
 				if (StringUtils.hasLength(type) && StringUtils.hasLength(bankId) && StringUtils.hasLength(itemNumber)) {
 					id.append(type + "-" + bankId + "-" + itemNumber);
 				}
-				
-				String version = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("version");
+
+				String version = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap()
+						.get("version");
 				if (StringUtils.hasLength(version)) {
-					id.append( "-");
+					id.append("-");
 					id.append(version);
-				}	
-				
-				if(StringUtils.hasLength(id.toString())) {
+				}
+
+				if (StringUtils.hasLength(id.toString())) {
 					IGitLabService gitLabService = new GitLabService();
 					metadata = gitLabService.getMetadata(id.toString());
-				}	
+				}
 
 			} catch (Exception e) {
 				_logger.error("exception occcurred while getting metadata", e);
@@ -56,30 +60,33 @@ public class MetadataBacking {
 		}
 		return metadata;
 	}
-	
-	
+
 	public boolean isDisableCalculator() {
 		try {
-			return getMetadata().getSmarterAppMetadata() == null || 
-				   getMetadata().getSmarterAppMetadata().getAllowCalculator()==null || 
-				   "N".equalsIgnoreCase(getMetadata().getSmarterAppMetadata().getAllowCalculator());
-			
+			return getMetadata() == null
+					||getMetadata().getSmarterAppMetadata() == null
+					|| getMetadata().getSmarterAppMetadata().getAllowCalculator() == null
+					|| "N".equalsIgnoreCase(getMetadata().getSmarterAppMetadata().getAllowCalculator());
+
 		} catch (Exception e) {
-			// TODO: handle exception
+			_logger.error("unknown exception occcurred while getting calculator metadata", e);
 			return false;
 		}
 	}
 
 	public boolean isDisableSpanish() {
 		try {
-			return !("spa".equalsIgnoreCase(getMetadata().getSmarterAppMetadata().getLanguage()));
-			
+			return getMetadata() == null
+					|| getMetadata().getSmarterAppMetadata() == null
+					|| getMetadata().getSmarterAppMetadata().getLanguage() == null
+					|| getMetadata().getSmarterAppMetadata().getLanguage().size() < 2;
+
 		} catch (Exception e) {
-			// TODO: handle exception
+			_logger.error("unknown exception occcurred while getting spanish metadata", e);
+
 			return true;
 		}
 
 	}
-	
-	
+
 }

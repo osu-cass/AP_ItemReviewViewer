@@ -1,5 +1,9 @@
 package org.smarterbalanced.irv.model;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
@@ -34,7 +38,7 @@ public class SmarterAppMetadata {
 	private StandardPublication StandardPublication;
 	private String associatedTutorial;
 	private String associatedWordlist;
-	private String language;
+	private List<String> language;
 
 	@XmlElement(name = "Identifier")
 	public String getIdentifier() {
@@ -242,14 +246,14 @@ public class SmarterAppMetadata {
 	public void setAssociatedWordlist(String associatedWordlist) {
 		this.associatedWordlist = associatedWordlist;
 	}
+	@XmlElement(name = "Language", required = true)
+	 public List<String> getLanguage() {
+         if (language == null) {
+             language = new ArrayList<String>();
+         }
+         return this.language;
+     }
 
-	@XmlElement(name = "Language")
-	public String getLanguage() {
-		return language;
-	}
-
-	public void setLanguage(String language) {
-		this.language = language;
-	}
+	
 
 }
