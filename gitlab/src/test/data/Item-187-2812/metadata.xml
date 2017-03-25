@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<metadata>
+  <smarterAppMetadata xmlns="http://www.smarterapp.org/ns/1/assessment_item_metadata">
+    <Identifier>2812</Identifier>
+    <SecurityStatus>Non-secure</SecurityStatus>
+    <SmarterAppItemDescriptor>The Telephone Is Born - SBAC_Field</SmarterAppItemDescriptor>
+    <Status>Released</Status>
+    <StimulusFormat>Standard</StimulusFormat>
+    <Subject>ELA</Subject>
+    <Version>0</Version>
+    <AssociatedStimulus>3771</AssociatedStimulus>
+    <ItemAuthorIdentifier>Sridhar_Ravva</ItemAuthorIdentifier>
+    <ItemSpecFormat>SmarterApp</ItemSpecFormat>
+    <LastModifiedBy>Sridhar_Ravva</LastModifiedBy>
+    <IntendedGrade>4</IntendedGrade>
+    <DepthOfKnowledge>3</DepthOfKnowledge>
+    <InteractionType>EBSR</InteractionType>
+    <MaximumNumberOfPoints>1</MaximumNumberOfPoints>
+    <BrailleType>BRF</BrailleType>
+    <MinimumGrade>4</MinimumGrade>
+    <MaximumGrade>4</MaximumGrade>
+    <StandardPublication>
+      <Publication>SBAC-ELA-v3</Publication>
+      <PrimaryStandard>SBAC-ELA-v3:ELA-Undesignated</PrimaryStandard>
+    </StandardPublication>
+    <StandardPublication>
+      <Publication>SBAC-ELA-v1</Publication>
+      <PrimaryStandard>SBAC-ELA-v1:3-L|4-4|4.SL.3</PrimaryStandard>
+    </StandardPublication>
+    <AssociatedTutorial>1769</AssociatedTutorial>
+    <AssociatedWordlist>2813</AssociatedWordlist>
+    <Language>eng</Language>
+  </smarterAppMetadata>
+</metadata>

@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="EBSR" id="2812" version="0" bankkey="187">
+    <associatedpassage>3771</associatedpassage>
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>2812</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>ELA</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>The Telephone Is Born - SBAC_Field</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>D</val>
+        <desc>D</desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>4</val>
+        <desc>4</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>EBSR</val>
+        <desc>Evidence-Based Selected Response 4</desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>21</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>EBSR</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>1 pt.</val>
+        <desc>1 Point</desc>
+      </attrib>
+      <attrib attid="itm_att_Cloze Answers">
+        <name>Item: Cloze Answers</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="stm_pass_id">
+        <name>Stim: ITS ID</name>
+        <val>3771</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Max Choices">
+        <name>Item:Max Choices</name>
+        <val>1</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key (Part II)">
+        <name>Item: Answer Key (Part II)</name>
+        <val>D</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Max Choices (Part II)">
+        <name>Item:Max Choices (Part II)</name>
+        <val>1</val>
+        <desc></desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="1769" bankkey="187" />
+    <resourceslist>
+      <resource type="wordList" id="2813" index="1" bankkey="187" />
+    </resourceslist>
+    <statistic />
+    <MachineRubric filename="Item_2812_v0.qrx" />
+    <content language="ENU" version="2.0" approvedVersion="0">
+      <qti spec="itemBody"><![CDATA[<itemBody><p style="">The following question has two parts. First, answer part A. Then, answer part B. </p><choiceInteraction responseIdentifier="EBSR1" shuffle="false" maxChoice="1"><prompt><p style="">What is the <span style="font-weight:bold; ">main</span> idea of the presentation?</p></prompt><simpleChoice identifier="A"><p style="">Alexander Graham Bell lived long ago.</p></simpleChoice><simpleChoice identifier="B"><p style="">Alexander Graham Bell was an <span id="item_2812_TAG_17" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="1"></span>inventor<span class="its-tag" data-tag-ref="item_2812_TAG_17" data-tag-boundary="end"></span>.</p></simpleChoice><simpleChoice identifier="C"><p style="">Alexander Graham Bell worked in a small <span id="item_2812_TAG_18" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>lab<span class="its-tag" data-tag-ref="item_2812_TAG_18" data-tag-boundary="end"></span>.</p></simpleChoice><simpleChoice identifier="D"><p style="">Alexander Graham Bell invented the telephone.</p></simpleChoice></choiceInteraction><choiceInteraction responseIdentifier="EBSR2" shuffle="false" maxChoice="1"><prompt><p style="">Which sentence from the presentation<span style="font-weight:bold; "> best</span> supports the main idea?</p></prompt><simpleChoice identifier="A"><p style=""><span id="item_2812_TAG_8_BEGIN">“On</span> March 10, <span id="item_2812_TAG_10_BEGIN">1876</span>, Alexander Graham <span id="item_2812_TAG_19" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="3"></span>toiled<span class="its-tag" data-tag-ref="item_2812_TAG_19" data-tag-boundary="end"></span> in his lab in Boston, <span id="item_2812_TAG_9_BEGIN">Massachusetts.”</span></p></simpleChoice><simpleChoice identifier="B"><p style=""><span id="item_2812_TAG_11_BEGIN">“The</span> lab was actually a few small bedrooms in a <span id="item_2812_TAG_20" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="4"></span><span id="item_2812_TAG_12_BEGIN">boardinghouse.”</span><span class="its-tag" data-tag-ref="item_2812_TAG_20" data-tag-boundary="end"></span></p></simpleChoice><simpleChoice identifier="C"><p style=""><span id="item_2812_TAG_13_BEGIN">“Bell</span> had experimented with many other machines, but those <span id="item_2812_TAG_21" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="5"></span>trials<span class="its-tag" data-tag-ref="item_2812_TAG_21" data-tag-boundary="end"></span> had ended in <span id="item_2812_TAG_22" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="10"></span><span id="item_2812_TAG_14_BEGIN">failure.”</span><span class="its-tag" data-tag-ref="item_2812_TAG_22" data-tag-boundary="end"></span></p></simpleChoice><simpleChoice identifier="D"><p style=""><span id="item_2812_TAG_15_BEGIN">“After</span> years of research, the telephone was finally <span id="item_2812_TAG_16_BEGIN">born.”</span></p></simpleChoice></choiceInteraction></itemBody>]]></qti>
+      <attachmentlist>
+        <attachment id="braillefile1" type="BRF" subtype="contracted" file="item_2812_enu_contracted.brf" />
+        <attachment id="braillefile2" type="BRF" subtype="uncontracted" file="item_2812_enu_uncontracted.brf" />
+        <attachment id="aslfile1" type="ASL" subtype="Targeted" file="item_2812_ASL_EBSR1.mp4">
+          <source src="item_2812_ASL_EBSR1.webm" type="video/webm" />
+          <source src="item_2812_ASL_EBSR1.mp4" type="video/mp4" />
+        </attachment>
+        <attachment id="aslfile2" type="ASL" subtype="Targeted" file="item_2812_ASL_EBSR2.mp4">
+          <source src="item_2812_ASL_EBSR2.webm" type="video/webm" />
+          <source src="item_2812_ASL_EBSR2.mp4" type="video/mp4" />
+        </attachment>
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae3">
+            <contentLinkInfo itsLinkIdentifierRef="item_2812_TAG_8_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Quote, On</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Quote, On</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae4">
+            <contentLinkInfo itsLinkIdentifierRef="item_2812_TAG_10_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>eighteen seventy-six</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>eighteen seventy-six</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae6">
+            <contentLinkInfo itsLinkIdentifierRef="item_2812_TAG_9_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Massachusetts, end quote.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Massachusetts, end quote.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae7">
+            <contentLinkInfo itsLinkIdentifierRef="item_2812_TAG_11_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Quote, The</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Quote, The</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae9">
+            <contentLinkInfo itsLinkIdentifierRef="item_2812_TAG_12_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>boardinghouse, end quote.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>boardinghouse, end quote.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae10">
+            <contentLinkInfo itsLinkIdentifierRef="item_2812_TAG_13_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Quote, Bell</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Quote, Bell</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae13">
+            <contentLinkInfo itsLinkIdentifierRef="item_2812_TAG_14_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>failure, end quote.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>failure, end quote.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae14">
+            <contentLinkInfo itsLinkIdentifierRef="item_2812_TAG_15_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Quote, After</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Quote, After</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae15">
+            <contentLinkInfo itsLinkIdentifierRef="item_2812_TAG_16_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>born, end quote.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>born, end quote.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

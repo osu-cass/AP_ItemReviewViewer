@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<metadata>
+  <smarterAppMetadata xmlns="http://www.smarterapp.org/ns/1/assessment_item_metadata">
+    <Identifier>2788</Identifier>
+    <Subject>MATH</Subject>
+    <Version>12</Version>
+    <AssociatedStimulus>3700</AssociatedStimulus>
+    <ItemAuthorIdentifier>Nate_Thompson</ItemAuthorIdentifier>
+    <ItemSpecFormat>SmarterApp</ItemSpecFormat>
+    <LastModifiedBy>Nate_Thompson</LastModifiedBy>
+    <SecurityStatus>Non-secure</SecurityStatus>
+    <SmarterAppItemDescriptor>MA03_PT_LEMONADE_Q1</SmarterAppItemDescriptor>
+    <Status>Released</Status>
+    <StimulusFormat>Standard</StimulusFormat>
+    <IntendedGrade>3</IntendedGrade>
+    <MathematicalPractice>4</MathematicalPractice>
+    <DepthOfKnowledge>2</DepthOfKnowledge>
+    <TargetAssessmentType>Not Applicable</TargetAssessmentType>
+    <InteractionType>TI</InteractionType>
+    <EducationalDifficulty>Low</EducationalDifficulty>
+    <MaximumNumberOfPoints>1</MaximumNumberOfPoints>
+    <AllowCalculator>Y</AllowCalculator>
+    <CopyrightAndOtherRestrictions></CopyrightAndOtherRestrictions>
+    <Notes></Notes>
+    <StimulusScource></StimulusScource>
+    <BrailleType>BRF</BrailleType>
+    <EnemyItem></EnemyItem>
+    <ScorePoints>NA</ScorePoints>
+    <TargetSpecificAttributes></TargetSpecificAttributes>
+    <StandardPublication>
+      <Publication>SBAC-MA-v3</Publication>
+      <PrimaryStandard>SBAC-MA-v3:MA-Undesignated</PrimaryStandard>
+    </StandardPublication>
+    <IrtDimension>
+      <IrtStatDomain>--NOVALUE--</IrtStatDomain>
+      <IrtModelType>IRT3PLN</IrtModelType>
+      <IrtDimensionPurpose></IrtDimensionPurpose>
+      <IrtScore>1</IrtScore>
+      <IrtWeight>1</IrtWeight>
+      <IrtParameter>
+        <Name>a</Name>
+        <Value>1.02578</Value>
+      </IrtParameter>
+      <IrtParameter>
+        <Name>b</Name>
+        <Value>-1.83623</Value>
+      </IrtParameter>
+      <IrtParameter>
+        <Name>c</Name>
+        <Value>0</Value>
+      </IrtParameter>
+    </IrtDimension>
+    <StandardPublication>
+      <Publication>SBAC-MA-v1</Publication>
+      <PrimaryStandard>SBAC-MA-v1:2|MD|A</PrimaryStandard>
+      <SecondaryStandard>SBAC-MA-v2:1|MD|H-3|a/s|3.MD.3</SecondaryStandard>
+    </StandardPublication>
+    <AssociatedTutorial>1768</AssociatedTutorial>
+    <AssociatedWordlist>1614</AssociatedWordlist>
+    <Language>eng</Language>
+    <Language>spa</Language>
+  </smarterAppMetadata>
+</metadata>

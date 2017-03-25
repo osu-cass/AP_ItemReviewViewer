@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="mi" id="2637" version="1" bankkey="187">
+    <associatedpassage>3750</associatedpassage>
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>2637</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>ELA</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>Napping - SBAC_Field</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val>PracTest::ELAG7::Perf::S1::SP14 (3); PracTest::ELAG7::Perf::S1::SP14::Braille (3); PracTest::ELAG7::Perf::S1::SP15 (3); PratTest::ELAG7::Perf::S1::SP15::BRL (3); PracTest::ELAG7::Perf::S1::FA16 (3); PracTest::ELAG7::Perf::S1::FA16::BRL (3);</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val>IRP::ELAG7::Perf::S1::SP15 (3); IRP::ELAG7::Perf::S1::SP15::COMBINED (3);</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>MI</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>7</val>
+        <desc>7</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>MI</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>21</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>TableMatch</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>1 pt</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Cloze Answers">
+        <name>Item: Cloze Answers</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="stm_pass_id">
+        <name>Stim: ITS ID</name>
+        <val>3750</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Max Choices">
+        <name>Item:Max Choices</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key (Part II)">
+        <name>Item: Answer Key (Part II)</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Max Choices (Part II)">
+        <name>Item:Max Choices (Part II)</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="1080" bankkey="187" />
+    <resourceslist />
+    <statistic />
+    <MachineRubric filename="Item_2637_v1.qrx" xmlns:its-scripts="urn:its-scripts" />
+    <content language="ENU" version="2.0" xmlns:its-scripts="urn:its-scripts" approvedVersion="1">
+      <qti spec="itemBody"><![CDATA[<matchInteraction responseIdentifier="RESPONSE" minAssociations="1" maxAssociations=""><prompt /><simpleMatchSet><simpleAssociableChoice identifier="1"><p style=""><br /><span style="font-weight:bold; ">If you take too long of a nap, you might feel sleepy. </span></p></simpleAssociableChoice><simpleAssociableChoice identifier="2"><p style=""><br /><span style="font-weight:bold; ">If your sleep patterns interrupt your body's internal clock, you might have trouble getting enough sleep.</span></p></simpleAssociableChoice><simpleAssociableChoice identifier="3"><p style="font-weight:bold; ">A deep sleep helps the brain to operate at a higher level.</p></simpleAssociableChoice></simpleMatchSet><simpleMatchSet><simpleAssociableChoice identifier="a"><p style="font-weight:bold; ">Source #1: How Much Sleep Is Enough?</p></simpleAssociableChoice><simpleAssociableChoice identifier="b"><p style="font-weight:bold; ">Source #2: The Secret Truth about Napping </p></simpleAssociableChoice><simpleAssociableChoice identifier="c"><p style="font-weight:bold; ">Source #3: Ask the Sleep Doctor</p></simpleAssociableChoice></simpleMatchSet></matchInteraction>]]></qti>
+      <stem><![CDATA[<p style="">Click on the boxes to show the <span id="item_2637_TAG_2_BEGIN">claim(s)</span> that each source supports. Some sources will have more than one box <span id="item_2637_TAG_1_BEGIN">selected.</span></p>]]></stem>
+      <attachmentlist>
+        <attachment id="braillefile1" type="BRF" subtype="contracted" file="item_2637_enu_contracted.brf" />
+        <attachment id="braillefile2" type="BRF" subtype="uncontracted" file="item_2637_enu_uncontracted.brf" />
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="item_2637_TAG_2_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>claim or claims</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>claim(s)</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>claim(s)</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae2">
+            <contentLinkInfo itsLinkIdentifierRef="item_2637_TAG_1_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>selected. The table has three rows and three columns:
+From left to right the column headings reed: Source #1: How Much Sleep Is Enough; Source #2: The Secret Truth about Napping; Source #3: Ask the Sleep Doctor;
+From top to bottom the row headings reed: If you take too long of a nap, you might feel sleepy. If your sleep patterns interrupt your body's internal clock, you might have trouble getting enough sleep. A deep sleep helps the brain to operate at a higher level.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>selected.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>selected.</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

@@ -1,0 +1,42 @@
+<assessmentItem xmlns="http://www.imsglobal.org/xsd/apip/apipv1p0/qtiitem/imsqti_v2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1998/Math/MathML http://www.w3.org/Math/XMLSchema/mathml2/mathml2.xsd http://www.imsglobal.org/xsd/apip/apipv1p0/qtiitem/imsqti_v2p1 http://www.imsglobal.org/profile/apip/apipv1p0/apipv1p0_qtiitemv2p1_v1p0.xsd http://www.imsglobal.org/xsd/apip/apipv1p0/imsapip_qtiv1p0 http://www.imsglobal.org/profile/apip/apipv1p0/apipv1p0_qtiextv2p1_v1p0.xsd" identifier="item_65090" title="Item 65090" adaptive="false" timeDependent="false" xmlns:apip="http://www.imsglobal.org/xsd/apip/apipv1p0/imsapip_qtiv1p0">
+  <responseDeclaration identifier="1" baseType="identifier" cardinality="multiple" />
+  <outcomeDeclaration identifier="SCORE" baseType="float" cardinality="single">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <itemBody />
+  <responseProcessing>
+    <responseCondition>
+      <responseIf>
+        <isNull>
+          <variable identifier="1" />
+        </isNull>
+        <setOutcomeValue identifier="SCORE">
+          <baseValue baseType="float">0</baseValue>
+        </setOutcomeValue>
+      </responseIf>
+      <responseElseIf>
+        <and>
+          <equal toleranceMode="exact">
+            <baseValue baseType="integer">2</baseValue>
+            <containerSize>
+              <variable identifier="1" />
+            </containerSize>
+          </equal>
+          <contains>
+            <multiple>
+              <baseValue baseType="identifier">4</baseValue>
+              <baseValue baseType="identifier">5</baseValue>
+            </multiple>
+            <variable identifier="1" />
+          </contains>
+        </and>
+        <setOutcomeValue identifier="SCORE">
+          <baseValue baseType="float">1</baseValue>
+        </setOutcomeValue>
+      </responseElseIf>
+    </responseCondition>
+  </responseProcessing>
+  <apip:apipAccessibility />
+</assessmentItem>

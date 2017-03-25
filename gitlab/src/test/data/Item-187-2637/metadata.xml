@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<metadata>
+  <smarterAppMetadata xmlns="http://www.smarterapp.org/ns/1/assessment_item_metadata">
+    <Identifier>2637</Identifier>
+    <Version>1</Version>
+    <Subject>ELA</Subject>
+    <AssociatedStimulus>3750</AssociatedStimulus>
+    <ItemAuthorIdentifier>Sridhar_Ravva</ItemAuthorIdentifier>
+    <ItemSpecFormat>SmarterApp</ItemSpecFormat>
+    <LastModifiedBy>Sridhar_Ravva</LastModifiedBy>
+    <SecurityStatus>Non-secure</SecurityStatus>
+    <SmarterAppItemDescriptor>Napping - SBAC_Field</SmarterAppItemDescriptor>
+    <Status>Released</Status>
+    <StimulusFormat>Standard</StimulusFormat>
+    <IntendedGrade>7</IntendedGrade>
+    <DepthOfKnowledge>3</DepthOfKnowledge>
+    <TargetAssessmentType>Practice Test Refresh</TargetAssessmentType>
+    <InteractionType>MI</InteractionType>
+    <EducationalDifficulty>Hard</EducationalDifficulty>
+    <MaximumNumberOfPoints>1</MaximumNumberOfPoints>
+    <EvidenceStatement>The student will cite evidence to support analyses, arguments, or critiques.</EvidenceStatement>
+    <SufficientEvidenceOfClaim>The student will cite evidence to support analyses, arguments, or critiques.</SufficientEvidenceOfClaim>
+    <BrailleType>BRF</BrailleType>
+    <Notes>Item 3</Notes>
+    <MinimumGrade>7</MinimumGrade>
+    <MaximumGrade>7</MaximumGrade>
+    <PtWritingType>Explanatory</PtWritingType>
+    <ScorePoints>"0,1"</ScorePoints>
+    <StimulusName>Napping</StimulusName>
+    <StimulusType>Text</StimulusType>
+    <StandardPublication>
+      <Publication>SBAC-ELA-v3</Publication>
+      <PrimaryStandard>SBAC-ELA-v3:ELA-Undesignated</PrimaryStandard>
+    </StandardPublication>
+    <IrtDimension>
+      <IrtStatDomain>--NOVALUE--</IrtStatDomain>
+      <IrtModelType>IRT3PLN</IrtModelType>
+      <IrtDimensionPurpose></IrtDimensionPurpose>
+      <IrtScore>1</IrtScore>
+      <IrtWeight>1</IrtWeight>
+      <IrtParameter>
+        <Name>a</Name>
+        <Value>0.37388</Value>
+      </IrtParameter>
+      <IrtParameter>
+        <Name>b</Name>
+        <Value>3.39693</Value>
+      </IrtParameter>
+      <IrtParameter>
+        <Name>c</Name>
+        <Value>0</Value>
+      </IrtParameter>
+    </IrtDimension>
+    <StandardPublication>
+      <Publication>SBAC-ELA-v1</Publication>
+      <PrimaryStandard>SBAC-ELA-v1:1-IT|8-7|7.RI.1</PrimaryStandard>
+    </StandardPublication>
+    <AssociatedTutorial>1080</AssociatedTutorial>
+    <Language>eng</Language>
+  </smarterAppMetadata>
+</metadata>

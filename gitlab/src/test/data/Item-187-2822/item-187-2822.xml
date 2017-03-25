@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="htq" id="2822" version="0" bankkey="187">
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>2822</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>ELA</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>65090 - SBAC_Field</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>HTQ</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>3</val>
+        <desc>3</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>HTQ</val>
+        <desc>Hottext with QTI rubric</desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>8</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>HotText</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>1 pt.</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Cloze Answers">
+        <name>Item: Cloze Answers</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Max Choices">
+        <name>Item:Max Choices</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key (Part II)">
+        <name>Item: Answer Key (Part II)</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Max Choices (Part II)">
+        <name>Item:Max Choices (Part II)</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="2759" bankkey="187" />
+    <resourceslist />
+    <statistic />
+    <MachineRubric filename="Item_2822_v0.qrx" />
+    <content language="ENU" version="2.0" approvedVersion="0">
+      <rationaleoptlist />
+      <stem><![CDATA[<p style="">Click on <span style="font-weight:bold; ">two</span> sentences that have mistakes in punctuation.</p><p style=""><br /><span class="interaction selectable" data-its-identifier="1" data-its-group="1"><span id="item_2822_TAG_1_BEGIN">Tim and I sat in the front row at the circus, and the clowns tumbled and danced in front of us.</span></span> <span class="interaction selectable" data-its-identifier="2" data-its-group="1"><span id="item_2822_TAG_2_BEGIN">They pretended to throw water on us, but their buckets just had shiny bits of paper.</span></span> <span class="interaction selectable" data-its-identifier="3" data-its-group="1"><span id="item_2822_TAG_3_BEGIN">Then, one clown really did spray water on me from a flower on his jacket.</span></span></p><p style=""><br /><span class="interaction selectable" data-its-identifier="4" data-its-group="1"><span id="item_2822_TAG_4_BEGIN">“Oh, he got me! I said to Tim.”</span></span></p><p style=""><br /><span class="interaction selectable" data-its-identifier="5" data-its-group="1"><span id="item_2822_TAG_5_BEGIN">“Yes” he laughed “he tricked you twice!”</span></span></p><p style=""><br /><span class="interaction selectable" data-its-identifier="6" data-its-group="1"><span id="item_2822_TAG_6_BEGIN">After that, the elephants came out.</span></span> <span class="interaction selectable" data-its-identifier="7" data-its-group="1"><span id="item_2822_TAG_7_BEGIN">The elephants did tricks like stand on their front legs.</span></span></p><p style=""><br /><span class="interaction selectable" data-its-identifier="8" data-its-group="1"><span id="item_2822_TAG_8_BEGIN">“How can those huge animals do that?” I asked Tim.</span></span></p><p style=""><br /><span class="interaction selectable" data-its-identifier="9" data-its-group="1"><span id="item_2822_TAG_9_BEGIN">“I don't know, but it's amazing,” Tim answered.</span></span></p>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="">
+          <name>
+        Rubric </name>
+          <val><![CDATA[<p style="">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="">&lt;show or explain one particular correct answer&gt;</p></li></ul><ul style="padding-left:1.5000em; "><li><p style="">&lt;if applicable, list all the correct answers or give a rule for all the correct answers&gt;</p></li></ul><ul style="padding-left:1.5000em; "><li><p style="">&lt;explain what is required for the 1 st point here&gt; (1 point) </p></li></ul><ul style="padding-left:1.5000em; "><li><p style="">&lt;explain what is required for the 2 ndpoint here&gt; (2 point) </p><p style="">AND</p></li><li><p style="">&lt;explain what is required for the 3 rdpoint here&gt; (3 point) </p><p style="">AND</p></li><li><p style="">&lt;explain what is required for the 4 thpoint here&gt; (4 point). </p></li></ul>]]></val>
+        </rubric>
+        <samplelist maxval="" minval="" />
+      </rubriclist>
+      <attachmentlist>
+        <attachment id="braillefile1" type="BRF" subtype="contracted" file="item_2822_enu_contracted.brf" />
+        <attachment id="braillefile2" type="BRF" subtype="uncontracted" file="item_2822_enu_uncontracted.brf" />
+      </attachmentlist>
+      <constraints>
+        <cardinality target="1" min="0" max="0" />
+        <cardinality target="" min="1" max="0" />
+      </constraints>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="item_2822_TAG_1_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation></textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Tim and I sat in the front row at the circus, and the clowns tumbled and danced in front of us.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae2">
+            <contentLinkInfo itsLinkIdentifierRef="item_2822_TAG_2_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation></textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>They pretended to throw water on us, but their buckets just had shiny bits of paper.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae3">
+            <contentLinkInfo itsLinkIdentifierRef="item_2822_TAG_3_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation></textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>Then, one clown really did spray water on me from a flower on his jacket.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae4">
+            <contentLinkInfo itsLinkIdentifierRef="item_2822_TAG_4_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation></textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>“Oh, he got me! I said to Tim.”</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae5">
+            <contentLinkInfo itsLinkIdentifierRef="item_2822_TAG_5_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation></textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>“Yes” he laughed “he tricked you twice!”</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae6">
+            <contentLinkInfo itsLinkIdentifierRef="item_2822_TAG_6_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation></textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>After that, the elephants came out.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae7">
+            <contentLinkInfo itsLinkIdentifierRef="item_2822_TAG_7_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation></textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>The elephants did tricks like stand on their front legs.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae8">
+            <contentLinkInfo itsLinkIdentifierRef="item_2822_TAG_8_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation></textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>“How can those huge animals do that?” I asked Tim.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae9">
+            <contentLinkInfo itsLinkIdentifierRef="item_2822_TAG_9_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation></textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>“I don't know, but it's amazing,” Tim answered.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

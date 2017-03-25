@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<metadata>
+  <smarterAppMetadata xmlns="http://www.smarterapp.org/ns/1/assessment_item_metadata">
+    <Identifier>3417</Identifier>
+    <SecurityStatus>Non-secure</SecurityStatus>
+    <SmarterAppItemDescriptor>MATH.3.1.G.1K - SBAC_Field</SmarterAppItemDescriptor>
+    <Status>Released</Status>
+    <StimulusFormat>Standard</StimulusFormat>
+    <Subject>MATH</Subject>
+    <Version>0</Version>
+    <ItemAuthorIdentifier>Sridhar_Ravva</ItemAuthorIdentifier>
+    <ItemSpecFormat>SmarterApp</ItemSpecFormat>
+    <LastModifiedBy>Sridhar_Ravva</LastModifiedBy>
+    <IntendedGrade>3</IntendedGrade>
+    <MinimumGrade>3</MinimumGrade>
+    <MaximumGrade>4</MaximumGrade>
+    <DepthOfKnowledge>2</DepthOfKnowledge>
+    <InteractionType>GI</InteractionType>
+    <MaximumNumberOfPoints>1</MaximumNumberOfPoints>
+    <AllowCalculator>N</AllowCalculator>
+    <BrailleType>Not Braillable</BrailleType>
+    <StandardPublication>
+      <Publication>SBAC-MA-v3</Publication>
+      <PrimaryStandard>SBAC-MA-v3:MA-Undesignated</PrimaryStandard>
+    </StandardPublication>
+    <AssociatedTutorial>1075</AssociatedTutorial>
+    <AssociatedWordlist>3418</AssociatedWordlist>
+    <Language>eng</Language>
+    <Language>spa</Language>
+  </smarterAppMetadata>
+</metadata>

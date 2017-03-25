@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<metadata>
+  <smarterAppMetadata xmlns="http://www.smarterapp.org/ns/1/assessment_item_metadata">
+    <Identifier>2822</Identifier>
+    <SecurityStatus>Non-secure</SecurityStatus>
+    <SmarterAppItemDescriptor>65090 - SBAC_Field</SmarterAppItemDescriptor>
+    <Status>Released</Status>
+    <StimulusFormat>Standard</StimulusFormat>
+    <Subject>ELA</Subject>
+    <Version>0</Version>
+    <ItemAuthorIdentifier>Sridhar_Ravva</ItemAuthorIdentifier>
+    <ItemSpecFormat>SmarterApp</ItemSpecFormat>
+    <LastModifiedBy>Sridhar_Ravva</LastModifiedBy>
+    <IntendedGrade>3</IntendedGrade>
+    <DepthOfKnowledge>1</DepthOfKnowledge>
+    <InteractionType>HTQ</InteractionType>
+    <MaximumNumberOfPoints>1</MaximumNumberOfPoints>
+    <BrailleType>BRF</BrailleType>
+    <MinimumGrade>3</MinimumGrade>
+    <MaximumGrade>3</MaximumGrade>
+    <Claim2RevisionCategory>R</Claim2RevisionCategory>
+    <StandardPublication>
+      <Publication>SBAC-ELA-v3</Publication>
+      <PrimaryStandard>SBAC-ELA-v3:ELA-Undesignated</PrimaryStandard>
+    </StandardPublication>
+    <StandardPublication>
+      <Publication>SBAC-ELA-v1</Publication>
+      <PrimaryStandard>SBAC-ELA-v1:2-W|9-3|3.L.2c</PrimaryStandard>
+    </StandardPublication>
+    <AssociatedTutorial>2759</AssociatedTutorial>
+    <Language>eng</Language>
+  </smarterAppMetadata>
+</metadata>

@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="eq" id="3258" version="0" bankkey="187">
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>3258</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>MATH</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>MATH.3.4.. - SBAC_Field</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>EQ</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>3</val>
+        <desc>3</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>EQ</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>8</val>
+        <desc>8 [9.16]</desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>EquationEditor</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>1 pt.</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Cloze Answers">
+        <name>Item: Cloze Answers</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Max Choices">
+        <name>Item:Max Choices</name>
+        <val>NA</val>
+        <desc>NA</desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key (Part II)">
+        <name>Item: Answer Key (Part II)</name>
+        <val>NA</val>
+        <desc>NA</desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="1074" bankkey="187" />
+    <resourceslist>
+      <resource type="wordList" id="3259" index="1" bankkey="187" />
+    </resourceslist>
+    <statistic />
+    <MachineRubric filename="Item_3258_v0.qrx" />
+    <RendererSpec filename="Item_3258_v0.eax" />
+    <content language="ENU" version="2.0" approvedVersion="0">
+      <rationaleoptlist />
+      <stem><![CDATA[<p style="color:#000000; ">Jamal’s mother plans a <span id="item_3258_TAG_5" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>trip<span class="its-tag" data-tag-ref="item_3258_TAG_5" data-tag-boundary="end"></span> for the <span id="item_3258_TAG_4" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="3"></span>baseball<span class="its-tag" data-tag-ref="item_3258_TAG_4" data-tag-boundary="end"></span> <span id="item_3258_TAG_8" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="4"></span>team<span class="its-tag" data-tag-ref="item_3258_TAG_8" data-tag-boundary="end"></span>.</p><p style="color:#000000; ">&#xA0;</p><ul style="padding-left:1.7670em; "><li><p style="color:#000000; ">There are 14 <span id="item_3258_TAG_6" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="5"></span>players<span class="its-tag" data-tag-ref="item_3258_TAG_6" data-tag-boundary="end"></span> on the <span id="item_3258_TAG_7" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="4"></span>team<span class="its-tag" data-tag-ref="item_3258_TAG_7" data-tag-boundary="end"></span>.</p></li></ul><p style="color:#000000; ">&#xA0;</p><ul style="padding-left:1.7670em; "><li><p style="color:#000000; ">There are 5 parents going on the trip.</p><p style="color:#000000; ">&#xA0;</p></li><li><p style="color:#000000; ">The <span id="item_3258_TAG_9" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="5"></span>players<span class="its-tag" data-tag-ref="item_3258_TAG_9" data-tag-boundary="end"></span> and parents will all travel together in cars.</p></li></ul><p style="color:#000000; ">&#xA0;</p><ul style="padding-left:1.7670em; "><li><p style="color:#000000; ">Each car can hold a total of 5 people.</p></li></ul><p style="color:#000000; ">&#xA0;</p><ul style="padding-left:1.7670em; "><li><p style="color:#000000; ">There must be at least 1 parent in each car.</p></li></ul><p style="color:#000000; ">&#xA0;</p><p style="color:#000000; "><span id="item_3258_TAG_10" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="6"></span><span style="font-weight:normal; ">What</span><span class="its-tag" data-tag-ref="item_3258_TAG_10" data-tag-boundary="end"></span><span style="font-weight:normal; "> is the </span><span id="item_3258_TAG_3" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="1"></span><span style="font-weight:bold; ">fewest</span><span class="its-tag" data-tag-ref="item_3258_TAG_3" data-tag-boundary="end"></span><span style="font-weight:normal; "> number of cars they will </span><span id="item_3258_TAG_2_BEGIN"><span style="font-weight:normal; ">need?</span></span></p>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="">
+          <name>
+        Rubric </name>
+          <val><![CDATA[<p style="color:#000000; ">Exemplar:</p><p style="color:#000000; ">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="color:#000000; ">4 or any other equivalent</p></li></ul>]]></val>
+        </rubric>
+        <samplelist maxval="" minval="" />
+      </rubriclist>
+      <attachmentlist>
+        <attachment id="braillefile1" type="BRF" subtype="nemeth" file="item_3258_enu_nemeth.brf" />
+        <attachment id="aslfile1" type="ASL" subtype="STEM" file="item_3258_ASL_STEM.mp4">
+          <source src="item_3258_ASL_STEM.webm" type="video/webm" />
+          <source src="item_3258_ASL_STEM.mp4" type="video/mp4" />
+        </attachment>
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae9">
+            <contentLinkInfo itsLinkIdentifierRef="item_3258_TAG_2_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>need? From left to right and top to bottom the equation tool reeds, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, point, box over box.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>need?</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+    <content language="ESN" version="2.0" approvedVersion="0">
+      <stem><![CDATA[<p style="color:#000000; ">La mamá de Jamal planea un viaje para el equipo de béisbol.</p><p style="color:#000000; ">&#xA0;</p><ul style="padding-left:1.7670em; "><li><p style="color:#000000; ">Hay 14 jugadores en el equipo.</p></li></ul><p style="color:#000000; ">&#xA0;</p><ul style="padding-left:1.7670em; "><li><p style="color:#000000; ">Hay 5 padres que van a ir al viaje.</p><p style="color:#000000; ">&#xA0;</p></li><li><p style="color:#000000; ">Los jugadores y los padres viajarán juntos en autos.</p></li></ul><p style="color:#000000; ">&#xA0;</p><ul style="padding-left:1.7670em; "><li><p style="color:#000000; ">En cada auto caben un total de 5 personas.</p></li></ul><p style="color:#000000; ">&#xA0;</p><ul style="padding-left:1.7670em; "><li><p style="color:#000000; ">Tiene que haber por lo menos 1 padre en cada auto.</p></li></ul><p style="color:#000000; ">&#xA0;</p><p style="color:#000000; "><span style="font-weight:normal; ">¿Cuál es el número </span><span style="font-weight:bold; ">menor</span><span style="font-weight:normal; "> de autos que necesitarán?</span></p><p class="languagedivider">&#xA0;</p><p style="color:#000000; ">Jamal’s mother plans a <span id="item_3258_TAG_5" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>trip<span class="its-tag" data-tag-ref="item_3258_TAG_5" data-tag-boundary="end"></span> for the <span id="item_3258_TAG_4" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="3"></span>baseball<span class="its-tag" data-tag-ref="item_3258_TAG_4" data-tag-boundary="end"></span> <span id="item_3258_TAG_8" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="4"></span>team<span class="its-tag" data-tag-ref="item_3258_TAG_8" data-tag-boundary="end"></span>.</p><p style="color:#000000; ">&#xA0;</p><ul style="padding-left:1.7670em; "><li><p style="color:#000000; ">There are 14 <span id="item_3258_TAG_6" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="5"></span>players<span class="its-tag" data-tag-ref="item_3258_TAG_6" data-tag-boundary="end"></span> on the <span id="item_3258_TAG_7" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="4"></span>team<span class="its-tag" data-tag-ref="item_3258_TAG_7" data-tag-boundary="end"></span>.</p></li></ul><p style="color:#000000; ">&#xA0;</p><ul style="padding-left:1.7670em; "><li><p style="color:#000000; ">There are 5 parents going on the trip.</p><p style="color:#000000; ">&#xA0;</p></li><li><p style="color:#000000; ">The <span id="item_3258_TAG_9" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="5"></span>players<span class="its-tag" data-tag-ref="item_3258_TAG_9" data-tag-boundary="end"></span> and parents will all travel together in cars.</p></li></ul><p style="color:#000000; ">&#xA0;</p><ul style="padding-left:1.7670em; "><li><p style="color:#000000; ">Each car can hold a total of 5 people.</p></li></ul><p style="color:#000000; ">&#xA0;</p><ul style="padding-left:1.7670em; "><li><p style="color:#000000; ">There must be at least 1 parent in each car.</p></li></ul><p style="color:#000000; ">&#xA0;</p><p style="color:#000000; "><span id="item_3258_TAG_10" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="6"></span><span style="font-weight:normal; ">What</span><span class="its-tag" data-tag-ref="item_3258_TAG_10" data-tag-boundary="end"></span><span style="font-weight:normal; "> is the </span><span id="item_3258_TAG_3" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="1"></span><span style="font-weight:bold; ">fewest</span><span class="its-tag" data-tag-ref="item_3258_TAG_3" data-tag-boundary="end"></span><span style="font-weight:normal; "> number of cars they will </span><span id="item_3258_TAG_2_BEGIN"><span style="font-weight:normal; ">need?</span></span></p>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="_Spanish">
+          <name>
+        Rubric _Spanish</name>
+          <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+        </rubric>
+        <samplelist maxval="_Spanish" minval="_Spanish" />
+      </rubriclist>
+      <attachmentlist>
+        <attachment id="aslfile1" type="ASL" subtype="STEM" file="item_3258_ASL_STEM.mp4">
+          <source src="item_3258_ASL_STEM.webm" type="video/webm" />
+          <source src="item_3258_ASL_STEM.mp4" type="video/mp4" />
+        </attachment>
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae9">
+            <contentLinkInfo itsLinkIdentifierRef="item_3258_TAG_2_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>need? From left to right and top to bottom the equation tool reeds, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, point, box over box.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>need?</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

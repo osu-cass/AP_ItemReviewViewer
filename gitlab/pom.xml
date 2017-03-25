@@ -101,6 +101,20 @@
 	    <version>1.19.3</version>
 	</dependency>
 
+		<dependency>
+			<groupId>org.opentestsystem.delivery</groupId>
+			<artifactId>student.library</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>test</scope>
+		</dependency>
+
+
   </dependencies>
 
 

@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="gi" id="3417" version="0" bankkey="187">
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>3417</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>MATH</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>MATH.3.1.G.1K - SBAC_Field</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>GI</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>3</val>
+        <desc>3</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>GI</val>
+        <desc>GI [2]</desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>22</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>Grid</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val>1 pt.</val>
+        <desc>1 Point</desc>
+      </attrib>
+      <attrib attid="itm_att_Cloze Answers">
+        <name>Item: Cloze Answers</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Max Choices">
+        <name>Item:Max Choices</name>
+        <val>NA</val>
+        <desc>NA</desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key (Part II)">
+        <name>Item: Answer Key (Part II)</name>
+        <val>NA</val>
+        <desc>NA</desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="1075" bankkey="187" />
+    <resourceslist>
+      <resource type="wordList" id="3418" index="1" bankkey="187" />
+    </resourceslist>
+    <statistic />
+    <MachineRubric filename="Item_3417_v0.qrx" />
+    <RendererSpec filename="Item_3417_v0.gax" />
+    <content language="ENU" version="2.0" approvedVersion="0">
+      <rationaleoptlist />
+      <stem><![CDATA[<p style="color:#000000; "><span id="item_3417_TAG_3_BEGIN">This</span> rectangle can be divided into equal parts. <span id="item_3417_TAG_5" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="1"></span>Click<span class="its-tag" data-tag-ref="item_3417_TAG_5" data-tag-boundary="end"></span> to shade <img id="item_3417_Object1" style="vertical-align:middle;" src="item_3417_v0_Object1_png16malpha.png" width="13" height="34" /> of the <span id="item_3417_TAG_2_BEGIN">rectangle.</span></p>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="">
+          <name>
+        Rubric </name>
+          <val><![CDATA[<p style="color:#000000; ">Exemplar:</p><p style="color:#000000; ">&#xA0;</p><p style="color:#000000; "><img id="item_3417_Exemplar:(d=png16malpha)" src="item_3417_v0_Exemplar_png16malpha.png" width="275" height="355" style="vertical-align:baseline;" /></p><p style="color:#000000; ">&#xA0;</p><p style="color:#000000; font-weight:bold; ">Points</p><p style="color:#000000; ">&#xA0;</p><ul style="padding-left:1.5000em; "><li><p style="color:#000000; ">(1 point) The student clicks on any 2 of the 8 the Hot Spot regions to represent the unit fraction provided.</p></li></ul>]]></val>
+        </rubric>
+        <samplelist maxval="" minval="" />
+      </rubriclist>
+      <attachmentlist>
+        <attachment id="aslfile1" type="ASL" subtype="STEM" file="item_3417_ASL_STEM.mp4">
+          <source src="item_3417_ASL_STEM.webm" type="video/webm" />
+          <source src="item_3417_ASL_STEM.mp4" type="video/mp4" />
+        </attachment>
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="item_3417_TAG_3_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Thiss</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>This</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>This</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae3">
+            <contentLinkInfo itsLinkIdentifierRef="item_3417_Object1" type="Equation">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioShortDesc>one fourth</audioShortDesc>
+                <audioLongDesc></audioLongDesc>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>the fraction 1 over 4,</brailleTextString>
+                <brailleCode type="Nemeth">?1/4#</brailleCode>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae4">
+            <contentLinkInfo itsLinkIdentifierRef="item_3417_TAG_2_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>rectangle. This is an interactive image. The ruler along the left side of the rectangle has a range from 1 to 4, increasing in increments of 1. To the right of the range reeds, inches. The ruler below the rectangle has a range from 1 to 2, increasing in increments of 1. Below the range reeds, inches.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>rectangle.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>rectangle.</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+    <content language="ESN" version="2.0" approvedVersion="0">
+      <stem><![CDATA[<p style="color:#000000; ">Este rectángulo puede dividirse en partes iguales. Haz clic para sombrear <img id="item_3417_Object11" style="vertical-align:middle;" src="item_3417_v0_Object11_png16malpha.png" width="13" height="34" /> del rectángulo.</p><p class="languagedivider">&#xA0;</p><p style="color:#000000; "><span id="item_3417_TAG_3_BEGIN">This</span> rectangle can be divided into equal parts. <span id="item_3417_TAG_5" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="1"></span>Click<span class="its-tag" data-tag-ref="item_3417_TAG_5" data-tag-boundary="end"></span> to shade <img id="item_3417_Object1" style="vertical-align:middle;" src="item_3417_v0_Object1_png16malpha.png" width="13" height="34" /> of the <span id="item_3417_TAG_2_BEGIN">rectangle.</span></p>]]></stem>
+      <rubriclist>
+        <rubric scorepoint="_Spanish">
+          <name>
+        Rubric _Spanish</name>
+          <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+        </rubric>
+        <samplelist maxval="_Spanish" minval="_Spanish" />
+      </rubriclist>
+      <attachmentlist>
+        <attachment id="aslfile1" type="ASL" subtype="STEM" file="item_3417_ASL_STEM.mp4">
+          <source src="item_3417_ASL_STEM.webm" type="video/webm" />
+          <source src="item_3417_ASL_STEM.mp4" type="video/mp4" />
+        </attachment>
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="item_3417_TAG_3_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>Thiss</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>This</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>This</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae3">
+            <contentLinkInfo itsLinkIdentifierRef="item_3417_Object1" type="Equation">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioShortDesc>one fourth</audioShortDesc>
+                <audioLongDesc></audioLongDesc>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>the fraction 1 over 4,</brailleTextString>
+                <brailleCode type="Nemeth">?1/4#</brailleCode>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae4">
+            <contentLinkInfo itsLinkIdentifierRef="item_3417_TAG_2_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>rectangle. This is an interactive image. The ruler along the left side of the rectangle has a range from 1 to 4, increasing in increments of 1. To the right of the range reeds, inches. The ruler below the rectangle has a range from 1 to 2, increasing in increments of 1. Below the range reeds, inches.</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>rectangle.</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>rectangle.</brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+          <accessElement identifier="ae5">
+            <contentLinkInfo itsLinkIdentifierRef="item_3417_Object11" type="Equation">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <audioShortDesc>the fraction 1 over 4,</audioShortDesc>
+              </readAloud>
+              <brailleText>
+                <brailleTextString>the fraction 1 over 4,</brailleTextString>
+                <brailleCode type="Nemeth">?1/4#
+</brailleCode>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

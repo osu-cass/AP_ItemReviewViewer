@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnswerSet>
+	<Question id="">
+		<QuestionPart id="1">
+			<ObjectSet>
+				<RegionGroupObject name="group" numselected="2">
+					<RegionObject name="a1" isselected="true" />
+					<RegionObject name="a2" isselected="false" />
+					<RegionObject name="a3" isselected="true" />
+					<RegionObject name="a4" isselected="false" />
+					<RegionObject name="a5" isselected="false" />
+					<RegionObject name="a6" isselected="false" />
+					<RegionObject name="a7" isselected="false" />
+					<RegionObject name="a8" isselected="false" />
+				</RegionGroupObject>
+			</ObjectSet>
+			<SnapPoint></SnapPoint>
+		</QuestionPart>
+	</Question>
+</AnswerSet>

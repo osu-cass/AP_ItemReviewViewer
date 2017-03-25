@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<itemrelease version="2.0">
+  <item format="ms" id="2814" version="0" bankkey="187">
+    <associatedpassage>3771</associatedpassage>
+    <attriblist>
+      <attrib attid="itm_item_id">
+        <name>Item: ITS ID</name>
+        <val>2814</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_item_subject">
+        <name>Item: Subject</name>
+        <val>ELA</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_item_desc">
+        <name>Item: Item Description</name>
+        <val>The Telephone Is Born - SBAC_Field</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_FTUse">
+        <name>Fieldtest Use</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_OPUse">
+        <name>Operational Use</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key">
+        <name>Item: Answer Key</name>
+        <val>D,E</val>
+        <desc>,</desc>
+      </attrib>
+      <attrib attid="itm_att_Grade">
+        <name>Item: Grade</name>
+        <val>4</val>
+        <desc>4</desc>
+      </attrib>
+      <attrib attid="itm_att_Item Format">
+        <name>Item: Item Format</name>
+        <val>MS</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Page Layout">
+        <name>Item: Page Layout</name>
+        <val>21</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Response Type">
+        <name>Item: Response Type</name>
+        <val>Vertical MS</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Item Point">
+        <name>Item: Item Point</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Cloze Answers">
+        <name>Item: Cloze Answers</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="stm_pass_id">
+        <name>Stim: ITS ID</name>
+        <val>3771</val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Max Choices">
+        <name>Item:Max Choices</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Answer Key (Part II)">
+        <name>Item: Answer Key (Part II)</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+      <attrib attid="itm_att_Max Choices (Part II)">
+        <name>Item:Max Choices (Part II)</name>
+        <val></val>
+        <desc></desc>
+      </attrib>
+    </attriblist>
+    <tutorial id="1073" bankkey="187" />
+    <resourceslist>
+      <resource type="wordList" id="2815" index="1" bankkey="187" />
+    </resourceslist>
+    <statistic />
+    <content language="ENU" version="2.0" approvedVersion="0">
+      <concept>
+        <name>What Knowledge Do Students Need to Understand This Concept?</name>
+        <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+      </concept>
+      <es>
+        <name>Explanation of Correct Answer</name>
+        <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+      </es>
+      <himi>
+        <name>Explanation of Correct Answer</name>
+        <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+      </himi>
+      <rationaleoptlist>
+        <rationale>
+          <name>Rationale for Option A</name>
+          <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+        </rationale>
+        <rationale>
+          <name>Rationale for Option B</name>
+          <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+        </rationale>
+        <rationale>
+          <name>Rationale for Option C</name>
+          <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+        </rationale>
+        <rationale>
+          <name>Rationale for Option D</name>
+          <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+        </rationale>
+        <rationale>
+          <name>Rationale for Option E</name>
+          <val><![CDATA[<p style="">&#xA0;</p>]]></val>
+        </rationale>
+      </rationaleoptlist>
+      <illustration><![CDATA[<p style="">&#xA0;</p>]]></illustration>
+      <stem><![CDATA[<p style="">Choose <span id="item_2814_TAG_1_BEGIN"><span style="font-weight:bold; ">two</span></span><span style="font-weight:bold; "> </span>details from the presentation that support the idea that the telephone took a long time to <span id="item_2814_TAG_2" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="1"></span>invent<span class="its-tag" data-tag-ref="item_2814_TAG_2" data-tag-boundary="end"></span>.</p>]]></stem>
+      <optionlist minChoices="1" maxChoices="0">
+        <option>
+          <name>Option A</name>
+          <val><![CDATA[<p style="">Bell worked hard in his small <span id="item_2814_TAG_3" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="2"></span>lab<span class="its-tag" data-tag-ref="item_2814_TAG_3" data-tag-boundary="end"></span>.</p>]]></val>
+          <feedback><![CDATA[<p style="">The student may believe this to be the correct response because the presentation uses the word “toiled” when talking about his work in his small lab. However, this is an incorrect response because the reference to this hard work in a small lab does not allow for a direct connection to the passage of time. </p>]]></feedback>
+        </option>
+        <option>
+          <name>Option B</name>
+          <val><![CDATA[<p style="">Bell had an <span id="item_2814_TAG_4" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="3"></span>assistant<span class="its-tag" data-tag-ref="item_2814_TAG_4" data-tag-boundary="end"></span> that helped him.</p>]]></val>
+          <feedback><![CDATA[<p style="">The student may choose this response thinking that because Bell had an assistant the work was difficult and it took a long time. However, just because Bell had help doesn't mean that the invention took a long time.</p>]]></feedback>
+        </option>
+        <option>
+          <name>Option C</name>
+          <val><![CDATA[<p style="">Bell worked with metal, rods, and wires.</p>]]></val>
+          <feedback><![CDATA[<p style="">The student may believe this to be the correct response because the presentation does state that his invention had become an instrument of metal, rods, and wires. However, this is an incorrect connection to the fact that the telephone took years to invent. While it may have taken some time to figure out if the machine would work with these materials, the materials alone do not suggest a passage of time.</p>]]></feedback>
+        </option>
+        <option>
+          <name>Option D</name>
+          <val><![CDATA[<p style="">Bell worked on his <span id="item_2814_TAG_5" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="4"></span>contraption<span class="its-tag" data-tag-ref="item_2814_TAG_5" data-tag-boundary="end"></span> for several years.</p>]]></val>
+          <feedback><![CDATA[<p style="">CORRECT. This is direct evidence that the telephone take a long time since the “contraption” mentioned here is the telephone.</p>]]></feedback>
+        </option>
+        <option>
+          <name>Option E</name>
+          <val><![CDATA[<p style="">Bell <span id="item_2814_TAG_6" class="its-tag" data-tag="word" data-tag-boundary="start" data-word-index="5"></span>experimented<span class="its-tag" data-tag-ref="item_2814_TAG_6" data-tag-boundary="end"></span> with many different machines.</p>]]></val>
+          <feedback><![CDATA[<p style="">CORRECT. Making a machine takes time. The fact the Bell made several different machines as he tried to make his invention shows that inventing the telephone was a time consuming process.</p>]]></feedback>
+        </option>
+      </optionlist>
+      <attachmentlist>
+        <attachment id="braillefile1" type="BRF" subtype="contracted" file="item_2814_enu_contracted.brf" />
+        <attachment id="braillefile2" type="BRF" subtype="uncontracted" file="item_2814_enu_uncontracted.brf" />
+        <attachment id="aslfile1" type="ASL" subtype="STEM" file="item_2814_ASL_STEM.mp4">
+          <source src="item_2814_ASL_STEM.webm" type="video/webm" />
+          <source src="item_2814_ASL_STEM.mp4" type="video/mp4" />
+        </attachment>
+      </attachmentlist>
+      <apipAccessibility>
+        <accessibilityInfo>
+          <accessElement identifier="ae1">
+            <contentLinkInfo itsLinkIdentifierRef="item_2814_TAG_1_BEGIN" type="Text">
+              <objectLink />
+            </contentLinkInfo>
+            <relatedElementInfo>
+              <readAloud>
+                <textToSpeechPronunciation>,two,</textToSpeechPronunciation>
+                <textToSpeechPronunciationAlternate>two</textToSpeechPronunciationAlternate>
+              </readAloud>
+              <brailleText>
+                <brailleTextString></brailleTextString>
+              </brailleText>
+            </relatedElementInfo>
+          </accessElement>
+        </accessibilityInfo>
+      </apipAccessibility>
+    </content>
+  </item>
+</itemrelease>

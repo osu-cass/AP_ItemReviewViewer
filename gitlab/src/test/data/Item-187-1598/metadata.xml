@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<metadata>
+  <smarterAppMetadata xmlns="http://www.smarterapp.org/ns/1/assessment_item_metadata">
+    <Identifier>1598</Identifier>
+    <Subject>MATH</Subject>
+    <SecurityStatus>Non-secure</SecurityStatus>
+    <SmarterAppItemDescriptor>Cloned from ITS 1490 Community Garden Q1</SmarterAppItemDescriptor>
+    <Status>Released</Status>
+    <StimulusFormat>Standard</StimulusFormat>
+    <Version>13</Version>
+    <AssociatedStimulus>3693</AssociatedStimulus>
+    <ItemAuthorIdentifier>Maureen_Font</ItemAuthorIdentifier>
+    <ItemSpecFormat>SmarterApp</ItemSpecFormat>
+    <LastModifiedBy>Maureen_Font</LastModifiedBy>
+    <IntendedGrade>5</IntendedGrade>
+    <MinimumGrade>5</MinimumGrade>
+    <MaximumGrade>5</MaximumGrade>
+    <MathematicalPractice>4</MathematicalPractice>
+    <MathematicalPractice>5</MathematicalPractice>
+    <DepthOfKnowledge>3</DepthOfKnowledge>
+    <TargetAssessmentType>Pilot</TargetAssessmentType>
+    <InteractionType>MC</InteractionType>
+    <EducationalDifficulty>Hard</EducationalDifficulty>
+    <MaximumNumberOfPoints>1</MaximumNumberOfPoints>
+    <AllowCalculator>N</AllowCalculator>
+    <CopyrightAndOtherRestrictions></CopyrightAndOtherRestrictions>
+    <Notes></Notes>
+    <StimulusScource></StimulusScource>
+    <BrailleType>PRN</BrailleType>
+    <EnemyItem></EnemyItem>
+    <ScorePoints>"0,1"</ScorePoints>
+    <TargetSpecificAttributes></TargetSpecificAttributes>
+    <StandardPublication>
+      <Publication>SBAC-MA-v3</Publication>
+      <PrimaryStandard>SBAC-MA-v3:MA-Undesignated</PrimaryStandard>
+    </StandardPublication>
+    <StandardPublication>
+      <Publication>SBAC-MA-v1</Publication>
+      <PrimaryStandard>SBAC-MA-v1:4|MD|E</PrimaryStandard>
+      <SecondaryStandard>SBAC-MA-v2:1|MD|J-4</SecondaryStandard>
+    </StandardPublication>
+    <AssociatedTutorial>1072</AssociatedTutorial>
+    <Language>eng</Language>
+    <Language>spa</Language>
+  </smarterAppMetadata>
+</metadata>

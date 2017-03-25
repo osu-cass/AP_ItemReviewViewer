@@ -10,15 +10,18 @@ import org.slf4j.LoggerFactory;
 import org.smarterbalanced.irv.config.SettingsReader;
 import org.smarterbalanced.irv.services.GitLabService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import TDS.Shared.Exceptions.ReturnStatusException;
 import tds.iris.abstractions.repository.ContentException;
 import tds.iris.abstractions.repository.IContentBuilder;
 import tds.itempreview.ConfigBuilder;
 import tds.itemrenderer.data.AccLookup;
 import tds.itemrenderer.data.IITSDocument;
+import tds.itemrenderer.data.ITSContent;
+import tds.itemrenderer.data.ITSMachineRubric;
+import tds.itemscoringengine.RubricContentSource;
 
 /**
  * @author kthotti
@@ -67,7 +70,9 @@ public class ItemReviewViewerBuilder implements IContentBuilder {
 		// TODO Auto-generated method stub
 		try {
 			getItem(id);
-			return _directoryScanner.getRenderableDocument(getBaseItemName(id), accLookup);
+			IITSDocument iitsDocument = _directoryScanner.getRenderableDocument(getBaseItemName(id), accLookup);
+			parseMachineRubric(iitsDocument, "eng", RubricContentSource.ItemXML);
+			return iitsDocument;
 
 		}  catch (Exception e) {
 			_logger.error("Un known Error while getting or loading  ITEM from GITLAB.", e);
@@ -142,6 +147,31 @@ public class ItemReviewViewerBuilder implements IContentBuilder {
 		}
 		
 	}
+	
+	  public ITSMachineRubric parseMachineRubric (IITSDocument itsDocument, String language, RubricContentSource rubricContentSource) throws ReturnStatusException {
+		    ITSMachineRubric machineRubric = null;
+		    // if the source is item bank then parse the answer key attribute
+		    // NOTE: we use to get this from the response table
+		    if (rubricContentSource == RubricContentSource.AnswerKey) {
+		      machineRubric = new ITSMachineRubric (ITSMachineRubric.ITSMachineRubricType.Text, itsDocument.getAnswerKey ()+"|"+itsDocument.getMaxScore());
+		    }
+		    // if the source is item xml then get the machine rubric element
+		    else if (rubricContentSource == RubricContentSource.ItemXML) {
+		      // get top level machine rubric
+		      machineRubric = itsDocument.getMachineRubric ();
+		      // if empty try and get content elements machine rubric
+		      if (machineRubric == null) {
+		        // get its content for the current tests language
+		        ITSContent itsContent = itsDocument.getContent (language);
+		        // make sure this item has a machine rubric
+		        if (itsContent != null) {
+		          machineRubric = itsContent.getMachineRubric ();
+		        }
+		      }
+		    }
+		    return machineRubric;
+		  }
+
 
 	/* (non-Javadoc)
 	 * @see tds.iris.abstractions.repository.IContentBuilder#init()

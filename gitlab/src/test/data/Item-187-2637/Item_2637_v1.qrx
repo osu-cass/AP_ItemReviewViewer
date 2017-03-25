@@ -1,0 +1,42 @@
+<assessmentItem xmlns="http://www.imsglobal.org/xsd/apip/apipv1p0/qtiitem/imsqti_v2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1998/Math/MathML http://www.w3.org/Math/XMLSchema/mathml2/mathml2.xsd http://www.imsglobal.org/xsd/apip/apipv1p0/qtiitem/imsqti_v2p1 http://www.imsglobal.org/profile/apip/apipv1p0/apipv1p0_qtiitemv2p1_v1p0.xsd http://www.imsglobal.org/xsd/apip/apipv1p0/imsapip_qtiv1p0 http://www.imsglobal.org/profile/apip/apipv1p0/apipv1p0_qtiextv2p1_v1p0.xsd" identifier="item_99873" title="Item 99873" adaptive="false" timeDependent="false" xmlns:apip="http://www.imsglobal.org/xsd/apip/apipv1p0/imsapip_qtiv1p0">
+  <responseDeclaration identifier="RESPONSE" baseType="directedPair" cardinality="multiple">
+    <correctResponse>
+      <value>2 a</value>
+      <value>2 b</value>
+      <value>3 b</value>
+      <value>3 c</value>
+    </correctResponse>
+    <mapping defaultValue="0">
+      <mapEntry mapKey="2 a" mappedValue="0.25" />
+      <mapEntry mapKey="2 b" mappedValue="0.25" />
+      <mapEntry mapKey="3 b" mappedValue="0.25" />
+      <mapEntry mapKey="3 c" mappedValue="0.25" />
+    </mapping>
+  </responseDeclaration>
+  <outcomeDeclaration identifier="SCORE" baseType="float" cardinality="single" />
+  <outcomeDeclaration identifier="FEEDBACK" cardinality="single" baseType="identifier" />
+  <itemBody />
+  <responseProcessing>
+    <responseCondition>
+      <responseIf>
+        <isNull>
+          <variable identifier="RESPONSE" />
+        </isNull>
+        <setOutcomeValue identifier="SCORE">
+          <baseValue baseType="float">0.0</baseValue>
+        </setOutcomeValue>
+      </responseIf>
+      <responseElse>
+        <setOutcomeValue identifier="SCORE">
+          <truncate>
+            <mapResponse identifier="RESPONSE" />
+          </truncate>
+        </setOutcomeValue>
+      </responseElse>
+    </responseCondition>
+  </responseProcessing>
+  <modalFeedback outcomeIdentifier="FEEDBACK" showHide="show" identifier="solution">
+    <p id="Item99873_182d9a92-e3eb-4af7-bb20-f8608f77d693">Rationales:<br /><br />“Post-nap sleepiness can happen if you have too long of a nap.” This statement is supported by Source 3.<br /><br />“If your sleep patterns interrupt your body's internal clock, you might  have trouble getting enough sleep.” This statement is supported by  Source 1 and 2. <br /><br />“A deep sleep helps the brain to operate at a higher level.” This statement is supported by Source 2.<br /></p>
+  </modalFeedback>
+  <apip:apipAccessibility />
+</assessmentItem>
