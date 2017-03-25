@@ -32,7 +32,7 @@ import tds.itemscoringengine.ItemScoreResponse;
  * 
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/opentestsystem.shared.common-context-module.xml" })
+@ContextConfiguration(locations = { "/scoring-engine-test-context.xml" })
 public class ItemScoringServiceTest {
 
 	private static final Logger _logger = LoggerFactory.getLogger(ItemScoringServiceTest.class);

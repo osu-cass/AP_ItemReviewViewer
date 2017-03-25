@@ -81,6 +81,10 @@ public class ItemScoringService {
 				_itemName = "Stim" + id.substring(1);
 
 			
+			if(iitsDocument.getMachineRubric() == null) {
+				throw new ItemScoringException("No rubric file for Item " + id + ". ScoringEngine can't be used for this item type.");
+			}
+			
 			if(iitsDocument.getMachineRubric() != null) {
 				// create responseInfo
 				ResponseInfo responseInfo = new ResponseInfo(iitsDocument.getFormat(), _itemName, studentResponse, iitsDocument.getMachineRubric(), RubricContentType.Uri, "", false);
