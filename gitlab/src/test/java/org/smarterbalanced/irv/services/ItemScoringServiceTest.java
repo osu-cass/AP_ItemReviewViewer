@@ -33,9 +33,9 @@ import tds.itemscoringengine.ItemScoreResponse;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/opentestsystem.shared.common-context-module.xml" })
-public class ItemScoreRequestTest {
+public class ItemScoringServiceTest {
 
-	private static final Logger _logger = LoggerFactory.getLogger(ItemScoreRequestTest.class);
+	private static final Logger _logger = LoggerFactory.getLogger(ItemScoringServiceTest.class);
 
 	/**
 	 * @throws java.lang.Exception
