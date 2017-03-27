@@ -24,7 +24,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import tds.itemrenderer.data.AccLookup;
 import tds.itemscoringengine.ItemScoreResponse;
 
 /**
@@ -33,9 +32,9 @@ import tds.itemscoringengine.ItemScoreResponse;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/scoring-engine-test-context.xml" })
-public class ItemScoringServiceTest {
+public class ItemReviewScoringServiceTest {
 
-	private static final Logger _logger = LoggerFactory.getLogger(ItemScoringServiceTest.class);
+	private static final Logger _logger = LoggerFactory.getLogger(ItemReviewScoringServiceTest.class);
 
 	/**
 	 * @throws java.lang.Exception
@@ -76,8 +75,8 @@ public class ItemScoringServiceTest {
 			StringWriter writer = new StringWriter();
 			IOUtils.copy(input, writer);
 			
-			ItemScoringService itemScoringService = new ItemScoringService();
-			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-2822", new AccLookup());
+			ItemReviewScoringService itemScoringService = new ItemReviewScoringService();
+			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-2822");
 
 			String scoringInfoXML = scoringResponse.getScore().getScoreInfo().toXmlString();
 			_logger.info("Scoring Engine XML Response " + scoringInfoXML);
@@ -99,8 +98,8 @@ public class ItemScoringServiceTest {
 			StringWriter writer = new StringWriter();
 			IOUtils.copy(input, writer);
 			
-			ItemScoringService itemScoringService = new ItemScoringService();
-			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-2637", new AccLookup());
+			ItemReviewScoringService itemScoringService = new ItemReviewScoringService();
+			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-2637");
 
 			String scoringInfoXML = scoringResponse.getScore().getScoreInfo().toXmlString();
 			_logger.info("Scoring Engine XML Response " + scoringInfoXML);
@@ -122,8 +121,8 @@ public class ItemScoringServiceTest {
 			StringWriter writer = new StringWriter();
 			IOUtils.copy(input, writer);
 			
-			ItemScoringService itemScoringService = new ItemScoringService();
-			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-3417", new AccLookup());
+			ItemReviewScoringService itemScoringService = new ItemReviewScoringService();
+			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-3417");
 
 			String scoringInfoXML = scoringResponse.getScore().getScoreInfo().toXmlString();
 			_logger.info("Scoring Engine XML Response " + scoringInfoXML);
@@ -145,8 +144,8 @@ public class ItemScoringServiceTest {
 			StringWriter writer = new StringWriter();
 			IOUtils.copy(input, writer);
 			
-			ItemScoringService itemScoringService = new ItemScoringService();
-			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-2788", new AccLookup());
+			ItemReviewScoringService itemScoringService = new ItemReviewScoringService();
+			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-2788");
 
 			String scoringInfoXML = scoringResponse.getScore().getScoreInfo().toXmlString();
 			_logger.info("Scoring Engine XML Response " + scoringInfoXML);
@@ -168,8 +167,8 @@ public class ItemScoringServiceTest {
 			StringWriter writer = new StringWriter();
 			IOUtils.copy(input, writer);
 			
-			ItemScoringService itemScoringService = new ItemScoringService();
-			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-3258", new AccLookup());
+			ItemReviewScoringService itemScoringService = new ItemReviewScoringService();
+			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-3258");
 
 			String scoringInfoXML = scoringResponse.getScore().getScoreInfo().toXmlString();
 			_logger.info("Scoring Engine XML Response " + scoringInfoXML);
@@ -183,7 +182,7 @@ public class ItemScoringServiceTest {
 	}
 
 
-	//@Test
+	@Test
 	public void scoreEBSRItemTest() {
 
 		try {
@@ -192,8 +191,8 @@ public class ItemScoringServiceTest {
 			StringWriter writer = new StringWriter();
 			IOUtils.copy(input, writer);
 			
-			ItemScoringService itemScoringService = new ItemScoringService();
-			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-2812", new AccLookup());
+			ItemReviewScoringService itemScoringService = new ItemReviewScoringService();
+			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-2812");
 
 			String scoringInfoXML = scoringResponse.getScore().getScoreInfo().toXmlString();
 			_logger.info("Scoring Engine XML Response " + scoringInfoXML);
@@ -207,7 +206,7 @@ public class ItemScoringServiceTest {
 	}
 
 	
-	@Test
+	//@Test
 	public void scoreMCItemTest() {
 
 		try {
@@ -216,8 +215,8 @@ public class ItemScoringServiceTest {
 			StringWriter writer = new StringWriter();
 			IOUtils.copy(input, writer);
 			
-			ItemScoringService itemScoringService = new ItemScoringService();
-			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-1598", new AccLookup());
+			ItemReviewScoringService itemScoringService = new ItemReviewScoringService();
+			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-1598");
 
 			String scoringInfoXML = scoringResponse.getScore().getScoreInfo().toXmlString();
 			_logger.info("Scoring Engine XML Response " + scoringInfoXML);
