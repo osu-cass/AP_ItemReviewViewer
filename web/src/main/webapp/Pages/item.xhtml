@@ -87,14 +87,14 @@
 				<input id="versionToken" type="hidden" value="#{param['version']}" />
 				<input id="isaapToken" type="hidden" value="#{param['isaap']}" />
 				<button id="btnLoadToken" class="btn btn-primary">Load</button>
-				<button class="btn btn-primary pull-right" data-toggle="modal"
+				<button class="btn btn-info pull-right" data-toggle="modal"
 					data-target="#metadata-modal-container">Metadata</button>
 				<button class="btn btn-primary pull-right"
-					style="margin-right: 2px;" data-toggle="modal"
+					data-toggle="modal"
 					data-target="#accessibility-modal-container">Accessibility</button>
 			</div>
 		</div>
-
+		
 		<!-- Item Content -->
 		<div class="row">
 			<div class="col-md-2">
@@ -109,6 +109,31 @@
 			<div class="col-md-10">
 				<iframe src="#{request.contextPath}/" width="100%" height="650"
 					frameBorder="2"></iframe>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-10">
+				<div id="correctAlert" class="alert alert-success alert-dismissable collapse">
+					<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					<strong>Congrats!</strong> Your answer is correct.
+				</div>
+			
+				<div id="incorrectAlert" class="alert alert-danger alert-dismissable collapse">
+					<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					<strong>Sorry!</strong> Your answer is incorrect.
+				</div>
+			</div>
+			<div class="col-md-2">
+				<button id="btnScore" class="btn btn-success pull-right" style="margin-right: 2px;">
+					Score
+				</button>
 			</div>
 		</div>
 
@@ -628,11 +653,9 @@
 					</div>
 				</div>
 				<div class="modal-footer">
+					<button class="btn close" data-dismiss="modal">Close</button>
 					<button class="btn btn-primary" id="btnUpdateAccessibility"
 						data-dismiss="modal">Update</button>
-					<button class="btn btn-primary" data-dismiss="modal">Reset
-						to Default</button>
-					<button class="btn btn-primary btn-cancel" data-dismiss="modal">Cancel</button>
 				</div>
 			</div>
 		</div>
@@ -692,6 +715,45 @@
 					window.location.href = '#{request.contextPath}'
 							+ '/Pages/item.xhtml?' + queryString;
 				});
+		
+		$('#btnScore').on('click', function() {
+			var bankId = $('#bankToken').val();
+			var itemId = $('#txtToken').val();
+			var version = $('#versionToken').val();
+			
+			// Get XML response
+			IRiS.getResponse().done(function(xmlResponse) {
+				if(!isEmpty(xmlResponse)) {
+					console.log(xmlResponse);	
+				
+					$.ajax({
+						type: "POST",
+						url: '#{request.contextPath}' + "/item/score/" + bankId + '-' + itemId + '?version=' + version,
+						data: xmlResponse,
+						success: function(jsonResponse) {
+								console.log(jsonResponse);
+								
+								// Show Alert Div
+								if(data.points > 0) {
+									$('#incorrectAlert').hide();
+									$('#correctAlert').show();
+								}else{
+									$('#correctAlert').hide();
+									$('#incorrectAlert').show();
+								}
+							},
+						dataType: "xml",
+						contentType: "application/json; charset=utf-8"
+					}).fail(function(err){
+						console.log(err);
+						processError(err);
+					});
+					
+				}else{
+					processError({ message: "You must answer the question to receive a score."});
+				}
+			});
+		});
 
 		$(window).load(
 				function() {
