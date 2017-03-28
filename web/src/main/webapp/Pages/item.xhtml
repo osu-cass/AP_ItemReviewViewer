@@ -113,7 +113,7 @@
 		</div>
 		
 		<div class="row">
-			<div class="col-md-10">
+			<div class="col-md-9 col-md-offset-2">
 				<div id="correctAlert" class="alert alert-success alert-dismissable collapse">
 					<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
@@ -130,7 +130,7 @@
 					<strong>Sorry!</strong> Your answer is incorrect.
 				</div>
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-1">
 				<button id="btnScore" class="btn btn-success pull-right" style="margin-right: 2px;">
 					Score
 				</button>
@@ -742,7 +742,7 @@
 									$('#incorrectAlert').show();
 								}
 							},
-						dataType: "xml",
+						dataType: "json",
 						contentType: "application/json; charset=utf-8"
 					}).fail(function(err){
 						console.log(err);
