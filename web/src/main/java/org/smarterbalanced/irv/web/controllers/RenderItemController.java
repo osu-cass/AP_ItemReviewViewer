@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -14,23 +13,21 @@ import org.smarterbalanced.irv.core.model.ItemRequestModel;
 import org.smarterbalanced.irv.model.ItemScoreInfo;
 import org.smarterbalanced.irv.services.ItemReviewScoringService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import AIR.Common.Json.JsonHelper;
 import AIR.Common.Utilities.SpringApplicationContext;
 import tds.blackbox.ContentRequestException;
 import tds.iris.abstractions.repository.ContentException;
 import tds.iris.abstractions.repository.IContentBuilder;
-import tds.iris.web.data.ContentRequest;
 import tds.itemrenderer.data.IITSDocument;
 
 
@@ -39,7 +36,7 @@ import tds.itemrenderer.data.IITSDocument;
  * REST API controller for rendering items.
  */
 
-@Controller
+@RestController
 public class RenderItemController {
 	
 	
@@ -64,6 +61,7 @@ public class RenderItemController {
    * @param accommodationCodes Feature codes delimited by semicolons.
    * @return content object.
    */
+	  /*
   @RequestMapping(value = "/sbac/{item:\\d+[-]\\d+}", method = RequestMethod.GET)
   @ResponseBody
   public ModelAndView getContent(@PathVariable("item") String itemId,
@@ -82,10 +80,11 @@ public class RenderItemController {
     model.addObject("item", itemId);
     return model;
   }
+  */
 
-	@RequestMapping(value = "/{item:\\d+[-]\\d+}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{itemId}", method = RequestMethod.GET)
 	@ResponseBody
-	public String getContent(@PathVariable("item") String itemId,
+	public String getContent(@PathVariable("itemId") String itemId,
 			@RequestParam(value = "isaap", required = false, defaultValue = "") String accommodationCodes,
 			@RequestParam(value = "version", required = false, defaultValue = "") String version,
 			HttpServletResponse response) {
@@ -101,11 +100,12 @@ public class RenderItemController {
 	}
 
 	
-	@RequestMapping(value="/score/{itemId}")
+	@RequestMapping(value="/score/{itemId}", method = RequestMethod.POST)
+	@ResponseBody
     public String scoreItem(@PathVariable("itemId") String itemId,
     						@RequestParam(value = "version", required = false, defaultValue = "") String version,
-    						HttpServletRequest request, HttpServletResponse response) {
-		
+    						@RequestBody String studentResponse) {
+
 		try {
 			String qualifiedItemId = "";
 			
@@ -115,7 +115,7 @@ public class RenderItemController {
 				qualifiedItemId = "I-" + itemId;
 			
 			IITSDocument iitsDocument =  _contentBuilder.getITSDocument(qualifiedItemId);
-			ItemScoreInfo itemScoreInfo = itemReviewScoringService.scoreAssessmentItem(getStudentResponse(request.getInputStream()), iitsDocument);
+			ItemScoreInfo itemScoreInfo = itemReviewScoringService.scoreAssessmentItem(studentResponse, iitsDocument);
 
 			ObjectMapper objectMapper = new ObjectMapper();
 			String jsonString = objectMapper.writeValueAsString(itemScoreInfo);
@@ -123,6 +123,7 @@ public class RenderItemController {
 
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 		return null;

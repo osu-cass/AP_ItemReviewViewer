@@ -48,32 +48,32 @@
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>itemviewerservice</servlet-name>
+        <servlet-name>itemreviewviewer</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/itemviewerservice-servlet.xml</param-value>
+            <param-value>/WEB-INF/itemreviewviewer-servlet.xml</param-value>
         </init-param>
         <load-on-startup>5</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>itemviewerservice</servlet-name>
+        <servlet-name>itemreviewviewer</servlet-name>
         <url-pattern>/logs</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>itemviewerservice</servlet-name>
+        <servlet-name>itemreviewviewer</servlet-name>
         <url-pattern>/item/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>itemviewerservice</servlet-name>
+        <servlet-name>itemreviewviewer</servlet-name>
         <url-pattern>/status</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>itemviewerservice</servlet-name>
+        <servlet-name>itemreviewviewer</servlet-name>
         <url-pattern>/statusLocal</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>itemviewerservice</servlet-name>
+        <servlet-name>itemreviewviewer</servlet-name>
         <url-pattern>/reload</url-pattern>
     </servlet-mapping>
     <servlet>
