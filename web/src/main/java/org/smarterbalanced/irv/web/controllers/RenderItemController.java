@@ -1,9 +1,5 @@
 package org.smarterbalanced.irv.web.controllers;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,19 +9,19 @@ import org.smarterbalanced.irv.core.model.ItemRequestModel;
 import org.smarterbalanced.irv.model.ItemScoreInfo;
 import org.smarterbalanced.irv.services.ItemReviewScoringService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import AIR.Common.Utilities.SpringApplicationContext;
-import tds.blackbox.ContentRequestException;
 import tds.iris.abstractions.repository.ContentException;
 import tds.iris.abstractions.repository.IContentBuilder;
 import tds.itemrenderer.data.IITSDocument;
@@ -53,35 +49,6 @@ public class RenderItemController {
 	  }
 
 
-
-  /**
-   * Returns content.
-   *
-   * @param itemId             Item bank and item ID separated by a "-"
-   * @param accommodationCodes Feature codes delimited by semicolons.
-   * @return content object.
-   */
-	  /*
-  @RequestMapping(value = "/sbac/{item:\\d+[-]\\d+}", method = RequestMethod.GET)
-  @ResponseBody
-  public ModelAndView getContent(@PathVariable("item") String itemId,
-                                 @RequestParam(value = "isaap", required = false,
-                                         defaultValue = "")
-                                         String accommodationCodes
-  ) {
-    //Request is in the format
-    String[] codes = accommodationCodes.split(";");
-    ItemRequestModel item = new ItemRequestModel("I-" + itemId, codes);
-
-    String token = item.generateJsonToken();
-    ModelAndView model = new ModelAndView();
-    model.setViewName("item");
-    model.addObject("token", token);
-    model.addObject("item", itemId);
-    return model;
-  }
-  */
-
 	@RequestMapping(value = "/{itemId}", method = RequestMethod.GET)
 	@ResponseBody
 	public String getContent(@PathVariable("itemId") String itemId,
@@ -102,6 +69,7 @@ public class RenderItemController {
 	
 	@RequestMapping(value="/score/{itemId}", method = RequestMethod.POST)
 	@ResponseBody
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String scoreItem(@PathVariable("itemId") String itemId,
     						@RequestParam(value = "version", required = false, defaultValue = "") String version,
     						@RequestBody String studentResponse) {
@@ -123,26 +91,9 @@ public class RenderItemController {
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
+			_logger.info("There is an error while scoring the item: " + itemId);
+			throw new ScoringException(e.getMessage(), itemId);
 		}
 		
-		return null;
     }
-	
-	
-	public String getStudentResponse(InputStream inputStream) throws ContentRequestException {
-	    try {
-	      BufferedReader bufferedReader = new BufferedReader (new InputStreamReader (inputStream));
-	      String line = null;
-	      StringBuilder builder = new StringBuilder ();
-	      while ((line = bufferedReader.readLine ()) != null) {
-	        builder.append (line);
-	      }
-	      return builder.toString();
-	    } catch (Exception exp) {
-	      _logger.error ("Error deserializing ContentRequest from JSON", exp);
-	      throw new ContentRequestException ("Error deserializing ContentRequest from JSON. " + exp.getMessage ());
-	    }
-	  }
-
 }

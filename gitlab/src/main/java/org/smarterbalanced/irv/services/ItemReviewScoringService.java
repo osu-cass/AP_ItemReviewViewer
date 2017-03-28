@@ -50,7 +50,6 @@ public class ItemReviewScoringService {
 		try {
 
 			_logger.info("Socring the item.... " + id);
-			
 			return scoreItem(studentResponse, getIITSDocument(id));
 
 		} catch (Exception e) {
@@ -63,8 +62,6 @@ public class ItemReviewScoringService {
 
 		try {
 
-			_logger.info("Socring the item.... " + id);
-			
 			ItemScoreResponse itemScoreResponse = scoreItem(studentResponse, getIITSDocument(id));
 			tds.itemscoringengine.ItemScoreInfo _iItemScoreInfo = itemScoreResponse.getScore().getScoreInfo();
 			
@@ -83,7 +80,7 @@ public class ItemReviewScoringService {
 
 		try {
 
-			_logger.info("Socring the item.... " + iitsDocument.getID());
+			_logger.info("Socring the item.... " + iitsDocument.getID() + " Item Type: " + iitsDocument.getFormat());
 			
 			ItemScoreResponse itemScoreResponse = scoreItem(studentResponse, iitsDocument);
 			tds.itemscoringengine.ItemScoreInfo _iItemScoreInfo = itemScoreResponse.getScore().getScoreInfo();
@@ -104,7 +101,6 @@ public class ItemReviewScoringService {
 		try {
 			
 			String id = iitsDocument.getID();
-			_logger.info("Socring the item.... " + iitsDocument.getID());
 			
 			String _itemName = "";
 			if(id.startsWith("i") || id.startsWith("I"))
@@ -112,44 +108,47 @@ public class ItemReviewScoringService {
 			else
 				_itemName = "Stim" + id.substring(1);
 
-			
+			_logger.info("Checking whether item is scorable?");
 			if(!isScorable(iitsDocument)) {
+				_logger.error("Item is not scorable. No rubric file found");
 				throw new ItemScoringException("No rubric file for Item " + id + ". ScoringEngine can't be used for this item type.");
 			}
 			
-			if(iitsDocument.getMachineRubric() != null) {
-				// create responseInfo
-				ResponseInfo responseInfo = new ResponseInfo(iitsDocument.getFormat(), _itemName, studentResponse, iitsDocument.getMachineRubric(), RubricContentType.Uri, "", false);
-				ItemScoreRequest itemScoreRequest = new ItemScoreRequest(responseInfo);
+			_logger.info("Item: " + id + " is scorable. Rubric file path: " + iitsDocument.getMachineRubric().createUri().toString());
+			
+			// create responseInfo
+			ResponseInfo responseInfo = new ResponseInfo(iitsDocument.getFormat(), _itemName, studentResponse, iitsDocument.getMachineRubric(), RubricContentType.Uri, "", false);
+			ItemScoreRequest itemScoreRequest = new ItemScoreRequest(responseInfo);
 
-				StringWriter writer = new StringWriter();
-				XMLOutputFactory outputFactory = XMLOutputFactory.newInstance();
-				XMLStreamWriter out = outputFactory.createXMLStreamWriter(writer);
+			StringWriter writer = new StringWriter();
+			XMLOutputFactory outputFactory = XMLOutputFactory.newInstance();
+			XMLStreamWriter out = outputFactory.createXMLStreamWriter(writer);
 
-				itemScoreRequest.writeXML(out);
+			itemScoreRequest.writeXML(out);
+			
+			_logger.info("ItemScoreRequest " + writer.toString());
 
-				Client client = Client.create();
+			Client client = Client.create();
+			
+			String scoringEngineUrl = getItemScoringUrl();
+			_logger.info("Communicating with Scoring Engine....." + scoringEngineUrl);
+			WebResource webResource = client.resource(scoringEngineUrl);
+			
+			_logger.info("POSTing the Item Score Request.....") ;
+			ClientResponse response = webResource.accept("application/xml").post(ClientResponse.class, writer.toString());
 
-				WebResource webResource = client.resource(getItemScoringUrl());
-				ClientResponse response = webResource.accept("application/xml").post(ClientResponse.class, writer.toString());
-
-				if (response.getStatus() != 200) {
-					throw new ItemScoringException("Error communicating with ItemScoringEngine; Failed : HTTP error code : " + response.getStatus());
-				}
-
-				String output = response.getEntity(String.class);
-				
-				ItemScoreResponse itemScoreResponse = ItemScoreResponse.getInstanceFromXml (output);
-				
-				return itemScoreResponse;
+			if (response.getStatus() != 200) {
+				_logger.error("Error communicating with ItemScoringEngine; Failed : HTTP error code : " + response.getStatus());
+				throw new ItemScoringException("Error communicating with ItemScoringEngine; Failed : HTTP error code : " + response.getStatus());
 			}
-			
-			//this item doesn't have rubric file so it can't be scored. Get the answer from ItemXML
-			
-			
-			return null;
-			
 
+			String output = response.getEntity(String.class);
+			_logger.info("Response from Scoring Engine: ");
+			_logger.info(output);
+			ItemScoreResponse itemScoreResponse = ItemScoreResponse.getInstanceFromXml (output);
+			
+			return itemScoreResponse;
+	
 		} catch (Exception e) {
 			// TODO: handle exception
 			throw new ItemScoringException("There is an error while communicating with Item Scoring Engine "+ e);
