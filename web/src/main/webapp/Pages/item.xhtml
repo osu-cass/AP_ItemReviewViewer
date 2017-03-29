@@ -733,14 +733,20 @@
 						success: function(jsonResponse) {
 								console.log(jsonResponse);
 								
-								// Show Alert Div
 								if(jsonResponse.points > 0) {
-									$('#incorrectAlert').hide();
-									$('#correctAlert').show();
+									alert("Congrats! Your answer is correct: " + jsonResponse.points + " point(s)");
 								}else{
-									$('#correctAlert').hide();
-									$('#incorrectAlert').show();
+									alert("Sorry! Your answer is incorrect.");
 								}
+								
+								// Show Alert Div
+								//if(jsonResponse.points > 0) {
+								//	$('#incorrectAlert').hide();
+								//	$('#correctAlert').show();
+								//}else{
+								//	$('#correctAlert').hide();
+								//	$('#incorrectAlert').show();
+								//}
 							},
 						dataType: "json",
 						contentType: "application/json; charset=utf-8"
