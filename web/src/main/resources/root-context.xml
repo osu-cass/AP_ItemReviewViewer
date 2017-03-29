@@ -58,37 +58,4 @@
 	<beans:bean id="httpWebHelper" class="AIR.Common.Web.HttpWebHelper" />
 
 
-	<beans:bean id="scoringMaster" class="tds.itemscoringengine.ItemScorerManagerImpl" scope="singleton" destroy-method="shutdown">
-		<beans:constructor-arg>
-			<beans:map>
-				<beans:entry key="mc">
-					<beans:bean class="tds.itemscoringengine.itemscorers.MCItemScorer" scope="prototype" />
-				</beans:entry>
-				<beans:entry key="ms">
-					<beans:bean class="tds.itemscoringengine.itemscorers.MCItemScorer" scope="prototype" />
-				</beans:entry>
-				<beans:entry key="mi">
-					<beans:bean class="tds.itemscoringengine.itemscorers.QTIItemScorer" scope="prototype" />
-				</beans:entry>
-				<beans:entry key="ebsr">
-					<beans:bean class="tds.itemscoringengine.itemscorers.QTIItemScorer" scope="prototype" />
-				</beans:entry>
-				<beans:entry key="qti">
-					<beans:bean class="tds.itemscoringengine.itemscorers.QTIItemScorer" scope="prototype" />
-				</beans:entry>
-				<beans:entry key="htq">
-					<beans:bean class="tds.itemscoringengine.itemscorers.QTIItemScorer" scope="prototype" />
-				</beans:entry>
-			</beans:map>
-		</beans:constructor-arg>
-		<beans:constructor-arg>
-			<beans:value>20</beans:value>
-		</beans:constructor-arg>
-		<beans:constructor-arg>
-			<beans:value>500</beans:value>
-		</beans:constructor-arg>
-		<beans:constructor-arg>
-			<beans:value>400</beans:value>
-		</beans:constructor-arg>
-	</beans:bean>
 </beans:beans>
