@@ -115,7 +115,7 @@
 		<div class="row">
 			<div class="col-md-9 col-md-offset-2">
 				<div id="correctAlert" class="alert alert-success alert-dismissable collapse">
-					<button type="button" class="close" data-dismiss="alert"
+					<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">×</span>
 						</button>
@@ -123,7 +123,7 @@
 				</div>
 			
 				<div id="incorrectAlert" class="alert alert-danger alert-dismissable collapse">
-					<button type="button" class="close" data-dismiss="alert"
+					<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">×</span>
 						</button>
@@ -733,20 +733,14 @@
 						success: function(jsonResponse) {
 								console.log(jsonResponse);
 								
-								if(jsonResponse.points > 0) {
-									alert("Congrats! Your answer is correct: " + jsonResponse.points + " point(s)");
-								}else{
-									alert("Sorry! Your answer is incorrect.");
-								}
-								
 								// Show Alert Div
-								//if(jsonResponse.points > 0) {
-								//	$('#incorrectAlert').hide();
-								//	$('#correctAlert').show();
-								//}else{
-								//	$('#correctAlert').hide();
-								//	$('#incorrectAlert').show();
-								//}
+								if(jsonResponse.points > 0) {
+									$('#incorrectAlert').hide();
+									$('#correctAlert').show();
+								}else{
+									$('#correctAlert').hide();
+									$('#incorrectAlert').show();
+								}
 							},
 						dataType: "json",
 						contentType: "application/json; charset=utf-8"

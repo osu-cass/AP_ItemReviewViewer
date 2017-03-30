@@ -21,10 +21,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.smarterbalanced.irv.model.ItemScoreInfo;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import tds.itemscoringengine.ItemScoreResponse;
 
 /**
  * @author temp_rreddy
@@ -76,13 +75,10 @@ public class ItemReviewScoringServiceTest {
 			IOUtils.copy(input, writer);
 			
 			ItemReviewScoringService itemScoringService = new ItemReviewScoringService();
-			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-2822");
+			ItemScoreInfo itemScoreInfo = itemScoringService.scoreItem(writer.toString(), "I-187-2822");
 
-			String scoringInfoXML = scoringResponse.getScore().getScoreInfo().toXmlString();
-			_logger.info("Scoring Engine XML Response " + scoringInfoXML);
-
-			Assert.assertTrue(scoringResponse.getScore().getScoreInfo().getPoints() == 1);
-
+			Assert.assertTrue(itemScoreInfo.getPoints() == 1);
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -99,13 +95,10 @@ public class ItemReviewScoringServiceTest {
 			IOUtils.copy(input, writer);
 			
 			ItemReviewScoringService itemScoringService = new ItemReviewScoringService();
-			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-2637");
+			ItemScoreInfo itemScoreInfo = itemScoringService.scoreItem(writer.toString(), "I-187-2637");
 
-			String scoringInfoXML = scoringResponse.getScore().getScoreInfo().toXmlString();
-			_logger.info("Scoring Engine XML Response " + scoringInfoXML);
-
-			Assert.assertTrue(scoringResponse.getScore().getScoreInfo().getPoints() == 1);
-
+			Assert.assertTrue(itemScoreInfo.getPoints() == 1);
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -122,13 +115,10 @@ public class ItemReviewScoringServiceTest {
 			IOUtils.copy(input, writer);
 			
 			ItemReviewScoringService itemScoringService = new ItemReviewScoringService();
-			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-3417");
+			ItemScoreInfo itemScoreInfo = itemScoringService.scoreItem(writer.toString(), "I-187-3417");
 
-			String scoringInfoXML = scoringResponse.getScore().getScoreInfo().toXmlString();
-			_logger.info("Scoring Engine XML Response " + scoringInfoXML);
-
-			Assert.assertTrue(scoringResponse.getScore().getScoreInfo().getPoints() == 1);
-
+			Assert.assertTrue(itemScoreInfo.getPoints() == 1);
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -145,13 +135,10 @@ public class ItemReviewScoringServiceTest {
 			IOUtils.copy(input, writer);
 			
 			ItemReviewScoringService itemScoringService = new ItemReviewScoringService();
-			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-2788");
+			ItemScoreInfo itemScoreInfo = itemScoringService.scoreItem(writer.toString(), "I-187-2788");
 
-			String scoringInfoXML = scoringResponse.getScore().getScoreInfo().toXmlString();
-			_logger.info("Scoring Engine XML Response " + scoringInfoXML);
-
-			Assert.assertTrue(scoringResponse.getScore().getScoreInfo().getPoints() == 1);
-
+			Assert.assertTrue(itemScoreInfo.getPoints() == 1);
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -168,13 +155,10 @@ public class ItemReviewScoringServiceTest {
 			IOUtils.copy(input, writer);
 			
 			ItemReviewScoringService itemScoringService = new ItemReviewScoringService();
-			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-3258");
+			ItemScoreInfo itemScoreInfo = itemScoringService.scoreItem(writer.toString(), "I-187-3258");
 
-			String scoringInfoXML = scoringResponse.getScore().getScoreInfo().toXmlString();
-			_logger.info("Scoring Engine XML Response " + scoringInfoXML);
-
-			Assert.assertTrue(scoringResponse.getScore().getScoreInfo().getPoints() == 1);
-
+			Assert.assertTrue(itemScoreInfo.getPoints() == 1);
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -182,7 +166,7 @@ public class ItemReviewScoringServiceTest {
 	}
 
 
-	@Test
+	//@Test
 	public void scoreEBSRItemTest() {
 
 		try {
@@ -192,13 +176,10 @@ public class ItemReviewScoringServiceTest {
 			IOUtils.copy(input, writer);
 			
 			ItemReviewScoringService itemScoringService = new ItemReviewScoringService();
-			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-2812");
+			ItemScoreInfo itemScoreInfo = itemScoringService.scoreItem(writer.toString(), "I-187-2812");
 
-			String scoringInfoXML = scoringResponse.getScore().getScoreInfo().toXmlString();
-			_logger.info("Scoring Engine XML Response " + scoringInfoXML);
-
-			Assert.assertTrue(scoringResponse.getScore().getScoreInfo().getPoints() == 1);
-
+			Assert.assertTrue(itemScoreInfo.getPoints() == 1);
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -206,7 +187,7 @@ public class ItemReviewScoringServiceTest {
 	}
 
 	
-	//@Test
+	@Test
 	public void scoreMCItemTest() {
 
 		try {
@@ -216,12 +197,9 @@ public class ItemReviewScoringServiceTest {
 			IOUtils.copy(input, writer);
 			
 			ItemReviewScoringService itemScoringService = new ItemReviewScoringService();
-			ItemScoreResponse scoringResponse = itemScoringService.scoreItem(writer.toString(), "I-187-1598");
+			ItemScoreInfo itemScoreInfo = itemScoringService.scoreItem(writer.toString(), "I-187-1598");
 
-			String scoringInfoXML = scoringResponse.getScore().getScoreInfo().toXmlString();
-			_logger.info("Scoring Engine XML Response " + scoringInfoXML);
-
-			Assert.assertTrue(scoringResponse.getScore().getScoreInfo().getPoints() == 1);
+			Assert.assertTrue(itemScoreInfo.getPoints() == 1);
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -229,5 +207,25 @@ public class ItemReviewScoringServiceTest {
 		}
 	}
 	
+	@Test
+	public void scoreMSItemTest() {
+
+		try {
+		
+			InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("StudentResponse_ItemType_MS_I-187-2814.txt");
+			StringWriter writer = new StringWriter();
+			IOUtils.copy(input, writer);
+			
+			ItemReviewScoringService itemScoringService = new ItemReviewScoringService();
+			ItemScoreInfo itemScoreInfo = itemScoringService.scoreItem(writer.toString(), "I-187-2814");
+
+			Assert.assertTrue(itemScoreInfo.getPoints() == 1);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+
 	
 }
