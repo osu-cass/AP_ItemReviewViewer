@@ -278,14 +278,14 @@ public class ItemViewerContentBuilder implements IContentBuilder {
 
 	}
 
-	@Scheduled(cron = "0 0/15 * * *  *")
-	public void createDirectory() {
-
-		long start = System.currentTimeMillis();
-		File dir = new File(DESTINATION_ZIP_FILE_LOCATION);
-		dir.mkdir();
-		long end = System.currentTimeMillis();
-		_logger.info("Directory created in " + (end - start) + " milli seconds at " + new Date());
-	}
+//	@Scheduled(cron = "0 0/15 * * *  *")
+//	public void createDirectory() {
+//
+//		long start = System.currentTimeMillis();
+//		File dir = new File(DESTINATION_ZIP_FILE_LOCATION);
+//		dir.mkdir();
+//		long end = System.currentTimeMillis();
+//		_logger.info("Directory created in " + (end - start) + " milli seconds at " + new Date());
+//	}
 
 }

@@ -46,6 +46,7 @@ import tds.itemscoringengine.ScoringStatus;
 public class ItemReviewScoringService {
 	
 	private static final Logger _logger = LoggerFactory.getLogger(ItemReviewScoringService.class);
+	public static final String MS_FORMAT   = "MS";
 
 	/**
 	 * 
@@ -74,7 +75,7 @@ public class ItemReviewScoringService {
 			ITSDocument itsDocument = (ITSDocument)iitsDocument;
 			String itemFormat = itsDocument.getFormat();
 
-			_logger.info("Socring the item.... " + iitsDocument.getID() + " Item Type: " + itemFormat);
+			_logger.info("Socring the item.... " + iitsDocument.getID() + " Item Format: " + itemFormat +" started");
 			
 			if(itemFormat.trim().equalsIgnoreCase("MC") || itemFormat.trim().equalsIgnoreCase("MS"))
 				return scoreMCMSItems(studentResponse, itsDocument);
@@ -83,6 +84,8 @@ public class ItemReviewScoringService {
 			tds.itemscoringengine.ItemScoreInfo _iItemScoreInfo = itemScoreResponse.getScore().getScoreInfo();
 			
 			ItemScoreInfo itemScoreInfo = new ItemScoreInfo(_iItemScoreInfo.getPoints(), _iItemScoreInfo.getMaxScore(), _iItemScoreInfo.getStatus(), _iItemScoreInfo.getDimension(), _iItemScoreInfo.getRationale());
+			_logger.info("creating itemscoreinfo object " + _iItemScoreInfo.getPoints(), _iItemScoreInfo.getMaxScore(), _iItemScoreInfo.getStatus(), _iItemScoreInfo.getDimension(), _iItemScoreInfo.getRationale());
+			_logger.info("Socring the item.... " + iitsDocument.getID() + " Item Format: " + itemFormat +" success");
 			return itemScoreInfo;
 
 		} catch (Exception e) {
@@ -97,12 +100,17 @@ public class ItemReviewScoringService {
 		// TODO Auto-generated method stub
 		try {
 			_logger.info("Scoring the item of type: " + itsDocument.getFormat() + " by parsing the Item XML");
-			String answerKey1 = itsDocument.getAttributeValue("itm_att_Answer Key");
-			String answerKey2 = itsDocument.getAttributeValue("itm_att_Answer Key (Part II)");
+			StringBuilder answerKey1 = new StringBuilder();
+			answerKey1.append(itsDocument.getAttributeValue("itm_att_Answer Key"));
+			if(itsDocument.getAttributeValue("itm_att_Answer Key (Part II)")!=null && !itsDocument.getAttributeValue("itm_att_Answer Key (Part II)").isEmpty())
+				answerKey1.append(itsDocument.getAttributeValue("itm_att_Answer Key (Part II)"));
 			
 
-			if(studentResponse.equalsIgnoreCase(answerKey1)) {
-				 return new ItemScoreInfo(1, 1, ScoringStatus.Scored, null, null); 
+			if(studentResponse.equalsIgnoreCase(answerKey1.toString())) {
+				if(itsDocument.getFormat().equalsIgnoreCase(MS_FORMAT))
+				 return new ItemScoreInfo(-9, -9, ScoringStatus.Scored, null, null); 
+				else
+					 return new ItemScoreInfo(1, 1, ScoringStatus.Scored, null, null); 	
 			}
 			else {
 				 return new ItemScoreInfo(-1, 1, ScoringStatus.Scored, null, null); 
@@ -121,6 +129,7 @@ public class ItemReviewScoringService {
 	public ItemScoreResponse scoreItem(String studentResponse, ITSDocument itsDocument) throws ItemScoringException {
 
 		try {
+			_logger.info("Scoring the item of type: " + itsDocument.getFormat() + " by parsing the Item XML");
 			
 			String id = itsDocument.getID();
 			

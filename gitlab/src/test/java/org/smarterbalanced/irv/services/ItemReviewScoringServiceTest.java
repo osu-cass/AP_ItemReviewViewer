@@ -219,7 +219,7 @@ public class ItemReviewScoringServiceTest {
 			ItemReviewScoringService itemScoringService = new ItemReviewScoringService();
 			ItemScoreInfo itemScoreInfo = itemScoringService.scoreItem(writer.toString(), "I-187-2814");
 
-			Assert.assertTrue(itemScoreInfo.getPoints() == 1);
+			Assert.assertTrue(itemScoreInfo.getPoints() == -9);
 
 		} catch (Exception e) {
 			// TODO: handle exception
