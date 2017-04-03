@@ -45,6 +45,10 @@
 		width: 90%;
 		max-width: 1200px;
 	}
+	
+	.navbar-default {
+		height: 85px;
+	}
 }
 </style>
 
@@ -62,8 +66,9 @@
 					class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="#"> <img
-				src="../images/SmarterBalanced_logo-01.png" width="165" height="64" />
+				src="../images/SmarterBalanced_logo-01.png" width="165" style="padding-right: 15px; border-right: 1px solid #63666A;" />
 			</a>
+			<div style="padding-left: 200px; padding-top: 5px; color: #63666A"><h3>Item Reviewer</h3></div>
 		</div>
 		</nav>
 
@@ -95,10 +100,17 @@
 			</div>
 		</div>
 		
+		<div class="row" style="padding-bottom: 10px;">
+			<div class="col-md-2 col-md-offset-2" id="versionDisplay">
+				<!--  Display Version -->
+			</div>
+		</div>
+		
 		<!-- Item Content -->
 		<div class="row">
 			<div class="col-md-2">
-				<label><a href="#versions" data-toggle="collapse">Version
+				<label><a href="#versions" data-toggle="collapse">
+				<span class="glyphicon glyphicon-triangle-right" style="padding-right: 50px"></span>>Version
 						List</a></label>
 				<ul id="versions" class="collapse">
 					<ui:repeat value="#{versionsBacking.itemCommits}" var="value">
@@ -774,8 +786,13 @@
 									IRiS.loadToken(vendorId, data).done(
 											function() {
 												enableAll();
+												if(isEmpty(version)) {
+													document.getElementById("versionDisplay").innherHTML = "<span class='label label-success'>viewing current version</span>";
+												}else{
+													document.getElementById("versionDisplay").innherHTML = "<span class='label label-info'>viewing version " + version + "</span>";
+												}
 											}).fail(function(err) {
-										processError(err);
+												document.getElementById("versionDisplay").innherHTML = "<span class='label label-danger'>Unable to view item " + bankId + '-' + itemId + "</span>"; 
 									}).always(function() {
 										enableAll();
 									});
