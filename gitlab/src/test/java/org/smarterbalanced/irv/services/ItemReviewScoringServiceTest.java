@@ -65,7 +65,7 @@ public class ItemReviewScoringServiceTest {
 	}
 
 	
-	//@Test
+	@Test
 	public void scoreHTQItemTest() {
 
 		try {
@@ -85,7 +85,7 @@ public class ItemReviewScoringServiceTest {
 		}
 	}
 	
-	//@Test
+	@Test
 	public void scoreMIItemTest() {
 
 		try {
@@ -105,7 +105,7 @@ public class ItemReviewScoringServiceTest {
 		}
 	}
 
-	//@Test
+	@Test
 	public void scoreGIItemTest() {
 
 		try {
@@ -125,7 +125,7 @@ public class ItemReviewScoringServiceTest {
 		}
 	}
 
-	//@Test
+	@Test
 	public void scoreTIItemTest() {
 
 		try {
@@ -145,7 +145,7 @@ public class ItemReviewScoringServiceTest {
 		}
 	}
 
-	//@Test
+	@Test
 	public void scoreEQItemTest() {
 
 		try {
@@ -166,7 +166,7 @@ public class ItemReviewScoringServiceTest {
 	}
 
 
-	//@Test
+	@Test
 	public void scoreEBSRItemTest() {
 
 		try {
