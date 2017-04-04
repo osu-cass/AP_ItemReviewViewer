@@ -8,9 +8,9 @@
 <h:head>
 	<title>Smarter Balanced- Item Viewer</title>
 	<!-- Required by CTB and only scripts required for reference purposes -->
-	<!-- <tds:ScriptLink
+	<tds:ScriptLink
 		source="~/Scripts/Libraries/jquery/jquery-1.10.2.min.js"
-		type="text/javascript"></tds:ScriptLink>-->
+		type="text/javascript"></tds:ScriptLink>
 	<tds:ScriptLink source="~/Scripts/Utilities/util_xdm.js"
 		type="text/javascript"></tds:ScriptLink>
 	<tds:ScriptLink source="~/Scripts/client.js" type="text/javascript"></tds:ScriptLink>
@@ -36,10 +36,10 @@
 		rel="stylesheet" type="text/css" />
 
 	<!-- JQuery CDN -->
-	<script
+	<!-- <script
 			  src="https://code.jquery.com/jquery-1.12.4.min.js"
 			  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-			  crossorigin="anonymous"></script>
+			  crossorigin="anonymous"></script>-->
 	<!-- Bootstrap Core JavaScript -->
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -799,6 +799,7 @@
 										+ '-' + itemId + '?version=' + version
 										+ '&amp;isaap=' + isaap).done(
 								function(data) {
+									console.log(JSON.stringify(data));
 									IRiS.loadToken(vendorId, data).done(
 											function() {
 												enableAll();
