@@ -808,7 +808,7 @@
 												if(isEmpty(version)) {
 													versionDisplay.innerHTML = '<span class="label label-success">viewing current version</span>';
 												}else{
-													versionDisplay.innerHTML = '<span class="label label-info">viewing version ' + version + ''</span>'';
+													versionDisplay.innerHTML = '<span class="label label-info">viewing version ' + version + '</span>';
 												}
 											}).fail(function(err) {
 												document.getElementById("versionDisplay").innerHTML = '<span class="label label-danger">Unable to view item ' + bankId + '-' + itemId + '</span>'; 
