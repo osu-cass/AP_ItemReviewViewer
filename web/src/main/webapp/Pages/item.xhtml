@@ -773,7 +773,8 @@
 						contentType: "application/json; charset=utf-8"
 					}).fail(function(err){
 						console.log(err);
-						document.getElementById("versionDisplay").innerHTML = "<span class='label label-danger'>Unable to score item " + bankId + '-' + itemId + "</span>";
+						var versionDisplay = document.getElementById("versionDisplay");
+						versionDisplay.innerHTML = '<span class="label label-danger">Unable to score item ' + bankId + '-' + itemId + ''</span>';'
 					});
 					
 				}else{
@@ -805,12 +806,12 @@
 												var versionDisplay = document.getElementById("versionDisplay");
 												
 												if(isEmpty(version)) {
-													versionDisplay.innerHTML = "<span class='label label-success'>viewing current version</span>";
+													versionDisplay.innerHTML = '<span class="label label-success">viewing current version</span>';
 												}else{
-													versionDisplay.innerHTML = "<span class='label label-info'>viewing version " + version + "</span>";
+													versionDisplay.innerHTML = '<span class="label label-info">viewing version ' + version + ''</span>'';
 												}
 											}).fail(function(err) {
-												document.getElementById("versionDisplay").innerHTML = "<span class='label label-danger'>Unable to view item " + bankId + '-' + itemId + "</span>"; 
+												document.getElementById("versionDisplay").innerHTML = '<span class="label label-danger">Unable to view item ' + bankId + '-' + itemId + '</span>'; 
 									}).always(function() {
 										enableAll();
 									});
