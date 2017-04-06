@@ -100,13 +100,19 @@ public class ItemReviewScoringService {
 		// TODO Auto-generated method stub
 		try {
 			_logger.info("Scoring the item of type: " + itsDocument.getFormat() + " by parsing the Item XML");
-			StringBuilder answerKey1 = new StringBuilder();
-			answerKey1.append(itsDocument.getAttributeValue("itm_att_Answer Key"));
-			if(itsDocument.getAttributeValue("itm_att_Answer Key (Part II)")!=null && !itsDocument.getAttributeValue("itm_att_Answer Key (Part II)").isEmpty())
-				answerKey1.append(itsDocument.getAttributeValue("itm_att_Answer Key (Part II)"));
+			StringBuilder answerKey = new StringBuilder();
 			
+			String answerKey1 = itsDocument.getAttributeValue("itm_att_Answer Key");
+			String answerKey2 = itsDocument.getAttributeValue("itm_att_Answer Key (Part II)");
 
-			if(studentResponse.equalsIgnoreCase(answerKey1.toString())) {
+			answerKey.append(answerKey1);
+			
+			boolean isAnswerKey2NotValid = (answerKey2 == null || answerKey2.isEmpty() || "NA".equalsIgnoreCase(answerKey2));
+			
+			if(!isAnswerKey2NotValid)
+				answerKey.append(answerKey2);
+
+			if(studentResponse.equalsIgnoreCase(answerKey.toString())) {
 				if(itsDocument.getFormat().equalsIgnoreCase(MS_FORMAT))
 				 return new ItemScoreInfo(-9, -9, ScoringStatus.Scored, null, null); 
 				else
