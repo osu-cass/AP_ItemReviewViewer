@@ -775,9 +775,14 @@
 						dataType: "json",
 						contentType: "application/json; charset=utf-8"
 					}).fail(function(err){
+						debugger
 						console.log(err);
+						var rubric="Unknown Error Occurred while Scoring";
 						var versionDisplay = document.getElementById("versionDisplay");
-						versionDisplay.innerHTML = '<span class="label label-danger">Unable to score item ' + bankId + '-' + itemId + '</span>';
+						if(err.responseText.includes("java.nio.file.NoSuchFileException")){
+							 rubric ="No Rubric File Found for ";
+						}
+						versionDisplay.innerHTML = '<span class="label label-danger">Unable to score item: '+' ' + rubric + bankId + '-' + itemId + '</span>';
 					});
 					
 				}else{
