@@ -107,9 +107,9 @@ public class ItemReviewScoringService {
 
 			answerKey.append(answerKey1);
 			
-			boolean isAnswerKey2NotValid = (answerKey2 == null || answerKey2.isEmpty() || "NA".equalsIgnoreCase(answerKey2));
+			boolean isAnswerKey2Valid = (answerKey2 == null || answerKey2.isEmpty() || !("NA".equalsIgnoreCase(answerKey2)));
 			
-			if(!isAnswerKey2NotValid)
+			if(isAnswerKey2Valid)
 				answerKey.append(answerKey2);
 
 			if(studentResponse.equalsIgnoreCase(answerKey.toString())) {
