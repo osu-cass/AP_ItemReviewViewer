@@ -137,6 +137,9 @@
 							<span aria-hidden="true">×</span>
 						</button>
 					<strong>Congrats!</strong> Your answer is correct.
+					<label> Maximum Number Of Points: </label>
+							<h:outputText
+								value="#{metadatBacking.metadata.smarterAppMetadata.maximumNumberOfPoints}" />
 				</div>
 				<div id="incorrectAlert" class="alert alert-danger alert-dismissable collapse">
 					<button type="button" class="close" data-dismiss="modal"
@@ -151,6 +154,13 @@
 							<span aria-hidden="true">×</span>
 						</button>
 					<strong>Congrats!</strong> Your answer is correct.<strong> No Points Available</strong> for this Item Format (MS).
+				</div>
+				<div id="handScore" class="alert alert-success alert-dismissable collapse">
+					<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					<strong>The Item Format is Short Answer and it can't be scored using Scoring Engine</strong> 
 				</div>
 			</div>
 			<div class="col-md-1">
@@ -740,6 +750,11 @@
 				});
 		
 		$('#btnScore').on('click', function() {
+			var interactionType ="#{metadatBacking.metadata.smarterAppMetadata.interactionType}";
+			if(interactionType==="SA"){
+				$('#handScore').show();
+				$('#incorrectAlert').hide();
+			}else{
 			var bankId = $('#bankToken').val();
 			var itemId = $('#txtToken').val();
 			var version = $('#versionToken').val();
@@ -772,16 +787,23 @@
 						dataType: "json",
 						contentType: "application/json; charset=utf-8"
 					}).fail(function(err){
+						debugger
 						console.log(err);
+						var rubric="Unknown Error Occurred while Scoring";
 						var versionDisplay = document.getElementById("versionDisplay");
-						versionDisplay.innerHTML = '<span class="label label-danger">Unable to score item ' + bankId + '-' + itemId + '</span>';
+						if(err.responseText.includes("java.nio.file.NoSuchFileException")){
+							 rubric ="No Rubric File Found for ";
+						}
+						versionDisplay.innerHTML = '<span class="label label-danger">Unable to score item: '+' ' + rubric + bankId + '-' + itemId + '</span>';
 					});
 					
 				}else{
 					processError({ message: "You must answer the question to receive a score."});
 				}
 			});
+			}
 		});
+		
 
 		$(window).load(
 				function() {
