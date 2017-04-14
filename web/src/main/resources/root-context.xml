@@ -10,8 +10,12 @@
 	<context:annotation-config />
 
 	<context:property-placeholder ignore-unresolvable="true" order="10" local-override="true" />
-
 	<context:property-placeholder location="classpath:settings-mysql.xml" ignore-unresolvable="true" order="900" local-override="true" />
+	
+	<!-- Start : Added for SSO Integration -->
+	<beans:import resource="classpath:security-context.xml"/>
+	<!-- End : Added for SSO Integration -->
+	
 
 	<context:property-placeholder ignore-unresolvable="true" ignore-resource-not-found="true" order="110" local-override="true"
 		location="${student-override-properties:file:///${user.home}/student-settings.xml}" />
