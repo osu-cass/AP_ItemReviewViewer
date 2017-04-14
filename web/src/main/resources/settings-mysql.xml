@@ -7,7 +7,7 @@
 	<entry key="DBDialect">MYSQL</entry>
 	<!-- Start Item Preview Settings -->
 	<entry key="tds.itemPreview.blackboxUrl">http://localhost/blackbox/</entry>
-	<entry key="tds.itemPreview.itemScoringUrl">http://localhost:8080/item-scoring-service/Scoring/ItemScoring</entry>
+	<entry key="tds.itemPreview.itemScoringUrl">http://localhost:8090/item-scoring-service/Scoring/ItemScoring</entry>
 	<entry key="tds.itemPreview.showDevTools">true</entry>
 	<entry key="tds.itemPreview.forceHttpContent">false</entry>
 	<entry key="tds.itemPreview.encryptPaths">false</entry>
