@@ -160,7 +160,7 @@
 							aria-label="Close">
 							<span aria-hidden="true">×</span>
 						</button>
-					<strong>The Item Format is Short Answer and it can't be scored using Scoring Engine</strong> 
+					<strong>The Item Format is Short Answer or Extended Response and it can't be scored using Scoring Engine</strong> 
 				</div>
 			</div>
 			<div class="col-md-1">
@@ -760,7 +760,7 @@
 		
 		$('#btnScore').on('click', function() {
 			var interactionType ="#{metadatBacking.metadata.smarterAppMetadata.interactionType}";
-			if(interactionType==="SA"){
+			if(interactionType==="SA" || interactionType==="ER"){
 				$('#handScore').show();
 				$('#incorrectAlert').hide();
 			}else{
