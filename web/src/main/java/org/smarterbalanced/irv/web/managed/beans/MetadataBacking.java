@@ -21,28 +21,25 @@ public class MetadataBacking {
 
 	private static final Logger _logger = LoggerFactory.getLogger(MetadataBacking.class);
 	private Metadata metadata;
+	private boolean metadataChecked = false;
 
 	public MetadataBacking() {
 
 	}
 
 	public Metadata getMetadata() {
-		if (metadata == null) {
+		if (metadata == null && !metadataChecked) {
 			try {
-				String type = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap()
-						.get("type");
-				String bankId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap()
-						.get("bankId");
-				String itemNumber = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap()
-						.get("id");
+				String type = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("type");
+				String bankId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("bankId");
+				String itemNumber = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
 
 				StringBuffer id = new StringBuffer();
 				if (StringUtils.hasLength(type) && StringUtils.hasLength(bankId) && StringUtils.hasLength(itemNumber)) {
 					id.append(type + "-" + bankId + "-" + itemNumber);
 				}
 
-				String version = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap()
-						.get("version");
+				String version = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("version");
 				if (StringUtils.hasLength(version)) {
 					id.append("-");
 					id.append(version);
@@ -51,6 +48,7 @@ public class MetadataBacking {
 				if (StringUtils.hasLength(id.toString())) {
 					IGitLabService gitLabService = new GitLabService();
 					metadata = gitLabService.getMetadata(id.toString());
+					metadataChecked = true;
 				}
 
 			} catch (Exception e) {

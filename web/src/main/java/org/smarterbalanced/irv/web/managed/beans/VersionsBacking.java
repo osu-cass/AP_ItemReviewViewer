@@ -69,7 +69,7 @@ public class VersionsBacking {
 					int index = itemCommits.size();
 					for (ItemCommit itemCommit : itemCommits) {
 						itemCommit.setIndex(index--);
-						itemCommit.setLink(request.getContextPath() + irisPage +  queryString + "&version=" + itemCommit.getId());
+						itemCommit.setLink(request.getContextPath() + irisPage +  queryString + "&version=" + itemCommit.getId() + "&versionNumber=" + (index+1));
 					}
 				}
 				/*

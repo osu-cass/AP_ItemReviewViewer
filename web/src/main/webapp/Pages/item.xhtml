@@ -95,6 +95,7 @@
 			</div>
 			<div class="col-md-4 form-group">
 				<input id="versionToken" type="hidden" value="#{param['version']}" />
+				<input id="versionNumberToken" type="hidden" value="#{param['versionNumber']}" />
 				<input id="isaapToken" type="hidden" value="#{param['isaap']}" />
 				<button id="btnLoadToken" class="btn btn-primary">Load</button>
 				<button class="btn btn-info pull-right" data-toggle="modal"
@@ -823,6 +824,8 @@
 					var content = $('#content').val();
 					var version = $('#versionToken').val();
 					var isaap = $('#isaapToken').val();
+				
+					var versionNumber = $('#versionNumberToken').val();
 
 					if (!isEmpty(bankId)) {
 						$.get('#{request.contextPath}' + "/item/" + bankId + '-' + itemId + '?version=' + version + '&amp;isaap=' + isaap).done(
@@ -837,7 +840,7 @@
 												if(isEmpty(version)) {
 													versionDisplay.innerHTML = '<span class="label label-success">viewing current version</span>';
 												}else{
-													versionDisplay.innerHTML = '<span class="label label-info">viewing version ' + version + '</span>';
+													versionDisplay.innerHTML = '<span class="label label-info">viewing version ' + versionNumber + '</span>';
 												}
 											}).fail(function(err) {
 												document.getElementById("versionDisplay").innerHTML = '<span class="label label-danger">Unable to view item ' + bankId + '-' + itemId + '</span>'; 

@@ -3,6 +3,7 @@ package org.smarterbalanced.irv.services;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -115,8 +116,10 @@ public class GitLabService implements IGitLabService {
 				
 				return metadata;
 				
-			} catch (JAXBException e) {
-				_logger.error("Error parsing metadata file.", e);
+			}catch (FileNotFoundException e) {
+				_logger.error("Metadata file not found. " + e.getMessage());
+			}catch (JAXBException e) {
+				_logger.error("Error parsing metadata file." + e.getMessage());
 			}
 			
 			return null;
