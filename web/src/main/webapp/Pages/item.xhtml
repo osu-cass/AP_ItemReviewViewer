@@ -749,10 +749,12 @@
 
 					var content = $('#content').val();
 					var version = $('#versionToken').val();
+					var versionNumber = $('#versionNumberToken').val();
 
 					var queryString = 'type=' + content + '&amp;bankId='
 							+ bankId + '&amp;id=' + itemId + '&amp;version='
-							+ version + '&amp;isaap='
+							+ version + '&amp;versionNumber='
+							+ versionNumber + '&amp;isaap='
 							+ buildAccessibilityString();
 					//var queryString = 'type=' + content +  '&amp;bankId=' + bankId + '-' + itemId + '?isaap=' + buildAccessibilityString();	
 					window.location.href = '#{request.contextPath}'
