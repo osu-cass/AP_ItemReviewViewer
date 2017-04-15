@@ -26,7 +26,7 @@
 	<entry key="iris.ItemReviewPage">/Pages/item.xhtml</entry>
 	<entry key="iris.security.idp">https://sso-amptest.smarterbalanced.org/auth/saml2/jsp/exportmetadata.jsp?realm=/sbac</entry>
 	<entry key="iris.security.idp.logout">https://art-amptest.smarterbalanced.org:8443/saml/logout</entry>
-	<entry key="iris.security.idp.entity.id">itemreview_view_stage</entry>
+	<entry key="iris.security.idp.entity.id">item_review_viewer</entry>
 	<entry key="iris.security.saml.keystore.cert">apollo</entry>
 	<entry key="iris.security.saml.keystore.pass">nalle123</entry>
 	<entry key="iris.security.saml.privatekey.pass">nalle123</entry>
