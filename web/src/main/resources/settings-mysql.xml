@@ -7,7 +7,6 @@
 	<entry key="DBDialect">MYSQL</entry>
 	<!-- Start Item Preview Settings -->
 	<entry key="tds.itemPreview.blackboxUrl">http://localhost/blackbox/</entry>
-	<entry key="tds.itemPreview.itemScoringUrl">http://localhost:8090/item-scoring-service/Scoring/ItemScoring</entry>
 	<entry key="tds.itemPreview.showDevTools">true</entry>
 	<entry key="tds.itemPreview.forceHttpContent">false</entry>
 	<entry key="tds.itemPreview.encryptPaths">false</entry>
@@ -33,6 +32,8 @@
 	<entry key="iris.security.saml.privatekey.pass">nalle123</entry>
 	<entry key="iris.security.dir">/usr/local/tomcat/webapps/iris/WEB-INF/classes/security</entry>
 	<entry key="iris.DictionaryUrl">http://dictionary.cass.oregonstate.edu/</entry>
+	<entry key="tds.itemPreview.itemScoringUrl">http://localhost:8090/item-scoring-service/Scoring/ItemScoring</entry>
+	
 
 	<!--  
 	<entry key="gitlab.private.token">xtcHXxrFBMsyPagvd8c9</entry>
