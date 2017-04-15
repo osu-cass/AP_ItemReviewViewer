@@ -22,7 +22,7 @@
 	
 	
 	<!-- Item Review Viewer Properties -->
-	<entry key="iris.ContentPath">/usr/local/sbac/content</entry>
+	<entry key="iris.ContentPath">/usr/local/sbac/gtlab</entry>
 	<entry key="iris.ZipFileLocation">/usr/local/sbac/gitlab/</entry>
 	<entry key="iris.ItemReviewPage">/Pages/item.xhtml</entry>
 	<entry key="iris.security.idp">https://sso-amptest.smarterbalanced.org/auth/saml2/jsp/exportmetadata.jsp?realm=/sbac</entry>
@@ -32,10 +32,15 @@
 	<entry key="iris.security.saml.keystore.pass">nalle123</entry>
 	<entry key="iris.security.saml.privatekey.pass">nalle123</entry>
 	<entry key="iris.security.dir">/usr/local/tomcat/webapps/iris/WEB-INF/classes/security</entry>
-	<entry key="gitlab.private.token">xtcHXxrFBMsyPagvd8c9</entry>
-	<entry key="gitlab.url">http://ba-apps-t01.it.ucla.edu:9080/api/v3/projects/itemreviewapp%2F</entry>
-	
 	<entry key="iris.DictionaryUrl">http://dictionary.cass.oregonstate.edu/</entry>
+
+	<!--  
+	<entry key="gitlab.private.token">xtcHXxrFBMsyPagvd8c9</entry>
+	<entry key="gitlab.url">http://ba-apps-t01.it.ucla.edu:9080/api/v3/projects/itemreviewapp%2F</entry> -->
+	
+	<entry key="gitlab.private.token">Y8Pa5JcfQ8Z6S5ozyquZ</entry>
+	<entry key="gitlab.url">https://gitlab-dev.smarterbalanced.org/api/v3/projects/ItemReviewViewer%2F</entry>
+
 	<!-- End Item Preview Settings -->
 	<!-- Start BlackBox Settings -->
 	<!-- legacy settings -->
