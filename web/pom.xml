@@ -26,8 +26,8 @@
         <checkstyle.violationSeverity>info</checkstyle.violationSeverity>
         <checkstyle.violation.ignore>PackageName</checkstyle.violation.ignore>
         <!-- Use Java 7 -->
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -113,7 +113,7 @@
         <dependency>
             <groupId>org.opentestsystem.delivery</groupId>
             <artifactId>iris</artifactId>
-            <version>1.0.3</version>
+            <version>1.0.3-SNAPSHOT</version>
             <type>war</type>
         </dependency>
 		<dependency>
@@ -126,6 +126,7 @@
 			<artifactId>spring-security-saml2-core</artifactId>
 			<version>1.0.2.RELEASE</version>
 		</dependency>
+
     </dependencies>
 
     <build>

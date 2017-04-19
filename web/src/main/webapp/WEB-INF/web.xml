@@ -7,14 +7,14 @@
     </context-param>
     <context-param>
         <param-name>javax.faces.CONFIG_FILES</param-name>
-        <param-value>WEB-INF/faces-config.xml,WEB-INF/itempreview-faces-config.xml,WEB-INF/iris-faces-config.xml
+        <param-value>/WEB-INF/itempreview-faces-config.xml,/WEB-INF/iris-faces-config.xml
         </param-value>
     </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
-	<!-- Start:  Following filter is added for integrating SSO -->
+	<!-- Start:  Following filter is added for integrating SSO
 	  <filter>
 	      <filter-name>springSecurityFilterChain</filter-name>
 	      <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -23,7 +23,7 @@
 	      <filter-name>springSecurityFilterChain</filter-name>
 	      <url-pattern>/Pages/*</url-pattern>
 	      <url-pattern>/saml/*</url-pattern>
-	  </filter-mapping>
+	  </filter-mapping> -->
 	  <!-- End:  Following filter is added for integrating SSO  -->
 
     <servlet>
