@@ -29,7 +29,7 @@ public class DiagnosticApiController {
   @ResponseBody
   @RequestMapping(value = "/statusLocal",
           method = RequestMethod.GET,
-          produces = "text/xml; charset=utf-8")
+          produces = "application/json; charset=UTF-8")
   public ResponseEntity diagnostics(
           @RequestParam(value = "level", required = false, defaultValue = "0") Integer level,
           HttpServletRequest request) {

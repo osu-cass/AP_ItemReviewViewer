@@ -43,6 +43,10 @@ import com.amazonaws.services.ecs.model.DescribeContainerInstancesRequest;
 import com.amazonaws.services.ecs.model.DescribeContainerInstancesResult;
 import com.amazonaws.services.ecs.model.ListContainerInstancesRequest;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.XML;
+
 
 public class DiagnosticManager {
   private static final Logger logger = LoggerFactory.getLogger(DiagnosticManager.class);
@@ -64,7 +68,7 @@ public class DiagnosticManager {
       logger.error("Failed to generate diagnostic XML response: " + e.getMessage());
       throw e;
     }
-    return response;
+    return XML.toJSONObject(response).toString();
   }
 
   /**
