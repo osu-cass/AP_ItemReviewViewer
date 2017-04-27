@@ -45,10 +45,10 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 	<style>
-@media ( min-width : 768px) {
+@media ( min-width : 668px) {
 	.modal-xl {
-		width: 90%;
-		max-width: 1200px;
+		width: 70%;
+		max-width: 1250px;
 	}
 	
 	.navbar-default {
@@ -116,11 +116,10 @@
 		<div class="row">
 			<div class="col-md-2">
 				<label><a href="#versions" id="versionToggle" data-toggle="collapse">
-				<span id="versionToggleIcon" class="glyphicon glyphicon-triangle-right" style="padding-right: 5px"></span>Version
-						List</a></label>
+				<span id="versionToggleIcon" class="glyphicon glyphicon-triangle-right" style="padding-right: 5px"></span>item Update History</a></label>
 				<ul id="versions" class="collapse">
 					<ui:repeat value="#{versionsBacking.itemCommits}" var="value">
-						<li><a href="#{value.link}">Version #{value.index}</a></li>
+						<li><a href="#{value.link}">Update #{value.index}</a></li>
 					</ui:repeat>
 				</ul>
 			</div>
@@ -407,14 +406,6 @@
 								<option value="TDS_Highlight0" class="option-enabled">Highlight
 									off</option></select>
 						</div>
-						<div class="col-md-3 form-group">
-							<label>Mark for Review</label><select
-								id="accessibility.markForReview" class="form-control"><option
-									value="TDS_MfR1" class="option-enabled">Mark for
-									review on</option>
-								<option value="TDS_MfR0" class="option-enabled">Mark
-									for review off</option></select>
-						</div>
 					</div>
 
 					<div class="row">
@@ -428,10 +419,14 @@
 
 						<div class="col-md-3 form-group">
 							<label>English Dictionary</label>
-							<select id="accessibility.englishDictionary" class="form-control">
+							<h:selectOneMenu id="accessibility-englishDictionary" styleClass="option-enabled" disabled="#{metadatBacking.disableDictionaryandClosedCaption}" class="form-control">
+								<f:selectItem itemValue="TDS_Dict_SD4" itemLabel="Merriam Websters School Dictionary on" />
+								<f:selectItem itemValue="TDS_Calc0" itemLabel="Merriam Websters School Dictionary off" />
+							</h:selectOneMenu>
+						<!--	<select id="" class="form-control">
 							<option value="TDS_Dict_SD4" class="option-enabled">Merriam Websters School Dictionary on</option>
 							<option value="TDS_Dict0" class="option-enabled">Merriam Websters School Dictionary off</option>
-							</select>
+							</select> -->
 						</div>
 						<div class="col-md-3 form-group">
 							<label>Expandable Passages</label><select
@@ -441,16 +436,16 @@
 								<option value="TDS_ExpandablePassages0" class="option-enabled">Expandable
 									Passages off</option></select>
 						</div>
-						<div class="col-md-3 form-group">
+					</div>
+
+					<div class="row">
+					<div class="col-md-3 form-group">
 							<label>Global Notes</label><select id="accessibility.globalNotes"
 								class="form-control"><option value="TDS_GN1"
 									class="option-enabled">Global Notes on</option>
 								<option value="TDS_GN0" class="option-enabled">Global
 									Notes off</option></select>
 						</div>
-					</div>
-
-					<div class="row">
 						<div class="col-md-3 form-group">
 							<label>Strikethrough</label><select
 								id="accessibility.strikethrough" class="form-control"><option
@@ -459,13 +454,7 @@
 								<option value="TDS_ST0" class="option-enabled">Strikethrough
 									off</option></select>
 						</div>
-						<div class="col-md-3 form-group">
-							<label>Writing Tools</label><select
-								id="accessibility.writingTools" class="form-control"><option
-									value="TDS_ITM1" class="option-enabled">Item tools on</option>
-								<option value="TDS_ITM0" class="option-enabled">Item
-									tools off</option></select>
-						</div>
+						
 						<div class="col-md-3 form-group">
 							<label>Thesaurus</label><select id="accessibility.thesaurus"
 								class="form-control"><option value="TDS_TH_TA"
@@ -474,7 +463,23 @@
 								<option value="TDS_TH0" class="option-enabled">Merriam
 									Websters Intermediate Thesaurus off</option></select>
 						</div>
-					</div>
+						</div>
+						<div class="row">
+						<div class="col-md-3 form-group">
+							<label>Zoom</label><select id="accessibility.zoom"
+								class="form-control"><option value="TDS_PS_L0"
+									class="option-enabled">No default zoom applied</option>
+								<option value="TDS_PS_L1" class="option-enabled">Level
+									1</option>
+								<option value="TDS_PS_L2" class="option-enabled">Level
+									2</option>
+								<option value="TDS_PS_L3" class="option-enabled">Level
+									3</option>
+								<option value="TDS_PS_L4" class="option-enabled">Level
+									4</option></select>
+						</div>
+						</div>
+					
 
 
 					<!-- Designated Support -->
@@ -506,9 +511,8 @@
 									Available</option></select>
 						</div>
 						<div class="col-md-3 form-group">
-							<label>Translation</label><select id="accessibility.translation"
-								class="form-control"><option value="TDS_WL_Glossary"
-									class="option-enabled">English</option>
+							<label>Translations(Glossaries)</label><select id="accessibility.translation"
+								class="form-control"><option value="TDS_WL0" class="option-enabled">None</option>
 								<option value="TDS_WL_ArabicGloss" class="option-enabled">Arabic</option>
 								<option value="TDS_WL_CantoneseGloss" class="option-enabled">Cantonese</option>
 								<option value="TDS_WL_ESNGlossary" class="option-enabled">Spanish</option>
@@ -516,8 +520,7 @@
 								<option value="TDS_WL_MandarinGloss" class="option-enabled">Mandarin</option>
 								<option value="TDS_WL_PunjabiGloss" class="option-enabled">Punjabi</option>
 								<option value="TDS_WL_RussianGloss" class="option-enabled">Russian</option>
-								<option value="TDS_WL_TagalGloss" class="option-enabled">Filipino
-									(Ilokano and Tagalog)</option>
+								<option value="TDS_WL_TagalGloss" class="option-enabled">Filipino(Ilokano and Tagalog)</option>
 								<option value="TDS_WL_UkrainianGloss" class="option-enabled">Ukrainian</option>
 								<option value="TDS_WL_VietnameseGloss" class="option-enabled">Vietnamese</option>
 								<option value="TDS_WL_ArabicGloss&amp;TDS_WL_Glossary"
@@ -535,16 +538,26 @@
 								<option value="TDS_WL_RussianGloss&amp;TDS_WL_Glossar"
 									class="option-enabled">Russian &amp; English</option>
 								<option value="TDS_WL_TagalGloss&amp;TDS_WL_Glossary"
-									class="option-enabled">Filipino (Ilokano and Tagalog)
-									and English</option>
+									class="option-enabled">Filipino (Ilokano and Tagalog)and English</option>
 								<option value="TDS_WL_UkrainianGloss&amp;TDS_WL_Glossary"
 									class="option-enabled">Ukrainian &amp; English</option>
 								<option value="TDS_WL_VietnameseGloss&amp;TDS_WL_Glossary"
 									class="option-enabled">Vietnamese &amp; English</option>
-								<option value="TDS_WL0" class="option-enabled">None</option></select>
+								</select>
 						</div>
 					</div>
-
+					<div class="row">
+					<div class="col-md-3 form-group">
+							<label>Translations (Stacked)</label>
+							<h:selectOneMenu id="accessibility_language"
+								styleClass="form-control option-enabled">
+								<f:selectItem itemValue="ENU" itemLabel="English" />
+								<f:selectItem itemValue="ESN"
+									itemLabel="Spanish(Stacked Translation)"
+									itemDisabled="#{metadatBacking.disableSpanish}" />
+							</h:selectOneMenu>
+						</div>
+					</div>
 
 					<!-- Accommodations -->
 					<div class="row">
@@ -584,107 +597,25 @@
 									Contracted - UEB Math</option></select>
 						</div>
 						<div class="col-md-3 form-group">
-							<label>Closed Captioning</label><select
-								id="accessibility.closedCaptioning" class="form-control"><option
+							<label>Closed Captioning</label>
+							<h:selectOneMenu id="accessibility-closedCaptioning" styleClass="option-enabled" disabled="#{metadatBacking.disableDictionaryandClosedCaption}" class="form-control">
+								<f:selectItem itemValue="TDS_ClosedCap0" itemLabel="Closed Captioning Not Available" />
+								<f:selectItem itemValue="TDS_ClosedCap1" itemLabel="Closed Captioning Available" />
+							</h:selectOneMenu>
+							<!--  
+							<select	id="accessibility.closedCaptioning" class="form-control"><option
 									value="TDS_ClosedCap0" class="option-enabled">Closed
 									Captioning Not Available</option>
 								<option value="TDS_ClosedCap1" class="option-enabled">Closed
-									Captioning Available</option></select>
+									Captioning Available</option></select>  -->
 						</div>
-						<div class="col-md-3 form-group">
+					</div>
+					<div class="row">
+					<div class="col-md-3 form-group">
 							<label>Streamlined Interface</label><select
 								id="accessibility.streamlinedInterface" class="form-control"><option
 									value="TDS_SLM0" class="option-enabled">Standard</option>
 								<option value="TDS_SLM1" class="option-enabled">Streamlined</option></select>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-3 form-group">
-							<label>Permissive Mode</label><select
-								id="accessibility.permissiveMode" class="form-control"><option
-									value="TDS_PM0" class="option-enabled">Permissive Mode
-									Disabled</option>
-								<option value="TDS_PM1" class="option-enabled">Permissive
-									Mode Enabled</option></select>
-						</div>
-						<div class="col-md-3 form-group">
-							<label>Print On Demand</label><select
-								id="accessibility.printOnDemand" class="form-control"><option
-									value="TDS_PoD0" class="option-enabled">None</option>
-								<option value="TDS_PoD_Stim" class="option-enabled">PT
-									Stimuli and CAT Reading Passages</option>
-								<option value="TDS_PoD_Item" class="option-enabled">Items</option>
-								<option value="TDS_PoD_Stim&amp;TDS_PoD_Item"
-									class="option-enabled">PT Stimuli and CAT Reading
-									Passages and Items</option></select>
-						</div>
-						<div class="col-md-3 form-group">
-							<label>Text to Speech</label><select
-								id="accessibility.textToSpeech" class="form-control"><option
-									value="TDS_TTS0" class="option-enabled">None</option>
-								<option value="TDS_TTS_Item " class="option-enabled">Items
-									Only</option>
-								<option value="TDS_TTS_Stim" class="option-enabled">PT
-									Stimuli and CAT Reading Passages Only</option>
-								<option value="TDS_TTS_Stim&amp;TDS_TTS_Item"
-									class="option-enabled">PT Stimuli and CAT Reading
-									Passages and Items</option></select>
-						</div>
-					</div>
-
-
-					<!-- Other -->
-					<div class="row">
-						<div class="col-md-12">
-							<h3>Other</h3>
-						</div>
-					</div>
-
-
-					<div class="row">
-						<div class="col-md-3 form-group">
-							<label>Language</label>
-
-							<!--  
-							<select id="accessibility.language" class="form-control">
-								<option value="ENU" class="option-enabled">English</option>
-								<option value="ESN" class="option-enabled">Spanish(Stacked Translation)</option>
-							</select> -->
-
-
-							<h:selectOneMenu id="accessibility_language"
-								styleClass="form-control option-enabled">
-								<f:selectItem itemValue="ENU" itemLabel="English" />
-								<f:selectItem itemValue="ESN"
-									itemLabel="Spanish(Stacked Translation)"
-									itemDisabled="#{metadatBacking.disableSpanish}" />
-							</h:selectOneMenu>
-
-						</div>
-
-
-
-						<div class="col-md-3 form-group">
-							<label>Illustration Glossary</label><select
-								id="accessibility.illustrationGlossary" class="form-control"><option
-									value="TDS_ILG0" class="option-enabled">Do not show
-									Illustration Glossary</option>
-								<option value="TDS_ILG1" class="option-enabled">Show
-									Illustration Glossary</option></select>
-						</div>
-						<div class="col-md-3 form-group">
-							<label>Zoom</label><select id="accessibility.zoom"
-								class="form-control"><option value="TDS_PS_L0"
-									class="option-enabled">No default zoom applied</option>
-								<option value="TDS_PS_L1" class="option-enabled">Level
-									1</option>
-								<option value="TDS_PS_L2" class="option-enabled">Level
-									2</option>
-								<option value="TDS_PS_L3" class="option-enabled">Level
-									3</option>
-								<option value="TDS_PS_L4" class="option-enabled">Level
-									4</option></select>
 						</div>
 					</div>
 				</div>
@@ -880,23 +811,16 @@
 				accessibility += document
 						.getElementById('accessibility.highlighter').value
 						+ "%3B";
-
-			if (!document.getElementById('accessibility.markForReview')
-					.hasAttribute('disabled'))
-				accessibility += document
-						.getElementById('accessibility.markForReview').value
-						+ "%3B";
-
 			if (!document.getElementById('accessibility_calculator')
 					.hasAttribute('disabled'))
 				accessibility += document
 						.getElementById('accessibility_calculator').value
 						+ "%3B";
 
-			if (!document.getElementById('accessibility.englishDictionary')
+			if (!document.getElementById('accessibility-englishDictionary')
 					.hasAttribute('disabled'))
 				accessibility += document
-						.getElementById('accessibility.englishDictionary').value
+						.getElementById('accessibility-englishDictionary').value
 						+ "%3B";
 
 			if (!document.getElementById('accessibility.expandablePassages')
@@ -915,12 +839,6 @@
 					.hasAttribute('disabled'))
 				accessibility += document
 						.getElementById('accessibility.strikethrough').value
-						+ "%3B";
-
-			if (!document.getElementById('accessibility.writingTools')
-					.hasAttribute('disabled'))
-				accessibility += document
-						.getElementById('accessibility.writingTools').value
 						+ "%3B";
 
 			if (!document.getElementById('accessibility.thesaurus')
@@ -959,10 +877,10 @@
 						.getElementById('accessibility.brailleType').value
 						+ "%3B";
 
-			if (!document.getElementById('accessibility.closedCaptioning')
+			if (!document.getElementById('accessibility-closedCaptioning')
 					.hasAttribute('disabled'))
 				accessibility += document
-						.getElementById('accessibility.closedCaptioning').value
+						.getElementById('accessibility-closedCaptioning').value
 						+ "%3B";
 
 			if (!document.getElementById('accessibility.streamlinedInterface')
@@ -971,34 +889,10 @@
 						.getElementById('accessibility.streamlinedInterface').value
 						+ "%3B";
 
-			if (!document.getElementById('accessibility.permissiveMode')
-					.hasAttribute('disabled'))
-				accessibility += document
-						.getElementById('accessibility.permissiveMode').value
-						+ "%3B";
-
-			if (!document.getElementById('accessibility.printOnDemand')
-					.hasAttribute('disabled'))
-				accessibility += document
-						.getElementById('accessibility.printOnDemand').value
-						+ "%3B";
-
-			if (!document.getElementById('accessibility.textToSpeech')
-					.hasAttribute('disabled'))
-				accessibility += document
-						.getElementById('accessibility.textToSpeech').value
-						+ "%3B";
-
 			if (!document.getElementById('accessibility_language')
 					.hasAttribute('disabled'))
 				accessibility += document
 						.getElementById('accessibility_language').value
-						+ "%3B";
-
-			if (!document.getElementById('accessibility.illustrationGlossary')
-					.hasAttribute('disabled'))
-				accessibility += document
-						.getElementById('accessibility.illustrationGlossary').value
 						+ "%3B";
 
 			if (!document.getElementById('accessibility.zoom').hasAttribute(
