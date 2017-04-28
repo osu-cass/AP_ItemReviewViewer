@@ -48,13 +48,18 @@
 @media ( min-width : 668px) {
 	.modal-xl {
 		width: 70%;
-		max-width: 1250px;
+		max-width: 850px;
 	}
 	
 	.navbar-default {
 		height: 85px;
-	}
+	}.col-md-3 {
+    width: 33%;
 }
+	}
+
+
+
 </style>
 
 
@@ -116,7 +121,7 @@
 		<div class="row">
 			<div class="col-md-2">
 				<label><a href="#versions" id="versionToggle" data-toggle="collapse">
-				<span id="versionToggleIcon" class="glyphicon glyphicon-triangle-right" style="padding-right: 5px"></span>item Update History</a></label>
+				<span id="versionToggleIcon" class="glyphicon glyphicon-triangle-right" style="padding-right: 5px"></span>Item Update History</a></label>
 				<ul id="versions" class="collapse">
 					<ui:repeat value="#{versionsBacking.itemCommits}" var="value">
 						<li><a href="#{value.link}">Update #{value.index}</a></li>
@@ -423,10 +428,6 @@
 								<f:selectItem itemValue="TDS_Dict_SD4" itemLabel="Merriam Websters School Dictionary on" />
 								<f:selectItem itemValue="TDS_Calc0" itemLabel="Merriam Websters School Dictionary off" />
 							</h:selectOneMenu>
-						<!--	<select id="" class="form-control">
-							<option value="TDS_Dict_SD4" class="option-enabled">Merriam Websters School Dictionary on</option>
-							<option value="TDS_Dict0" class="option-enabled">Merriam Websters School Dictionary off</option>
-							</select> -->
 						</div>
 						<div class="col-md-3 form-group">
 							<label>Expandable Passages</label><select
@@ -456,12 +457,11 @@
 						</div>
 						
 						<div class="col-md-3 form-group">
-							<label>Thesaurus</label><select id="accessibility.thesaurus"
-								class="form-control"><option value="TDS_TH_TA"
-									class="option-enabled">Merriam Websters Intermediate
-									Thesaurus on</option>
-								<option value="TDS_TH0" class="option-enabled">Merriam
-									Websters Intermediate Thesaurus off</option></select>
+							<label>Thesaurus</label>
+							<h:selectOneMenu id="accessibility-thesaurus" styleClass="option-enabled" disabled="#{metadatBacking.disableDictionaryandClosedCaption}" class="form-control">
+								<f:selectItem itemValue="TDS_TH_TA" itemLabel="Merriam Websters Intermediate Thesaurus on" />
+								<f:selectItem itemValue="TDS_TH0" itemLabel="Merriam Websters Intermediate Thesaurus off" />
+							</h:selectOneMenu>
 						</div>
 						</div>
 						<div class="row">
@@ -771,9 +771,9 @@
 												var versionDisplay = document.getElementById("versionDisplay");
 												
 												if(isEmpty(version)) {
-													versionDisplay.innerHTML = '<span class="label label-success">viewing current version</span>';
+													versionDisplay.innerHTML = '<span class="label label-success">viewing current update</span>';
 												}else{
-													versionDisplay.innerHTML = '<span class="label label-info">viewing version ' + versionNumber + '</span>';
+													versionDisplay.innerHTML = '<span class="label label-info">viewing update ' + versionNumber + '</span>';
 												}
 											}).fail(function(err) {
 												document.getElementById("versionDisplay").innerHTML = '<span class="label label-danger">Unable to view item ' + bankId + '-' + itemId + '</span>'; 
@@ -841,10 +841,10 @@
 						.getElementById('accessibility.strikethrough').value
 						+ "%3B";
 
-			if (!document.getElementById('accessibility.thesaurus')
+			if (!document.getElementById('accessibility-thesaurus')
 					.hasAttribute('disabled'))
 				accessibility += document
-						.getElementById('accessibility.thesaurus').value
+						.getElementById('accessibility-thesaurus').value
 						+ "%3B";
 
 			if (!document.getElementById('accessibility.colorChoices')
