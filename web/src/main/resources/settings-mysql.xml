@@ -21,7 +21,7 @@
 	
 	
 	<!-- Item Review Viewer Properties -->
-	<entry key="iris.ContentPath">/usr/local/sbac/gtlab</entry>
+	<entry key="iris.ContentPath">\usr\local\sbac\gitlab</entry>
 	<entry key="iris.ZipFileLocation">/usr/local/sbac/gitlab/</entry>
 	<entry key="iris.ItemReviewPage">/Pages/item.xhtml</entry>
 	<entry key="iris.security.idp">https://sso-amptest.smarterbalanced.org/auth/saml2/jsp/exportmetadata.jsp?realm=/sbac</entry>
