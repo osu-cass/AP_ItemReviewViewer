@@ -36,9 +36,9 @@ public class DiagnosticApiTest {
     ProvidersDiagnostic providersDiagnostic = new ProvidersDiagnostic("/testContent");
     providersDiagnostic.setStatusRating(4);
     providersDiagnostic.setStatusText(BaseDiagnostic.convertToStatusText(4));
-    providersDiagnostic.setBlackBoxStatus(200);
+ //   providersDiagnostic.setBlackBoxStatus(200);
     providersDiagnostic.setIrisStatus(200);
-    providersDiagnostic.setWordListHandlerStatus(200);
+ //   providersDiagnostic.setWordListHandlerStatus(200);
 
     diagnosticApi.setSystemDiagnostic(systemDiagnostic);
     diagnosticApi.setConfigurationDiagnostic(configurationDiagnostic);
