@@ -1,0 +1,35 @@
+# Maven
+target/
+*.ser
+*.ec
+overlays/
+
+# IntelliJ Idea
+.idea/
+out/
+*.ipr
+*.iws
+*.iml
+
+# Eclipse
+.classpath
+.project
+.settings/
+.metadata/
+
+# OSX
+.DS_Store
+
+#Log files
+*.log
+*log.lck
+
+# Jmeter
+/jmeter/Results
+
+# Node modules
+node_modules/
+
+# Web Assets
+**/Assets/Images
+**/webapp/dist

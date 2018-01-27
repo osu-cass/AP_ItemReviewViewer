@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es5",
+    "jsx": "react",
+    "sourceMap": true,
+    "skipDefaultLibCheck": true,
+    "strict": true,
+    "allowSyntheticDefaultImports": false,    
+    "types": [ "webpack-env" ],
+    "lib": [ "es6", "dom" ]
+  },
+  "exclude": [
+    "bin",
+    "node_modules"
+  ],
+  "typeRoots": [
+    "./node_modules/@types"
+  ], 
+  "plugins": [
+    {
+      "name": "tslint-language-service"
+    }
+  ]
+}
