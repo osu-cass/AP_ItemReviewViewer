@@ -6,23 +6,21 @@ import {
   SbNavlinkProps,
   ItemsSearchModel,
   ItemCardViewer,
-  ErrorPageContainer
+  ErrorPageContainer,
+  ItemViewerFrame
 } from "@osu-cass/sb-components";
 
 const siteLinks: SbNavlinkProps[] = [];
 
-// Delete me, testing
-const style: React.CSSProperties = {
-  width: "100%",
-  height: "70vh"
-};
+
+const url = "/ivs/items?ids=187-3000";
 
 // Delete, testing
 const body = (
   <div className="container test-container">
-    <h2 className="page-title">Page Title</h2>
-    <div className="section section-light" style={style}>
-      <p>Site content</p>
+    <h2 className="page-title"> Page Title</h2>
+    <div className="item-viewer">
+      <ItemViewerFrame url={url} />
     </div>
   </div>
 );

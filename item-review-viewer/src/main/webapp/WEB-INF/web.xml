@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:root-context.xml</param-value>
     </context-param>
     <context-param>
         <param-name>javax.faces.CONFIG_FILES</param-name>
-        <param-value>WEB-INF/faces-config.xml,WEB-INF/itempreview-faces-config.xml,/WEB-INF/iris-faces-config.xml</param-value>
+        <param-value>WEB-INF/faces-config.xml,WEB-INF/itempreview-faces-config.xml</param-value>
     </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    <!--Section Item Viewer Service Servlet -->
+    <servlet>
+        <servlet-name>ivsServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/itemviewerservice-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ivsServlet</servlet-name>
+        <url-pattern>/ivs/*</url-pattern>
+    </servlet-mapping>
+    <!--End Section Item Viewer Service Servlet -->
     <servlet>
         <servlet-name>appServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -116,13 +130,11 @@
         <param-value>resources.application</param-value>
     </context-param>
     <context-param>
-        <description>
-            Tell the runtime where we are in the project development
+        <description>Tell the runtime where we are in the project development
             lifecycle.  Valid values are:
             Development, UnitTest, SystemTest, or Production.
             The runtime will display helpful hints to correct common mistakes
-            when the value is Development.
-        </description>
+            when the value is Development.</description>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
@@ -142,7 +154,6 @@
         <description>contextTrackerListener</description>
         <listener-class>tds.student.web.dummy.TDSApplication</listener-class>
     </listener>
-
     <!-- All filters -->
     <!-- This filter creates a proxy for the request object. It needs to precede requestInitializerFilter -->
     <filter>
@@ -152,9 +163,8 @@
             <param-name>prefix</param-name>
             <param-value>testadmin</param-value>
         </init-param>
-
         <!-- If this parameter is true, (or anything besides "false" or missing), a request proxy is generated that permits reading the input data stream multiple times. This parameter is ignored unless DEBUG
-            level logging is in effect for HttpRequestLoggerInitializerFilter -->
+              level logging is in effect for HttpRequestLoggerInitializerFilter -->
         <init-param>
             <param-name>LogRequestBodies</param-name>
             <param-value>false</param-value>
@@ -164,7 +174,6 @@
         <filter-name>requestInitializerFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
     <!-- This filter needs to follow requestInitializerFilter if used. It should precede all other filters. We need this to set Request / Response as a ThreadLocal object. -->
     <filter>
         <filter-name>contextInitializerFilter</filter-name>
@@ -199,7 +208,6 @@
         <filter-name>requestContextFilter</filter-name>
         <url-pattern>*.xhtml</url-pattern>
     </filter-mapping>
-
     <context-param>
         <param-name>org.apache.myfaces.WRAP_SCRIPT_CONTENT_WITH_XML_COMMENT_TAG</param-name>
         <param-value>false</param-value>

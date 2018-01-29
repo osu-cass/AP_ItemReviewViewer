@@ -5,7 +5,6 @@ const bundleOutputDir = "../webapp/dist";
 const srcDir = "./src";
 const outPath = path.join(__dirname, bundleOutputDir);
 
-
 module.exports = env => {
   const isDevBuild = !(env && env.prod);
   return [
@@ -24,6 +23,13 @@ module.exports = env => {
           path.join(__dirname, "node_modules"),
           path.join(__dirname, srcDir)
         ]
+      },
+
+      devServer: {
+        port: 8787,
+        quiet: true,
+        noInfo: true,
+        hot: false
       },
       module: {
         rules: [
@@ -71,10 +77,7 @@ module.exports = env => {
           ? [
               // Plugins that apply in development builds only
               new webpack.SourceMapDevToolPlugin({
-                moduleFilenameTemplate: path.relative(
-                  outPath,
-                  "[resourcePath]"
-                ) // Point sourcemap entries to the original file locations on disk
+                moduleFilenameTemplate: path.relative(outPath, "[resourcePath]") // Point sourcemap entries to the original file locations on disk
               })
             ]
           : [

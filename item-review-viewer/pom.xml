@@ -97,7 +97,7 @@
         <dependency>
             <groupId>org.smarterbalanced.itemviewerservice</groupId>
             <artifactId>itemviewerservice</artifactId>
-            <version>3.3.5.RELEASE</version>
+            <version>3.4.0</version>
             <type>war</type>
         </dependency>
 
