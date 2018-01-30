@@ -16,7 +16,7 @@
     <mvc:annotation-driven />
     <task:annotation-driven />
 
-    <context:component-scan base-package="org.smarterbalanced.item-review-viewer"/>
+    <context:component-scan base-package="org.smarterbalanced.itemreviewviewer"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">

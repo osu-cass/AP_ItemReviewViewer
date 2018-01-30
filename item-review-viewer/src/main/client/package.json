@@ -15,7 +15,6 @@
     "clean": "rm -rf ./Scripts/dist ./Assets/Images ?",
     "watch": "npm run webpack -- --watch",
     "dev": "npm run webpack-vendor && webpack-dev-server"
-
   },
   "repository": {
     "type": "git",

@@ -18,7 +18,7 @@ const url = "/ivs/items?ids=187-3000";
 // Delete, testing
 const body = (
   <div className="container test-container">
-    <h2 className="page-title"> Page Title</h2>
+    <h2 className="page-title"> King Alex Title</h2>
     <div className="item-viewer">
       <ItemViewerFrame url={url} />
     </div>

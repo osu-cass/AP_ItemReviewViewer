@@ -93,6 +93,10 @@
         <servlet-name>item-review-viewer</servlet-name>
         <url-pattern>/reload</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>item-review-viewer</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>rendererServlet</servlet-name>
         <servlet-class>tds.itemrenderer.webcontrols.rendererservlet.RendererServlet</servlet-class>
@@ -212,8 +216,8 @@
         <param-name>org.apache.myfaces.WRAP_SCRIPT_CONTENT_WITH_XML_COMMENT_TAG</param-name>
         <param-value>false</param-value>
     </context-param>
-    <welcome-file-list>
-        <welcome-file>Pages/index.xhtml</welcome-file>
-    </welcome-file-list>
+    <!-- <welcome-file-list>
+        <welcome-file>Pages/index</welcome-file>
+    </welcome-file-list> -->
     <display-name>Student</display-name>
 </web-app>
