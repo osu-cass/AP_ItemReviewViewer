@@ -10,12 +10,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/index")
     @ResponseBody
     public ModelAndView Index(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
-        modelAndView.addObject("doEnv", true);
+        //TODO: read env variable
+        modelAndView.addObject("isDev", true );
         return modelAndView;
     }
 
