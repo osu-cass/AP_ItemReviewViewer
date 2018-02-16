@@ -17,7 +17,7 @@ before_script:
 
 script:
   - cd item-review-viewer
-  - mvn clean install
+  - mvn -B clean install
 #  - mvn checkstyle:check
 
 after_success:

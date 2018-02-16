@@ -7,6 +7,14 @@
     <name>item-review-viewer</name>
     <version>0.0.1</version>
 
+    <repositories>
+        <repository>
+        <id>org.opentestsystem</id>
+        <name>airdev-releases</name>
+        <url>https://airdev.artifactoryonline.com/airdev/libs-releases-local</url>
+        </repository>
+    </repositories>
+
     <!-- Version variables -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,7 +28,6 @@
     </properties>
 
     <dependencies>
-
 
         <!-- Newer version of JNA than is used in Iris
          This allows us to get system stats such as memory usage.-->
@@ -97,16 +104,8 @@
         <dependency>
             <groupId>org.smarterbalanced.itemviewerservice</groupId>
             <artifactId>itemviewerservice</artifactId>
-            <version>3.4.0</version>
+            <version>3.5.0</version>
             <type>war</type>
-        </dependency>
-
-        <!-- JUnit -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
         </dependency>
 
         <!-- Operating System Info -->
