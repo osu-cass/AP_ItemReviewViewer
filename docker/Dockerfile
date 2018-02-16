@@ -11,7 +11,7 @@ WORKDIR /usr/local/tomcat/
 COPY context.xml ./conf
 RUN  rm -rf webapps/*
 
-COPY itemreviewviewer.war ./webapps
-RUN mv ./webapps/itemreviewviewer.war ./webapps/$contextName.war
+COPY item-review-viewer.war ./webapps
+RUN mv ./webapps/item-review-viewer.war ./webapps/$contextName.war
 
 ENTRYPOINT ["catalina.sh", "run"]
