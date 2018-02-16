@@ -1,0 +1,53 @@
+language: java
+jdk:
+- openjdk7
+sudo: required
+
+install: 
+  - travis_retry pip install --upgrade pip
+  - export PATH=$PATH:$HOME/.local/bin
+  - python --version
+
+services:
+ - docker
+
+before_script:
+  - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
+  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
+
+script:
+  - cd item-review-viewer
+  - mvn clean install
+#  - mvn checkstyle:check
+
+after_success:
+  - docker --version
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  - mv app/target/itemreviewviewer.war docker/
+  - cd $TRAVIS_BUILD_DIR
+  - chmod ugo+x DeployScripts/code_docker_deploy.sh
+  - chmod ugo+x DeployScripts/app_docker_deploy.sh
+  - chmod ugo+x DeployScripts/ecs_deploy.sh
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: ./DeployScripts/code_docker_deploy.sh
+    on:
+        tags: true
+  - provider: releases
+    api_key: $GIT_API_KEY
+    file: docker/itemreviewviewer.war
+    skip_cleanup: true
+    on:
+      tags: true
+  - provider: script
+    skip_cleanup: true
+    script: ./DeployScripts/code_docker_deploy.sh 
+    on:
+      branch: dev
+  - provider: script
+    skip_cleanup: true
+    script: ./DeployScripts/code_docker_deploy.sh
+    on:
+      branch: master
