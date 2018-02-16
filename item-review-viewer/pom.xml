@@ -178,7 +178,7 @@
                 <configuration>
                     <overlays>
                         <overlay>
-                            <groupId>org.smarterbalanced.itemviewerservice</groupId>
+                            <groupId>org.smarterbalanced</groupId>
                             <artifactId>itemviewerservice</artifactId>
                         </overlay>
                     </overlays>
