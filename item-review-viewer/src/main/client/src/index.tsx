@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import "./Styles/bundle.less";
-import { routes } from "./Routes";
+import { routes } from "./routes";
 import { BrowserRouter } from "react-router-dom";
 
 function renderApp() {
