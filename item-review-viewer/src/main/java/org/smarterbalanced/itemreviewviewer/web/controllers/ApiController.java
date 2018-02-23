@@ -18,11 +18,17 @@ public class ApiController {
     public String getAboutItemMetadata(@PathVariable("itemKey") String itemKey,
                                        @PathVariable("bankKey") String bankKey,
                                        @PathVariable("revision") String revision,
-                                       @PathVariable("section") String section) throws JsonProcessingException {
+                                       @PathVariable("section") String section){
         MockAboutItemMetadata md = new MockAboutItemMetadata();
         ItemMetadata meta = md.getMetadata(itemKey, bankKey, revision, section);
         ObjectMapper mapper = new ObjectMapper();
-        String str = mapper.writeValueAsString(meta);
-        return str;
+        String json = "";
+        try{
+            json = mapper.writeValueAsString(meta);
+        }catch(JsonProcessingException e){
+            System.out.println(e.getMessage());
+        }
+
+        return json;
     }
 }
