@@ -18,13 +18,13 @@
     <div id="react-app" class="app-loading"></div>
     <script src="${pageContext.request.contextPath}/dist/vendor.js"></script>
 
-    <c:if test="${DEV}">
-        <script src="http://localhost:8787/dist/main.js"></script>
-    </c:if>
+    <%--<c:if test="${DEV}">--%>
+        <script src="http://localhost:8057/dist/main.js"></script>
+    <%--</c:if>--%>
 
-    <c:if test="${!DEV}">
-        <script src="/dist/main.js"></script>
-    </c:if>
+    <%--<c:if test="${!DEV}">--%>
+        <%--<script src="/dist/main.js"></script>--%>
+    <%--</c:if>--%>
 
 </body>
 
