@@ -1,50 +1,28 @@
 package org.smarterbalanced.itemreviewviewer.web.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.smarterbalanced.itemreviewviewer.web.mocks.MockAboutItemMetadata;
+import org.smarterbalanced.itemreviewviewer.web.models.ItemMetadata;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
 public class ApiController {
 
-    private class Foo {
-        private int id;
-        public String message;
-
-        Foo(int id, String message){
-            this.id = id;
-            this.message = message;
-        }
-
-        public int getId() {
-            return this.id;
-        }
-
-        public String getMessage() {
-            return this.message;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public void setMessage(String message){
-            this.message = message;
-        }
-
-    }
-
-
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    // I realize we probably wont have all of the parameters in the URL
+    // path once we get the front end up and running
+    @RequestMapping(value = "/{itemKey}-{bankKey}-{revision}-{section}", method = RequestMethod.GET)
     @ResponseBody
-    public String helloWorld() throws JsonProcessingException {
-        Foo f = new Foo(1, "Hello world.");
+    public String getAboutItemMetadata(@PathVariable("itemKey") String itemKey,
+                                       @PathVariable("bankKey") String bankKey,
+                                       @PathVariable("revision") String revision,
+                                       @PathVariable("section") String section) throws JsonProcessingException {
+        MockAboutItemMetadata md = new MockAboutItemMetadata();
+        ItemMetadata meta = md.getMetadata(itemKey, bankKey, revision, section);
         ObjectMapper mapper = new ObjectMapper();
-        String str = mapper.writeValueAsString(f);
+        String str = mapper.writeValueAsString(meta);
         return str;
     }
 }

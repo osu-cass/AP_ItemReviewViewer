@@ -2,7 +2,7 @@ package org.smarterbalanced.itemreviewviewer.web.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class SmarterAppMetadata {
+public class AboutItemMetadata {
     private String identifier;
     private String itemAuthorIdentifier;
     private String itemSpecFormat;
@@ -28,7 +28,35 @@ public class SmarterAppMetadata {
     private String associatedWordlist;
     private String language;
 
-    @JsonProperty(name = "Identifier")
+    public AboutItemMetadata(String itemKey, String bankKey, String revision, String section){
+        identifier = bankKey;
+        itemAuthorIdentifier = "Hannah_Hacker";
+        itemSpecFormat = "SmarterApp";
+        lastModifiedBy = "Hannah_Hacker";
+        securityStatus = "Non-secure";
+        smarterAppItemDescriptor = "Describes item " + itemKey + "-" + bankKey;
+        status = "Released";
+        stimulusFormat = "Standard";
+        subject = "subject type";
+        version = revision;
+        intendedGrade = "NA";
+        minimumGrade = "NA";
+        maximumGrade = "NA";
+        interactionType = section;
+        maximumNumberOfPoints = String.valueOf((int) 10 * (Math.random() % 10));
+        allowCalculator = "false";
+        copyrightAndOtherRestrictions = "NA";
+        brailleType = "NA";
+        enemyItem = "NA";
+        StandardPublication = new StandardPublication();
+        StandardPublication.setPrimaryStandard("SBAC-SH-v1:SH-Undesignated<");
+        StandardPublication.setPublication("SBAC-SH-v1");
+        associatedTutorial = "NA";
+        associatedWordlist = "NA";
+        language = "english";
+    }
+
+    @JsonProperty("Identifier")
     public String getIdentifier() {
         return identifier;
     }
@@ -37,7 +65,7 @@ public class SmarterAppMetadata {
         this.identifier = identifier;
     }
 
-    @JsonProperty(name = "SmarterAppItemDescriptor")
+    @JsonProperty("SmarterAppItemDescriptor")
     public String getSmarterAppItemDescriptor() {
         return smarterAppItemDescriptor;
     }
@@ -46,7 +74,7 @@ public class SmarterAppMetadata {
         this.smarterAppItemDescriptor = smarterAppItemDescriptor;
     }
 
-    @JsonProperty(name = "Subject")
+    @JsonProperty("Subject")
     public String getSubject() {
         return subject;
     }
@@ -55,7 +83,7 @@ public class SmarterAppMetadata {
         this.subject = subject;
     }
 
-    @JsonProperty(name = "Version")
+    @JsonProperty("Version")
     public String getVersion() {
         return version;
     }
@@ -64,7 +92,7 @@ public class SmarterAppMetadata {
         this.version = version;
     }
 
-    @JsonProperty(name = "MaximumGrade")
+    @JsonProperty("MaximumGrade")
     public String getMaximumGrade() {
         return maximumGrade;
     }
@@ -73,7 +101,7 @@ public class SmarterAppMetadata {
         this.maximumGrade = maximumGrade;
     }
 
-    @JsonProperty(name = "StandardPublication")
+    @JsonProperty("StandardPublication")
     public StandardPublication getStandardPublication() {
         return StandardPublication;
     }
@@ -82,7 +110,7 @@ public class SmarterAppMetadata {
         StandardPublication = standardPublication;
     }
 
-    @JsonProperty(name = "IntendedGrade")
+    @JsonProperty("IntendedGrade")
     public String getIntendedGrade() {
         return intendedGrade;
     }
@@ -91,7 +119,7 @@ public class SmarterAppMetadata {
         this.intendedGrade = intendedGrade;
     }
 
-    @JsonProperty(name = "MinimumGrade")
+    @JsonProperty("MinimumGrade")
     public String getMinimumGrade() {
         return minimumGrade;
     }
@@ -100,7 +128,7 @@ public class SmarterAppMetadata {
         this.minimumGrade = minimumGrade;
     }
 
-    @JsonProperty(name = "InteractionType")
+    @JsonProperty("InteractionType")
     public String getInteractionType() {
         return interactionType;
     }
@@ -109,7 +137,7 @@ public class SmarterAppMetadata {
         this.interactionType = interactionType;
     }
 
-    @JsonProperty(name = "ItemAuthorIdentifier")
+    @JsonProperty("ItemAuthorIdentifier")
     public String getItemAuthorIdentifier() {
         return itemAuthorIdentifier;
     }
@@ -118,7 +146,7 @@ public class SmarterAppMetadata {
         this.itemAuthorIdentifier = itemAuthorIdentifier;
     }
 
-    @JsonProperty(name = "ItemSpecFormat")
+    @JsonProperty("ItemSpecFormat")
     public String getItemSpecFormat() {
         return itemSpecFormat;
     }
@@ -127,7 +155,7 @@ public class SmarterAppMetadata {
         this.itemSpecFormat = itemSpecFormat;
     }
 
-    @JsonProperty(name = "LastModifiedBy")
+    @JsonProperty("LastModifiedBy")
     public String getLastModifiedBy() {
         return lastModifiedBy;
     }
@@ -136,7 +164,7 @@ public class SmarterAppMetadata {
         this.lastModifiedBy = lastModifiedBy;
     }
 
-    @JsonProperty(name = "SecurityStatus")
+    @JsonProperty("SecurityStatus")
     public String getSecurityStatus() {
         return securityStatus;
     }
@@ -145,7 +173,7 @@ public class SmarterAppMetadata {
         this.securityStatus = securityStatus;
     }
 
-    @JsonProperty(name = "Status")
+    @JsonProperty("Status")
     public String getStatus() {
         return status;
     }
@@ -154,7 +182,7 @@ public class SmarterAppMetadata {
         this.status = status;
     }
 
-    @JsonProperty(name = "StimulusFormat")
+    @JsonProperty("StimulusFormat")
     public String getStimulusFormat() {
         return stimulusFormat;
     }
@@ -163,7 +191,7 @@ public class SmarterAppMetadata {
         this.stimulusFormat = stimulusFormat;
     }
 
-    @JsonProperty(name = "DepthOfKnowledge")
+    @JsonProperty("DepthOfKnowledge")
     public String getDepthOfKnowledge() {
         return depthOfKnowledge;
     }
@@ -172,7 +200,7 @@ public class SmarterAppMetadata {
         this.depthOfKnowledge = depthOfKnowledge;
     }
 
-    @JsonProperty(name = "MaximumNumberOfPoints")
+    @JsonProperty("MaximumNumberOfPoints")
     public String getMaximumNumberOfPoints() {
         return maximumNumberOfPoints;
     }
@@ -181,7 +209,7 @@ public class SmarterAppMetadata {
         this.maximumNumberOfPoints = maximumNumberOfPoints;
     }
 
-    @JsonProperty(name = "AllowCalculator")
+    @JsonProperty("AllowCalculator")
     public String getAllowCalculator() {
         return allowCalculator;
     }
@@ -190,7 +218,7 @@ public class SmarterAppMetadata {
         this.allowCalculator = allowCalculator;
     }
 
-    @JsonProperty(name = "CopyrightAndOtherRestrictions")
+    @JsonProperty("CopyrightAndOtherRestrictions")
     public String getCopyrightAndOtherRestrictions() {
         return copyrightAndOtherRestrictions;
     }
@@ -199,7 +227,7 @@ public class SmarterAppMetadata {
         this.copyrightAndOtherRestrictions = copyrightAndOtherRestrictions;
     }
 
-    @JsonProperty(name = "BrailleType")
+    @JsonProperty("BrailleType")
     public String getBrailleType() {
         return brailleType;
     }
@@ -208,7 +236,7 @@ public class SmarterAppMetadata {
         this.brailleType = brailleType;
     }
 
-    @JsonProperty(name = "EnemyItem")
+    @JsonProperty("EnemyItem")
     public String getEnemyItem() {
         return enemyItem;
     }
@@ -217,7 +245,7 @@ public class SmarterAppMetadata {
         this.enemyItem = enemyItem;
     }
 
-    @JsonProperty(name = "AssociatedTutorial")
+    @JsonProperty("AssociatedTutorial")
     public String getAssociatedTutorial() {
         return associatedTutorial;
     }
@@ -226,7 +254,7 @@ public class SmarterAppMetadata {
         this.associatedTutorial = associatedTutorial;
     }
 
-    @JsonProperty(name = "AssociatedWordlist")
+    @JsonProperty("AssociatedWordlist")
     public String getAssociatedWordlist() {
         return associatedWordlist;
     }
@@ -235,7 +263,7 @@ public class SmarterAppMetadata {
         this.associatedWordlist = associatedWordlist;
     }
 
-    @JsonProperty(name = "Language")
+    @JsonProperty("Language")
     public String getLanguage() {
         return language;
     }
