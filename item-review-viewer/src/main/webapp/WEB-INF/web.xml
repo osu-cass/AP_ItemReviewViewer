@@ -97,6 +97,10 @@
         <servlet-name>item-review-viewer</servlet-name>
         <url-pattern>/index</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>item-review-viewer</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>rendererServlet</servlet-name>
         <servlet-class>tds.itemrenderer.webcontrols.rendererservlet.RendererServlet</servlet-class>
