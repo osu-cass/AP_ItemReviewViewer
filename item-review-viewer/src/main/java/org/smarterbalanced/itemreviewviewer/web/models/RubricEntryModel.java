@@ -3,13 +3,13 @@ package org.smarterbalanced.itemreviewviewer.web.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-public class Rubric {
+public class RubricEntryModel {
 
     protected String name;
     protected String val;
     protected String scorepoint;
 
-    public Rubric(String name, String val, String scorepoint){
+    public RubricEntryModel(String name, String val, String scorepoint){
         this.name = name;
         this.val = val;
         this.scorepoint = scorepoint;
