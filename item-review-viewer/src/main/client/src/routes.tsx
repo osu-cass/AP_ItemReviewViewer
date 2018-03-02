@@ -12,12 +12,13 @@ import {
 } from "@osu-cass/sb-components";
 
 import {
-  mockBankAboutItemClient,
   mockBankAccessibilityClient,
   mockBankRevisionsClient,
   mockBankSectionsClient,
   itemsMocks
-} from "./mocks";
+} from "./Mocks";
+
+import { aboutItemBankClient } from "./Clients";
 
 const siteLinks: SbNavlinkProps[] = [];
 
@@ -32,7 +33,7 @@ export const routes = (
         render={props => (
           <ItemBankContainer
             accessibilityClient={mockBankAccessibilityClient}
-            aboutItemRevisionClient={mockBankAboutItemClient}
+            aboutItemRevisionClient={aboutItemBankClient}
             revisionsClient={mockBankRevisionsClient}
             itemViewUrl=""
             sectionsClient={mockBankSectionsClient}
