@@ -19,7 +19,7 @@ public class SampleResponseModel {
 
     @JsonProperty("scorePoint")
     public String getScorePoint() {
-        return scorepoint;
+        return scorePoint;
     }
 
     void setScorePoint(String scorePoint){

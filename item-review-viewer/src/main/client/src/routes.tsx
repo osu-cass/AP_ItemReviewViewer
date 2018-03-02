@@ -7,28 +7,31 @@ import {
   ItemsSearchModel,
   ItemCardViewer,
   ErrorPageContainer,
-  ItemViewerFrame
+  ItemBankContainer,
+  getResource
 } from "@osu-cass/sb-components";
+import {
+  accessibilityClient,
+  aboutItemRevisionClient,
+  revisionsClient,
+  sectionsClient
+} from "./Clients/clients";
 
 const siteLinks: SbNavlinkProps[] = [];
 
-
 const url = "/ivs/items?ids=187-3000";
-
-// Delete, testing
-const body = (
-  <div className="container test-container">
-    <h2 className="page-title"> King Alex Title</h2>
-    <div className="item-viewer">
-      <ItemViewerFrame url={url} />
-    </div>
-  </div>
-);
 
 export const routes = (
   <Layout siteName="Item Bank Viewer" links={siteLinks}>
     <Switch>
-      <Route exact path="/" render={props => body} />
+      <Route exact path="/" render={props =>
+        <ItemBankContainer
+          accessibilityClient={accessibilityClient}
+          aboutItemRevisionClient={aboutItemRevisionClient}
+          revisionsClient={revisionsClient}
+          sectionsClient={sectionsClient}
+          itemViewUrl={url}
+        />} />
       <Route path="*" render={props => <ErrorPageContainer />} />
     </Switch>
   </Layout>
