@@ -8,6 +8,7 @@ import {
   ItemCardViewer,
   ErrorPageContainer,
   ItemBankContainer,
+  ItemRevisionModel,
   getResource
 } from "@osu-cass/sb-components";
 import {
@@ -17,9 +18,14 @@ import {
   sectionsClient
 } from "./Clients/clients";
 
-const siteLinks: SbNavlinkProps[] = [];
+import {
+  itemsMocks
+} from "./Mocks";
 
 const url = "/ivs/items?ids=187-3000";
+
+
+
 
 export const routes = (
   <Layout siteName="Item Bank Viewer" links={siteLinks}>
@@ -31,6 +37,7 @@ export const routes = (
           revisionsClient={revisionsClient}
           sectionsClient={sectionsClient}
           itemViewUrl={url}
+          items={itemsMocks}
         />} />
       <Route path="*" render={props => <ErrorPageContainer />} />
     </Switch>
