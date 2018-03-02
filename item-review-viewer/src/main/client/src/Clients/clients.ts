@@ -10,20 +10,20 @@ import {
 
 export const accessibilityClient = ( acc: AccessibilityRevisionModel ):
     Promise<AccResourceGroupModel[]> => {
-    return getRequest( "item/revision/accessibility", acc );
+    return getRequest<AccResourceGroupModel[]>( "/api/GetAccessibility/", acc );
 };
 
 export const aboutItemRevisionClient = ( item: ItemRevisionModel ):
     Promise<AboutItemRevisionModel> => {
-    return getRequest( "item/revision/item", item );
+    return getRequest<AboutItemRevisionModel>( "/api/AboutItem", item );
 };
 
 export const revisionsClient = ( item: ItemRevisionModel ):
     Promise<RevisionModel[]> => {
-    return getRequest( "item/revision/revisions", item );
+    return getRequest<RevisionModel[]>( "/api/ItemRevisions", item );
 };
 
 export const sectionsClient = (): Promise<SectionModel[]> => {
-    return getRequest("item/sections");
+    return getRequest<SectionModel[]>("/api/BankSections");
 };
 

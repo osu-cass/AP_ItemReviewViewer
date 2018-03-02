@@ -22,10 +22,9 @@ import {
   itemsMocks
 } from "./Mocks";
 
+const siteLinks: SbNavlinkProps[] = [];
+
 const url = "/ivs/items?ids=187-3000";
-
-
-
 
 export const routes = (
   <Layout siteName="Item Bank Viewer" links={siteLinks}>

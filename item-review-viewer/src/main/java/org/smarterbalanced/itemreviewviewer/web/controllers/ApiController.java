@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-public class ItemController {
+public class ApiController {
 
     // I realize we probably wont have all of the parameters in the URL
     // path once we get the front end up and running
@@ -33,9 +33,9 @@ public class ItemController {
         return json;
     }
 
-    @RequestMapping(value = "revision/accessibility", method = RequestMethod.GET)
+    @RequestMapping(value = "GetAccessibility", method = RequestMethod.GET)
     @ResponseBody
-    public String getAccessibilityRevision(){
+    public String getAccessibilityRevision(@RequestParam("params") ){
         MockAboutItemMetadata md = new MockAboutItemMetadata();
         ObjectMapper mapper = new ObjectMapper();
         String json = "";
@@ -43,7 +43,7 @@ public class ItemController {
         return json;
     }
 
-    @RequestMapping(value = "revision/item", method = RequestMethod.GET)
+    @RequestMapping(value = "AboutItem", method = RequestMethod.GET)
     @ResponseBody
     public String getItemRevision(){
         MockAboutItemMetadata md = new MockAboutItemMetadata();
@@ -53,7 +53,7 @@ public class ItemController {
         return json;
     }
 
-    @RequestMapping(value = "revision/revisions", method = RequestMethod.GET)
+    @RequestMapping(value = "ItemRevisions", method = RequestMethod.GET)
     @ResponseBody
     public String getRevisions(){
         MockAboutItemMetadata md = new MockAboutItemMetadata();
@@ -63,7 +63,7 @@ public class ItemController {
         return json;
     }
 
-    @RequestMapping(value = "sections", method = RequestMethod.GET)
+    @RequestMapping(value = "BankSections", method = RequestMethod.GET)
     @ResponseBody
     public String getSections(){
         MockAboutItemMetadata md = new MockAboutItemMetadata();
