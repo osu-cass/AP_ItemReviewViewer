@@ -7,7 +7,6 @@
     <name>item-review-viewer</name>
     <version>0.0.1</version>
 
-<<<<<<< HEAD
     <repositories>
         <repository>
             <id>org.opentestsystem</id>
@@ -21,7 +20,7 @@
             <url>https://airdev.artifactoryonline.com/airdev/libs-releases-local</url>
         </repository>
     </repositories>
->>>>>>> feat/react-app
+
 
     <!-- Version variables -->
     <properties>

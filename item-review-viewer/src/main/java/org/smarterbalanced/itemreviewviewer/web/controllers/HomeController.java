@@ -15,10 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
-<<<<<<< HEAD
-=======
 @PropertySource(value={"classpath:application.properties","classpath:application.config.properties"})
->>>>>>> feat/react-app
 @Controller
 public class HomeController {
 
@@ -30,14 +27,7 @@ public class HomeController {
     public ModelAndView Index() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
-<<<<<<< HEAD
-        String spring_config_name = environment.getProperty("SPRING_CONFIG_NAME");
-        if (spring_config_name != null) {
-            modelAndView.addObject(spring_config_name, true);
-        }
-=======
         modelAndView.addObject("spring_config", itemBankConfig.getContentSource());
->>>>>>> feat/react-app
 
         return modelAndView;
     }
