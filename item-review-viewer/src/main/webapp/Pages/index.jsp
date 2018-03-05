@@ -18,6 +18,7 @@
     <div id="react-app" class="app-loading"></div>
     <script src="${pageContext.request.contextPath}/dist/vendor.js"></script>
 
+<<<<<<< HEAD
     <%--<c:if test="${DEV}">--%>
     <script src="http://localhost:8787/dist/main.js"></script>
     <%--</c:if>--%>
@@ -25,6 +26,10 @@
     <%--<c:if test="${!DEV}">--%>
         <%--<script src="/dist/main.js"></script>--%>
     <%--</c:if>--%>
+=======
+    <script src="${spring_config}"></script>
+
+>>>>>>> feat/react-app
 
 </body>
 

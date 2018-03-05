@@ -1,6 +1,10 @@
 package org.smarterbalanced.itemreviewviewer.web.controllers;
 
+import com.amazonaws.services.simpledb.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,20 +15,29 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
+<<<<<<< HEAD
+=======
+@PropertySource(value={"classpath:application.properties","classpath:application.config.properties"})
+>>>>>>> feat/react-app
 @Controller
 public class HomeController {
+
     @Autowired
-    private Environment environment;
+    private ItemBankConfig itemBankConfig;
 
     @RequestMapping(value = "/index")
     @ResponseBody
     public ModelAndView Index() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
+<<<<<<< HEAD
         String spring_config_name = environment.getProperty("SPRING_CONFIG_NAME");
         if (spring_config_name != null) {
             modelAndView.addObject(spring_config_name, true);
         }
+=======
+        modelAndView.addObject("spring_config", itemBankConfig.getContentSource());
+>>>>>>> feat/react-app
 
         return modelAndView;
     }
