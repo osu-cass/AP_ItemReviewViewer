@@ -7,6 +7,8 @@
     <name>item-review-viewer</name>
     <version>0.0.1</version>
 
+    <context:property-placeholder location="classpath:foo.properties" />
+
     <!-- Version variables -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

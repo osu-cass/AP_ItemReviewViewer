@@ -16,6 +16,10 @@
     <mvc:annotation-driven />
     <task:annotation-driven />
 
+    <context:property-placeholder location="classpath:application.properties" />
+    <context:property-placeholder location="classpath:application.config.properties" />
+
+
     <context:component-scan base-package="org.smarterbalanced.itemreviewviewer"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
