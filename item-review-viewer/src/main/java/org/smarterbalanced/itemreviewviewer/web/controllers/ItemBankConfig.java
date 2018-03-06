@@ -9,7 +9,6 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 @PropertySource(value={"classpath:application.properties","classpath:application.config.properties"})
 @Configuration
 @Component

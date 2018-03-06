@@ -20,7 +20,6 @@
 
     <script src="${spring_config}"></script>
 
-
 </body>
 
 </html>
