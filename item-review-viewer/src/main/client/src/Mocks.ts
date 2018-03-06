@@ -23,7 +23,7 @@ export const mockBankRevisionsClient = (item: ItemRevisionModel) =>
 export const mockBankSectionsClient = () =>
   mockPromise<SectionModel[]>(sectionMocks);
 
-const testDate = new Date("11/11/2015");
+const testDate = new Date("11/11/2015").toString();
 
 export const revisions: RevisionModel[] = [
   {
