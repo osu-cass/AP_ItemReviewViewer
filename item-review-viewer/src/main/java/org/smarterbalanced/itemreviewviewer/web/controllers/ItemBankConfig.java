@@ -28,10 +28,14 @@ public class ItemBankConfig {
     }
 
     public String getContentSource() {
-        if(env.getProperty("env").equals("dev")) {
-            return contentSourceDev;
-        } else {
-            return contentSourceProd;
+
+        if(env.getProperty("env") != null){
+            if(env.getProperty("env").equals("dev")) {
+                return contentSourceDev;
+            } else {
+                return contentSourceProd;
+            }
         }
+        return contentSourceProd;
     }
 }
