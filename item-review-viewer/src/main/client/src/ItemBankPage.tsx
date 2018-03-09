@@ -1,5 +1,6 @@
 import * as React from "react";
-import { ItemBankContainerProps, ItemRevisionModel, ItemBankContainer } from "@osu-cass/sb-components"
+import { ItemBankContainerProps, ItemRevisionModel, ItemBankContainer } from "@osu-cass/sb-components";
+import { RouteComponentProps } from "react-router";
 import {
     accessibilityClient,
     aboutItemRevisionClient,
@@ -10,11 +11,13 @@ import {
     itemsMocks
   } from "./Mocks";
 
+
+
 interface ItemBankPageState {
     itemUrl: string;
 }
-export class ItemBankPage extends React.Component<{}, ItemBankPageState> {
-    constructor ( props: ItemBankContainerProps ) {
+export class ItemBankPage extends React.Component<RouteComponentProps<ItemRevisionModel>, ItemBankPageState> {
+    constructor ( props: RouteComponentProps<ItemRevisionModel>) {
         super( props );
         this.state = {
             itemUrl: ""
