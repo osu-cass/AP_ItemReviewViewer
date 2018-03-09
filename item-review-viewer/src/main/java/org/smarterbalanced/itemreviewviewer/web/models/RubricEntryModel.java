@@ -5,14 +5,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class RubricEntryModel {
 
+    protected String scorepoint;
     protected String name;
     protected String val;
-    protected String scorepoint;
 
-    public RubricEntryModel(String name, String val, String scorepoint){
+
+
+    public RubricEntryModel( String val, String name, String scorepoint){
+        this.scorepoint = scorepoint;
         this.name = name;
         this.val = val;
-        this.scorepoint = scorepoint;
     }
 
     @JsonProperty("name")

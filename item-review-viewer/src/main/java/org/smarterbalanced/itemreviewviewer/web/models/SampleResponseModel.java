@@ -8,6 +8,13 @@ public class SampleResponseModel {
     protected String name;
     protected String sampleContent;
 
+    public SampleResponseModel(String purpose, String scorePoint, String name, String sampleContent){
+        this.purpose = purpose;
+        this.scorePoint = scorePoint;
+        this.name = name;
+        this.sampleContent = sampleContent;
+    }
+
     @JsonProperty("purpose")
     public String getPurpose() {
         return purpose;

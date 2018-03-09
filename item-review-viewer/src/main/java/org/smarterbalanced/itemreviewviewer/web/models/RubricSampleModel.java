@@ -9,6 +9,12 @@ public class RubricSampleModel {
     protected String minValue;
     protected List<SampleResponseModel> sampleResponses;
 
+    public RubricSampleModel(String maxValue, String minValue, List<SampleResponseModel> sampleResponses){
+        this.maxValue = maxValue;
+        this.minValue = minValue;
+        this.sampleResponses = sampleResponses;
+    }
+
     @JsonProperty("maxValue")
     public String getMaxValue() {
         return maxValue;

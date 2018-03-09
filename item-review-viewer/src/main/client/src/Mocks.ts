@@ -63,9 +63,9 @@ const sectionMocks: SectionModel[] = [
 ];
 
 export const itemsMocks: ItemRevisionModel[] = [
-  { bankKey: 187, itemKey: 1111, section: "siw" },
-  { bankKey: 1872, itemKey: 2222, section: "math" },
-  { bankKey: 1871, itemKey: 3333, section: "siw" },
+  { bankKey: 187, itemKey: 3000, section: "siw" },
+  { bankKey: 187, itemKey: 3200, section: "math" },
+  { bankKey: 187, itemKey: 2700, section: "siw" },
   {}
 ];
 

@@ -2,7 +2,7 @@ package org.smarterbalanced.itemreviewviewer.web.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class AboutItemMetadata {
+public class AboutItemMetadataModel {
     private String identifier;
     private String itemAuthorIdentifier;
     private String itemSpecFormat;
@@ -23,18 +23,18 @@ public class AboutItemMetadata {
     private String copyrightAndOtherRestrictions;
     private String brailleType;
     private String enemyItem;
-    private StandardPublication StandardPublication;
+    private StandardPublication standardPublication;
     private String associatedTutorial;
     private String associatedWordlist;
     private String language;
 
-    public AboutItemMetadata(String itemKey, String bankKey, String revision, String section){
-        identifier = bankKey;
+    public AboutItemMetadataModel(String itemKey, String bankKey, String revision, String section){
+        identifier = itemKey;
         itemAuthorIdentifier = "Hannah_Hacker";
         itemSpecFormat = "SmarterApp";
         lastModifiedBy = "Hannah_Hacker";
         securityStatus = "Non-secure";
-        smarterAppItemDescriptor = "Describes item " + itemKey + "-" + bankKey;
+        smarterAppItemDescriptor = "Describes item " + bankKey + "-" + itemKey;
         status = "Released";
         stimulusFormat = "Standard";
         subject = "subject type";
@@ -48,15 +48,15 @@ public class AboutItemMetadata {
         copyrightAndOtherRestrictions = "NA";
         brailleType = "NA";
         enemyItem = "NA";
-        StandardPublication = new StandardPublication();
-        StandardPublication.setPrimaryStandard("SBAC-SH-v1:SH-Undesignated<");
-        StandardPublication.setPublication("SBAC-SH-v1");
+        standardPublication = new StandardPublication();
+        standardPublication.setPrimaryStandard("SBAC-SH-v1:SH-Undesignated<");
+        standardPublication.setPublication("SBAC-SH-v1");
         associatedTutorial = "NA";
         associatedWordlist = "NA";
         language = "english";
     }
 
-    @JsonProperty("Identifier")
+    @JsonProperty("identifier")
     public String getIdentifier() {
         return identifier;
     }
@@ -65,7 +65,7 @@ public class AboutItemMetadata {
         this.identifier = identifier;
     }
 
-    @JsonProperty("SmarterAppItemDescriptor")
+    @JsonProperty("smarterAppItemDescriptor")
     public String getSmarterAppItemDescriptor() {
         return smarterAppItemDescriptor;
     }
@@ -74,7 +74,7 @@ public class AboutItemMetadata {
         this.smarterAppItemDescriptor = smarterAppItemDescriptor;
     }
 
-    @JsonProperty("Subject")
+    @JsonProperty("subject")
     public String getSubject() {
         return subject;
     }
@@ -83,7 +83,7 @@ public class AboutItemMetadata {
         this.subject = subject;
     }
 
-    @JsonProperty("Version")
+    @JsonProperty("version")
     public String getVersion() {
         return version;
     }
@@ -92,7 +92,7 @@ public class AboutItemMetadata {
         this.version = version;
     }
 
-    @JsonProperty("MaximumGrade")
+    @JsonProperty("maximumGrade")
     public String getMaximumGrade() {
         return maximumGrade;
     }
@@ -101,16 +101,16 @@ public class AboutItemMetadata {
         this.maximumGrade = maximumGrade;
     }
 
-    @JsonProperty("StandardPublication")
+    @JsonProperty("standardPublication")
     public StandardPublication getStandardPublication() {
-        return StandardPublication;
+        return standardPublication;
     }
 
     public void setStandardPublication(StandardPublication standardPublication) {
-        StandardPublication = standardPublication;
+        this.standardPublication = standardPublication;
     }
 
-    @JsonProperty("IntendedGrade")
+    @JsonProperty("intendedGrade")
     public String getIntendedGrade() {
         return intendedGrade;
     }
@@ -119,7 +119,7 @@ public class AboutItemMetadata {
         this.intendedGrade = intendedGrade;
     }
 
-    @JsonProperty("MinimumGrade")
+    @JsonProperty("minimumGrade")
     public String getMinimumGrade() {
         return minimumGrade;
     }
@@ -128,7 +128,7 @@ public class AboutItemMetadata {
         this.minimumGrade = minimumGrade;
     }
 
-    @JsonProperty("InteractionType")
+    @JsonProperty("interactionType")
     public String getInteractionType() {
         return interactionType;
     }
@@ -137,7 +137,7 @@ public class AboutItemMetadata {
         this.interactionType = interactionType;
     }
 
-    @JsonProperty("ItemAuthorIdentifier")
+    @JsonProperty("itemAuthorIdentifier")
     public String getItemAuthorIdentifier() {
         return itemAuthorIdentifier;
     }
@@ -146,7 +146,7 @@ public class AboutItemMetadata {
         this.itemAuthorIdentifier = itemAuthorIdentifier;
     }
 
-    @JsonProperty("ItemSpecFormat")
+    @JsonProperty("itemSpecFormat")
     public String getItemSpecFormat() {
         return itemSpecFormat;
     }
@@ -155,7 +155,7 @@ public class AboutItemMetadata {
         this.itemSpecFormat = itemSpecFormat;
     }
 
-    @JsonProperty("LastModifiedBy")
+    @JsonProperty("lastModifiedBy")
     public String getLastModifiedBy() {
         return lastModifiedBy;
     }
@@ -164,7 +164,7 @@ public class AboutItemMetadata {
         this.lastModifiedBy = lastModifiedBy;
     }
 
-    @JsonProperty("SecurityStatus")
+    @JsonProperty("securityStatus")
     public String getSecurityStatus() {
         return securityStatus;
     }
@@ -173,7 +173,7 @@ public class AboutItemMetadata {
         this.securityStatus = securityStatus;
     }
 
-    @JsonProperty("Status")
+    @JsonProperty("status")
     public String getStatus() {
         return status;
     }
@@ -182,7 +182,7 @@ public class AboutItemMetadata {
         this.status = status;
     }
 
-    @JsonProperty("StimulusFormat")
+    @JsonProperty("stimulusFormat")
     public String getStimulusFormat() {
         return stimulusFormat;
     }
@@ -191,7 +191,7 @@ public class AboutItemMetadata {
         this.stimulusFormat = stimulusFormat;
     }
 
-    @JsonProperty("DepthOfKnowledge")
+    @JsonProperty("depthOfKnowledge")
     public String getDepthOfKnowledge() {
         return depthOfKnowledge;
     }
@@ -200,7 +200,7 @@ public class AboutItemMetadata {
         this.depthOfKnowledge = depthOfKnowledge;
     }
 
-    @JsonProperty("MaximumNumberOfPoints")
+    @JsonProperty("maximumNumberOfPoints")
     public String getMaximumNumberOfPoints() {
         return maximumNumberOfPoints;
     }
@@ -209,7 +209,7 @@ public class AboutItemMetadata {
         this.maximumNumberOfPoints = maximumNumberOfPoints;
     }
 
-    @JsonProperty("AllowCalculator")
+    @JsonProperty("allowCalculator")
     public String getAllowCalculator() {
         return allowCalculator;
     }
@@ -218,7 +218,7 @@ public class AboutItemMetadata {
         this.allowCalculator = allowCalculator;
     }
 
-    @JsonProperty("CopyrightAndOtherRestrictions")
+    @JsonProperty("copyrightAndOtherRestrictions")
     public String getCopyrightAndOtherRestrictions() {
         return copyrightAndOtherRestrictions;
     }
@@ -227,7 +227,7 @@ public class AboutItemMetadata {
         this.copyrightAndOtherRestrictions = copyrightAndOtherRestrictions;
     }
 
-    @JsonProperty("BrailleType")
+    @JsonProperty("brailleType")
     public String getBrailleType() {
         return brailleType;
     }
@@ -236,7 +236,7 @@ public class AboutItemMetadata {
         this.brailleType = brailleType;
     }
 
-    @JsonProperty("EnemyItem")
+    @JsonProperty("enemyItem")
     public String getEnemyItem() {
         return enemyItem;
     }
@@ -245,7 +245,7 @@ public class AboutItemMetadata {
         this.enemyItem = enemyItem;
     }
 
-    @JsonProperty("AssociatedTutorial")
+    @JsonProperty("associatedTutorial")
     public String getAssociatedTutorial() {
         return associatedTutorial;
     }
@@ -254,7 +254,7 @@ public class AboutItemMetadata {
         this.associatedTutorial = associatedTutorial;
     }
 
-    @JsonProperty("AssociatedWordlist")
+    @JsonProperty("associatedWordlist")
     public String getAssociatedWordlist() {
         return associatedWordlist;
     }
@@ -263,7 +263,7 @@ public class AboutItemMetadata {
         this.associatedWordlist = associatedWordlist;
     }
 
-    @JsonProperty("Language")
+    @JsonProperty("language")
     public String getLanguage() {
         return language;
     }

@@ -10,16 +10,12 @@ import {
 
 export const accessibilityClient = ( acc: AccessibilityRevisionModel ):
     Promise<AccResourceGroupModel[]> => {
-    return getRequest<AccResourceGroupModel[]>("http://siw.cass-oregonstate.edu/Item/GetAccessibility", {
-        gradeLevels: acc.gradeLevel,
-        subjectCode: acc.subject,
-        interactionType: acc.interactionType
-    } );
+    return getRequest<AccResourceGroupModel[]>("/api/GetAccessibility", {...acc});
 };
 
 export const aboutItemRevisionClient = ( item: ItemRevisionModel ):
     Promise<AboutItemRevisionModel> => {
-    return getRequest<AboutItemRevisionModel>( "/api/AboutItem", item );
+    return getRequest<AboutItemRevisionModel>( "/api/AboutItem",{...item} );
 };
 
 export const revisionsClient = ( item: ItemRevisionModel ):

@@ -9,6 +9,12 @@ public class RubricModel {
     protected List<RubricEntryModel> rubricEntries;
     protected List<RubricSampleModel> samples;
 
+    public RubricModel(String language, List<RubricEntryModel> rubricEntries, List<RubricSampleModel> samples) {
+        this.language = language;
+        this.rubricEntries = rubricEntries;
+        this.samples = samples;
+    }
+
     @JsonProperty("language")
     public String getLanguage() {
         return language;

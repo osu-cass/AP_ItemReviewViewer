@@ -1,34 +1,53 @@
 package org.smarterbalanced.itemreviewviewer.web.controllers;
 
+import com.amazonaws.util.json.JSONArray;
+import com.amazonaws.util.json.JSONException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.smarterbalanced.itemreviewviewer.web.mocks.MockAboutItemMetadata;
-import org.smarterbalanced.itemreviewviewer.web.models.ItemMetadata;
+import org.smarterbalanced.itemreviewviewer.web.mocks.MockItemMetadataModel;
+import org.smarterbalanced.itemreviewviewer.web.models.GradeLevel;
+import org.smarterbalanced.itemreviewviewer.web.models.ItemMetadataModel;
 import org.smarterbalanced.itemreviewviewer.web.models.RevisionModel;
 import org.smarterbalanced.itemreviewviewer.web.models.SectionModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
 @Controller
 public class ApiController {
 
-    // I realize we probably wont have all of the parameters in the URL
-    // path once we get the front end up and running
+    @RequestMapping(value="GetAccessibility", method = RequestMethod.GET)
+    @ResponseBody
+    private String getAccessibility(@RequestParam(value="gradeLevels", required = false) GradeLevel gradeLevels,
+                                    @RequestParam(value="subject", required = false) String subjectCode,
+                                    @RequestParam(value="interactionType", required = false) String interactionType)
+    {
+        final String uri = "http://siw-dev.cass.oregonstate.edu/Item/GetAccessibility?gradeLevels=7&subjectCode=ELA&interactionType=SA";
+
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(uri, String.class);
+        JSONArray jsonResult = new JSONArray();
+        try{
+            jsonResult = new JSONArray(result);
+
+        }catch(JSONException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return jsonResult.toString();
+    }
+
     @RequestMapping(value = "AboutItem", method = RequestMethod.GET)
     @ResponseBody
     public String getAboutItem(@RequestParam("bankKey") String bankKey,
                                @RequestParam("itemKey") String itemKey,
                                @RequestParam("section") String section,
                                @RequestParam(value="revision", required = false) String revision){
-        MockAboutItemMetadata md = new MockAboutItemMetadata();
-        ItemMetadata meta = md.getMetadata(itemKey, bankKey, revision, section);
+        ItemMetadataModel meta = new MockItemMetadataModel(bankKey, itemKey, section, revision).itemMeta;
         ObjectMapper mapper = new ObjectMapper();
         String json = "";
         try{
@@ -57,6 +76,7 @@ public class ApiController {
         }catch(JsonProcessingException e){
             System.out.println(e.getMessage());
         }
+
         return json;
     }
 
