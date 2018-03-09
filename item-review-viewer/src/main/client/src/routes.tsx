@@ -25,7 +25,7 @@ const siteLinks: SbNavlinkProps[] = [];
 export const routes = (
   <Layout siteName="Item Bank Viewer" links={siteLinks}>
     <Switch>
-      <Route exact path="/" render={props => <ItemBankPage />} />
+      <Route exact path="/" render={props => <ItemBankPage {...props}/>} />
       <Route path="*" render={props => <ErrorPageContainer />} />
     </Switch>
   </Layout>

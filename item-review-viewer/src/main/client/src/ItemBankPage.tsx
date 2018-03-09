@@ -12,12 +12,12 @@ import {
   } from "./Mocks";
 
 
-
+interface ItemBankPageProps extends RouteComponentProps<ItemRevisionModel> { }
 interface ItemBankPageState {
     itemUrl: string;
 }
-export class ItemBankPage extends React.Component<RouteComponentProps<ItemRevisionModel>, ItemBankPageState> {
-    constructor ( props: RouteComponentProps<ItemRevisionModel>) {
+export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPageState> {
+    constructor ( props: ItemBankPageProps) {
         super( props );
         this.state = {
             itemUrl: ""
