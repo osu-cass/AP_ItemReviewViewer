@@ -1,7 +1,6 @@
 package org.smarterbalanced.itemreviewviewer.web.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sun.istack.internal.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
