@@ -7,40 +7,25 @@ import {
   ItemsSearchModel,
   ItemCardViewer,
   ErrorPageContainer,
-  ItemViewerFrame,
-  ItemBankContainer
+  ItemBankContainer,
+  ItemRevisionModel,
+  ItemBankContainerProps,
+  getResource
 } from "@osu-cass/sb-components";
+import { ItemBankPage } from "./ItemBankPage";
 
 import {
-  mockBankAccessibilityClient,
-  mockBankRevisionsClient,
-  mockBankSectionsClient,
   itemsMocks
 } from "./Mocks";
 
-import { aboutItemBankClient } from "./Clients";
-
 const siteLinks: SbNavlinkProps[] = [];
 
-const url = "/ivs/items?ids=187-3000";
+// class IBWrapper extends React.Component<>
 
 export const routes = (
   <Layout siteName="Item Bank Viewer" links={siteLinks}>
     <Switch>
-      <Route
-        exact
-        path="/"
-        render={props => (
-          <ItemBankContainer
-            accessibilityClient={mockBankAccessibilityClient}
-            aboutItemRevisionClient={aboutItemBankClient}
-            revisionsClient={mockBankRevisionsClient}
-            itemViewUrl=""
-            sectionsClient={mockBankSectionsClient}
-            items={itemsMocks}
-          />
-        )}
-      />
+      <Route exact path="/" render={props => <ItemBankPage {...props}/>} />
       <Route path="*" render={props => <ErrorPageContainer />} />
     </Switch>
   </Layout>

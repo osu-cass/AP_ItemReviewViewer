@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @PropertySource(value={"classpath:application.properties","classpath:application.config.properties"})
+
 @Controller
 public class HomeController {
 

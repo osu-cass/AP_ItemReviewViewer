@@ -13,6 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Item Bank Viewer - Smarter Balanced</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/vendor.css"></link>
+    <script>window.ga = function() {console.log('ga fired', arguments)};</script>
 </head>
 <body>
     <div id="react-app" class="app-loading"></div>
