@@ -27,7 +27,7 @@ module.exports = env => {
 
       devServer: {
         port: 8787,
-        quiet: true,
+        quiet: false,
         noInfo: true,
         hot: false
       },
