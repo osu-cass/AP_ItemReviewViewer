@@ -106,7 +106,7 @@
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <version>1.1.4.RELEASE</version>
         </dependency>
-
+        
         <dependency>
             <groupId>org.smarterbalanced</groupId>
             <artifactId>itemviewerservice</artifactId>
@@ -166,6 +166,12 @@
             <version>1.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.smarterbalanced</groupId>
+            <artifactId>itemviewerservice</artifactId>
+            <version>3.5.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -191,7 +197,7 @@
         <repository>
             <id>central</id>
             <name>sbac-releases</name>
-            <url>https://airdev.jfrog.io/airdev/libs-releases-local</url>
+            <url>https://airdev.artifactoryonline.com/airdev/libs-releases/</url>
         </repository>
     </distributionManagement>
 </project>
