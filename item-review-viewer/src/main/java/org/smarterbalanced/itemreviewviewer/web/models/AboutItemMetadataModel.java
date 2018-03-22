@@ -2,6 +2,16 @@ package org.smarterbalanced.itemreviewviewer.web.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlRootElement(name = "smarterAppMetadata")
+@XmlType(propOrder = { "identifier", "itemAuthorIdentifier", "itemSpecFormat", "lastModifiedBy", "securityStatus",
+        "smarterAppItemDescriptor", "status", "stimulusFormat", "subject", "version", "intendedGrade", "minimumGrade",
+        "maximumGrade", "depthOfKnowledge", "interactionType", "maximumNumberOfPoints", "allowCalculator",
+        "copyrightAndOtherRestrictions", "brailleType", "enemyItem", "standardPublication", "associatedTutorial",
+        "associatedWordlist", "language" })
 public class AboutItemMetadataModel {
     private String identifier;
     private String itemAuthorIdentifier;
@@ -28,34 +38,7 @@ public class AboutItemMetadataModel {
     private String associatedWordlist;
     private String language;
 
-    public AboutItemMetadataModel(String itemKey, String bankKey, String revision, String section){
-        identifier = itemKey;
-        itemAuthorIdentifier = "Hannah_Hacker";
-        itemSpecFormat = "SmarterApp";
-        lastModifiedBy = "Hannah_Hacker";
-        securityStatus = "Non-secure";
-        smarterAppItemDescriptor = "Describes item " + bankKey + "-" + itemKey;
-        status = "Released";
-        stimulusFormat = "Standard";
-        subject = "subject type";
-        version = revision;
-        intendedGrade = "NA";
-        minimumGrade = "NA";
-        maximumGrade = "NA";
-        interactionType = section;
-        maximumNumberOfPoints = String.valueOf((int) 10 * (Math.random() % 10));
-        allowCalculator = "false";
-        copyrightAndOtherRestrictions = "NA";
-        brailleType = "NA";
-        enemyItem = "NA";
-        standardPublication = new StandardPublication();
-        standardPublication.setPrimaryStandard("SBAC-SH-v1:SH-Undesignated<");
-        standardPublication.setPublication("SBAC-SH-v1");
-        associatedTutorial = "NA";
-        associatedWordlist = "NA";
-        language = "english";
-    }
-
+    @XmlElement(name = "Identifier")
     @JsonProperty("identifier")
     public String getIdentifier() {
         return identifier;
@@ -65,6 +48,7 @@ public class AboutItemMetadataModel {
         this.identifier = identifier;
     }
 
+    @XmlElement(name = "SmarterAppItemDescriptor")
     @JsonProperty("smarterAppItemDescriptor")
     public String getSmarterAppItemDescriptor() {
         return smarterAppItemDescriptor;
@@ -74,6 +58,7 @@ public class AboutItemMetadataModel {
         this.smarterAppItemDescriptor = smarterAppItemDescriptor;
     }
 
+    @XmlElement(name = "Subject")
     @JsonProperty("subject")
     public String getSubject() {
         return subject;
@@ -83,6 +68,7 @@ public class AboutItemMetadataModel {
         this.subject = subject;
     }
 
+    @XmlElement(name = "Version")
     @JsonProperty("version")
     public String getVersion() {
         return version;
@@ -92,6 +78,7 @@ public class AboutItemMetadataModel {
         this.version = version;
     }
 
+    @XmlElement(name = "MaximumGrade")
     @JsonProperty("maximumGrade")
     public String getMaximumGrade() {
         return maximumGrade;
@@ -101,6 +88,7 @@ public class AboutItemMetadataModel {
         this.maximumGrade = maximumGrade;
     }
 
+    @XmlElement(name = "StandardPublication")
     @JsonProperty("standardPublication")
     public StandardPublication getStandardPublication() {
         return standardPublication;
@@ -110,6 +98,7 @@ public class AboutItemMetadataModel {
         this.standardPublication = standardPublication;
     }
 
+    @XmlElement(name = "IntendedGrade")
     @JsonProperty("intendedGrade")
     public String getIntendedGrade() {
         return intendedGrade;
@@ -119,6 +108,7 @@ public class AboutItemMetadataModel {
         this.intendedGrade = intendedGrade;
     }
 
+    @XmlElement(name = "MinimumGrade")
     @JsonProperty("minimumGrade")
     public String getMinimumGrade() {
         return minimumGrade;
@@ -128,6 +118,7 @@ public class AboutItemMetadataModel {
         this.minimumGrade = minimumGrade;
     }
 
+    @XmlElement(name = "InteractionType")
     @JsonProperty("interactionType")
     public String getInteractionType() {
         return interactionType;
@@ -137,6 +128,7 @@ public class AboutItemMetadataModel {
         this.interactionType = interactionType;
     }
 
+    @XmlElement(name = "ItemAuthorIdentifier")
     @JsonProperty("itemAuthorIdentifier")
     public String getItemAuthorIdentifier() {
         return itemAuthorIdentifier;
@@ -146,6 +138,7 @@ public class AboutItemMetadataModel {
         this.itemAuthorIdentifier = itemAuthorIdentifier;
     }
 
+    @XmlElement(name = "ItemSpecFormat")
     @JsonProperty("itemSpecFormat")
     public String getItemSpecFormat() {
         return itemSpecFormat;
@@ -155,6 +148,7 @@ public class AboutItemMetadataModel {
         this.itemSpecFormat = itemSpecFormat;
     }
 
+    @XmlElement(name = "LastModifiedBy")
     @JsonProperty("lastModifiedBy")
     public String getLastModifiedBy() {
         return lastModifiedBy;
@@ -164,6 +158,7 @@ public class AboutItemMetadataModel {
         this.lastModifiedBy = lastModifiedBy;
     }
 
+    @XmlElement(name = "SecurityStatus")
     @JsonProperty("securityStatus")
     public String getSecurityStatus() {
         return securityStatus;
@@ -173,6 +168,7 @@ public class AboutItemMetadataModel {
         this.securityStatus = securityStatus;
     }
 
+    @XmlElement(name = "Status")
     @JsonProperty("status")
     public String getStatus() {
         return status;
@@ -182,6 +178,7 @@ public class AboutItemMetadataModel {
         this.status = status;
     }
 
+    @XmlElement(name = "StimulusFormat")
     @JsonProperty("stimulusFormat")
     public String getStimulusFormat() {
         return stimulusFormat;
@@ -191,6 +188,7 @@ public class AboutItemMetadataModel {
         this.stimulusFormat = stimulusFormat;
     }
 
+    @XmlElement(name = "DepthOfKnowledge")
     @JsonProperty("depthOfKnowledge")
     public String getDepthOfKnowledge() {
         return depthOfKnowledge;
@@ -200,6 +198,7 @@ public class AboutItemMetadataModel {
         this.depthOfKnowledge = depthOfKnowledge;
     }
 
+    @XmlElement(name = "MaximumNumberOfPoints")
     @JsonProperty("maximumNumberOfPoints")
     public String getMaximumNumberOfPoints() {
         return maximumNumberOfPoints;
@@ -209,6 +208,7 @@ public class AboutItemMetadataModel {
         this.maximumNumberOfPoints = maximumNumberOfPoints;
     }
 
+    @XmlElement(name = "AllowCalculator")
     @JsonProperty("allowCalculator")
     public String getAllowCalculator() {
         return allowCalculator;
@@ -218,6 +218,7 @@ public class AboutItemMetadataModel {
         this.allowCalculator = allowCalculator;
     }
 
+    @XmlElement(name = "CopyrightAndOtherRestrictions")
     @JsonProperty("copyrightAndOtherRestrictions")
     public String getCopyrightAndOtherRestrictions() {
         return copyrightAndOtherRestrictions;
@@ -227,6 +228,7 @@ public class AboutItemMetadataModel {
         this.copyrightAndOtherRestrictions = copyrightAndOtherRestrictions;
     }
 
+    @XmlElement(name = "BrailleType")
     @JsonProperty("brailleType")
     public String getBrailleType() {
         return brailleType;
@@ -236,6 +238,7 @@ public class AboutItemMetadataModel {
         this.brailleType = brailleType;
     }
 
+    @XmlElement(name = "EnemyItem")
     @JsonProperty("enemyItem")
     public String getEnemyItem() {
         return enemyItem;
@@ -245,6 +248,7 @@ public class AboutItemMetadataModel {
         this.enemyItem = enemyItem;
     }
 
+    @XmlElement(name = "AssociatedTutorial")
     @JsonProperty("associatedTutorial")
     public String getAssociatedTutorial() {
         return associatedTutorial;
@@ -254,6 +258,7 @@ public class AboutItemMetadataModel {
         this.associatedTutorial = associatedTutorial;
     }
 
+    @XmlElement(name = "AssociatedWordlist")
     @JsonProperty("associatedWordlist")
     public String getAssociatedWordlist() {
         return associatedWordlist;
@@ -263,6 +268,7 @@ public class AboutItemMetadataModel {
         this.associatedWordlist = associatedWordlist;
     }
 
+    @XmlElement(name = "Language", required = true)
     @JsonProperty("language")
     public String getLanguage() {
         return language;

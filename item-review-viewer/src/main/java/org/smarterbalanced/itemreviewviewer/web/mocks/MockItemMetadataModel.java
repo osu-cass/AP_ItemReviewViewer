@@ -8,9 +8,9 @@ public class MockItemMetadataModel {
 
     public ItemMetadataModel itemMeta;
 
-    public MockItemMetadataModel(String itemKey, String bankKey, String revision, String section) {
-        AboutItemMetadataModel aboutItem = new AboutItemMetadataModel(itemKey, bankKey, revision, "");
-        ItemScoringModel itemScore = new MockItemScoringModel().itemScoringModel;
-        this.itemMeta = new ItemMetadataModel(itemKey, bankKey, revision, section, aboutItem, itemScore);
-    }
+//    public MockItemMetadataModel(String itemKey, String bankKey, String revision, String section) {
+//        AboutItemMetadataModel aboutItem = new AboutItemMetadataModel(itemKey, bankKey, revision, "");
+//        ItemScoringModel itemScore = new MockItemScoringModel().itemScoringModel;
+//        this.itemMeta = new ItemMetadataModel(itemKey, bankKey, revision, section, aboutItem, itemScore);
+//    }
 }

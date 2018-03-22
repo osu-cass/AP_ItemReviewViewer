@@ -18,9 +18,15 @@
 	<entry key="tds.itemPreview.passageLayout"></entry>
 	<entry key="tds.itemPreview.configCache.minutes">0</entry>
 	<entry key="tds.itemPreview.configCache.id"></entry>
+
 	<entry key="iris.ContentPath">/home/tomcat7/content/</entry>
+	<entry key="iris.ZipFileLocation">/home/tomcat7/gitlab/</entry>
 	<!-- URL for the Dictionary API used for the Dictionary and Thesaurus accommodations -->
 	<entry key="iris.DictionaryUrl">https://tds.smarterbalanced.org/Dictionary/</entry>
+
+	<entry key="gitlab.private.token">LZ9AWwMujzL3xXa2j4nT</entry>
+	<entry key="gitlab.url">https://gitlab-dev.smarterbalanced.org/api/v3/projects/ItemReviewViewer%2F</entry>
+
 	<!-- End Item Preview Settings -->
 	<!-- Start BlackBox Settings -->
 	<!-- legacy settings -->
@@ -34,9 +40,9 @@
 	<entry key="tds.itemRenderer.enableBase64">false</entry>
 	<entry key="tds.itemRenderer.enableFeedback">false</entry>
 	<entry key="tds.itemRenderer.forceQTI">true</entry>
-	
+
 	<entry key="EncryptionKey">${tds.iris.EncryptionKey}</entry>
-	
+
 	<!-- End BlackBox Settings -->
 	<!-- Item Viewer Settings -->
 	<entry key="AwsRegion">us-west-2</entry>

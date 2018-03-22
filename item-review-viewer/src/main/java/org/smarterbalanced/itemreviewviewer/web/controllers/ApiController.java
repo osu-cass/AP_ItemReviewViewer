@@ -41,24 +41,6 @@ public class ApiController {
         return jsonResult.toString();
     }
 
-    @RequestMapping(value = "AboutItem", method = RequestMethod.GET)
-    @ResponseBody
-    public String getAboutItem(@RequestParam("bankKey") String bankKey,
-                               @RequestParam("itemKey") String itemKey,
-                               @RequestParam("section") String section,
-                               @RequestParam(value="revision", required = false) String revision){
-        ItemMetadataModel meta = new MockItemMetadataModel(bankKey, itemKey, section, revision).itemMeta;
-        ObjectMapper mapper = new ObjectMapper();
-        String json = "";
-        try{
-            json = mapper.   writeValueAsString(meta);
-        }catch(JsonProcessingException e){
-            System.out.println(e.getMessage());
-        }
-
-        return json;
-    }
-
     @RequestMapping(value = "ItemRevisions", method = RequestMethod.GET)
     @ResponseBody
     public String getItemRevisions(@RequestParam("bankKey") String bankKey,
