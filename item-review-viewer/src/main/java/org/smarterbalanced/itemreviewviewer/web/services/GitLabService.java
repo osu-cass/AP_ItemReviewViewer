@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -18,12 +20,19 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamReader;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.config.SettingsReader;
+import org.smarterbalanced.itemreviewviewer.web.models.ItemCommit;
 import org.smarterbalanced.itemreviewviewer.web.models.Metadata;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
 
 
 @Component
@@ -31,6 +40,7 @@ import org.springframework.stereotype.Component;
 public class GitLabService implements IGitLabService {
 
     private static String DESTINATION_ZIP_FILE_LOCATION;
+    private static String DESTINATION_CONTENT_LOCATION;
     private static final String FILE_EXTENTION = ".zip";
 
     private static final int BUFFER_SIZE = 4096;
@@ -40,6 +50,7 @@ public class GitLabService implements IGitLabService {
     public GitLabService() {
         try {
             DESTINATION_ZIP_FILE_LOCATION = SettingsReader.get("iris.ZipFileLocation");
+            DESTINATION_CONTENT_LOCATION = SettingsReader.get("iris.ContentPath");
         } catch (Exception exp) {
             _logger.error("Error loading zip file location", exp);
         }
@@ -88,7 +99,7 @@ public class GitLabService implements IGitLabService {
             if (!isItemExistsLocally(itemNumber) && downloadItem(itemNumber))
                 unzip(itemNumber);
 
-            String metadataFilePath = DESTINATION_ZIP_FILE_LOCATION + itemNumber + File.separator + "metadata.xml";
+            String metadataFilePath = DESTINATION_CONTENT_LOCATION + itemNumber + File.separator + "metadata.xml";
             try {
                 _logger.info("unmarshalling metadata file started");
 
@@ -152,7 +163,7 @@ public class GitLabService implements IGitLabService {
     public String unzip(String itemNumber) throws IOException {
 
         String zipFilePath = DESTINATION_ZIP_FILE_LOCATION + itemNumber + FILE_EXTENTION;
-        _logger.info("Unzipping the File:" + zipFilePath + " to Location:" + DESTINATION_ZIP_FILE_LOCATION + " Started");
+        _logger.info("Unzipping the File:" + zipFilePath + " to Location:" + DESTINATION_CONTENT_LOCATION + " Started");
         String _contentPath = "";
         ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFilePath));
         File dir = null;
@@ -162,7 +173,7 @@ public class GitLabService implements IGitLabService {
         int index = 1;
 
         while (entry != null) {
-            String filePath = DESTINATION_ZIP_FILE_LOCATION + File.separator + entry.getName();
+            String filePath = DESTINATION_CONTENT_LOCATION + File.separator + entry.getName();
             if (!entry.isDirectory()) {
                 BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath));
                 byte[] bytesIn = new byte[BUFFER_SIZE];
@@ -187,65 +198,61 @@ public class GitLabService implements IGitLabService {
         //rename root directory to item-blankid-id-version format
         if(rootDirectoryPath!=null) {
             File rootDirectory = new File(rootDirectoryPath);
-            rootDirectory.renameTo(new File(DESTINATION_ZIP_FILE_LOCATION + itemNumber));
-        }
-
-        if (rootDirectoryPath != null) {
-            _contentPath = DESTINATION_ZIP_FILE_LOCATION + itemNumber;
+            rootDirectory.renameTo(new File(DESTINATION_CONTENT_LOCATION + itemNumber));
+            _contentPath = DESTINATION_CONTENT_LOCATION + itemNumber;
         } else {
-            _logger.error("Downloaed File:" + zipFilePath + " to Location:" + DESTINATION_ZIP_FILE_LOCATION + " is corrupted.make sure Item Exists");
+            _logger.error("Downloaed File:" + zipFilePath + " to Location:" + DESTINATION_CONTENT_LOCATION + " is corrupted.make sure Item Exists");
             new File(zipFilePath).delete();
         }
-        _logger.info("Unzipping the File:" + zipFilePath + " to Location:" + DESTINATION_ZIP_FILE_LOCATION + " Success");
+        _logger.info("Unzipping the File:" + zipFilePath + " to Location:" + DESTINATION_CONTENT_LOCATION + " Success");
 
         return _contentPath;
     }
 
-//    public List<ItemCommit> getItemCommits(String itemName) throws GitLabException {
-//        try {
-//            String[] parts = itemName.split("-");
-//
-//            return getItemCommits(parts[0], parts[1], parts[2]);
-//
-//        } catch (Exception e) {
-//            // TODO: handle exception
-//            throw new GitLabException(e);
-//        }
-//    }
+    public List<ItemCommit> getItemCommits(String itemName) throws GitLabException {
+        try {
+            String[] parts = itemName.split("-");
+
+            return getItemCommits(parts[0], parts[1], parts[2]);
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            throw new GitLabException(e);
+        }
+    }
 
 
     /* (non-Javadoc)
      * @see org.smarterbalanced.irv.services.IGitLabService#getItemCommits(java.lang.String, java.lang.String, java.lang.String)
      */
-//    @Override
-//    public List<ItemCommit> getItemCommits(String type, String bankId, String itemNumber) throws GitLabException{
-//        //init("commits");
-//
-//        try {
-//            Client client = Client.create();
-//            String id = type+ "-" + bankId + "-" + itemNumber;
-//
-//            String  itemCommitsUrl = GitLabUtils.getItemCommitsUrl(id);
-//
-//            WebResource webResourceGet = client.resource(itemCommitsUrl);
-//            ClientResponse response = webResourceGet.accept("application/json").get(ClientResponse.class);
-//
-//            if (response.getStatus() != 200) {
-//                throw new GitLabException("Could not get ItemCommits; Failed : HTTP error code : "	+ response.getStatus());
-//            }
-//
-//            String output = response.getEntity(String.class);
-//
-//            ObjectMapper objectMapper = new ObjectMapper();
-//            List<ItemCommit> itemCommits = objectMapper.readValue(output, new TypeReference<List<ItemCommit>>(){});
-//
-//            return itemCommits;
-//
-//        } catch (Exception e) {
-//            // TODO: handle exception
-//        }
-//        return new ArrayList<ItemCommit>();
-//    }
+    public List<ItemCommit> getItemCommits(String type, String bankId, String itemNumber) throws GitLabException{
+        //init("commits");
+
+        try {
+            Client client = Client.create();
+            String id = type+ "-" + bankId + "-" + itemNumber;
+
+            String  itemCommitsUrl = GitLabUtils.getItemCommitsUrl(id);
+
+            WebResource webResourceGet = client.resource(itemCommitsUrl);
+            ClientResponse response = webResourceGet.accept("application/json").get(ClientResponse.class);
+
+            if (response.getStatus() != 200) {
+                throw new GitLabException("Could not get ItemCommits; Failed : HTTP error code : "	+ response.getStatus());
+            }
+
+            String output = response.getEntity(String.class);
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            List<ItemCommit> itemCommits = objectMapper.readValue(output, new TypeReference<List<ItemCommit>>(){});
+
+            return itemCommits;
+
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return new ArrayList<ItemCommit>();
+    }
 
 
 }

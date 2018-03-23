@@ -3,14 +3,19 @@ package org.smarterbalanced.itemreviewviewer.web.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.smarterbalanced.itemreviewviewer.web.mocks.MockItemMetadataModel;
+import org.smarterbalanced.itemreviewviewer.web.models.ItemCommit;
 import org.smarterbalanced.itemreviewviewer.web.models.ItemMetadataModel;
 import org.smarterbalanced.itemreviewviewer.web.models.Metadata;
+import org.smarterbalanced.itemreviewviewer.web.models.RevisionModel;
 import org.smarterbalanced.itemreviewviewer.web.services.GitLabService;
 import org.smarterbalanced.itemviewerservice.core.DiagnosticApi.Models.ItemRequestModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class RenderItemController {
@@ -27,14 +32,46 @@ public class RenderItemController {
                              @RequestParam(value = "isaap", required = false, defaultValue = "") String isaapCodes
     ) {
         String itemId = new String("item-" + bankKey + "-" + itemKey);
-        if(!revision.equals("")){
+        if (!revision.equals("")) {
             itemId = new String(itemId + "-" + revision);
-
+        }
 
         ObjectMapper mapper = new ObjectMapper();
         String json = "";
-        try{
+        try {
             json = mapper.writeValueAsString(gitLabService.getMetadata(itemId));
+        } catch (JsonProcessingException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return json;
+    }
+
+
+    @RequestMapping(value = "revisions", method = RequestMethod.GET)
+    @ResponseBody
+    public String getItemRevisions(@RequestParam(value = "bankKey") String bankKey,
+                                   @RequestParam(value = "itemKey") String itemKey,
+                                   @RequestParam(value = "section", required = false, defaultValue = "") String section,
+                                   @RequestParam(value = "revision", required = false, defaultValue = "") String revision,
+                                   @RequestParam(value = "isaap", required = false, defaultValue = "") String isaapCodes
+    ){
+        String itemId = new String("item-" + bankKey + "-" + itemKey);
+        if (!revision.equals("")) {
+            itemId = new String(itemId + "-" + revision);
+        }
+
+        ObjectMapper mapper = new ObjectMapper();
+        String json = "";
+        List<ItemCommit> commits = gitLabService.getItemCommits(itemId);
+        List<RevisionModel> revisions = new ArrayList<RevisionModel>();
+
+        for(ItemCommit commit: commits){
+            revisions.add(new RevisionModel(commit.getAuthorName(),commit.getMessage(), commit.getId()));
+        }
+
+        try{
+            json = mapper.writeValueAsString(revisions);
         }catch(JsonProcessingException e){
             System.out.println(e.getMessage());
         }

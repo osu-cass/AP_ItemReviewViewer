@@ -20,7 +20,7 @@ export const aboutItemRevisionClient = ( item: ItemRevisionModel ):
 
 export const revisionsClient = ( item: ItemRevisionModel ):
     Promise<RevisionModel[]> => {
-    return getRequest<RevisionModel[]>( "/api/ItemRevisions", {...item} );
+    return getRequest<RevisionModel[]>( "/renderitem/revisions", {...item} );
 };
 
 export const sectionsClient = (): Promise<SectionModel[]> => {

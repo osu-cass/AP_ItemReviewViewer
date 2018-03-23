@@ -160,6 +160,18 @@
         </dependency>
 
         <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>1.19.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-json</artifactId>
+            <version>1.19.3</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.smarterbalanced</groupId>
             <artifactId>itemviewerservice</artifactId>
             <version>3.5.0</version>
