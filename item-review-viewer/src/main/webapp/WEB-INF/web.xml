@@ -2,7 +2,7 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:root-context.xml</param-value>
+        <param-value>classpath:irv-context.xml</param-value>
     </context-param>
     <context-param>
         <param-name>javax.faces.CONFIG_FILES</param-name>
