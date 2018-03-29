@@ -50,6 +50,10 @@ public class GitLabUtils {
         return getGitLabUrl() + itemName + "/repository/tags?private_token=" + getPrivateToken();
     }
 
+    public static String getGroupsUrl(){
+        return getGitLabUrl() + "/groups?all_available=true";
+    }
+
     public static String getGitLabUrl() {
         return SettingsReader.get("gitlab.url");
     }

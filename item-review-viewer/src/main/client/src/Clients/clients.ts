@@ -24,6 +24,6 @@ export const revisionsClient = ( item: ItemRevisionModel ):
 };
 
 export const sectionsClient = (): Promise<SectionModel[]> => {
-    return getRequest<SectionModel[]>("/api/BankSections");
+    return getRequest<SectionModel[]>("/renderitem/banksections");
 };
 

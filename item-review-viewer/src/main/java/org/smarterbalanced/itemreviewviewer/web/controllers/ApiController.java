@@ -26,7 +26,7 @@ public class ApiController {
                                     @RequestParam(value="subject", required = false) String subjectCode,
                                     @RequestParam(value="interactionType", required = false) String interactionType)
     {
-        final String uri = "http://34.213.48.54:/Item/GetAccessibility?gradeLevels=7&subjectCode=ELA&interactionType=SA";
+        final String uri = "http://siw-dev.cass.oregonstate.edu/Item/GetAccessibility?gradeLevels=7&subjectCode=ELA&interactionType=SA";
 
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri, String.class);
@@ -39,24 +39,6 @@ public class ApiController {
         }
 
         return jsonResult.toString();
-    }
-
-    @RequestMapping(value = "BankSections", method = RequestMethod.GET)
-    @ResponseBody
-    public String getSections(){
-        List<SectionModel> sections = new ArrayList<SectionModel>();
-        sections.add(new SectionModel("SIW", "SIW"));
-        sections.add(new SectionModel("MATH", "MATH"));
-        sections.add(new SectionModel("IAT", "IAT"));
-        ObjectMapper mapper = new ObjectMapper();
-        String json = "";
-        try{
-            json = mapper.writeValueAsString(sections);
-        }catch(JsonProcessingException e){
-            System.out.println(e.getMessage());
-        }
-
-        return json;
     }
 
 }

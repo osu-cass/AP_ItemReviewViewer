@@ -27,6 +27,7 @@ import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.config.SettingsReader;
 import org.smarterbalanced.itemreviewviewer.web.models.ItemCommit;
 import org.smarterbalanced.itemreviewviewer.web.models.Metadata;
+import org.smarterbalanced.itemreviewviewer.web.models.SectionModel;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -253,7 +254,6 @@ public class GitLabService implements IGitLabService {
         }
         return new ArrayList<ItemCommit>();
     }
-
 
 }
 

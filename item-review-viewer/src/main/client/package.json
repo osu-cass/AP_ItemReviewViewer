@@ -26,7 +26,7 @@
   "author": "alexlepinski",
   "license": "MPL-2.0",
   "devDependencies": {
-    "@osu-cass/sb-components": "^1.5.0-alpha.1",
+    "@osu-cass/sb-components": "^1.5.0-alpha.4",
     "@osu-cass/tslint-config": "^1.0.4",
     "@types/bootstrap": "3.3.32",
     "@types/enzyme": "3.1.3",

@@ -3,10 +3,7 @@ package org.smarterbalanced.itemreviewviewer.web.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.smarterbalanced.itemreviewviewer.web.mocks.MockItemMetadataModel;
-import org.smarterbalanced.itemreviewviewer.web.models.ItemCommit;
-import org.smarterbalanced.itemreviewviewer.web.models.ItemMetadataModel;
-import org.smarterbalanced.itemreviewviewer.web.models.Metadata;
-import org.smarterbalanced.itemreviewviewer.web.models.RevisionModel;
+import org.smarterbalanced.itemreviewviewer.web.models.*;
 import org.smarterbalanced.itemreviewviewer.web.services.GitLabService;
 import tds.irisshared.models.ItemRequestModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +69,25 @@ public class RenderItemController {
 
         try{
             json = mapper.writeValueAsString(revisions);
+        }catch(JsonProcessingException e){
+            System.out.println(e.getMessage());
+        }
+
+        return json;
+    }
+
+
+    @RequestMapping(value = "banksections", method = RequestMethod.GET)
+    @ResponseBody
+    public String getSections(){
+        List<SectionModel> sections = new ArrayList<SectionModel>();
+        sections.add(new SectionModel("ELA","ELA"));
+        sections.add(new SectionModel("MATH","MATH"));
+        sections.add(new SectionModel("SIW","SIW"));
+        ObjectMapper mapper = new ObjectMapper();
+        String json = "";
+        try{
+            json = mapper.writeValueAsString(sections);
         }catch(JsonProcessingException e){
             System.out.println(e.getMessage());
         }
