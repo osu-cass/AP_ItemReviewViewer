@@ -4,7 +4,6 @@ import com.amazonaws.util.json.JSONArray;
 import com.amazonaws.util.json.JSONException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.smarterbalanced.itemreviewviewer.web.mocks.MockItemMetadataModel;
 import org.smarterbalanced.itemreviewviewer.web.models.GradeLevel;
 import org.smarterbalanced.itemreviewviewer.web.models.ItemMetadataModel;
 import org.smarterbalanced.itemreviewviewer.web.models.RevisionModel;
