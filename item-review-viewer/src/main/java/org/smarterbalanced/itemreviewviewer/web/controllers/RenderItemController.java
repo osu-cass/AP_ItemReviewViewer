@@ -2,7 +2,6 @@ package org.smarterbalanced.itemreviewviewer.web.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.smarterbalanced.itemreviewviewer.web.mocks.MockItemMetadataModel;
 import org.smarterbalanced.itemreviewviewer.web.models.*;
 import org.smarterbalanced.itemreviewviewer.web.services.GitLabService;
 import tds.irisshared.models.ItemRequestModel;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -80,10 +80,10 @@ public class RenderItemController {
     @RequestMapping(value = "banksections", method = RequestMethod.GET)
     @ResponseBody
     public String getSections(){
-        List<SectionModel> sections = new ArrayList<SectionModel>();
-        sections.add(new SectionModel("ELA","ELA"));
-        sections.add(new SectionModel("MATH","MATH"));
-        sections.add(new SectionModel("SIW","SIW"));
+        List<SectionModel> sections = Arrays.asList(
+                new SectionModel("ELA", "ELA"),
+                new SectionModel("MATH", "MATH"),
+                new SectionModel("SIW","SIW"));
         ObjectMapper mapper = new ObjectMapper();
         String json = "";
         try{
