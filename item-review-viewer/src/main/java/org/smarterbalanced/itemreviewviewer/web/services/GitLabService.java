@@ -34,6 +34,9 @@ import org.springframework.stereotype.Component;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
+import tds.itemrenderer.data.IITSDocument;;
+import tds.itemrenderer.data.ITSResource;
+import tds.itemrenderer.data.ITSTutorial;
 
 
 @Component
@@ -134,7 +137,35 @@ public class GitLabService implements IGitLabService {
 
     }
 
+    /* (non-Javadoc)
+     * @see org.smarterbalanced.irv.services.IGitLabService#downloadAssociatedItems(tds.itemrenderer.data.IITSDocument)
+     */
+    public void downloadAssociatedItems(IITSDocument doc) throws GitLabException{
+        ITSTutorial tutorial = doc.getTutorial();
+        List<ITSResource> resources = doc.getResources();
+        try{
+            if(tutorial != null){
 
+                String tutorialId = new String("Item-" +tutorial._bankKey + "-" + tutorial._id);
+                if (!isItemExistsLocally(tutorialId) && downloadItem(tutorialId)){
+                    unzip(tutorialId);
+                }
+
+                if(resources != null){
+                    for(ITSResource resource: resources){
+                        String resourceId = new String("Item-" +resource._bankKey + "-" + resource._id);
+                        if (!isItemExistsLocally(resourceId) && downloadItem(resourceId)){
+                            unzip(resourceId);
+                        }
+                    }
+                }
+            }
+        }catch(Exception e){
+            // TODO: handle exception
+            throw new GitLabException(e);
+        }
+
+    }
 
     /* (non-Javadoc)
      * @see org.smarterbalanced.irv.services.IGitLabService#isItemExistsLocally(java.lang.String)
