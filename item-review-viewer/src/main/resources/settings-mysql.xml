@@ -27,6 +27,9 @@
 	<entry key="gitlab.private.token">LZ9AWwMujzL3xXa2j4nT</entry>
 	<entry key="gitlab.url">https://gitlab-dev.smarterbalanced.org/api/v3/projects/ItemReviewViewer%2F</entry>
 
+	<entry key="siw.accessibilityUrl">http://siw-dev.cass.oregonstate.edu/Item/GetAccessibility?</entry>
+
+
 	<!-- End Item Preview Settings -->
 	<!-- Start BlackBox Settings -->
 	<!-- legacy settings -->
