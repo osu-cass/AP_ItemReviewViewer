@@ -13,9 +13,9 @@ public class ApiController {
 
     @RequestMapping(value="GetAccessibility", method = RequestMethod.GET)
     @ResponseBody
-    private String getAccessibility(@RequestParam(value="interactionType", required = false) String interactionType,
-                                    @RequestParam(value="subject", required = false) String subjectCode,
-                                    @RequestParam(value="gradeLevel", required = false) String gradeLevels)
+    private String getAccessibility(@RequestParam(value="interactionType") String interactionType,
+                                    @RequestParam(value="subject") String subjectCode,
+                                    @RequestParam(value="gradeLevel") String gradeLevels)
     {
         String url = new String(SettingsReader.get("siw.accessibilityUrl") + "gradeLevels=" + gradeLevels);
         if(!subjectCode.equals("")){
