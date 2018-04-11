@@ -2,6 +2,8 @@ package org.smarterbalanced.itemreviewviewer.web.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import java.util.List;
 
 public class RubricSampleModel {
@@ -9,12 +11,17 @@ public class RubricSampleModel {
     protected String minValue;
     protected List<SampleResponseModel> sampleResponses;
 
+    public RubricSampleModel(){
+
+    }
+
     public RubricSampleModel(String maxValue, String minValue, List<SampleResponseModel> sampleResponses){
         this.maxValue = maxValue;
         this.minValue = minValue;
         this.sampleResponses = sampleResponses;
     }
 
+    @XmlAttribute(name="maxval")
     @JsonProperty("maxValue")
     public String getMaxValue() {
         return maxValue;
@@ -24,6 +31,7 @@ public class RubricSampleModel {
         this.maxValue = maxValue;
     }
 
+    @XmlAttribute(name="minval")
     @JsonProperty("minValue")
     public String getMinValue() {
         return minValue;
@@ -33,6 +41,7 @@ public class RubricSampleModel {
         this.minValue = minValue;
     }
 
+    @XmlElement(name="sample")
     @JsonProperty("sampleResponses")
     public List<SampleResponseModel> getSampleResponses() {
         return sampleResponses;

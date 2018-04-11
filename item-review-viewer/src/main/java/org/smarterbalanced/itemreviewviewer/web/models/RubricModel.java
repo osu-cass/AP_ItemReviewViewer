@@ -2,12 +2,31 @@ package org.smarterbalanced.itemreviewviewer.web.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
+@XmlRootElement(name="rubriclist")
+@XmlAccessorType(XmlAccessType.NONE)
 public class RubricModel {
+
+    @XmlElement(name="language")
+    @JsonProperty("language")
     protected String language;
+
+    @XmlElement(name="rubric")
+    @JsonProperty("rubricEntries")
     protected List<RubricEntryModel> rubricEntries;
+
+    @XmlElement(name="samplelist")
+    @JsonProperty("samples")
     protected List<RubricSampleModel> samples;
+
+    public RubricModel(){
+
+    }
 
     public RubricModel(String language, List<RubricEntryModel> rubricEntries, List<RubricSampleModel> samples) {
         this.language = language;
@@ -15,7 +34,7 @@ public class RubricModel {
         this.samples = samples;
     }
 
-    @JsonProperty("language")
+
     public String getLanguage() {
         return language;
     }
@@ -24,7 +43,7 @@ public class RubricModel {
         this.language = language;
     }
 
-    @JsonProperty("rubricEntries")
+
     public List<RubricEntryModel> getRubricEntries() {
         return rubricEntries;
     }
@@ -33,7 +52,6 @@ public class RubricModel {
         this.rubricEntries = rubricEntries;
     }
 
-    @JsonProperty("samples")
     public List<RubricSampleModel> getSamples() {
         return samples;
     }

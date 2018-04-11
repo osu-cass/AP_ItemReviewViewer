@@ -11,6 +11,10 @@ public class ItemScoringModel {
     private List<ItemScoringOptionModel> scoringOptions;
     private List<RubricModel> rubrics;
 
+    public ItemScoringModel(){
+
+    }
+
     public ItemScoringModel(String answerKey, Boolean hasMachineRubric, List<ItemScoringOptionModel> scoringOptions, List<RubricModel> rubrics){
         this.answerKey = answerKey;
         this.hasMachineRubric = hasMachineRubric;

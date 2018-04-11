@@ -9,6 +9,10 @@ public class ItemScoringOptionModel {
     private String language;
     private String answer;
 
+    public ItemScoringOptionModel(){
+
+    }
+
     public ItemScoringOptionModel(String name, String value, String feedback, String language, String answer){
         this.name = name;
         this.value = value;

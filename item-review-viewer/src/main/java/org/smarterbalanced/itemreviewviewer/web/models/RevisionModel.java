@@ -5,17 +5,19 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
 public class RevisionModel {
-    protected String author;
-    protected long date;
-    protected String commitMessage;
-    protected String commitHash;
+    private String author;
+    private long date;
+    private String commitMessage;
+    private String commitHash;
+    private boolean selected;
 
 
-    public RevisionModel(String author, String commitMessage, String commitHash){
+    public RevisionModel(String author, String commitMessage, String commitHash, boolean selected){
         this.author = author;
         this.date = new DateTime(DateTimeZone.UTC).getMillis();
         this.commitMessage = commitMessage;
         this.commitHash = commitHash;
+        this.selected = selected;
     }
 
     @JsonProperty("author")
@@ -49,5 +51,14 @@ public class RevisionModel {
 
     public void setCommitHash(String commitHash) {
         this.commitHash = commitHash;
+    }
+
+    @JsonProperty("selected")
+    public boolean getSelected(){
+        return this.selected;
+    }
+
+    public void setSelected(boolean selected){
+        this.selected = selected;
     }
 }

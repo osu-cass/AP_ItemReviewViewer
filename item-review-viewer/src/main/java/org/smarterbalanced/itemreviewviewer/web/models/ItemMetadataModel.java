@@ -12,6 +12,10 @@ public class ItemMetadataModel {
     private AboutItemMetadataModel aboutItemMetadataModel;
     private ItemScoringModel sampleItemScoring;
 
+    public ItemMetadataModel(){
+
+    }
+
     public ItemMetadataModel(String itemKey, String bankKey, String revision, String section, AboutItemMetadataModel aboutItemMetadataModel, ItemScoringModel sampleItemScoring){
         this.itemKey = itemKey;
         this.bankKey = bankKey;
