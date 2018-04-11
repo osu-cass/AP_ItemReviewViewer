@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlElement;
 import java.util.List;
 
 public class RubricSampleModel {
-    protected String maxValue;
-    protected String minValue;
-    protected List<SampleResponseModel> sampleResponses;
+    private String maxValue;
+    private String minValue;
+    private List<SampleResponseModel> sampleResponses;
 
     public RubricSampleModel(){
 

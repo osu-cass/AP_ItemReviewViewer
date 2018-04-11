@@ -301,7 +301,10 @@ public class GitLabService implements IGitLabService {
             for(ItemContent content : contentList){
                 List<RubricModel> list = content.get_rubrics();
                 if(list != null && list.size() > 0){
-                    rubrics.addAll(list);
+                    for(RubricModel rubric : list){
+                        rubric.setLanguage(content.getLanguage());
+                        rubrics.add(rubric);
+                    }
                 }
 
             }
