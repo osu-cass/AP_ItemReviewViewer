@@ -107,13 +107,6 @@
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <version>1.1.4.RELEASE</version>
         </dependency>
-        
-        <dependency>
-            <groupId>org.smarterbalanced</groupId>
-            <artifactId>itemviewerservice</artifactId>
-            <version>3.5.0</version>
-            <type>war</type>
-        </dependency>
 
         <!-- Operating System Info -->
         <dependency>
@@ -168,9 +161,28 @@
         </dependency>
 
         <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>1.19.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-json</artifactId>
+            <version>1.19.3</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.smarterbalanced</groupId>
             <artifactId>itemviewerservice</artifactId>
-            <version>3.5.0</version>
+            <version>3.6.1</version>
+            <type>war</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.opentestsystem.delivery</groupId>
+            <artifactId>iris-shared</artifactId>
+            <version>3.6.2</version>
         </dependency>
 
     </dependencies>

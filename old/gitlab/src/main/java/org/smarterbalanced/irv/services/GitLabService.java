@@ -62,7 +62,6 @@ public class GitLabService implements IGitLabService {
 		String itemURL = GitLabUtils.getGitLabItemUrl(itemNumber);
 		
 		try {
-
 			URL gitLabItemURL = new URL(itemURL);
 			
 			String downloadLocation = DESTINATION_ZIP_FILE_LOCATION + itemNumber + FILE_EXTENTION;

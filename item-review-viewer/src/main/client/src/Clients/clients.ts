@@ -15,15 +15,15 @@ export const accessibilityClient = ( acc: AccessibilityRevisionModel ):
 
 export const aboutItemRevisionClient = ( item: ItemRevisionModel ):
     Promise<AboutItemRevisionModel> => {
-    return getRequest<AboutItemRevisionModel>( "/api/AboutItem",{...item} );
+    return getRequest<AboutItemRevisionModel>( "/renderitem/",{...item} );
 };
 
 export const revisionsClient = ( item: ItemRevisionModel ):
     Promise<RevisionModel[]> => {
-    return getRequest<RevisionModel[]>( "/api/ItemRevisions", {...item} );
+    return getRequest<RevisionModel[]>( "/renderitem/revisions", {...item} );
 };
 
 export const sectionsClient = (): Promise<SectionModel[]> => {
-    return getRequest<SectionModel[]>("/api/BankSections");
+    return getRequest<SectionModel[]>("/renderitem/banksections");
 };
 

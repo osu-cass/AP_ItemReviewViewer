@@ -1,7 +1,9 @@
 package org.smarterbalanced.irv.web.managed.beans;
 
+import java.lang.Object;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
