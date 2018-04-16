@@ -1,5 +1,6 @@
 package org.smarterbalanced.itemreviewviewer.web.controllers;
 
+import org.smarterbalanced.itemreviewviewer.web.config.ItemBankConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;

@@ -12,6 +12,10 @@ public class ItemMetadataModel {
     private AboutItemMetadataModel aboutItemMetadataModel;
     private ItemScoringModel sampleItemScoring;
 
+    public ItemMetadataModel(){
+
+    }
+
     public ItemMetadataModel(String itemKey, String bankKey, String revision, String section, AboutItemMetadataModel aboutItemMetadataModel, ItemScoringModel sampleItemScoring){
         this.itemKey = itemKey;
         this.bankKey = bankKey;
@@ -26,9 +30,17 @@ public class ItemMetadataModel {
         return itemKey;
     }
 
+    public void setItemKey(String itemKey) {
+        this.itemKey = itemKey;
+    }
+
     @JsonProperty("bankKey")
     public String getBankKey(){
         return bankKey;
+    }
+
+    public void setBankKey(String bankKey) {
+        this.bankKey = bankKey;
     }
 
     @JsonProperty("revision")
@@ -36,9 +48,17 @@ public class ItemMetadataModel {
         return revision;
     }
 
+    public void setRevision(String revision) {
+        this.revision = revision;
+    }
+
     @JsonProperty("section")
     public String getSection(){
         return section;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
     }
 
     @JsonProperty("AboutItemMetadata")
@@ -46,8 +66,16 @@ public class ItemMetadataModel {
         return aboutItemMetadataModel;
     }
 
+    public void setAboutItemMetadataModel(AboutItemMetadataModel aboutItemMetadataModel) {
+        this.aboutItemMetadataModel = aboutItemMetadataModel;
+    }
+
     @JsonProperty("sampleItemScoring")
     public ItemScoringModel getSampleItemScoring() {
         return sampleItemScoring;
+    }
+
+    public void setSampleItemScoring(ItemScoringModel sampleItemScoring) {
+        this.sampleItemScoring = sampleItemScoring;
     }
 }

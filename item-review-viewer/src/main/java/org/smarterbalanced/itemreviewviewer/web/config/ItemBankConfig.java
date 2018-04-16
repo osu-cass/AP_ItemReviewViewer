@@ -1,4 +1,4 @@
-package org.smarterbalanced.itemreviewviewer.web.controllers;
+package org.smarterbalanced.itemreviewviewer.web.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

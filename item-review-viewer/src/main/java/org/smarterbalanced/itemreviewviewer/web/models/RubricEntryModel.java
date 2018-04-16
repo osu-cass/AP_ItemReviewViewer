@@ -2,14 +2,21 @@ package org.smarterbalanced.itemreviewviewer.web.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.xml.bind.annotation.*;
 
+@XmlRootElement(name="rubric")
+@XmlAccessorType(XmlAccessType.NONE)
 public class RubricEntryModel {
+    @XmlElement(name="name")
+    private String name;
+    @XmlAttribute(name="scorepoint")
+    private String scorepoint;
+    @XmlElement(name="val")
+    private String val;
 
-    protected String scorepoint;
-    protected String name;
-    protected String val;
+    public RubricEntryModel(){
 
-
+    }
 
     public RubricEntryModel( String val, String name, String scorepoint){
         this.scorepoint = scorepoint;
@@ -23,7 +30,7 @@ public class RubricEntryModel {
         this.name = value;
     }
 
-    @JsonProperty("val")
+    @JsonProperty("scorepoint")
     public String getVal() {
         return val;
     }
@@ -31,7 +38,7 @@ public class RubricEntryModel {
         this.val = value;
     }
 
-    @JsonProperty("scorepoint")
+    @JsonProperty("val")
     public String getScorepoint() {
         return scorepoint;
     }

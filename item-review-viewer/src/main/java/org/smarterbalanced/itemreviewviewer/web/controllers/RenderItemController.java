@@ -2,21 +2,18 @@ package org.smarterbalanced.itemreviewviewer.web.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.smarterbalanced.itemreviewviewer.web.config.SettingsReader;
 import org.smarterbalanced.itemreviewviewer.web.models.*;
 import org.smarterbalanced.itemreviewviewer.web.services.GitLabService;
+import org.smarterbalanced.itemreviewviewer.web.services.ItemReviewScoringService;
 import tds.blackbox.ContentRequestException;
-import tds.irisshared.content.ConfigBuilder;
 import tds.irisshared.content.ContentBuilder;
-import tds.irisshared.models.ItemRequestModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import tds.itemrenderer.data.IITSDocument;
+import tds.itemrenderer.data.ITSContent;
+import tds.itemrenderer.data.ITSDocument;
 
-import javax.swing.text.AbstractDocument;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,6 +26,9 @@ public class RenderItemController {
 
     @Autowired
     private ContentBuilder contentBuilder;
+
+    @Autowired
+    private ItemReviewScoringService scoreService;
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -48,15 +48,12 @@ public class RenderItemController {
         ObjectMapper mapper = new ObjectMapper();
         String json = "";
 
+        ItemMetadataModel meta = gitLabService.getItemMetadata(itemId, section);
         try {
-            Metadata md = gitLabService.getMetadata(itemId);
-            json = mapper.writeValueAsString(md);
+            json = mapper.writeValueAsString(meta);
         } catch (JsonProcessingException e) {
             System.out.println(e.getMessage());
         }
-
-        IITSDocument doc = contentBuilder.getITSDocument(iitsId);
-        gitLabService.downloadAssociatedItems(doc);
 
         return json;
     }
@@ -81,7 +78,7 @@ public class RenderItemController {
         List<RevisionModel> revisions = new ArrayList<RevisionModel>();
 
         for(ItemCommit commit: commits){
-            revisions.add(new RevisionModel(commit.getAuthorName(),commit.getMessage(), commit.getId()));
+            revisions.add(new RevisionModel(commit.getAuthorName(),commit.getMessage(), commit.getId(), false));
         }
 
         try{

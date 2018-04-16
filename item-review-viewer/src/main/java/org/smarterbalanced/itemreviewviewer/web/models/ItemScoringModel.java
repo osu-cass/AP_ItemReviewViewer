@@ -2,20 +2,40 @@ package org.smarterbalanced.itemreviewviewer.web.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@XmlRootElement(name = "content")
+@XmlAccessorType(XmlAccessType.NONE)
 public class ItemScoringModel {
+    @XmlAttribute
+    private String language;
     private String answerKey;
     private Boolean hasMachineRubric;
+    @XmlElement(name = "optionlist")
     private List<ItemScoringOptionModel> scoringOptions;
+    @XmlElement(name = "rubriclist")
     private List<RubricModel> rubrics;
+
+    public ItemScoringModel(){
+
+    }
 
     public ItemScoringModel(String answerKey, Boolean hasMachineRubric, List<ItemScoringOptionModel> scoringOptions, List<RubricModel> rubrics){
         this.answerKey = answerKey;
         this.hasMachineRubric = hasMachineRubric;
         this.scoringOptions = scoringOptions;
         this.rubrics = rubrics;
+    }
+
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     @JsonProperty("answerKey")
