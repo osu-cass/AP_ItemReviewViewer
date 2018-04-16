@@ -165,7 +165,7 @@ public class GitLabService implements IGitLabService {
     }
 
 
-    public ItemDocument getRubrics(String itemName){
+    public ItemDocument getItemScoring(String itemName){
         String[] parts = itemName.split("-");
 
         String rubricFilePath = CONTENT_LOCATION + itemName + File.separator + itemName.toLowerCase() + ".xml";
@@ -179,7 +179,7 @@ public class GitLabService implements IGitLabService {
 
                 JAXBContext jc = JAXBContext.newInstance(ItemDocument.class);
                 Unmarshaller unmarshaller = jc.createUnmarshaller();
-                ItemDocument content = (ItemDocument) unmarshaller.unmarshal(xr);
+                    ItemDocument content = (ItemDocument) unmarshaller.unmarshal(xr);
                 fis.close();
 
                 _logger.info("unmarshalling metadata file completed");
@@ -293,13 +293,17 @@ public class GitLabService implements IGitLabService {
 
     public ItemMetadataModel getItemMetadata(String itemId, String section) throws GitLabException{
         String[] parts = itemId.split("-");
+        List<ItemScoringOptionModel> opts = new ArrayList<ItemScoringOptionModel>();
         Metadata md = getMetadata(itemId);
-        ItemDocument item = getRubrics(itemId);
+        ItemDocument item = getItemScoring(itemId);
         List<RubricModel> rubrics = new ArrayList<RubricModel>();
-        List<ItemContent> contentList = item.getItem().getContent();
+        List<ItemScoringModel> contentList = item.item.content;
         if(contentList.size() > 0){
-            for(ItemContent content : contentList){
-                List<RubricModel> list = content.get_rubrics();
+            for(ItemScoringModel content : contentList){
+                List<RubricModel> list = content.getRubrics();
+                if(content.getScoringOptions() != null && content.getScoringOptions().size() > 0){
+                    opts.addAll(content.getScoringOptions());
+                }
                 if(list != null && list.size() > 0){
                     for(RubricModel rubric : list){
                         rubric.setLanguage(content.getLanguage());
@@ -310,9 +314,9 @@ public class GitLabService implements IGitLabService {
             }
         }
         ItemScoringModel score = new ItemScoringModel(
-                "",
-                false,
-                new ArrayList<ItemScoringOptionModel>(),
+                null,
+                null,
+                opts.size() > 0 ? opts : null,
                 rubrics.size() > 0 ? rubrics : null
         );
         return new ItemMetadataModel(parts[0], parts[1], parts[2], section, md.getSmarterAppMetadata(), score);

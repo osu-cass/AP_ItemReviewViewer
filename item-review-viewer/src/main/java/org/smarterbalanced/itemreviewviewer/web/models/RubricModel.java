@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
-@XmlRootElement(name="rubriclist")
+@XmlRootElement(name="rubric")
 @XmlAccessorType(XmlAccessType.NONE)
 public class RubricModel {
 
@@ -42,7 +42,6 @@ public class RubricModel {
     public void setLanguage(String language) {
         this.language = language;
     }
-
 
     public List<RubricEntryModel> getRubricEntries() {
         return rubricEntries;

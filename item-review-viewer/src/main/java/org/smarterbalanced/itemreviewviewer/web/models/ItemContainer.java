@@ -9,17 +9,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 @XmlRootElement(name="item")
-@XmlAccessorType(XmlAccessType.NONE)
+@XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
 public class ItemContainer{
     @JsonProperty("content")
-    @XmlElement(name="content")
-    private List<ItemContent> content;
-
-    public List<ItemContent> getContent() {
-        return content;
-    }
-
-    public void setContent(List<ItemContent> content) {
-        this.content = content;
-    }
+    public List<ItemScoringModel> content;
 }

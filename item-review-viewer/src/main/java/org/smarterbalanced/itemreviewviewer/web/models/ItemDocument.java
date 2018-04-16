@@ -10,17 +10,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 @XmlRootElement(name="itemrelease")
-@XmlAccessorType(XmlAccessType.NONE)
+@XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
 public class ItemDocument{
     @JsonProperty("item")
-    @XmlElement(name="item")
     public ItemContainer item;
-
-    public ItemContainer getItem() {
-        return item;
-    }
-
-    public void setItem(ItemContainer item) {
-        this.item = item;
-    }
 }

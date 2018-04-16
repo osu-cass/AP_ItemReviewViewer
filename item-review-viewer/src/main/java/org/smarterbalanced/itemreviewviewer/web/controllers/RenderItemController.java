@@ -10,6 +10,10 @@ import tds.irisshared.content.ContentBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import tds.itemrenderer.data.IITSDocument;
+import tds.itemrenderer.data.ITSContent;
+import tds.itemrenderer.data.ITSDocument;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -45,7 +49,6 @@ public class RenderItemController {
         String json = "";
 
         ItemMetadataModel meta = gitLabService.getItemMetadata(itemId, section);
-
         try {
             json = mapper.writeValueAsString(meta);
         } catch (JsonProcessingException e) {

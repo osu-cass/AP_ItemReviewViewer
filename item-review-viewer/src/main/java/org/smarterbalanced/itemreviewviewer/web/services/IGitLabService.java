@@ -3,10 +3,7 @@ package org.smarterbalanced.itemreviewviewer.web.services;
 import java.io.IOException;
 import java.util.List;
 
-import org.smarterbalanced.itemreviewviewer.web.models.ItemCommit;
-import org.smarterbalanced.itemreviewviewer.web.models.ItemDocument;
-import org.smarterbalanced.itemreviewviewer.web.models.ItemMetadataModel;
-import org.smarterbalanced.itemreviewviewer.web.models.Metadata;
+import org.smarterbalanced.itemreviewviewer.web.models.*;
 import tds.itemrenderer.data.IITSDocument;
 
 public interface IGitLabService {
@@ -17,7 +14,7 @@ public interface IGitLabService {
 
     String unzip(String itemNumber) throws IOException;
 
-    ItemDocument getRubrics(String itemName);
+    ItemDocument getItemScoring(String itemName);
 
     List<ItemCommit> getItemCommits(String itemName) throws GitLabException;
 

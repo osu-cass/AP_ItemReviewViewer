@@ -4,10 +4,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.xml.bind.annotation.*;
 
+@XmlRootElement(name="rubric")
+@XmlAccessorType(XmlAccessType.NONE)
 public class RubricEntryModel {
-
+    @XmlElement(name="name")
     private String name;
+    @XmlAttribute(name="scorepoint")
     private String scorepoint;
+    @XmlElement(name="val")
     private String val;
 
     public RubricEntryModel(){
@@ -20,15 +24,12 @@ public class RubricEntryModel {
         this.val = val;
     }
 
-    @XmlElement(name="name")
     @JsonProperty("name")
     public String getName() { return name; }
     public void setName(String value) {
         this.name = value;
     }
 
-
-    @XmlAttribute(name="scorepoint")
     @JsonProperty("scorepoint")
     public String getVal() {
         return val;
@@ -37,7 +38,6 @@ public class RubricEntryModel {
         this.val = value;
     }
 
-    @XmlElement(name="val")
     @JsonProperty("val")
     public String getScorepoint() {
         return scorepoint;
