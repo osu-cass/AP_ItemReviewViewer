@@ -55,8 +55,8 @@ public class RenderItemController {
             meta = gitLabService.getItemMetadata(itemId, section);
             json = mapper.writeValueAsString(meta);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
+            String err = "Item ("+ itemId +") not found.";
+            return new ResponseEntity<>(err,HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(json, HttpStatus.OK);
     }
@@ -84,8 +84,8 @@ public class RenderItemController {
             }
             json = mapper.writeValueAsString(revisions);
         }catch(JsonProcessingException e){
-            System.out.println(e.getMessage());
-            return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
+            String err = "Item revisions for ("+ itemId +") not found.";
+            return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(json, HttpStatus.OK);
     }
@@ -103,8 +103,8 @@ public class RenderItemController {
         try{
             json = mapper.writeValueAsString(sections);
         }catch(JsonProcessingException e){
-            System.out.println(e.getMessage());
-            return new ResponseEntity<>(e.toString(), HttpStatus.NOT_FOUND);
+            String err = "Bank sections not found.";
+            return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(json, HttpStatus.OK);
     }
