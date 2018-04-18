@@ -33,7 +33,7 @@ public class ApiController {
         try{
             jsonResult = new JSONArray(result);
         }catch(JSONException e) {
-            String err = "Accessibility options for item not found."
+            String err = "Accessibility options for item not found.";
             return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
         }
 
