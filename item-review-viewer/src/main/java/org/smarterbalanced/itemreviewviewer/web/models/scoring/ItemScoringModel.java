@@ -1,9 +1,8 @@
-package org.smarterbalanced.itemreviewviewer.web.models;
+package org.smarterbalanced.itemreviewviewer.web.models.scoring;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.xml.bind.annotation.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement(name = "content")

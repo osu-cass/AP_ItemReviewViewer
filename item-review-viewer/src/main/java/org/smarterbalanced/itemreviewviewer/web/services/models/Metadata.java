@@ -1,7 +1,7 @@
-package org.smarterbalanced.itemreviewviewer.web.models;
+package org.smarterbalanced.itemreviewviewer.web.services.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import org.smarterbalanced.itemreviewviewer.web.models.metadata.AboutItemMetadataModel;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 

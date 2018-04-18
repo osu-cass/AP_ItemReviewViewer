@@ -1,7 +1,7 @@
-package org.smarterbalanced.itemreviewviewer.web.models;
+package org.smarterbalanced.itemreviewviewer.web.models.metadata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.smarterbalanced.itemreviewviewer.web.models.AboutItemMetadataModel;
+import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoringModel;
 
 public class ItemMetadataModel {
 

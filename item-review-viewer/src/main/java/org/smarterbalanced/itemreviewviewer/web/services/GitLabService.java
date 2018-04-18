@@ -25,7 +25,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.config.SettingsReader;
-import org.smarterbalanced.itemreviewviewer.web.models.*;
+import org.smarterbalanced.itemreviewviewer.web.models.metadata.ItemMetadataModel;
+import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoringModel;
+import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoringOptionModel;
+import org.smarterbalanced.itemreviewviewer.web.models.scoring.RubricModel;
+import org.smarterbalanced.itemreviewviewer.web.services.models.ItemCommit;
+import org.smarterbalanced.itemreviewviewer.web.services.models.ItemDocument;
+import org.smarterbalanced.itemreviewviewer.web.services.models.Metadata;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -165,7 +171,7 @@ public class GitLabService implements IGitLabService {
     }
 
 
-    public ItemDocument getItemScoring(String itemName){
+    public ItemDocument getItemScoring(String itemName) throws GitLabException{
         String[] parts = itemName.split("-");
 
         String rubricFilePath = CONTENT_LOCATION + itemName + File.separator + itemName.toLowerCase() + ".xml";
@@ -197,8 +203,6 @@ public class GitLabService implements IGitLabService {
 
 
     } catch (Exception e) {
-        // TODO: handle exception
-
         throw new GitLabException(e);
     }
 
@@ -241,9 +245,8 @@ public class GitLabService implements IGitLabService {
             return itemCommits;
 
         } catch (Exception e) {
-            // TODO: handle exception
+            throw new GitLabException(e);
         }
-        return new ArrayList<ItemCommit>();
     }
 
     /* (non-Javadoc)
@@ -251,11 +254,11 @@ public class GitLabService implements IGitLabService {
      */
     @Override
     public Metadata getMetadata(String itemNumber) throws GitLabException  {
-
         try {
 
             if (!isItemExistsLocally(itemNumber) && downloadItem(itemNumber))
                 unzip(itemNumber);
+
 
             String metadataFilePath = CONTENT_LOCATION + itemNumber + File.separator + "metadata.xml";
             try {
@@ -284,8 +287,6 @@ public class GitLabService implements IGitLabService {
 
 
         } catch (Exception e) {
-            // TODO: handle exception
-
             throw new GitLabException(e);
         }
 
@@ -346,7 +347,6 @@ public class GitLabService implements IGitLabService {
                 }
             }
         }catch(Exception e){
-            // TODO: handle exception
             throw new GitLabException(e);
         }
 
