@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.smarterbalanced.itemreviewviewer.web.models;
+package org.smarterbalanced.itemreviewviewer.web.services.models;
 
 import java.util.Date;
 
@@ -19,7 +19,6 @@ public class ItemCommit {
 	
 	@JsonProperty("id")
 	private String id;
-	
 
 	@JsonProperty("short_id")
 	private String shortId;

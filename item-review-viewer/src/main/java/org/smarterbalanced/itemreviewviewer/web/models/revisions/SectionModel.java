@@ -1,4 +1,4 @@
-package org.smarterbalanced.itemreviewviewer.web.models;
+package org.smarterbalanced.itemreviewviewer.web.models.revisions;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -3,6 +3,8 @@ package org.smarterbalanced.itemreviewviewer.web.controllers;
 import com.amazonaws.util.json.JSONArray;
 import com.amazonaws.util.json.JSONException;
 import org.smarterbalanced.itemreviewviewer.web.config.SettingsReader;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -13,11 +15,11 @@ public class ApiController {
 
     @RequestMapping(value="GetAccessibility", method = RequestMethod.GET)
     @ResponseBody
-    private String getAccessibility(@RequestParam(value="interactionType") String interactionType,
-                                    @RequestParam(value="subject") String subjectCode,
-                                    @RequestParam(value="gradeLevel") String gradeLevels)
+    private ResponseEntity<String> getAccessibility(@RequestParam(value="interactionType") String interactionType,
+                                            @RequestParam(value="subject") String subjectCode,
+                                            @RequestParam(value="gradeLevel") String gradeLevels)
     {
-        String url = new String(SettingsReader.get("siw.accessibilityUrl") + "gradeLevels=" + gradeLevels);
+        String url = SettingsReader.get("siw.accessibilityUrl") + "gradeLevels=" + gradeLevels;
         if(!subjectCode.equals("")){
             url = url + "&subjectCode=" + subjectCode;
         }
@@ -30,12 +32,12 @@ public class ApiController {
         JSONArray jsonResult = new JSONArray();
         try{
             jsonResult = new JSONArray(result);
-
         }catch(JSONException e) {
-            System.out.println(e.getMessage());
+            String err = "Accessibility options for item not found.";
+            return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
         }
 
-        return jsonResult.toString();
+        return new ResponseEntity<>(jsonResult.toString(), HttpStatus.OK);
     }
 
 }

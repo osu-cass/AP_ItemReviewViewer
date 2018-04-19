@@ -3,7 +3,10 @@ package org.smarterbalanced.itemreviewviewer.web.services;
 import java.io.IOException;
 import java.util.List;
 
-import org.smarterbalanced.itemreviewviewer.web.models.*;
+import org.smarterbalanced.itemreviewviewer.web.models.metadata.ItemMetadataModel;
+import org.smarterbalanced.itemreviewviewer.web.services.models.ItemCommit;
+import org.smarterbalanced.itemreviewviewer.web.services.models.ItemDocument;
+import org.smarterbalanced.itemreviewviewer.web.services.models.Metadata;
 import tds.itemrenderer.data.IITSDocument;
 
 public interface IGitLabService {
