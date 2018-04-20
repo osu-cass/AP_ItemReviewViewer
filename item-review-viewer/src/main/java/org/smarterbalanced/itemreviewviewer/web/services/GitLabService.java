@@ -49,7 +49,9 @@ public class GitLabService implements IGitLabService {
 
     private static String ZIP_FILE_LOCATION;
     private static String CONTENT_LOCATION;
-    private static final String FILE_EXTENTION = ".zip";
+    private static final String ZIP_EXTENSION = ".zip";
+    private static final String XML_EXTENSION = ".xml";
+
 
     private static final int BUFFER_SIZE = 4096;
 
@@ -73,7 +75,7 @@ public class GitLabService implements IGitLabService {
         try {
             URL gitLabItemURL = new URL(itemURL);
 
-            String downloadLocation = ZIP_FILE_LOCATION + itemNumber + FILE_EXTENTION;
+            String downloadLocation = ZIP_FILE_LOCATION + itemNumber + ZIP_EXTENSION;
             _logger.info("Getting the Item with URL:" + itemURL + " with file name:" + downloadLocation + " Started");
             boolean isSucceed = true;
 
@@ -103,7 +105,7 @@ public class GitLabService implements IGitLabService {
     public boolean isItemExistsLocally(String itemNumber) {
 
         try {
-            String zipFilePath = ZIP_FILE_LOCATION + itemNumber + FILE_EXTENTION;
+            String zipFilePath = ZIP_FILE_LOCATION + itemNumber + ZIP_EXTENSION;
             File f = new File(zipFilePath);
             _logger.info("Checking the File Already Exists:" + f.exists());
             return f.exists();
@@ -123,7 +125,7 @@ public class GitLabService implements IGitLabService {
     @Override
     public String unzip(String itemNumber) throws IOException {
 
-        String zipFilePath = ZIP_FILE_LOCATION + itemNumber + FILE_EXTENTION;
+        String zipFilePath = ZIP_FILE_LOCATION + itemNumber + ZIP_EXTENSION;
         _logger.info("Unzipping the File:" + zipFilePath + " to Location:" + CONTENT_LOCATION + " Started");
         String _contentPath = "";
         ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFilePath));
@@ -171,13 +173,15 @@ public class GitLabService implements IGitLabService {
     }
 
 
-    public ItemDocument getItemScoring(String itemName) throws GitLabException{
-        String[] parts = itemName.split("-");
-
-        String rubricFilePath = CONTENT_LOCATION + itemName + File.separator + itemName.toLowerCase() + ".xml";
+    public ItemDocument getItemScoring(String itemNumber) throws GitLabException{
+        String[] parts = itemNumber.split("-");
+        String baseItemName = parts[0] + "-" + parts[1] + "-" + parts[2];
+        String rubricFilePath = CONTENT_LOCATION + itemNumber + File.separator + baseItemName.toLowerCase() + XML_EXTENSION;
         try{
-                try {
-                _logger.info("unmarshalling metadata file started");
+            if (!isItemExistsLocally(itemNumber) && downloadItem(itemNumber))
+                unzip(itemNumber);
+            try {
+                _logger.info("unmarshalling item file started");
 
                 FileInputStream fis = new FileInputStream(rubricFilePath);
                 XMLStreamReader xsr = XMLInputFactory.newFactory().createXMLStreamReader(fis);
@@ -194,23 +198,20 @@ public class GitLabService implements IGitLabService {
 
             }catch (FileNotFoundException e) {
                 _logger.error("Metadata file not found. " + e.getMessage());
+                throw new GitLabException(e);
             }
-        catch (JAXBException e) {
-            _logger.error("Error parsing metadata file." + e.getMessage());
+            catch (JAXBException e) {
+                _logger.error("Error parsing metadata file." + e.getMessage());
+                throw new GitLabException(e);
+            }
+        } catch (Exception e) {
+            throw new GitLabException(e);
         }
-
-        return null;
-
-
-    } catch (Exception e) {
-        throw new GitLabException(e);
     }
 
-    }
-
-    public List<ItemCommit> getItemCommits(String itemName) throws GitLabException {
+    public List<ItemCommit> getItemCommits(String itemNumber) throws GitLabException {
         try {
-            String[] parts = itemName.split("-");
+            String[] parts = itemNumber.split("-");
 
             return getItemCommits(parts[0], parts[1], parts[2]);
 
@@ -259,7 +260,6 @@ public class GitLabService implements IGitLabService {
             if (!isItemExistsLocally(itemNumber) && downloadItem(itemNumber))
                 unzip(itemNumber);
 
-
             String metadataFilePath = CONTENT_LOCATION + itemNumber + File.separator + "metadata.xml";
             try {
                 _logger.info("unmarshalling metadata file started");
@@ -279,24 +279,34 @@ public class GitLabService implements IGitLabService {
 
             }catch (FileNotFoundException e) {
                 _logger.error("Metadata file not found. " + e.getMessage());
+                throw new GitLabException(e);
             }catch (JAXBException e) {
                 _logger.error("Error parsing metadata file." + e.getMessage());
+                throw new GitLabException(e);
             }
-
-            return null;
-
-
         } catch (Exception e) {
             throw new GitLabException(e);
         }
 
     }
 
-    public ItemMetadataModel getItemMetadata(String itemId, String section) throws GitLabException{
+    public ItemMetadataModel getItemMetadata(String itemId, String section) throws GitLabException, FileNotFoundException{
         String[] parts = itemId.split("-");
+        String baseItemName = parts[0] + "-" + parts[1] + "-" + parts[2];
         List<ItemScoringOptionModel> opts = new ArrayList<ItemScoringOptionModel>();
-        Metadata md = getMetadata(itemId);
-        ItemDocument item = getItemScoring(itemId);
+        Metadata md;
+        ItemDocument item;
+        try{
+            md = getMetadata(itemId);
+        } catch(GitLabException e){
+            md = getMetadata(baseItemName);
+        }
+        try{
+            item = getItemScoring(itemId);
+        } catch (GitLabException e){
+            throw new FileNotFoundException(e.getMessage());
+        }
+
         List<RubricModel> rubrics = new ArrayList<RubricModel>();
         List<ItemScoringModel> contentList = item.item.content;
         if(contentList.size() > 0){
