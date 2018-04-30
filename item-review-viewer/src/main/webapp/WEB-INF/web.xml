@@ -21,10 +21,10 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>ivsServlet</servlet-name>
-        <url-pattern>/ivs/*</url-pattern>
-    </servlet-mapping>
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>ivsServlet</servlet-name>-->
+        <!--<url-pattern>/ivs/*</url-pattern>-->
+    <!--</servlet-mapping>-->
     <!--End Section Item Viewer Service Servlet -->
     <servlet>
         <servlet-name>appServlet</servlet-name>
@@ -104,6 +104,10 @@
     <servlet-mapping>
         <servlet-name>item-review-viewer</servlet-name>
         <url-pattern>/renderitem/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>item-review-viewer</servlet-name>
+        <url-pattern>/ivs/*</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>rendererServlet</servlet-name>

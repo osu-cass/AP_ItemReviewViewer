@@ -5,17 +5,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.smarterbalanced.itemreviewviewer.web.models.*;
 import org.smarterbalanced.itemreviewviewer.web.services.GitLabService;
 import org.smarterbalanced.itemreviewviewer.web.services.ItemReviewScoringService;
+import org.springframework.web.servlet.ModelAndView;
 import tds.blackbox.ContentRequestException;
 import tds.irisshared.content.ContentBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import tds.itemrenderer.data.IITSDocument;
-import tds.itemrenderer.data.ITSContent;
-import tds.itemrenderer.data.ITSDocument;
+import org.smarterbalanced.itemreviewviewer.web.models.TokenModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 @Controller
@@ -107,5 +107,42 @@ public class RenderItemController {
         }
 
         return json;
+    }
+
+    @RequestMapping(
+            value = {"/items"},
+            method = {RequestMethod.GET}
+    )
+    @ResponseBody
+    public ModelAndView getContent(@RequestParam(value = "ids",required = true) String[] itemId,
+                                   @RequestParam(value = "revision", required = false, defaultValue = "") String revision,
+                                   @RequestParam(value = "section", required = false, defaultValue = "") String section,
+                                   @RequestParam(value = "scrollToId",required = false,defaultValue = "") String scrollToId,
+                                   @RequestParam(value = "isaap",required = false,defaultValue = "") String accommodationCodes,
+                                   @RequestParam(value = "readOnly",required = false,defaultValue = "false") boolean readOnly,
+                                   @RequestParam(value = "loadFrom",required = false,defaultValue = "") String loadFrom)
+    {
+        HashSet<String> codeSet = new HashSet<>(Arrays.asList(accommodationCodes.split(";")));
+        ArrayList<String> codes = new ArrayList<>(codeSet);
+        ItemRequestModel item = new ItemRequestModel(itemId, codes, section, revision, loadFrom);
+        String token = item.generateJsonToken();
+        String scrollToDivId = "";
+        if (!scrollToId.equals("")) {
+            try {
+                scrollToDivId = "QuestionNumber_" + scrollToId.split("-")[1];
+            } catch (IndexOutOfBoundsException var12) {
+                ;
+            }
+        }
+
+        ModelAndView model = new ModelAndView();
+        model.setViewName("item");
+        model.addObject("readOnly", readOnly);
+        model.addObject("revision", "Hello");
+        model.addObject("section", section);
+        model.addObject("token", token);
+        model.addObject("scrollToDivId", scrollToDivId);
+        model.addObject("item", itemId[0]);
+        return model;
     }
 }
