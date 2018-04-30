@@ -35,10 +35,10 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>appServlet</servlet-name>
-        <url-pattern>/Pages/API/*</url-pattern>
-    </servlet-mapping>
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>appServlet</servlet-name>-->
+        <!--<url-pattern>/Pages/API/*</url-pattern>-->
+    <!--</servlet-mapping>-->
     <servlet-mapping>
         <servlet-name>appServlet</servlet-name>
         <url-pattern>/API.axd/*</url-pattern>

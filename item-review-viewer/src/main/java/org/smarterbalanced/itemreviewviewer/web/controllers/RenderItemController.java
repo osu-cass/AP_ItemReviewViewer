@@ -17,8 +17,6 @@ import tds.irisshared.content.ContentBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.smarterbalanced.itemreviewviewer.web.models.TokenModel;
-
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -135,15 +133,13 @@ public class RenderItemController {
         if (!scrollToId.equals("")) {
             try {
                 scrollToDivId = "QuestionNumber_" + scrollToId.split("-")[1];
-            } catch (IndexOutOfBoundsException var12) {
-                ;
-            }
+            } catch (IndexOutOfBoundsException var12){}
         }
 
         ModelAndView model = new ModelAndView();
         model.setViewName("item");
         model.addObject("readOnly", readOnly);
-        model.addObject("revision", "Hello");
+        model.addObject("revision", revision);
         model.addObject("section", section);
         model.addObject("token", token);
         model.addObject("scrollToDivId", scrollToDivId);
