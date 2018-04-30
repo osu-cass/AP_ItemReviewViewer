@@ -21,10 +21,6 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>ivsServlet</servlet-name>-->
-        <!--<url-pattern>/ivs/*</url-pattern>-->
-    <!--</servlet-mapping>-->
     <!--End Section Item Viewer Service Servlet -->
     <servlet>
         <servlet-name>appServlet</servlet-name>
@@ -35,10 +31,10 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>appServlet</servlet-name>-->
-        <!--<url-pattern>/Pages/API/*</url-pattern>-->
-    <!--</servlet-mapping>-->
+    <servlet-mapping>
+        <servlet-name>appServlet</servlet-name>
+        <url-pattern>/Pages/API/*</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>appServlet</servlet-name>
         <url-pattern>/API.axd/*</url-pattern>
