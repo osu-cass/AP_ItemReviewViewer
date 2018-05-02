@@ -1,5 +1,6 @@
 package org.smarterbalanced.itemreviewviewer.web.controllers;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.smarterbalanced.itemreviewviewer.web.models.ItemRequestModel;
@@ -127,7 +128,13 @@ public class RenderItemController {
     {
         HashSet<String> codeSet = new HashSet<>(Arrays.asList(accommodationCodes.split(";")));
         ArrayList<String> codes = new ArrayList<>(codeSet);
-        ItemRequestModel item = new ItemRequestModel(itemId, codes, section, revision, loadFrom);
+        ItemRequestModel item;
+        if(section.isEmpty() && revision.isEmpty()){
+            item = new ItemRequestModel(itemId, codes, loadFrom);
+        } else {
+            item = new ItemRequestModel(itemId, codes, section, revision, loadFrom);
+        }
+
         String token = item.generateJsonToken();
         String scrollToDivId = "";
         if (!scrollToId.equals("")) {
@@ -136,11 +143,11 @@ public class RenderItemController {
             } catch (IndexOutOfBoundsException var12){}
         }
 
+
+
         ModelAndView model = new ModelAndView();
         model.setViewName("item");
         model.addObject("readOnly", readOnly);
-        model.addObject("revision", revision);
-        model.addObject("section", section);
         model.addObject("token", token);
         model.addObject("scrollToDivId", scrollToDivId);
         model.addObject("item", itemId[0]);

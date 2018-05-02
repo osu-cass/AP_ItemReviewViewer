@@ -5,6 +5,8 @@
 
 package org.smarterbalanced.itemreviewviewer.web.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -124,6 +126,7 @@ public class ItemRequestModel {
         this.buildAccommodations();
         TokenModel token = new TokenModel(this.items, this.accommodations, this.revision, this.section, this.loadFrom);
 
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         try {
             String json = mapper.writer().writeValueAsString(token);
             return json;

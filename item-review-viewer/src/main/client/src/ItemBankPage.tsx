@@ -6,25 +6,26 @@ import {
     aboutItemRevisionClient,
     revisionsClient,
     sectionsClient
-  } from "./Clients/clients";
+} from "./Clients/clients";
 import {
-    itemsMocks, revisions
-  } from "./Mocks";
+    itemsMocks
+} from "./Mocks";
 
 
 interface ItemBankPageProps extends RouteComponentProps<ItemRevisionModel> { }
 interface ItemBankPageState {
     itemUrl: string;
 }
+
 export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPageState> {
-    constructor ( props: ItemBankPageProps) {
+    constructor ( props: ItemBankPageProps ) {
         super( props );
         this.state = {
             itemUrl: ""
         };
     }
 
-    getItemUrl = ( item: ItemRevisionModel ) => {
+    setItemUrl = ( item: ItemRevisionModel ) => {
         const { itemKey, bankKey, isaap, revision, section } = item;
         const itemUrl = `${ window.location }ivs/items?ids=${ bankKey }-${ itemKey }`;
         if( revision ) {
@@ -38,21 +39,19 @@ export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPag
         if ( isaap ) {
             itemUrl.concat( itemUrl, `&isaap=${ isaap }` );
         }
-        this.setState( { itemUrl } );
-
-        return itemUrl;
+        this.setState({ itemUrl });
     }
 
     render () {
         return (
             <ItemBankContainer
-            accessibilityClient={accessibilityClient}
-            aboutItemRevisionClient={aboutItemRevisionClient}
-            revisionsClient={revisionsClient}
-            sectionsClient={sectionsClient}
-            itemViewUrl={this.state.itemUrl}
-            getUrl={this.getItemUrl}
-            items={itemsMocks}
-          />);
+                accessibilityClient={accessibilityClient}
+                aboutItemRevisionClient={aboutItemRevisionClient}
+                revisionsClient={revisionsClient}
+                sectionsClient={sectionsClient}
+                itemViewUrl={this.state.itemUrl}
+                setUrl={this.setItemUrl}
+                items={itemsMocks}
+            /> );
     }
 }
