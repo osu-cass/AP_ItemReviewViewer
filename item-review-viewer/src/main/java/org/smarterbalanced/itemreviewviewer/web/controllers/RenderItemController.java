@@ -118,7 +118,7 @@ public class RenderItemController {
             method = {RequestMethod.GET}
     )
     @ResponseBody
-    public ModelAndView getContent(@RequestParam(value = "ids",required = true) String[] itemId,
+    public ModelAndView getIvsContent(@RequestParam(value = "ids",required = true) String[] itemId,
                                    @RequestParam(value = "revision", required = false, defaultValue = "") String revision,
                                    @RequestParam(value = "section", required = false, defaultValue = "") String section,
                                    @RequestParam(value = "scrollToId",required = false,defaultValue = "") String scrollToId,
