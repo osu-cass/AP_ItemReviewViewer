@@ -1,7 +1,9 @@
 package org.smarterbalanced.itemreviewviewer.web.controllers;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.smarterbalanced.itemreviewviewer.web.models.ItemRequestModel;
 import org.smarterbalanced.itemreviewviewer.web.models.metadata.ItemMetadataModel;
 import org.smarterbalanced.itemreviewviewer.web.models.revisions.RevisionModel;
 import org.smarterbalanced.itemreviewviewer.web.models.revisions.SectionModel;
@@ -10,6 +12,7 @@ import org.smarterbalanced.itemreviewviewer.web.services.ItemReviewScoringServic
 import org.smarterbalanced.itemreviewviewer.web.services.models.ItemCommit;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.servlet.ModelAndView;
 import tds.blackbox.ContentRequestException;
 import tds.irisshared.content.ContentBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 @Controller
@@ -107,5 +111,46 @@ public class RenderItemController {
             return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(json, HttpStatus.OK);
+    }
+
+    @RequestMapping(
+            value = {"/items"},
+            method = {RequestMethod.GET}
+    )
+    @ResponseBody
+    public ModelAndView getIvsContent(@RequestParam(value = "ids",required = true) String[] itemId,
+                                   @RequestParam(value = "revision", required = false, defaultValue = "") String revision,
+                                   @RequestParam(value = "section", required = false, defaultValue = "") String section,
+                                   @RequestParam(value = "scrollToId",required = false,defaultValue = "") String scrollToId,
+                                   @RequestParam(value = "isaap",required = false,defaultValue = "") String accommodationCodes,
+                                   @RequestParam(value = "readOnly",required = false,defaultValue = "false") boolean readOnly,
+                                   @RequestParam(value = "loadFrom",required = false,defaultValue = "") String loadFrom)
+    {
+        HashSet<String> codeSet = new HashSet<>(Arrays.asList(accommodationCodes.split(";")));
+        ArrayList<String> codes = new ArrayList<>(codeSet);
+        ItemRequestModel item;
+        if(section.isEmpty() && revision.isEmpty()){
+            item = new ItemRequestModel(itemId, codes, loadFrom);
+        } else {
+            item = new ItemRequestModel(itemId, codes, section, revision, loadFrom);
+        }
+
+        String token = item.generateJsonToken();
+        String scrollToDivId = "";
+        if (!scrollToId.equals("")) {
+            try {
+                scrollToDivId = "QuestionNumber_" + scrollToId.split("-")[1];
+            } catch (IndexOutOfBoundsException var12){}
+        }
+
+
+
+        ModelAndView model = new ModelAndView();
+        model.setViewName("item");
+        model.addObject("readOnly", readOnly);
+        model.addObject("token", token);
+        model.addObject("scrollToDivId", scrollToDivId);
+        model.addObject("item", itemId[0]);
+        return model;
     }
 }

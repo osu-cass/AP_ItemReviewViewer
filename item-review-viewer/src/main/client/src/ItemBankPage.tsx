@@ -26,8 +26,16 @@ export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPag
     }
 
     setItemUrl = ( item: ItemRevisionModel ) => {
-        const { itemKey, bankKey, isaap } = item;
+        const { itemKey, bankKey, isaap, revision, section } = item;
         const itemUrl = `${ window.location }ivs/items?ids=${ bankKey }-${ itemKey }`;
+        if( revision ) {
+            itemUrl.concat( itemUrl, `&revision=${revision}`);
+        }
+
+        if( section ){
+            itemUrl.concat( itemUrl, `&section=${section}` );
+        }
+
         if ( isaap ) {
             itemUrl.concat( itemUrl, `&isaap=${ isaap }` );
         }
