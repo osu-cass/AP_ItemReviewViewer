@@ -30,7 +30,7 @@ public class RubricEntryModel {
         this.name = value;
     }
 
-    @JsonProperty("scorepoint")
+    @JsonProperty("val")
     public String getVal() {
         return val;
     }
@@ -38,7 +38,7 @@ public class RubricEntryModel {
         this.val = value;
     }
 
-    @JsonProperty("val")
+    @JsonProperty("scorepoint")
     public String getScorepoint() {
         return scorepoint;
     }
