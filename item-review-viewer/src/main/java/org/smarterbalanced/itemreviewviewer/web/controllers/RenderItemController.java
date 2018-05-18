@@ -1,5 +1,6 @@
 package org.smarterbalanced.itemreviewviewer.web.controllers;
 
+import AIR.Common.Utilities.SpringApplicationContext;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,8 +8,10 @@ import org.smarterbalanced.itemreviewviewer.web.models.ItemRequestModel;
 import org.smarterbalanced.itemreviewviewer.web.models.metadata.ItemMetadataModel;
 import org.smarterbalanced.itemreviewviewer.web.models.revisions.RevisionModel;
 import org.smarterbalanced.itemreviewviewer.web.models.revisions.SectionModel;
+import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoreInfo;
 import org.smarterbalanced.itemreviewviewer.web.services.GitLabService;
 import org.smarterbalanced.itemreviewviewer.web.services.ItemReviewScoringService;
+import org.smarterbalanced.itemreviewviewer.web.services.ItemScoringException;
 import org.smarterbalanced.itemreviewviewer.web.services.models.ItemCommit;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +21,11 @@ import tds.irisshared.content.ContentBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import tds.irisshared.content.ContentException;
+import tds.irisshared.repository.IContentBuilder;
+import tds.itemrenderer.data.IITSDocument;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -28,14 +35,19 @@ import java.util.List;
 public class RenderItemController {
 
     @Autowired
-    private GitLabService gitLabService;
+    private GitLabService _gitLabService;
 
     @Autowired
-    private ContentBuilder contentBuilder;
+    private IContentBuilder _contentBuilder;
 
     @Autowired
-    private ItemReviewScoringService scoreService;
+    private ItemReviewScoringService _itemReviewScoringService;
 
+
+    @PostConstruct
+    public synchronized void init() throws ContentException {
+        _contentBuilder = SpringApplicationContext.getBean("iContentBuilder", IContentBuilder.class);
+    }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseBody
@@ -56,7 +68,7 @@ public class RenderItemController {
 
         ItemMetadataModel meta;
         try {
-            meta = gitLabService.getItemMetadata(itemId, section);
+            meta = _gitLabService.getItemMetadata(itemId, section);
             json = mapper.writeValueAsString(meta);
         } catch (Exception e) {
             String err = "Item ("+ itemId +") not found.";
@@ -81,7 +93,7 @@ public class RenderItemController {
         List<RevisionModel> revisions;
 
         try{
-            commits = gitLabService.getItemCommits(itemId);
+            commits = _gitLabService.getItemCommits(itemId);
             revisions = new ArrayList<>();
             for(ItemCommit commit: commits){
                 revisions.add(new RevisionModel(commit.getAuthorName(),commit.getMessage(), commit.getId(), false));
@@ -152,5 +164,33 @@ public class RenderItemController {
         model.addObject("scrollToDivId", scrollToDivId);
         model.addObject("item", itemId[0]);
         return model;
+    }
+
+    @RequestMapping(value = "/score/{itemId}", method = RequestMethod.POST)
+    @ResponseBody
+    public String scoreItem(@PathVariable("itemId") String itemId,
+                            @RequestParam(value = "version", required = false, defaultValue = "") String version,
+                            @RequestBody String studentResponse) {
+
+        try {
+            String qualifiedItemId = "";
+
+            if (version != null && version.trim().length() > 0)
+                qualifiedItemId = "I-" + itemId + "-" + version;
+            else
+                qualifiedItemId = "I-" + itemId;
+
+            IITSDocument iitsDocument = _contentBuilder.getITSDocument(qualifiedItemId);
+            ItemScoreInfo itemScoreInfo = _itemReviewScoringService.scoreAssessmentItem(studentResponse, iitsDocument);
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jsonString = objectMapper.writeValueAsString(itemScoreInfo);
+            return jsonString;
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            throw new ScoringException(e.getMessage(), itemId);
+        }
+
     }
 }

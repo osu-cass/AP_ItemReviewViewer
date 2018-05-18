@@ -14,6 +14,7 @@ import javax.xml.stream.XMLStreamWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.config.SettingsReader;
+import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoreInfo;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -55,80 +56,80 @@ public class ItemReviewScoringService {
 		// TODO Auto-generated constructor stub
 	}
 
-//	public ItemScoreInfo scoreItem(String studentResponse, String id) throws ItemScoringException {
-//
-//		try {
-//
-//			_logger.info("Scoring the item.... " + id);
-//			return scoreAssessmentItem(studentResponse, getITSDocument(id));
-//
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			throw new ItemScoringException("There is an error while communicating with Item Scoring Engine " + e);
-//		}
-//	}
+	public ItemScoreInfo scoreItem(String studentResponse, String id) throws ItemScoringException {
 
-//	public ItemScoreInfo scoreAssessmentItem(String studentResponse, IITSDocument iitsDocument)
-//			throws ItemScoringException {
-//
-//		try {
-//
-//			ITSDocument itsDocument = (ITSDocument) iitsDocument;
-//			String itemFormat = itsDocument.getFormat();
-//
-//			_logger.info("Socring the item.... " + iitsDocument.getID() + " Item Format: " + itemFormat + " started");
-//
-//			if (itemFormat.trim().equalsIgnoreCase("MC") || itemFormat.trim().equalsIgnoreCase("MS"))
-//				return scoreMCMSItems(studentResponse, itsDocument);
-//
-//			ItemScoreResponse itemScoreResponse = scoreItem(studentResponse, itsDocument);
-//			tds.itemscoringengine.ItemScoreInfo _iItemScoreInfo = itemScoreResponse.getScore().getScoreInfo();
-//
-//			ItemScoreInfo itemScoreInfo = new ItemScoreInfo(_iItemScoreInfo.getPoints(), _iItemScoreInfo.getMaxScore(),
-//					_iItemScoreInfo.getStatus(), _iItemScoreInfo.getDimension(), _iItemScoreInfo.getRationale());
-//			_logger.info("creating itemscoreinfo object " + _iItemScoreInfo.getPoints(), _iItemScoreInfo.getMaxScore(),
-//					_iItemScoreInfo.getStatus(), _iItemScoreInfo.getDimension(), _iItemScoreInfo.getRationale());
-//			_logger.info("Socring the item.... " + iitsDocument.getID() + " Item Format: " + itemFormat + " success");
-//			return itemScoreInfo;
-//
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			throw new ItemScoringException("There is an error while communicating with Item Scoring Engine " + e);
-//		}
-//
-//	}
+		try {
 
-//	private ItemScoreInfo scoreMCMSItems(String studentResponse, ITSDocument itsDocument) throws ItemScoringException {
-//		// TODO Auto-generated method stub
-//		try {
-//			_logger.info("Scoring the item of type: " + itsDocument.getFormat() + " by parsing the Item XML");
-//			StringBuilder answerKey1 = new StringBuilder();
-//			answerKey1.append(itsDocument.getAttributeValue("itm_att_Answer Key"));
-//			if (itsDocument.getAttributeValue("itm_att_Answer Key (Part II)") != null
-//					&& !itsDocument.getAttributeValue("itm_att_Answer Key (Part II)").isEmpty()
-//					&& !itsDocument.getAttributeValue("itm_att_Answer Key (Part II)").equals("NA")
-//					&& !itsDocument.getAttributeValue("itm_att_Answer Key (Part II)").equals("N/A")) {
-//				answerKey1.append(itsDocument.getAttributeValue("itm_att_Answer Key (Part II)"));
-//			}
-//
-//			if (studentResponse.equalsIgnoreCase(answerKey1.toString())) {
-//				if (itsDocument.getFormat().equalsIgnoreCase(MS_FORMAT))
-//					return new ItemScoreInfo(-9, -9, ScoringStatus.Scored, null, null);
-//				else
-//					return new ItemScoreInfo(1, 1, ScoringStatus.Scored, null, null);
-//			} else {
-//				return new ItemScoreInfo(-1, 1, ScoringStatus.Scored, null, null);
-//			}
-//
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			_logger.error("There is an error while scoring Item " + itsDocument.getID());
-//			throw new ItemScoringException(
-//					"There is an error while scoring Item " + itsDocument.getID() + e.getMessage());
-//
-//		}
-//
-//	}
+			_logger.info("Scoring the item.... " + id);
+			return scoreAssessmentItem(studentResponse, getITSDocument(id));
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new ItemScoringException("There is an error while communicating with Item Scoring Engine " + e);
+		}
+	}
+
+	public ItemScoreInfo scoreAssessmentItem(String studentResponse, IITSDocument iitsDocument)
+			throws ItemScoringException {
+
+		try {
+
+			ITSDocument itsDocument = (ITSDocument) iitsDocument;
+			String itemFormat = itsDocument.getFormat();
+
+			_logger.info("Socring the item.... " + iitsDocument.getID() + " Item Format: " + itemFormat + " started");
+
+			if (itemFormat.trim().equalsIgnoreCase("MC") || itemFormat.trim().equalsIgnoreCase("MS"))
+				return scoreMCMSItems(studentResponse, itsDocument);
+
+			ItemScoreResponse itemScoreResponse = scoreItem(studentResponse, itsDocument);
+			tds.itemscoringengine.ItemScoreInfo _iItemScoreInfo = itemScoreResponse.getScore().getScoreInfo();
+
+			ItemScoreInfo itemScoreInfo = new ItemScoreInfo(_iItemScoreInfo.getPoints(), _iItemScoreInfo.getMaxScore(),
+					_iItemScoreInfo.getStatus(), _iItemScoreInfo.getDimension(), _iItemScoreInfo.getRationale());
+			_logger.info("creating itemscoreinfo object " + _iItemScoreInfo.getPoints(), _iItemScoreInfo.getMaxScore(),
+					_iItemScoreInfo.getStatus(), _iItemScoreInfo.getDimension(), _iItemScoreInfo.getRationale());
+			_logger.info("Socring the item.... " + iitsDocument.getID() + " Item Format: " + itemFormat + " success");
+			return itemScoreInfo;
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new ItemScoringException("There is an error while communicating with Item Scoring Engine " + e);
+		}
+
+	}
+
+	private ItemScoreInfo scoreMCMSItems(String studentResponse, ITSDocument itsDocument) throws ItemScoringException {
+		// TODO Auto-generated method stub
+		try {
+			_logger.info("Scoring the item of type: " + itsDocument.getFormat() + " by parsing the Item XML");
+			StringBuilder answerKey1 = new StringBuilder();
+			answerKey1.append(itsDocument.getAttributeValue("itm_att_Answer Key"));
+			if (itsDocument.getAttributeValue("itm_att_Answer Key (Part II)") != null
+					&& !itsDocument.getAttributeValue("itm_att_Answer Key (Part II)").isEmpty()
+					&& !itsDocument.getAttributeValue("itm_att_Answer Key (Part II)").equals("NA")
+					&& !itsDocument.getAttributeValue("itm_att_Answer Key (Part II)").equals("N/A")) {
+				answerKey1.append(itsDocument.getAttributeValue("itm_att_Answer Key (Part II)"));
+			}
+
+			if (studentResponse.equalsIgnoreCase(answerKey1.toString())) {
+				if (itsDocument.getFormat().equalsIgnoreCase(MS_FORMAT))
+					return new ItemScoreInfo(-9, -9, ScoringStatus.Scored, null, null);
+				else
+					return new ItemScoreInfo(1, 1, ScoringStatus.Scored, null, null);
+			} else {
+				return new ItemScoreInfo(-1, 1, ScoringStatus.Scored, null, null);
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			_logger.error("There is an error while scoring Item " + itsDocument.getID());
+			throw new ItemScoringException(
+					"There is an error while scoring Item " + itsDocument.getID() + e.getMessage());
+
+		}
+
+	}
 
 	public ItemScoreResponse scoreItem(String studentResponse, ITSDocument itsDocument) throws ItemScoringException {
 

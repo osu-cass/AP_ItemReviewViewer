@@ -18,31 +18,31 @@ interface ItemBankPageState {
 }
 
 export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPageState> {
-    constructor ( props: ItemBankPageProps ) {
-        super( props );
+    constructor(props: ItemBankPageProps) {
+        super(props);
         this.state = {
             itemUrl: ""
         };
     }
 
-    setItemUrl = ( item: ItemRevisionModel ) => {
+    setItemUrl = (item: ItemRevisionModel) => {
         const { itemKey, bankKey, isaap, revision, section } = item;
-        const itemUrl = `${ window.location }ivs/items?ids=${ bankKey }-${ itemKey }`;
-        if( revision ) {
-            itemUrl.concat( itemUrl, `&revision=${revision}`);
+        const itemUrl = `${window.location}ivs/items?ids=${bankKey}-${itemKey}`;
+        if (revision) {
+            itemUrl.concat(itemUrl, `&revision=${revision}`);
         }
 
-        if( section ){
-            itemUrl.concat( itemUrl, `&section=${section}` );
+        if (section) {
+            itemUrl.concat(itemUrl, `&section=${section}`);
         }
 
-        if ( isaap ) {
-            itemUrl.concat( itemUrl, `&isaap=${ isaap }` );
+        if (isaap) {
+            itemUrl.concat(itemUrl, `&isaap=${isaap}`);
         }
         this.setState({ itemUrl });
     }
 
-    render () {
+    render() {
         return (
             <ItemBankContainer
                 accessibilityClient={accessibilityClient}
@@ -52,6 +52,6 @@ export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPag
                 itemViewUrl={this.state.itemUrl}
                 setUrl={this.setItemUrl}
                 items={itemsMocks}
-            /> );
+            />);
     }
 }
