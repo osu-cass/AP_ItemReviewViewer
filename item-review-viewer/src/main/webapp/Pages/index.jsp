@@ -20,6 +20,17 @@
     <script src="${pageContext.request.contextPath}/dist/vendor.js"></script>
 
     <script src="${spring_config}"></script>
+    <style>
+        .scoringService {
+            position: relative;
+            left: 81.5vw;
+            bottom: 128px;
+            margin: 0;
+            color: #ffffff;
+        }
+    </style>
+    <button class="scoringService btn btn-primary">Score</button>
+
 
 </body>
 
