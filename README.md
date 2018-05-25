@@ -52,6 +52,7 @@ To start the configuration Follow the steps below.
 - Next we will need to select the libraries we will need in our project from tomcat server. This can be done by clicking the "+" button under the libraries section of the pop up window that is already open.
 - This will cause the Intellij File explorer to pop up. From the explorer navigate to C:\Program Files\Apache Software Foundation\Tomcat 7.0\ and select jsp-api.jar and servlet-api.jar.
 - Click Ok This will cause the Tomcat configuration window to close.
+- Under the tomcat server Settings near the bottom of the window set HTTP port to 8050.
 
 ### Configuring The deployment
 - Navigate to the Deployment tab
