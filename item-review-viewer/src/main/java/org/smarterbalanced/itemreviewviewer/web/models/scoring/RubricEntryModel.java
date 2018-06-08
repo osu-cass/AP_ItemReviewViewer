@@ -30,7 +30,7 @@ public class RubricEntryModel {
         this.name = value;
     }
 
-    @JsonProperty("val")
+    @JsonProperty("value")
     public String getVal() {
         return val;
     }
