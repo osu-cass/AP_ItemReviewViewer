@@ -1,7 +1,6 @@
 package org.smarterbalanced.itemreviewviewer.web.controllers;
 
 import AIR.Common.Utilities.SpringApplicationContext;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.smarterbalanced.itemreviewviewer.web.models.ItemRequestModel;
@@ -12,13 +11,13 @@ import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoreInfo;
 import org.smarterbalanced.itemreviewviewer.web.services.GitLabService;
 import org.smarterbalanced.itemreviewviewer.web.services.ItemReviewScoringService;
 import org.smarterbalanced.itemreviewviewer.web.services.models.ItemCommit;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.servlet.ModelAndView;
-import tds.blackbox.ContentRequestException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import tds.blackbox.ContentRequestException;
 import tds.irisshared.content.ContentException;
 import tds.irisshared.repository.IContentBuilder;
 import tds.itemrenderer.data.IITSDocument;
@@ -94,7 +93,7 @@ public class RenderItemController {
             commits = _gitLabService.getItemCommits(itemId);
             revisions = new ArrayList<>();
             for(ItemCommit commit: commits){
-                revisions.add(new RevisionModel(commit.getAuthorName(),commit.getMessage(), commit.getId(), false));
+                revisions.add(new RevisionModel(commit.getAuthorName(), commit.getCreationDate().getTime(), commit.getMessage(), commit.getId(), false));
             }
             json = mapper.writeValueAsString(revisions);
         }catch(JsonProcessingException e){

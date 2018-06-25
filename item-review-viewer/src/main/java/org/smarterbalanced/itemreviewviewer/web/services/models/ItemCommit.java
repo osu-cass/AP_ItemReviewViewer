@@ -31,10 +31,13 @@ public class ItemCommit {
 	
 	@JsonProperty("author_email")
 	private String authorEmail;
-	
+
 	@JsonProperty("committer_name")
 	private String committerName;
-	
+
+	@JsonProperty("committed_date")
+	private Date committedDate;
+
 	@JsonProperty("created_at")
 	private Date creationDate;
 	
@@ -141,4 +144,11 @@ public class ItemCommit {
 		this.committerName = committerName;
 	}
 
+	public void setCommittedDate(Date committedDate) {
+		this.committedDate = committedDate;
+	}
+
+	public Date getCommittedDate() {
+		return this.committedDate;
+	}
 }

@@ -1,8 +1,6 @@
 package org.smarterbalanced.itemreviewviewer.web.models.revisions;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 
 public class RevisionModel {
     private String author;
@@ -12,9 +10,9 @@ public class RevisionModel {
     private boolean selected;
 
 
-    public RevisionModel(String author, String commitMessage, String commitHash, boolean selected){
+    public RevisionModel(String author, long date, String commitMessage, String commitHash, boolean selected){
         this.author = author;
-        this.date = new DateTime(DateTimeZone.UTC).getMillis();
+        this.date = date;
         this.commitMessage = commitMessage;
         this.commitHash = commitHash;
         this.selected = selected;
