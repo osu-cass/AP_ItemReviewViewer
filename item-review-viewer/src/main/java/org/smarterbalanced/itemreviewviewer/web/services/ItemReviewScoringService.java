@@ -160,10 +160,15 @@ public class ItemReviewScoringService {
 			String encryptedStudentResponse = EncryptionHelper.EncryptToBase64(studentResponse);
 			String encryptedRubricContent = EncryptionHelper.EncryptToBase64(machineRubric.getData());
 
+			/*
 			ResponseInfo responseInfo = new ResponseInfo(itsDocument.getFormat(), _itemName, encryptedStudentResponse,
 					encryptedRubricContent, RubricContentType.ContentString, "", true);
 			responseInfo.setRubricEncrypted(true);
 			responseInfo.setStudentResponseEncrypted(true);
+			*/
+
+			ResponseInfo responseInfo = new ResponseInfo(itsDocument.getFormat(), _itemName, studentResponse,
+					machineRubric.getData(), RubricContentType.ContentString, "", true);
 
 			ItemScoreRequest itemScoreRequest = new ItemScoreRequest(responseInfo);
 
@@ -177,7 +182,8 @@ public class ItemReviewScoringService {
 
 			Client client = Client.create();
 
-			String scoringEngineUrl = getItemScoringUrl();
+			//String scoringEngineUrl = getItemScoringUrl();
+			String scoringEngineUrl = "http://localhost:8030/Scoring/ItemScoring/";
 			_logger.info("Communicating with Scoring Engine....." + scoringEngineUrl);
 			WebResource webResource = client.resource(scoringEngineUrl);
 
