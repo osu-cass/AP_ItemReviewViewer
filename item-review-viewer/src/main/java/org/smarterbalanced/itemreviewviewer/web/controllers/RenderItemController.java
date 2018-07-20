@@ -11,6 +11,7 @@ import org.smarterbalanced.itemreviewviewer.web.models.metadata.ItemMetadataMode
 import org.smarterbalanced.itemreviewviewer.web.models.revisions.RevisionModel;
 import org.smarterbalanced.itemreviewviewer.web.models.revisions.SectionModel;
 import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoreInfo;
+import org.smarterbalanced.itemreviewviewer.web.services.GitLabException;
 import org.smarterbalanced.itemreviewviewer.web.services.GitLabService;
 import org.smarterbalanced.itemreviewviewer.web.services.ItemReviewScoringService;
 import org.smarterbalanced.itemreviewviewer.web.services.models.ItemCommit;
@@ -46,10 +47,12 @@ public class RenderItemController {
     @Autowired
     private ItemReviewScoringService _itemReviewScoringService;
 
+    private static String namespaces;
 
     @PostConstruct
     public synchronized void init() throws ContentException {
         _contentBuilder = SpringApplicationContext.getBean("iContentBuilder", IContentBuilder.class);
+        namespaces = this._getNamespaces();
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -123,9 +126,7 @@ public class RenderItemController {
         return itemId;
     }
 
-    @RequestMapping(value = "namespaces", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity<String> getNamespaces() {
+    private String _getNamespaces() {
         List<Namespace> namespaces;
         ObjectMapper mapper;
         String json;
@@ -136,12 +137,17 @@ public class RenderItemController {
             mapper = new ObjectMapper();
             json = mapper.writeValueAsString(namespaces);
 
+            return json;
         } catch (Exception e) {
             _logger.error("Failed to get namespaces", e);
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new GitLabException(e);
         }
+    }
 
-        return new ResponseEntity<>(json, HttpStatus.OK);
+    @RequestMapping(value = "namespaces", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<String> getNamespaces() {
+        return new ResponseEntity<>(namespaces, HttpStatus.OK);
     }
 
     @RequestMapping(value = "banksections", method = RequestMethod.GET)
