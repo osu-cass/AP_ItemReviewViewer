@@ -2,7 +2,7 @@ package org.smarterbalanced.itemreviewviewer.web.controllers;
 
 import com.amazonaws.util.json.JSONArray;
 import com.amazonaws.util.json.JSONException;
-import org.smarterbalanced.itemreviewviewer.web.config.SettingsReader;
+import org.smarterbalanced.itemreviewviewer.web.config.ItemBankConfig;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,9 +19,10 @@ public class ApiController {
                                             @RequestParam(value="subject") String subjectCode,
                                             @RequestParam(value="gradeLevel") String gradeLevels)
     {
-        String url = SettingsReader.get("siw.accessibilityUrl") + "gradeLevels=" + gradeLevels;
+        String url = ItemBankConfig.get("siw.accessibilityUrl") + "gradeLevels=" + gradeLevels;
         if(!subjectCode.equals("")){
-            url = url + "&subjectCode=" + subjectCode;
+            //NOTE: subjectCode only works with uppercase letters, otherwise the api returns Internal Error(500)
+            url = url + "&subjectCode=" + subjectCode.toUpperCase();
         }
         if(!interactionType.equals("")){
             url = url + "&interactionType=" + interactionType;

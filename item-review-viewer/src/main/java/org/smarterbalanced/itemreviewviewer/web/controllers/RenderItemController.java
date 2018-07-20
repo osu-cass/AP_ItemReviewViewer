@@ -3,14 +3,19 @@ package org.smarterbalanced.itemreviewviewer.web.controllers;
 import AIR.Common.Utilities.SpringApplicationContext;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.models.ItemRequestModel;
 import org.smarterbalanced.itemreviewviewer.web.models.metadata.ItemMetadataModel;
 import org.smarterbalanced.itemreviewviewer.web.models.revisions.RevisionModel;
 import org.smarterbalanced.itemreviewviewer.web.models.revisions.SectionModel;
 import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoreInfo;
+import org.smarterbalanced.itemreviewviewer.web.services.GitLabException;
 import org.smarterbalanced.itemreviewviewer.web.services.GitLabService;
 import org.smarterbalanced.itemreviewviewer.web.services.ItemReviewScoringService;
 import org.smarterbalanced.itemreviewviewer.web.services.models.ItemCommit;
+import org.smarterbalanced.itemreviewviewer.web.services.models.Namespace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +36,8 @@ import java.util.List;
 @Controller
 public class RenderItemController {
 
+    private static final Logger _logger = LoggerFactory.getLogger(RenderItemController.class);
+
     @Autowired
     private GitLabService _gitLabService;
 
@@ -40,22 +47,25 @@ public class RenderItemController {
     @Autowired
     private ItemReviewScoringService _itemReviewScoringService;
 
+    private static String namespaces;
 
     @PostConstruct
     public synchronized void init() throws ContentException {
         _contentBuilder = SpringApplicationContext.getBean("iContentBuilder", IContentBuilder.class);
+        namespaces = this._getNamespaces();
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<String> getMetadata(@RequestParam(value = "bankKey") String bankKey,
+    public ResponseEntity<String> getMetadata(
+                             @RequestParam(value = "namespace") String namespace,
+                             @RequestParam(value = "bankKey", required = false, defaultValue = "") String bankKey,
                              @RequestParam(value = "itemKey") String itemKey,
                              @RequestParam(value = "section", required = false, defaultValue = "") String section,
                              @RequestParam(value = "revision", required = false, defaultValue = "") String revision,
                              @RequestParam(value = "isaap", required = false, defaultValue = "") String isaapCodes
     ) throws ContentRequestException {
-        String itemId = "Item-" + bankKey + "-" + itemKey;
-        // String iitsId = new String("i-" + bankKey + "-" + itemKey);
+        String itemId = _makeItemId(bankKey, itemKey);
         if (!revision.equals("")) {
             itemId = itemId + "-" + revision;
         }
@@ -65,7 +75,7 @@ public class RenderItemController {
 
         ItemMetadataModel meta;
         try {
-            meta = _gitLabService.getItemMetadata(itemId, section);
+            meta = _gitLabService.getItemMetadata(namespace, itemId, section);
             json = mapper.writeValueAsString(meta);
         } catch (Exception e) {
             String err = "Item ("+ itemId +") not found.";
@@ -74,15 +84,16 @@ public class RenderItemController {
         return new ResponseEntity<>(json, HttpStatus.OK);
     }
 
-
     @RequestMapping(value = "revisions", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<String> getItemRevisions(@RequestParam(value = "bankKey") String bankKey,
+    public ResponseEntity<String> getItemRevisions(
+                                   @RequestParam(value = "namespace") String namespace,
+                                   @RequestParam(value = "bankKey", required = false, defaultValue = "") String bankKey,
                                    @RequestParam(value = "itemKey") String itemKey,
                                    @RequestParam(value = "section", required = false, defaultValue = "") String section,
                                    @RequestParam(value = "isaap", required = false, defaultValue = "") String isaapCodes
     ){
-        String itemId = "item-" + bankKey + "-" + itemKey;
+        String itemId = _makeItemId(bankKey, itemKey);
 
         ObjectMapper mapper = new ObjectMapper();
         String json;
@@ -90,7 +101,7 @@ public class RenderItemController {
         List<RevisionModel> revisions;
 
         try{
-            commits = _gitLabService.getItemCommits(itemId);
+            commits = _gitLabService.getItemCommits(namespace, itemId);
             revisions = new ArrayList<>();
             for(ItemCommit commit: commits){
                 revisions.add(new RevisionModel(commit.getAuthorName(), commit.getCreationDate().getTime(), commit.getMessage(), commit.getId(), false));
@@ -103,6 +114,41 @@ public class RenderItemController {
         return new ResponseEntity<>(json, HttpStatus.OK);
     }
 
+    private String _makeItemId(String bankKey, String itemKey) {
+        String itemId;
+
+        if (StringUtils.isNotEmpty(bankKey)) {
+            itemId = "item-" + bankKey + "-" + itemKey;
+        } else {
+            itemId = itemKey;
+        }
+
+        return itemId;
+    }
+
+    private String _getNamespaces() {
+        List<Namespace> namespaces;
+        ObjectMapper mapper;
+        String json;
+
+        try {
+            namespaces = _gitLabService.getNamespaces();
+
+            mapper = new ObjectMapper();
+            json = mapper.writeValueAsString(namespaces);
+
+            return json;
+        } catch (Exception e) {
+            _logger.error("Failed to get namespaces", e);
+            throw new GitLabException(e);
+        }
+    }
+
+    @RequestMapping(value = "namespaces", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<String> getNamespaces() {
+        return new ResponseEntity<>(namespaces, HttpStatus.OK);
+    }
 
     @RequestMapping(value = "banksections", method = RequestMethod.GET)
     @ResponseBody

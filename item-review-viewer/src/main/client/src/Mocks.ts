@@ -66,9 +66,9 @@ const sectionMocks: SectionModel[] = [
 ];
 
 export const itemsMocks: ItemRevisionModel[] = [
-  { bankKey: 187, itemKey: 3000, section: "siw" },
-  { bankKey: 187, itemKey: 3200, section: "math" },
-  { bankKey: 187, itemKey: 2700, section: "siw" },
+  { namespace: "itemreviewviewer", hasBankKey: true, bankKey: 187, itemKey: 3000, section: "SIW" },
+  { namespace: "ELA", hasBankKey: true, bankKey: 200, itemKey: 8907, section: "SIW" },
+  { namespace: "iat-development", hasBankKey: false, bankKey: 990, itemKey: 201605, section: "SIW" },
   {}
 ];
 
