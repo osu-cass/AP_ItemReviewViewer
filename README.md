@@ -64,6 +64,11 @@ To start the configuration Follow the steps below.
 - Click "+" under the "Before launch: ..." section.
 - Select "Run Maven Goal", then type `process-resources` in the Command line input.
 - Make sure the order of items in the "Before launch: ..." is
+  - "Run Maven Goal 'item-review-viewer: process-resources'"
+  - "Build"
+  - "Build 'item-review-viewer:war exploded' artifact"
+- You can change the environment in the "Maven Projects" tab
+- Select an environment in "Profiles" section, default profile is 'production'
 
 A guide on how to add environment variables can be found [here](https://www.jetbrains.com/help/idea/run-debug-configuration-application.html#1).
 
