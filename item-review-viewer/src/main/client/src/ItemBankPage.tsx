@@ -5,7 +5,7 @@ import {
     accessibilityClient,
     aboutItemRevisionClient,
     revisionsClient,
-    sectionsClient
+    sectionsClient, namespacesClient
 } from "./Clients/clients";
 import {
     itemsMocks
@@ -40,7 +40,7 @@ export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPag
             itemUrl.concat(itemUrl, `&isaap=${isaap}`);
         }
         this.setState({ itemUrl });
-    }
+    };
 
     render() {
         return (
@@ -49,6 +49,7 @@ export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPag
                 aboutItemRevisionClient={aboutItemRevisionClient}
                 revisionsClient={revisionsClient}
                 sectionsClient={sectionsClient}
+                namespacesClient={namespacesClient}
                 itemViewUrl={this.state.itemUrl}
                 setUrl={this.setItemUrl}
                 items={itemsMocks}

@@ -18,18 +18,10 @@
 	<entry key="tds.itemPreview.passageLayout"></entry>
 	<entry key="tds.itemPreview.configCache.minutes">0</entry>
 	<entry key="tds.itemPreview.configCache.id"></entry>
-
 	<entry key="iris.ContentPath">/home/tomcat7/content/</entry>
 	<entry key="iris.ZipFileLocation">/home/tomcat7/content/gitlab_archive/</entry>
 	<!-- URL for the Dictionary API used for the Dictionary and Thesaurus accommodations -->
 	<entry key="iris.DictionaryUrl">https://tds.smarterbalanced.org/Dictionary/</entry>
-
-	<entry key="gitlab.private.token">LZ9AWwMujzL3xXa2j4nT</entry>
-	<entry key="gitlab.url">https://gitlab-dev.smarterbalanced.org/api/v3/projects/ItemReviewViewer%2F</entry>
-
-	<entry key="siw.accessibilityUrl">http://siw-dev.cass.oregonstate.edu/Item/GetAccessibility?</entry>
-
-
 	<!-- End Item Preview Settings -->
 	<!-- Start BlackBox Settings -->
 	<!-- legacy settings -->

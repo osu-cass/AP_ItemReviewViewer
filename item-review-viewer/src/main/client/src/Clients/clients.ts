@@ -5,7 +5,8 @@ import {
     ItemRevisionModel,
     AboutItemRevisionModel,
     RevisionModel,
-    SectionModel
+    SectionModel,
+    NamespaceModel
 } from "@osu-cass/sb-components";
 
 export const accessibilityClient = ( acc: AccessibilityRevisionModel ):
@@ -27,3 +28,6 @@ export const sectionsClient = (): Promise<SectionModel[]> => {
     return getRequest<SectionModel[]>("/renderitem/banksections");
 };
 
+export const namespacesClient = (): Promise<NamespaceModel[]> => {
+    return getRequest<NamespaceModel[]>("/renderitem/namespaces");
+};

@@ -12,11 +12,12 @@ import org.smarterbalanced.itemreviewviewer.web.models.metadata.ItemMetadataMode
 import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoringModel;
 import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoringOptionModel;
 import org.smarterbalanced.itemreviewviewer.web.models.scoring.RubricModel;
-import org.smarterbalanced.itemreviewviewer.web.services.models.ItemCommit;
-import org.smarterbalanced.itemreviewviewer.web.services.models.ItemDocument;
-import org.smarterbalanced.itemreviewviewer.web.services.models.Metadata;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import org.smarterbalanced.itemreviewviewer.web.services.models.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
 import tds.itemrenderer.data.IITSDocument;
 import tds.itemrenderer.data.ITSResource;
 import tds.itemrenderer.data.ITSTutorial;
@@ -24,39 +25,40 @@ import tds.itemrenderer.data.ITSTutorial;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamReader;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TimeZone;
+import java.util.ListIterator;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-;
 
-
-@Component
-@Scope("singleton")
+@Service
 public class GitLabService implements IGitLabService {
+    private static final Logger _logger = LoggerFactory.getLogger(GitLabService.class);
 
     private static String ZIP_FILE_LOCATION;
     private static String CONTENT_LOCATION;
     private static final String ZIP_EXTENSION = ".zip";
     private static final String XML_EXTENSION = ".xml";
 
-
     private static final int BUFFER_SIZE = 4096;
-
-    private static final Logger _logger = LoggerFactory.getLogger(GitLabService.class);
 
     public GitLabService() {
         try {
-            ZIP_FILE_LOCATION = SettingsReader.get("iris.ZipFileLocation");
-            CONTENT_LOCATION = SettingsReader.get("iris.ContentPath") + "gitlab/";
+            ZIP_FILE_LOCATION = SettingsReader.getZipFileLocation();
+            CONTENT_LOCATION = SettingsReader.readIrisContentPath() + "gitlab/";
         } catch (Exception exp) {
             _logger.error("Error loading zip file location", exp);
         }
@@ -66,8 +68,9 @@ public class GitLabService implements IGitLabService {
     /* (non-Javadoc)
      * @see org.smarterbalanced.irv.services.IGitLabService#downloadItem(java.lang.String)
      */
-    public boolean downloadItem(String itemNumber) throws GitLabException {
-        String itemURL = GitLabUtils.getGitLabItemUrl(itemNumber);
+    public boolean downloadItem(String namespace, String itemNumber) throws GitLabException {
+        String itemURL = GitLabUtils.getGitLabItemUrl(namespace, itemNumber);
+
         try {
             URL gitLabItemURL = new URL(itemURL);
 
@@ -86,9 +89,8 @@ public class GitLabService implements IGitLabService {
             return isSucceed;
 
         } catch (Exception e) {
-            // TODO: handle exception
-            _logger.error("IO Exception occurred while Getting the Item with URL:" + itemURL + e.getMessage());
-            throw new GitLabException("UnKnown Exception Occurred while getting item ID: %s" + e.getMessage());
+            _logger.error("IO Exception occurred while Getting the Item with URL:" + itemURL);
+            throw new GitLabException(e);
 
         }
 
@@ -119,7 +121,7 @@ public class GitLabService implements IGitLabService {
      * @see org.smarterbalanced.irv.services.IGitLabService#unzip(java.lang.String)
      */
     @Override
-    public String unzip(String itemNumber) throws IOException {
+    public String unzip(String namespace, String itemNumber) throws IOException, GitLabException {
 
         String zipFilePath = ZIP_FILE_LOCATION + itemNumber + ZIP_EXTENSION;
         _logger.info("Unzipping the File:" + zipFilePath + " to Location:" + CONTENT_LOCATION + " Started");
@@ -165,17 +167,174 @@ public class GitLabService implements IGitLabService {
         }
         _logger.info("Unzipping the File:" + zipFilePath + " to Location:" + CONTENT_LOCATION + " Success");
 
+        //rename item file if no bankKey
+        String noBankKeyItemId = GitLabUtils.extractItemId(namespace, itemNumber);
+        if (!noBankKeyItemId.equals(itemNumber)) {
+            _logger.info("No BankKey in namespace: " + namespace + " | itemNumber: " + itemNumber);
+            String orgFilePath = _contentPath + "/" + noBankKeyItemId + XML_EXTENSION;
+            String newFilePath = _contentPath + "/" + itemNumber + XML_EXTENSION;
+            File item = new File(orgFilePath);
+            item.renameTo(new File(newFilePath));
+            _logger.info("Renamed the file from " + orgFilePath + " to " + newFilePath);
+
+            ItemIdUtils.ItemId itemId = ItemIdUtils.parseItemId(itemNumber);
+            if (itemId == null) {
+                _logger.info("Failed to parse an ItemId with string " + itemNumber);
+            }
+            _changeBankKey(newFilePath, itemId.bankKey);
+        }
+
         return _contentPath;
     }
 
+    private void _changeBankKey(String filePath, String bankKey) throws GitLabException {
+        try {
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+            Document doc = docBuilder.parse(filePath);
 
-    public ItemDocument getItemScoring(String itemNumber) throws GitLabException{
+            // Get the staff element by tag name directly
+            Node item = doc.getElementsByTagName("item").item(0);
+
+            // update staff attribute
+            NamedNodeMap attr = item.getAttributes();
+            Node nodeAttr = attr.getNamedItem("bankkey");
+            nodeAttr.setTextContent(bankKey);
+
+            // write the content into xml file
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File(filePath));
+            transformer.transform(source, result);
+
+            _logger.info("Changing the bankKey succeeded");
+        } catch (Exception e) {
+            _logger.error("Failed to change bankkey in file: " + filePath);
+            throw new GitLabException(e);
+        }
+    }
+
+    @Override
+    public List<Namespace> getNamespaces() throws GitLabException {
+        final String TOTAL_PAGES = "X-Total-Pages";
+        final int PAGE_SIZE = 100; /* Gitlab API allows only 100 as the maximum page size */
+
+        int curPage = 1, totalPages = 1;
+        List<Namespace> namespaces;
+        String nameSpacesUrl = null;
+
+        try {
+            nameSpacesUrl = GitLabUtils.getNamespacesUrl(PAGE_SIZE, curPage);
+
+            WebResource webResource = Client.create().resource(nameSpacesUrl);
+            ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
+
+            if (response.getStatus() != HttpStatus.OK.value()) {
+                throw new GitLabException("Could not get NameSpaces; Failed : HTTP error code : " + response.getStatus()
+                        + " : URL : " + nameSpacesUrl);
+            }
+
+            String output = response.getEntity(String.class);
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            namespaces = objectMapper.readValue(output, new TypeReference<List<Namespace>>(){});
+
+            /* if the number of namespaces is over current page size, additional api calls are required */
+            totalPages = Integer.parseInt(response.getHeaders().get(TOTAL_PAGES).get(0));
+            ++curPage;
+            for (; curPage <= totalPages; curPage++) {
+                _getRemainingNamespaces(PAGE_SIZE, curPage, namespaces);
+            }
+
+            _removeNoProjectNamespaces(namespaces);
+
+        } catch (Exception e) {
+            _logger.error("Failed to get namespaces, URL: " + nameSpacesUrl);
+            throw new GitLabException(e);
+        }
+
+        return namespaces;
+    }
+
+    private void _getRemainingNamespaces(final int pageSize, int page, List<Namespace> namespaces) throws GitLabException {
+        List<Namespace> _namespaces;
+        String nameSpacesUrl = null;
+
+        try {
+            nameSpacesUrl = GitLabUtils.getNamespacesUrl(pageSize, page);
+
+            WebResource webResource = Client.create().resource(nameSpacesUrl);
+            ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
+
+            if (response.getStatus() != HttpStatus.OK.value()) {
+                throw new GitLabException("Could not get NameSpaces; Failed : HTTP error code : " + response.getStatus() + " : URL : " + nameSpacesUrl);
+            }
+
+            String output = response.getEntity(String.class);
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            _namespaces = objectMapper.readValue(output, new TypeReference<List<Namespace>>(){});
+
+            namespaces.addAll(_namespaces);
+
+        } catch (Exception e) {
+            _logger.error("Failed to get remaining namespaces, URL: " + nameSpacesUrl);
+            throw new GitLabException(e);
+        }
+    }
+
+    private void _removeNoProjectNamespaces(List<Namespace> namespaces) throws GitLabException {
+        try {
+            ListIterator<Namespace> iterator = namespaces.listIterator();
+            while (iterator.hasNext()) {
+                Namespace namespace = iterator.next();
+                String projectsSearchUrl = GitLabUtils.getProjectsSearchUrl(namespace.getName());
+
+                WebResource webResource = Client.create().resource(projectsSearchUrl);
+                ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
+
+                if (response.getStatus() != HttpStatus.OK.value()) {
+                    throw new GitLabException("Failed to get project list : HTTP error code : " + response.getStatus() + " : URL : " + projectsSearchUrl);
+                }
+
+                String output = response.getEntity(String.class);
+
+                ObjectMapper objectMapper = new ObjectMapper();
+                List<Project> projects = objectMapper.readValue(output, new TypeReference<List<Project>>(){});
+
+                if (projects.size() == 0) {
+                    iterator.remove();
+                    continue;
+                }
+
+                String name = projects.get(0).getName();
+                String parts[] = name.split("-");
+                // NOTE: It is temporary implementation before figuring out how bankKey is used in project names
+                if (parts.length > 1) {
+                    if (parts.length == 3) {
+                        namespace.setHasBankKey(true);
+                    } else {
+                        namespace.setHasBankKey(false);
+                    }
+                } else {
+                    namespace.setHasBankKey(false);
+                    namespace.setBankKey(GitLabUtils.noBankKeyNamespaceHash.get(namespace.name));
+                }
+            }
+        } catch (Exception e) {
+            _logger.error("Failed to remove no project namespaces");
+            throw new GitLabException(e);
+        }
+    }
+
+    public ItemDocument getItemScoring(String namespace, String itemNumber) throws GitLabException{
         String[] parts = itemNumber.split("-");
         String baseItemName = parts[0] + "-" + parts[1] + "-" + parts[2];
         String rubricFilePath = CONTENT_LOCATION + itemNumber + File.separator + baseItemName.toLowerCase() + XML_EXTENSION;
         try{
-            if (!isItemExistsLocally(itemNumber) && downloadItem(itemNumber))
-                unzip(itemNumber);
+            if (!isItemExistsLocally(itemNumber) && downloadItem(namespace, itemNumber))
+                unzip(namespace, itemNumber);
             try {
                 _logger.info("unmarshalling item file started");
 
@@ -205,11 +364,11 @@ public class GitLabService implements IGitLabService {
         }
     }
 
-    public List<ItemCommit> getItemCommits(String itemNumber) throws GitLabException {
+    public List<ItemCommit> getItemCommits(String namepspace, String itemNumber) throws GitLabException {
         try {
             String[] parts = itemNumber.split("-");
 
-            return getItemCommits(parts[0], parts[1], parts[2]);
+            return getItemCommits(namepspace, parts[0], parts[1], parts[2]);
 
         } catch (Exception e) {
             // TODO: handle exception
@@ -220,18 +379,20 @@ public class GitLabService implements IGitLabService {
     /* (non-Javadoc)
      * @see org.smarterbalanced.irv.services.IGitLabService#getItemCommits(java.lang.String, java.lang.String, java.lang.String)
     */
-    public List<ItemCommit> getItemCommits(String type, String bankId, String itemNumber) throws GitLabException{
+    public List<ItemCommit> getItemCommits(String namespace, String type, String bankId, String itemNumber) throws GitLabException{
         try {
             Client client = Client.create();
             String id = type+ "-" + bankId + "-" + itemNumber;
 
-            String  itemCommitsUrl = GitLabUtils.getItemCommitsUrl(id);
+            String  itemCommitsUrl = GitLabUtils.getItemCommitsUrl(namespace, id);
 
             WebResource webResourceGet = client.resource(itemCommitsUrl);
             ClientResponse response = webResourceGet.accept("application/json").get(ClientResponse.class);
 
             if (response.getStatus() != 200) {
-                throw new GitLabException("Could not get ItemCommits; Failed : HTTP error code : "	+ response.getStatus());
+                throw new GitLabException("Could not get ItemCommits; Failed : HTTP error code : "
+                        + response.getStatus()
+                        + " : URL : " + itemCommitsUrl);
             }
 
             String output = response.getEntity(String.class);
@@ -250,11 +411,11 @@ public class GitLabService implements IGitLabService {
      * @see org.smarterbalanced.irv.services.IGitLabService#getMetaData(java.lang.String)
      */
     @Override
-    public Metadata getMetadata(String itemNumber) throws GitLabException  {
+    public Metadata getMetadata(String namespace, String itemNumber) throws GitLabException  {
         try {
 
-            if (!isItemExistsLocally(itemNumber) && downloadItem(itemNumber))
-                unzip(itemNumber);
+            if (!isItemExistsLocally(itemNumber) && downloadItem(namespace, itemNumber))
+                unzip(namespace, itemNumber);
 
             String metadataFilePath = CONTENT_LOCATION + itemNumber + File.separator + "metadata.xml";
             try {
@@ -286,19 +447,19 @@ public class GitLabService implements IGitLabService {
 
     }
 
-    public ItemMetadataModel getItemMetadata(String itemId, String section) throws GitLabException, FileNotFoundException{
+    public ItemMetadataModel getItemMetadata(String namespace, String itemId, String section) throws GitLabException, FileNotFoundException{
         String[] parts = itemId.split("-");
         String baseItemName = parts[0] + "-" + parts[1] + "-" + parts[2];
         List<ItemScoringOptionModel> opts = new ArrayList<ItemScoringOptionModel>();
         Metadata md;
         ItemDocument item;
         try{
-            md = getMetadata(itemId);
+            md = getMetadata(namespace, itemId);
         } catch(GitLabException e){
-            md = getMetadata(baseItemName);
+            md = getMetadata(namespace, baseItemName);
         }
         try{
-            item = getItemScoring(itemId);
+            item = getItemScoring(namespace, itemId);
         } catch (GitLabException e){
             throw new FileNotFoundException(e.getMessage());
         }
@@ -332,22 +493,22 @@ public class GitLabService implements IGitLabService {
     /* (non-Javadoc)
      * @see org.smarterbalanced.irv.services.IGitLabService#downloadAssociatedItems(tds.itemrenderer.data.IITSDocument)
      */
-    public void downloadAssociatedItems(IITSDocument doc) throws GitLabException{
+    public void downloadAssociatedItems(String namespace, IITSDocument doc) throws GitLabException{
         ITSTutorial tutorial = doc.getTutorial();
         List<ITSResource> resources = doc.getResources();
         try{
             if(tutorial != null){
 
                 String tutorialId = new String("Item-" +tutorial._bankKey + "-" + tutorial._id);
-                if (!isItemExistsLocally(tutorialId) && downloadItem(tutorialId)){
-                    unzip(tutorialId);
+                if (!isItemExistsLocally(tutorialId) && downloadItem(namespace, tutorialId)){
+                    unzip(namespace, tutorialId);
                 }
 
                 if(resources != null){
                     for(ITSResource resource: resources){
                         String resourceId = new String("Item-" +resource._bankKey + "-" + resource._id);
-                        if (!isItemExistsLocally(resourceId) && downloadItem(resourceId)){
-                            unzip(resourceId);
+                        if (!isItemExistsLocally(resourceId) && downloadItem(namespace, resourceId)){
+                            unzip(namespace, resourceId);
                         }
                     }
                 }

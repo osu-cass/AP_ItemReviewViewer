@@ -193,6 +193,30 @@
 
     </dependencies>
 
+    <profiles>
+        <profile>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <id>production</id>
+            <properties>
+                <target.env>prod</target.env>
+            </properties>
+        </profile>
+        <profile>
+            <id>staging</id>
+            <properties>
+                <target.env>staging</target.env>
+            </properties>
+        </profile>
+        <profile>
+            <id>development</id>
+            <properties>
+                <target.env>dev</target.env>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <finalName>item-review-viewer</finalName>
         <plugins>
@@ -208,6 +232,26 @@
                         </overlay>
                     </overlays>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <echo>Target Environment: ${target.env}</echo>
+                                <delete file="${project.build.outputDirectory}/application.properties"/>
+                                <copy file="src/main/resources/application.${target.env}.properties"
+                                      tofile="${project.build.outputDirectory}/application.properties"/>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

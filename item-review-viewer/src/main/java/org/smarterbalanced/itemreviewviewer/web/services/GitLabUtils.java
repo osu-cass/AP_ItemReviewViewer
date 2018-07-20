@@ -1,17 +1,25 @@
 package org.smarterbalanced.itemreviewviewer.web.services;
 
-import org.smarterbalanced.itemreviewviewer.web.config.SettingsReader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.smarterbalanced.itemreviewviewer.web.config.ItemBankConfig;
 import org.springframework.util.StringUtils;
+
+import java.util.Hashtable;
 
 
 public class GitLabUtils {
+    private static final Logger _logger = LoggerFactory.getLogger(GitLabUtils.class);
 
-    public GitLabUtils() {
-        // TODO Auto-generated constructor stub
-    }
+    // NOTE: This is hardcoded namespaces which do not have bankKey in Gitlab
+    //       Remove this once IRiS can work with namespaces
+    public static Hashtable<String, Integer> noBankKeyNamespaceHash = new Hashtable<String, Integer>() {{
+        put("iat-development", 990);
+        put("iat-staging", 991);
+        put("iat-uat", 992);
+    }};
 
-
-    public static String getGitLabItemUrl(String itemName) {
+    public static String getGitLabItemUrl(String namespace, String itemName) {
         try {
             String[] parts = itemName.split("-");
 
@@ -22,46 +30,63 @@ public class GitLabUtils {
             String baseItemName = parts[0] + "-" + parts[1] + "-" + parts[2] ;
 
             if(StringUtils.isEmpty(versionNumber))
-                return getItemUrl(baseItemName);
+                return _getItemUrl(namespace, baseItemName);
 
-            return getItemCommitUrl(baseItemName, versionNumber);
+            return _getItemCommitUrl(namespace, baseItemName, versionNumber);
         } catch (Exception e) {
-            // TODO: handle exception
+            _logger.error("Fail to get a GitLab item Url");
+            throw new GitLabException(e);
         }
+    }
 
-        return "";
+    public static String extractItemId(String namespace, String itemName) {
+        String[] parts = itemName.split("-");
+        if (parts.length > 2 && noBankKeyNamespaceHash.containsKey(namespace)) {
+            return parts[2];
+        }
+        return itemName;
     }
 
 
-    public static String getItemUrl(String itemNumber) {
-        return getGitLabUrl() + itemNumber + "/repository/archive.zip?private_token=" + getPrivateToken();
+    private static String _getItemUrl(String namespace, String itemNumber) {
+        itemNumber = extractItemId(namespace, itemNumber);
+        return _getGitLabIrvUrl(namespace) + itemNumber + "/repository/archive.zip?private_token=" + _getPrivateToken();
     }
 
-    public static String getItemCommitUrl(String itemName, String commitId) {
-        return getGitLabUrl() + itemName + "/repository/archive.zip?private_token=" + getPrivateToken() + "&sha=" + commitId;
-
+    private static String _getItemCommitUrl(String namespace, String itemName, String commitId) {
+        return _getGitLabIrvUrl(namespace) + itemName + "/repository/archive.zip?private_token=" + _getPrivateToken() + "&sha=" + commitId;
     }
 
-    public static String getItemCommitsUrl(String itemName) {
-        return getGitLabUrl() + itemName + "/repository/commits?private_token=" + getPrivateToken();
+    public static String getItemCommitsUrl(String namespace, String itemNumber) {
+        itemNumber = extractItemId(namespace, itemNumber);
+        return _getGitLabIrvUrl(namespace) + itemNumber + "/repository/commits?private_token=" + _getPrivateToken();
     }
-
+    /* NOTE: These two functions are not being used, Should they be removed?
     public static String getItemTagsUrl(String itemName) {
-        return getGitLabUrl() + itemName + "/repository/tags?private_token=" + getPrivateToken();
+        return _getGitLabIrvUrl() + itemName + "/repository/tags?private_token=" + _getPrivateToken();
     }
 
     public static String getGroupsUrl(){
-        return getGitLabUrl() + "/groups?all_available=true";
+        return _getGitLabIrvUrl() + "/groups?all_available=true";
+    }
+    */
+    public static String getNamespacesUrl(int pageSize, int page) {
+        return _getGitLabBaseUrl() + "/namespaces?private_token=" + _getPrivateToken() + "&per_page=" + pageSize + "&page=" + page;
     }
 
-    public static String getGitLabUrl() {
-        return SettingsReader.get("gitlab.url");
+    public static String getProjectsSearchUrl(String searchKey) {
+        return _getGitLabBaseUrl() + "/projects?private_token=" + _getPrivateToken() + "&search=" + searchKey;
     }
 
-    public static String getPrivateToken() {
-        return SettingsReader.get("gitlab.private.token");
+    private static String _getGitLabBaseUrl() {
+        return ItemBankConfig.get("gitlab.base.url");
     }
 
+    private static String _getGitLabIrvUrl(String namespace) {
+        return _getGitLabBaseUrl() + "/projects/" + namespace + "%2F";
+    }
 
-
+    public static String _getPrivateToken() {
+        return ItemBankConfig.get("gitlab.private.token");
+    }
 }

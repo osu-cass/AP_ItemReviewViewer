@@ -60,10 +60,10 @@ To start the configuration Follow the steps below.
 - Ensure that the application context is "/".
 
 ### Configuring the environment variables.
-- Under the "Startup/Connection" tab. Add the variable `env` with value `dev`. 
-- Click on the run option.
-- Under the "Pass environment variables" check box click the green "+".
-- Then add name `env` value `prod`.
+- Click "Run-> Edit Configurations"
+- Click "+" under the "Before launch: ..." section.
+- Select "Run Maven Goal", then type `process-resources` in the Command line input.
+- Make sure the order of items in the "Before launch: ..." is
 
 A guide on how to add environment variables can be found [here](https://www.jetbrains.com/help/idea/run-debug-configuration-application.html#1).
 

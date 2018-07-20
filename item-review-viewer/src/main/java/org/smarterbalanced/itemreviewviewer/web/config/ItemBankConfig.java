@@ -1,41 +1,27 @@
 package org.smarterbalanced.itemreviewviewer.web.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@PropertySource(value={"classpath:application.properties","classpath:application.config.properties"})
-@Configuration
-@Component
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 public class ItemBankConfig {
-    @Value(value = "${content.source.dev}")
-    private String contentSourceDev;
+    private static final Logger logger = LoggerFactory.getLogger(ItemBankConfig.class);
 
-    @Value(value = "${content.source.prod}")
-    private String contentSourceProd;
-
-    @Autowired
-    private Environment env;
-
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
-
-    public String getContentSource() {
-
-        if(env.getProperty("env") != null){
-            if(env.getProperty("env").equals("dev")) {
-                return contentSourceDev;
-            } else {
-                return contentSourceProd;
-            }
+    public static String get(String key) {
+        String configLocation = ItemBankConfig.class.getResource("/application.properties").getPath();
+        Properties properties = new Properties();
+        FileInputStream configInput;
+        try {
+            configInput = new FileInputStream(configLocation);
+            properties.load(configInput);
+            configInput.close();
+        } catch (IOException exception) {
+            logger.warn("Unable to load config file");
+            //TODO: handle exception
         }
-        return contentSourceProd;
+        return properties.getProperty(key);
     }
 }
