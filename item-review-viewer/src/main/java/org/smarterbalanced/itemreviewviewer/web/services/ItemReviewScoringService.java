@@ -157,16 +157,6 @@ public class ItemReviewScoringService {
 			_logger.info("Item: " + id + " is scorable. Rubric file path: " + rubricUri.toString());
 			machineRubric.setData(new String(Files.readAllBytes(Paths.get(rubricUri))));
 
-			String encryptedStudentResponse = EncryptionHelper.EncryptToBase64(studentResponse);
-			String encryptedRubricContent = EncryptionHelper.EncryptToBase64(machineRubric.getData());
-
-			/*
-			ResponseInfo responseInfo = new ResponseInfo(itsDocument.getFormat(), _itemName, encryptedStudentResponse,
-					encryptedRubricContent, RubricContentType.ContentString, "", true);
-			responseInfo.setRubricEncrypted(true);
-			responseInfo.setStudentResponseEncrypted(true);
-			*/
-
 			ResponseInfo responseInfo = new ResponseInfo(itsDocument.getFormat(), _itemName, studentResponse,
 					machineRubric.getData(), RubricContentType.ContentString, "", true);
 
@@ -183,7 +173,7 @@ public class ItemReviewScoringService {
 			Client client = Client.create();
 
 			//String scoringEngineUrl = getItemScoringUrl();
-			String scoringEngineUrl = "http://localhost:8030/Scoring/ItemScoring/";
+			String scoringEngineUrl = "http://localhost:8085/item-scoring-service-3.1.1.RELEASE/Scoring/ItemScoring/";
 			_logger.info("Communicating with Scoring Engine....." + scoringEngineUrl);
 			WebResource webResource = client.resource(scoringEngineUrl);
 

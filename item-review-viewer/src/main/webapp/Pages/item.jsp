@@ -20,42 +20,41 @@
             IRiS.loadToken(vendorId, token, readOnly, scrollToDivId);
         }
 
+        function onScoreClicked(){
+            var getItemDetails = new CustomEvent('itemViewer:Response', {bubbles: true, cancelable: false});
+            window.parent.document.dispatchEvent(getItemDetails);
+        }
+
         function score(data){
             IRiS.getResponse().done(function(xmlResponse) {
-                var id = data.detail.id;
-                var version = data.detail.version != 'undefined' ? '?version=' + data.detail.version : '';
-                var scoreResponse = new CustomEvent('itemViewer:Response', { bubbles: true, cancelable: false, detail: {score: null, error: false}});
-                var otherResponse = new Event('TestEvent', { bubbles: true, cancelable: false });
-                window.parent.document.dispatchEvent(otherResponse);
+                const id = data.detail.id;
+                const version = data.detail.version != 'undefined' ? '?version=' + data.detail.version : '';
                 if(xmlResponse) {
+                    console.log("ID:"+ id + version);
                     $.ajax({
                         type: 'POST',
                         url: '/item/score/' + id + version,
                         data: xmlResponse,
-                        success: function(jsonResponse) {
-                            scoreResponse.detail.score = jsonResponse.points;
-
-                           // if(jsonResponse.points > 0) {
-                            //}else if(jsonResponse.points === -9) {
-                             //   $('#noPoints').hidden = false;
-                             //   $('#incorrectAlert').hidden = true;
-                             //   $('#noPoints').innerHTML = 'blah';
-                            //} else{
-                            //    $('#correctAlert').hidden = true;
-                            //    $('#incorrectAlert').hidden = false;
-                            //    $('#noPoints').hidden = true;
-                            //    $('#incorrectAlert').innerHTML = 'blah';
-                           // }
+                        success: function(data) {
+                            console.log("Response From Server:" + data['points']);
+                            if(data.points > 0){
+                                var correctElm = document.getElementById("correct");
+                                console.log(correctElm);
+                                document.getElementById("correctPoints").innerHTML = data.points.toString();
+                                correctElm.classList.remove("hidden");
+                            } else if (data.points === -9){
+                                document.getElementById("error").classList.remove('hidden');
+                            } else {
+                                document.getElementById("incorrect").classList.remove('hidden');
+                            }
+                        },
+                        error: function(err){
+                            console.log(err);
                         },
                         dataType: "json",
                         contentType: "application/json; charset=utf-8"
-                    }).fail(function(err){
-                        console.log(err);
-                        scoreResponse.detail.error = true;
                     });
-                    window.parent.document.dispatchEvent(scoreResponse);
-
-                }else{
+                } else {
                     alert("You must answer the question to receive a score.");
                 }
             });
@@ -82,11 +81,42 @@
             height: 100%;
             width: 100%;
         }
+        #score {
+            align: right;
+            border-radius: 5px;
+            color: white;
+            background-color: #00ABF4;
+        }
+
+        .hidden {
+            visibility: hidden;
+        }
+
+        .scoreResult {
+            border-radius: 5px;
+            align: left;
+        }
+
+        .correct {
+            color: white;
+            background-color: forestgreen;
+        }
+
+        .incorrect {
+            color: white;
+            background-color: red;
+        }
     </style>
 </head>
 <body>
 <div class="irisContainer">
     <iframe id="irisWindow" src="${pageContext.request.contextPath}/IrisPages/itemRender.xhtml" onload="irisSetup()"></iframe>
+    <button id="score" onclick="onScoreClicked();">Score</button>
+    <div class="scoreResult correct hidden" id="correct">
+        <p id="correctText">Correct! you scored <span id="correctPoints"></span> points</p>
+    </div>
+    <div class="scoreResult incorrect hidden" id="incorrect"><p id="incorrectText">That is incorrect.</p></div>
+    <div class="scoreResult incorrect hidden" id="error"><p id="errorText">This item cannot be scored.</p></div>
 </div>
 </body>
 </html>
