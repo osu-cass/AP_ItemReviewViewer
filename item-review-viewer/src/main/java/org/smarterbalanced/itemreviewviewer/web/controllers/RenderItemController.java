@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.smarterbalanced.itemreviewviewer.web.config.ItemBankConfig;
 import org.smarterbalanced.itemreviewviewer.web.models.ItemRequestModel;
 import org.smarterbalanced.itemreviewviewer.web.models.metadata.ItemMetadataModel;
 import org.smarterbalanced.itemreviewviewer.web.models.revisions.RevisionModel;
@@ -47,12 +48,13 @@ public class RenderItemController {
     @Autowired
     private ItemReviewScoringService _itemReviewScoringService;
 
+    public static String namespacePatchCycle = ItemBankConfig.get("gitlab.namespace.patch.cycle");
     private static String namespaces;
 
     @PostConstruct
     public synchronized void init() throws ContentException {
         _contentBuilder = SpringApplicationContext.getBean("iContentBuilder", IContentBuilder.class);
-        namespaces = this._getNamespaces();
+        this.getNamespacesFromGitlab();
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -126,20 +128,16 @@ public class RenderItemController {
         return itemId;
     }
 
-    private String _getNamespaces() {
-        List<Namespace> namespaces;
+    public void getNamespacesFromGitlab() {
         ObjectMapper mapper;
-        String json;
 
         try {
-            namespaces = _gitLabService.getNamespaces();
+            List<Namespace> _namespaces = _gitLabService.getNamespaces();
 
             mapper = new ObjectMapper();
-            json = mapper.writeValueAsString(namespaces);
-
-            return json;
+            namespaces = mapper.writeValueAsString(_namespaces);
         } catch (Exception e) {
-            _logger.error("Failed to get namespaces", e);
+            _logger.error("Failed to get namespaces from Gitlab", e);
             throw new GitLabException(e);
         }
     }
