@@ -173,7 +173,8 @@ public class ItemReviewScoringService {
 			Client client = Client.create();
 
 			//String scoringEngineUrl = getItemScoringUrl();
-			String scoringEngineUrl = "http://localhost:8085/item-scoring-service-3.1.1.RELEASE/Scoring/ItemScoring/";
+			//TODO: Put this in a config somewhere.
+			String scoringEngineUrl = "http://a219700398ec611e8bc9102f695eee9c-710927559.us-west-2.elb.amazonaws.com/item-scoring-service-3.1.1.RELEASE/Scoring/ItemScoring/";
 			_logger.info("Communicating with Scoring Engine....." + scoringEngineUrl);
 			WebResource webResource = client.resource(scoringEngineUrl);
 

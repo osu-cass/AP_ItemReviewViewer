@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/IrisStyles/iris.css">
 
     <script type="text/javascript">
+        //loads the item using IRiS.
         function loadItem(){
             IRiS.setFrame(frames[0]);
             // set the vendor guid.
@@ -20,11 +21,23 @@
             IRiS.loadToken(vendorId, token, readOnly, scrollToDivId);
         }
 
+        //handles the event where the score button is clicked.
         function onScoreClicked(){
+            //raises an event to be caught on the react side requesting info about the item.
             var getItemDetails = new CustomEvent('itemViewer:Response', {bubbles: true, cancelable: false});
             window.parent.document.dispatchEvent(getItemDetails);
         }
 
+        //handles the close button click for the score resutls.
+        function close(){
+            var toClose = document.getElementsByClassName("scoreResult");
+            console.log(toClose);
+            toClose.foreach(e.classList.add("hidden"));
+            document.getElementById('score').classList.remove('hidden');
+        }
+
+        //handles the event that the react side of the application sends back with the item info.
+        //It then makes a scoring request and displays the results.
         function score(data){
             IRiS.getResponse().done(function(xmlResponse) {
                 const id = data.detail.id;
@@ -41,11 +54,15 @@
                                 var correctElm = document.getElementById("correct");
                                 console.log(correctElm);
                                 document.getElementById("correctPoints").innerHTML = data.points.toString();
+                                document.getElementById("score").classList.add('hidden');
                                 correctElm.classList.remove("hidden");
-                            } else if (data.points === -9){
+                            } else if (data.points < 0){
+                                document.getElementById("errorText").innerHTML = "This item cannot be scored.";
                                 document.getElementById("error").classList.remove('hidden');
+                                document.getElementById("score").classList.add('hidden');
                             } else {
                                 document.getElementById("incorrect").classList.remove('hidden');
+                                document.getElementById("score").classList.add('hidden');
                             }
                         },
                         error: function(err){
@@ -55,11 +72,14 @@
                         contentType: "application/json; charset=utf-8"
                     });
                 } else {
-                    alert("You must answer the question to receive a score.");
+                    document.getElementById("errorText").innerHTML = "Please answer the question.";
+                    document.getElementById("error").classList.remove('hidden');
+                    document.getElementById("score").classList.add("hidden");
                 }
             });
         }
 
+        //sets up event listeners for Iris setup and scoring.
         function irisSetup(){
             window.Util.XDM.addListener('IRiS:ready', loadItem);
             window.parent.addEventListener('itemViewer:Score', score);
@@ -114,9 +134,10 @@
     <button id="score" onclick="onScoreClicked();">Score</button>
     <div class="scoreResult correct hidden" id="correct">
         <p id="correctText">Correct! you scored <span id="correctPoints"></span> points</p>
+        <button id="close-correct" onclick="close()">X</button>
     </div>
-    <div class="scoreResult incorrect hidden" id="incorrect"><p id="incorrectText">That is incorrect.</p></div>
-    <div class="scoreResult incorrect hidden" id="error"><p id="errorText">This item cannot be scored.</p></div>
+    <div class="scoreResult incorrect hidden" id="incorrect"><p id="incorrectText">That is incorrect.</p><button id="close-incorrect" onclick="close();">X</button></div>
+    <div class="scoreResult incorrect hidden" id="error"><p id="errorText">This item cannot be scored.</p><button id="close-error" onclick="close();">X</button></div>
 </div>
 </body>
 </html>
