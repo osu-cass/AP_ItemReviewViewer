@@ -29,59 +29,53 @@
         }
 
         //handles the close button click for the score resutls.
-        function close(){
-            var toClose = document.getElementsByClassName("scoreResult");
-            console.log(toClose);
-            toClose.foreach(e.classList.add("hidden"));
-            document.getElementById('score').classList.remove('hidden');
+        function closeScores(){
+            /*var toClose =*/ $(".scoreResult").addClass("hidden");
+            /*for(var i = 0; i < toClose.length; i++){
+                toClose[i].classList.add("hidden");
+            }*/
         }
 
         //handles the event that the react side of the application sends back with the item info.
         //It then makes a scoring request and displays the results.
         function score(data){
+            closeScores();
             IRiS.getResponse().done(function(xmlResponse) {
                 const id = data.detail.id;
                 const version = data.detail.version != 'undefined' ? '?version=' + data.detail.version : '';
                 if(xmlResponse) {
-                    console.log("ID:"+ id + version);
                     $.ajax({
                         type: 'POST',
                         url: '/item/score/' + id + version,
                         data: xmlResponse,
                         success: function(data) {
-                            console.log("Response From Server:" + data['points']);
                             if(data.points > 0){
-                                var correctElm = document.getElementById("correct");
-                                console.log(correctElm);
-                                document.getElementById("correctPoints").innerHTML = data.points.toString();
-                                document.getElementById("score").classList.add('hidden');
-                                correctElm.classList.remove("hidden");
-                            } else if (data.points < 0){
-                                document.getElementById("errorText").innerHTML = "This item cannot be scored.";
-                                document.getElementById("error").classList.remove('hidden');
-                                document.getElementById("score").classList.add('hidden');
+                                $("#correctPoints").innerHTML = data.points.toString() + " points";
+                                $("#correct").removeClass('hidden');
+                            } else if (data.points === -9){
+                                $("#correctText").innerHTML += "This item cannot automatically be scored.";
+                                $("#correct").removeClass('hidden');
                             } else {
-                                document.getElementById("incorrect").classList.remove('hidden');
-                                document.getElementById("score").classList.add('hidden');
+                                $("#incorrect").removeClass('hidden');
                             }
                         },
                         error: function(err){
+                            $("#serverError").removeClass('hidden');
                             console.log(err);
                         },
                         dataType: "json",
                         contentType: "application/json; charset=utf-8"
                     });
                 } else {
-                    document.getElementById("errorText").innerHTML = "Please answer the question.";
-                    document.getElementById("error").classList.remove('hidden');
-                    document.getElementById("score").classList.add("hidden");
+                    $("#unansweredText").innerHTML = "Please answer the question.";
+                    $("#unanswered").removeClass('hidden');
                 }
             });
         }
 
         //sets up event listeners for Iris setup and scoring.
         function irisSetup(){
-            window.Util.XDM.addListener('IRiS:ready', loadItem);
+            window.Util.XDM.addListener('IRiS:Ready', loadItem);
             window.parent.addEventListener('itemViewer:Score', score);
             loadItem();
         }
@@ -90,54 +84,116 @@
         body {
             margin: 0;
         }
+
         iframe {
             border: none;
             height: 100%;
             width: 100%;
         }
-        .irisContainer {
+
+        #irisContainer {
+            height: 100%;
             overflow: auto;
             -webkit-overflow-scrolling: touch;
-            height: 100%;
             width: 100%;
         }
+
+        #scoringContainer {
+            margin-bottom: 10%;
+            padding: 1%;
+            position: relative;
+            width: 100%;
+        }
+
         #score {
-            align: right;
+            background-color: #499D47;
+            border-color: #428D40;
             border-radius: 5px;
+            border-style: solid;
             color: white;
-            background-color: #00ABF4;
+            font-size: 14px;
+            float: right;
+            line-height: 1.57;
+            padding: 6.72 13.44px;
+
+        }
+
+        #correct {
+            background-color: #E0F0D9;
+            color: #3F7635;
+        }
+
+        #incorrect {
+            background-color: #F1DEDE;
+            color: #B65158;
+        }
+
+        #unanswered {
+            background-color: #FFD980;
+            color: #D08000;
+        }
+
+        #serverError {
+            background-color: red;
+            color: white;
+        }
+
+        .scoreResult {
+            border-radius: 5px;
+            display: inline-block;
+            font: 400 13.33px Arial;
+            float: left;
+            max-width: 80%;
+            padding: 2%;
+            position: absolute;
+            width: 80%;
+        }
+
+        .close-btn {
+            background: transparent;
+            border: none;
+            color: inherit;
+            font-size: 20px;
+            float: right;
+            line-height: 50%;
+        }
+
+        .close-btn:after {
+            content: "\00d7";
+        }
+
+        .content {
+            display: inline;
         }
 
         .hidden {
             visibility: hidden;
         }
 
-        .scoreResult {
-            border-radius: 5px;
-            align: left;
-        }
-
-        .correct {
-            color: white;
-            background-color: forestgreen;
-        }
-
-        .incorrect {
-            color: white;
-            background-color: red;
-        }
     </style>
 </head>
 <body>
-<div class="irisContainer">
+<div id="irisContainer">
     <iframe id="irisWindow" src="${pageContext.request.contextPath}/IrisPages/itemRender.xhtml" onload="irisSetup()"></iframe>
-    <button id="score" onclick="onScoreClicked();">Score</button>
-    <div class="scoreResult correct hidden" id="correct">
-        <p id="correctText">Correct! you scored <span id="correctPoints"></span> points</p>
-        <button id="close-correct" onclick="close()">X</button>
+    <div id="scoringContainer">
+        <button id="score" class="btn btn-primary" onClick="onScoreClicked()">Score</button>
+        <div class="scoreResult hidden" id="correct">
+            <p id="correctText" class="content"><b>Congrats!</b> Your answer is correct. <span id="correctPoints"></span></p>
+            <button class="close-btn" onClick="closeScores()"/>
+        </div>
+        <div class="scoreResult hidden" id="incorrect">
+            <p id="incorrectText" class="content"><b>Sorry!</b> Your answer is incorrect.</p>
+            <button class="close-btn" onClick="closeScores()"/>
+        </div>
+        <div class="scoreResult hidden" id="unanswered">
+            <p id="unansweredText" class="content">This item cannot be scored.</p>
+            <button class="close-btn" onClick="closeScores()"/>
+        </div>
+        <div class="scoreResult hidden" id="serverError">
+            <p id="serverErrorText" class="content">There was an error with the scoring server.</p>
+            <button class="close-btn" onClick="closeScores()"/>
+        </div>
     </div>
-    <div class="scoreResult incorrect hidden" id="incorrect"><p id="incorrectText">That is incorrect.</p><button id="close-incorrect" onclick="close();">X</button></div>
-    <div class="scoreResult incorrect hidden" id="error"><p id="errorText">This item cannot be scored.</p><button id="close-error" onclick="close();">X</button></div>
 </div>
 </body>
 </html>
