@@ -5,7 +5,7 @@ import {
     accessibilityClient,
     aboutItemRevisionClient,
     revisionsClient,
-    sectionsClient
+    sectionsClient, namespacesClient
 } from "./Clients/clients";
 import {
     itemsMocks

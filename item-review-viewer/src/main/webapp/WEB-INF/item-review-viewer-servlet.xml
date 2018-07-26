@@ -16,9 +16,10 @@
     <mvc:annotation-driven />
     <task:annotation-driven />
 
-    <context:property-placeholder location="classpath:application.properties" />
-    <context:property-placeholder location="classpath:application.config.properties" />
-
+    <task:scheduled-tasks>
+        <task:scheduled ref="renderItemController" method="getNamespacesFromGitlab"
+                        fixed-rate="#{T(java.lang.Long).valueOf(renderItemController.namespacePatchCycle)}"/>
+    </task:scheduled-tasks>
 
     <context:component-scan base-package="org.smarterbalanced.itemreviewviewer"/>
 
