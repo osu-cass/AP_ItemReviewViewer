@@ -76,6 +76,7 @@ export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPag
                     aboutItemRevisionClient={aboutItemRevisionClient}
                     revisionsClient={revisionsClient}
                     sectionsClient={sectionsClient}
+                    namespacesClient={namespacesClient}
                     itemViewUrl={this.state.itemUrl}
                     setUrl={this.setItemUrl}
                     items={itemsMocks}
