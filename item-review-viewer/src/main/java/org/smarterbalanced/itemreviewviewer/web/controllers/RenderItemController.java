@@ -29,6 +29,10 @@ import tds.irisshared.repository.IContentBuilder;
 import tds.itemrenderer.data.IITSDocument;
 
 import javax.annotation.PostConstruct;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -233,5 +237,24 @@ public class RenderItemController {
             throw new ScoringException(e.getMessage(), itemId);
         }
 
+    }
+
+    @RequestMapping(value = "/{img}.png", method = RequestMethod.GET)
+    @ResponseBody
+    public byte[] rubricImage(@PathVariable("img") String img,
+                              @RequestParam("itemId") String itemId,
+                              @RequestParam(value = "version", required = false, defaultValue = "") String version) throws Exception {
+        try {
+            String qualifiedItemId;
+            if (version != null && version.trim().length() > 0)
+                qualifiedItemId = "I-" + itemId + "-" + version;
+            else
+                qualifiedItemId = "I-" + itemId;
+            IITSDocument iitsDocument = _contentBuilder.getITSDocument(qualifiedItemId);
+            String path = StringUtils.join(iitsDocument.getBaseUriDirSegments(), File.separator) + File.separator + img + ".png";
+            return Files.readAllBytes(Paths.get(path));
+        } catch (IOException e) {
+            throw new Exception();
+        }
     }
 }
