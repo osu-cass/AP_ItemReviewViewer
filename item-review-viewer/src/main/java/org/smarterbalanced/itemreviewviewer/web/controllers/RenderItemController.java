@@ -14,6 +14,7 @@ import org.smarterbalanced.itemreviewviewer.web.models.revisions.SectionModel;
 import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoreInfo;
 import org.smarterbalanced.itemreviewviewer.web.services.GitLabException;
 import org.smarterbalanced.itemreviewviewer.web.services.GitLabService;
+import org.smarterbalanced.itemreviewviewer.web.services.GitLabUtils;
 import org.smarterbalanced.itemreviewviewer.web.services.ItemReviewScoringService;
 import org.smarterbalanced.itemreviewviewer.web.services.models.ItemCommit;
 import org.smarterbalanced.itemreviewviewer.web.services.models.Namespace;
@@ -71,6 +72,7 @@ public class RenderItemController {
                              @RequestParam(value = "revision", required = false, defaultValue = "") String revision,
                              @RequestParam(value = "isaap", required = false, defaultValue = "") String isaapCodes
     ) throws ContentRequestException {
+        if (StringUtils.isEmpty(bankKey)) bankKey = _getBankKeyByNamespace(namespace);
         String itemId = _makeItemId(bankKey, itemKey);
         if (!revision.equals("")) {
             itemId = itemId + "-" + revision;
@@ -99,6 +101,7 @@ public class RenderItemController {
                                    @RequestParam(value = "section", required = false, defaultValue = "") String section,
                                    @RequestParam(value = "isaap", required = false, defaultValue = "") String isaapCodes
     ){
+        if (StringUtils.isEmpty(bankKey)) bankKey = _getBankKeyByNamespace(namespace);
         String itemId = _makeItemId(bankKey, itemKey);
 
         ObjectMapper mapper = new ObjectMapper();
@@ -121,15 +124,15 @@ public class RenderItemController {
     }
 
     private String _makeItemId(String bankKey, String itemKey) {
-        String itemId;
+        return "item-" + bankKey + "-" + itemKey;
+    }
 
-        if (StringUtils.isNotEmpty(bankKey)) {
-            itemId = "item-" + bankKey + "-" + itemKey;
-        } else {
-            itemId = itemKey;
+    private String _getBankKeyByNamespace(String namespace) {
+        if (GitLabUtils.noBankKeyNamespaceHash.containsKey(namespace)) {
+            return String.valueOf(GitLabUtils.noBankKeyNamespaceHash.get(namespace));
         }
 
-        return itemId;
+        return null;
     }
 
     public void getNamespacesFromGitlab() {
