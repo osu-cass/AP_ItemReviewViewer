@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:irv-context.xml</param-value>
@@ -11,6 +12,19 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+
+    <!-- Start: Following filter is added for integration SSO -->
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+        <url-pattern>/saml/*</url-pattern>
+    </filter-mapping>
+    <!-- End: following filter is added for integrating SSO -->
+
     <!--Section Item Viewer Service Servlet -->
     <servlet>
         <servlet-name>ivsServlet</servlet-name>
@@ -136,6 +150,8 @@
         <servlet-name>SoundCueHandler</servlet-name>
         <url-pattern>/Pages/API/SoundCue.axd/*</url-pattern>
     </servlet-mapping>
+
+
     <context-param>
         <description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
         <param-name>javax.faces.STATE_SAVING_METHOD</param-name>

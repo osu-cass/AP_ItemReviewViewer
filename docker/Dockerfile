@@ -1,10 +1,6 @@
 FROM tomcat:7-jre7
 
-ARG source=content/
-ARG contentStore=/home/tomcat7/content/
-ARG contextName=ROOT
-
-COPY $source $contentStore
+RUN mkdir -d /home/tomcat7/content
 
 WORKDIR /usr/local/tomcat/
 
@@ -14,4 +10,5 @@ RUN  rm -rf webapps/*
 COPY item-review-viewer.war ./webapps
 RUN mv ./webapps/item-review-viewer.war ./webapps/$contextName.war
 
+EXPOSE 8080
 ENTRYPOINT ["catalina.sh", "run"]

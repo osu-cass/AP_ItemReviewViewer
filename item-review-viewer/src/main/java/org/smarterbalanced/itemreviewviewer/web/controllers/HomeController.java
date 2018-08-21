@@ -2,6 +2,7 @@ package org.smarterbalanced.itemreviewviewer.web.controllers;
 
 import org.smarterbalanced.itemreviewviewer.web.config.ItemBankConfig;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,6 +16,15 @@ public class HomeController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
         modelAndView.addObject("spring_config", ItemBankConfig.get("content.source"));
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/error")
+    @ResponseBody
+    public ModelAndView Error(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("error");
 
         return modelAndView;
     }

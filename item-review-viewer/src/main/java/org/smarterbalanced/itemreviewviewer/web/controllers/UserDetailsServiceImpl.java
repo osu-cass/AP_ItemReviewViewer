@@ -51,6 +51,7 @@ public class UserDetailsServiceImpl implements SAMLUserDetailsService {
 	public Object loadUserBySAML(SAMLCredential samlCred) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
         UserDetails user = null;
+        System.out.println(samlCred);
         try {
             final String[] pipeDelimitedChain = samlCred.getAttributeAsStringArray(SBAC_TENANCY_CHAIN_KEY);
             String username = samlCred.getAttributeAsString(FULL_NAME_KEY);
@@ -72,7 +73,9 @@ public class UserDetailsServiceImpl implements SAMLUserDetailsService {
         			isUserAuthorized = allowedRoles.contains(userRole);
         		
     		}
-        	
+
+    		System.out.println("User roles for : " + username + ": " + userRoles);
+
         	LOGGER.info("User roles for : " + username + ": " + userRoles);
         	
         	if(isUserAuthorized)
@@ -118,11 +121,13 @@ public class UserDetailsServiceImpl implements SAMLUserDetailsService {
     }
 
 	public List<String> getAllowedRoles() {
-		return allowedRoles;
+		List<String> roles = new ArrayList<String>();
+		roles.add("Item Bank Viewer");
+		return roles;
 	}
 
 	public void setAllowedRoles(List<String> allowedRoles) {
 		this.allowedRoles = allowedRoles;
 	}
-	
+
 }

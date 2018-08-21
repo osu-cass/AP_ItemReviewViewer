@@ -92,7 +92,7 @@
     <!-- Central storage of cryptographic keys -->
     <bean id="keyManager" class="org.springframework.security.saml.key.JKSKeyManager">
         <!--  <constructor-arg value="${iris.security.dir}/samlKeystore.jks"/> -->
-        <constructor-arg value="classpath:samlKeystore.jks"/>
+        <constructor-arg value="WEB-INF/samlKeystore.jks"/>
         <constructor-arg type="java.lang.String" value="${iris.security.saml.keystore.pass}" />
         <constructor-arg>
             <map>
@@ -179,26 +179,30 @@
                     </constructor-arg>
                 </bean> -->
                 <!-- Example of HTTP metadata without Extended Metadata -->
-                <bean class="org.opensaml.saml2.metadata.provider.HTTPMetadataProvider">
-                    <!-- URL containing the metadata -->
+                <!--<bean class="org.opensaml.saml2.metadata.provider.HTTPMetadataProvider">
                     <constructor-arg>
                         <value type="java.lang.String">${iris.security.idp}</value>
                     </constructor-arg>
-                    <!-- Timeout for metadata loading in ms -->
                     <constructor-arg>
                         <value type="int">15000</value>
                     </constructor-arg>
                     <property name="parserPool" ref="parserPool"/>
-                </bean>
+                </bean> -->
                 <!-- Example of file system metadata without Extended Metadata -->
-                <!--
+
                 <bean class="org.opensaml.saml2.metadata.provider.FilesystemMetadataProvider">
                     <constructor-arg>
-                        <value type="java.io.File">/usr/local/metadata/idp.xml</value>
+                        <value type="java.io.File">/WEB-INF/metadata.xml</value>
                     </constructor-arg>
                     <property name="parserPool" ref="parserPool"/>
                 </bean>
-                -->
+
+                <bean class="org.opensaml.saml2.metadata.provider.FilesystemMetadataProvider">
+                    <constructor-arg>
+                        <value type="java.io.File">webapps/ROOT/WEB-INF/metadata.xml</value>
+                    </constructor-arg>
+                    <property name="parserPool" ref="parserPool"/>
+                </bean>
             </list>
         </constructor-arg>
         <!-- OPTIONAL used when one of the metadata files contains information about this service provider -->
@@ -344,5 +348,5 @@
     <bean id="parserPool" class="org.opensaml.xml.parse.StaticBasicParserPool" init-method="initialize"/>
 
     <bean id="parserPoolHolder" class="org.springframework.security.saml.parser.ParserPoolHolder"/>
-
 </beans>
+
