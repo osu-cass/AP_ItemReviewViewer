@@ -16,7 +16,7 @@ export const accessibilityClient = ( acc: AccessibilityRevisionModel ):
 
 export const aboutItemRevisionClient = ( item: ItemRevisionModel ):
     Promise<AboutItemRevisionModel> => {
-    return getRequest<AboutItemRevisionModel>( "/renderitem/",{...item} );
+        return getRequest<AboutItemRevisionModel>( "/renderitem/",{...item} );
 };
 
 export const revisionsClient = ( item: ItemRevisionModel ):

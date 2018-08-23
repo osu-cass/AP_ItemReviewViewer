@@ -209,6 +209,7 @@ public class RenderItemController {
         return model;
     }
 
+
     @RequestMapping(value = "/score/{itemId}", method = RequestMethod.POST)
     @ResponseBody
     public String scoreItem(@PathVariable("itemId") String itemId,
