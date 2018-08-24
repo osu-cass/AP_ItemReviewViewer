@@ -23,7 +23,8 @@
             var scrollToDivId = '${scrollToDivId}';
             var readOnly = ${readOnly};
             IRiS.loadToken(vendorId, token, readOnly, scrollToDivId);
-            window.addEventListener("acc-update", function(e) {
+
+            parent.window.addEventListener("acc-update", function(e) {
                 var newAccoms = decodeURIComponent(e.detail).split(";");
                 var accomsTemp = mapAccoms();
                 var accomsArr = [];
@@ -53,7 +54,7 @@
 
                 updatedToken = JSON.stringify(newToken);
                 IRiS.loadToken(vendorId, updatedToken, readOnly, scrollToDivId);
-            });
+            }, true);
 
         };
     </script>
