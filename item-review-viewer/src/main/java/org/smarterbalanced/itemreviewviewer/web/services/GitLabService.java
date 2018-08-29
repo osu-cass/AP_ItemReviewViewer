@@ -5,9 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.config.SettingsReader;
+import org.smarterbalanced.itemreviewviewer.web.services.models.ItemRelease;
 import org.smarterbalanced.itemreviewviewer.web.models.metadata.ItemMetadataModel;
 import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoringModel;
 import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoringOptionModel;
@@ -38,6 +41,7 @@ import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.zip.ZipEntry;
@@ -418,17 +422,24 @@ public class GitLabService implements IGitLabService {
                 unzip(namespace, itemNumber);
 
             String metadataFilePath = CONTENT_LOCATION + itemNumber + File.separator + "metadata.xml";
+
             try {
                 _logger.info("unmarshalling metadata file started");
 
                 FileInputStream fis = new FileInputStream(metadataFilePath);
                 XMLStreamReader xsr = XMLInputFactory.newFactory().createXMLStreamReader(fis);
+
                 XMLReaderWithoutNamespace xr = new XMLReaderWithoutNamespace(xsr);
 
+
                 JAXBContext jc = JAXBContext.newInstance(Metadata.class);
+
                 Unmarshaller unmarshaller = jc.createUnmarshaller();
+
                 Metadata metadata = (Metadata) unmarshaller.unmarshal(xr);
+
                 fis.close();
+
 
                 _logger.info("unmarshalling metadata file completed");
 
@@ -445,6 +456,68 @@ public class GitLabService implements IGitLabService {
             throw new GitLabException(e);
         }
 
+    }
+    public ItemRelease getItemData(String namespace, String itemNumber) {
+        try {
+
+            if (!isItemExistsLocally(itemNumber) && downloadItem(namespace, itemNumber))
+                unzip(namespace, itemNumber);
+
+            String itemPath = CONTENT_LOCATION + itemNumber+ File.separator + itemNumber + ".xml";
+            try {
+                _logger.info("unmarshalling ItemData file started");
+                FileInputStream isIP = new FileInputStream(itemPath);
+                XMLStreamReader isXSR = XMLInputFactory.newFactory().createXMLStreamReader(isIP);
+                XMLReaderWithoutNamespace ipxr = new XMLReaderWithoutNamespace(isXSR);
+                JAXBContext iJC = JAXBContext.newInstance(ItemRelease.class);
+                Unmarshaller itemMarsh = iJC.createUnmarshaller();
+                ItemRelease itemdata = (ItemRelease) itemMarsh.unmarshal(ipxr);
+                isIP.close();
+                _logger.info("unmarshalling metadata file completed");
+                return itemdata;
+
+            }catch (FileNotFoundException e) {
+                _logger.error("Metadata file not found. " + e.getMessage());
+                throw new GitLabException(e);
+            }catch (JAXBException e) {
+                _logger.error("Error parsing metadata file." + e.getMessage());
+                throw new GitLabException(e);
+            }
+        } catch (Exception e) {
+            throw new GitLabException(e);
+        }
+    }
+
+    @Override
+    public String getClaim( String itemNumber) throws GitLabException {
+
+            String itemPath = CONTENT_LOCATION + "ItemsPatch.xml";
+            try {
+                _logger.info("unmarshalling ItemPatch file started");
+                FileInputStream isIP = new FileInputStream(itemPath);
+                XMLStreamReader isXSR = XMLInputFactory.newFactory().createXMLStreamReader(isIP);
+                XMLReaderWithoutNamespace ipxr = new XMLReaderWithoutNamespace(isXSR);
+                JAXBContext iJC = JAXBContext.newInstance(ItemsPatchModel.class);
+                Unmarshaller itemMarsh = iJC.createUnmarshaller();
+                ItemsPatchModel itemdata = (ItemsPatchModel) itemMarsh.unmarshal(ipxr);
+                isIP.close();
+                _logger.info("unmarshalling metadata file completed");
+                for (int i = 0; i < itemdata.getRow().length; i++) {
+                    if(itemdata.getRow()[i].getItemId() == itemNumber) {
+                        return itemdata.getRow()[i].getClaim();
+                    }
+                }
+            }catch (FileNotFoundException e) {
+                _logger.error("Metadata file not found. " + e.getMessage());
+                throw new GitLabException(e);
+            }catch (JAXBException e) {
+                _logger.error("Error parsing metadata file." + e.getMessage());
+                throw new GitLabException(e);
+            }
+         catch (Exception e) {
+            throw new GitLabException(e);
+        }
+        return null;
     }
 
     public ItemMetadataModel getItemMetadata(String namespace, String itemId, String section) throws GitLabException, FileNotFoundException{
@@ -493,6 +566,21 @@ public class GitLabService implements IGitLabService {
     /* (non-Javadoc)
      * @see org.smarterbalanced.irv.services.IGitLabService#downloadAssociatedItems(tds.itemrenderer.data.IITSDocument)
      */
+
+
+    public boolean isItemAccomExists (String itemNumber, String ext) {
+        if(isItemExistsLocally(itemNumber)) {
+            String itemPath = CONTENT_LOCATION + itemNumber + File.separator;
+            File directory = new File(itemPath);
+            Collection files = FileUtils.listFiles(directory, new WildcardFileFilter("*." + ext), null);
+            if (files.size() > 0) {
+                return true;
+            }
+
+        }
+        return false;
+    }
+
     public void downloadAssociatedItems(String namespace, IITSDocument doc) throws GitLabException{
         ITSTutorial tutorial = doc.getTutorial();
         List<ITSResource> resources = doc.getResources();

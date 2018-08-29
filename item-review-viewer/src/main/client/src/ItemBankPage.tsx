@@ -53,6 +53,7 @@ export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPag
         if (isaap) {
             itemUrl.concat(itemUrl, `&isaap=${isaap}`);
         }
+
         this.setState({ itemUrl , id: `${bankKey}-${itemKey}`, version: `${revision}` });
     }
 

@@ -5,10 +5,15 @@
     <script src="${pageContext.request.contextPath}/Scripts/Libraries/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/Scripts/Utilities/util_xdm.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/Scripts/iris.client.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/Scripts/Accommodations/mapAccoms.js" type="text/javascript"></script>
+
+
+
     <!-- Styling for this page only and not for IRiS interface. -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/IrisStyles/iris.css">
 
     <script type="text/javascript">
+
         //loads the item using IRiS.
         function loadItem(){
             IRiS.setFrame(frames[0]);
@@ -19,6 +24,42 @@
             var scrollToDivId = '${scrollToDivId}';
             var readOnly = ${readOnly};
             IRiS.loadToken(vendorId, token, readOnly, scrollToDivId);
+
+
+            parent.window.addEventListener("acc-update", function(e) {
+                var newAccoms = decodeURIComponent(e.detail).split(";");
+                var accomsTemp = mapAccoms();
+                var accomsArr = [];
+                var newToken = JSON.parse(token);
+                var updatedToken;
+                for(var i = 0; i < newAccoms.length; i++) {
+                    if (newAccoms[i] === "" || newAccoms[i] === "DISABLED")
+                    {
+                        newAccoms.splice(i, 1);
+                    }
+                    accomsArr.push(accomsTemp.get(newAccoms[i]));
+                }
+                while(newToken.accommodations.length != 0) {
+                    newToken.accommodations.pop();
+                }
+
+                for(var i = 0; i < newAccoms.length; i++) {
+                    if(newAccoms[i].includes('&')) {
+                        var temp = newAccoms[i].split("&");
+
+                        newToken.accommodations.push({type: accomsArr[i], codes: temp});
+                    }
+                    else {
+                        newToken.accommodations.push({type: accomsArr[i], codes: [newAccoms[i]]});
+                    }
+                }
+
+                updatedToken = JSON.stringify(newToken);
+                IRiS.loadToken(vendorId, updatedToken, readOnly, scrollToDivId);
+            }, true);
+
+        };
+
         }
 
         //handles the event where the score button is clicked.
@@ -79,6 +120,10 @@
             window.parent.addEventListener('itemViewer:Score', score);
             loadItem();
         }
+
+    </script>
+    <script>
+
     </script>
     <style>
         body {

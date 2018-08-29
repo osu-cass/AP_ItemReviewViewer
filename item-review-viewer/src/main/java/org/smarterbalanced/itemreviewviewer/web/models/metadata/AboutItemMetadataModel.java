@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name = "smarterAppMetadata")
-@XmlType(propOrder = { "identifier", "itemAuthorIdentifier", "itemSpecFormat", "lastModifiedBy", "securityStatus",
+@XmlType(propOrder = { "identifier", "claim", "itemAuthorIdentifier", "itemSpecFormat", "lastModifiedBy", "securityStatus",
         "smarterAppItemDescriptor", "status", "stimulusFormat", "subject", "version", "intendedGrade", "minimumGrade",
         "maximumGrade", "depthOfKnowledge", "interactionType", "maximumNumberOfPoints", "allowCalculator",
         "copyrightAndOtherRestrictions", "brailleType", "enemyItem", "standardPublication", "associatedTutorial",
@@ -37,6 +37,7 @@ public class AboutItemMetadataModel {
     private String associatedTutorial;
     private String associatedWordlist;
     private String language;
+    private String claim;
 
     @XmlElement(name = "Identifier")
     @JsonProperty("identifier")
@@ -46,6 +47,16 @@ public class AboutItemMetadataModel {
 
     public void setIdentifier(String identifier) {
         this.identifier = identifier;
+    }
+
+    @XmlElement(name = "Claim")
+    @JsonProperty("claim")
+    public String getClaim() {
+        return claim;
+    }
+
+    public void setClaim(String claim) {
+        this.claim = claim;
     }
 
     @XmlElement(name = "SmarterAppItemDescriptor")
