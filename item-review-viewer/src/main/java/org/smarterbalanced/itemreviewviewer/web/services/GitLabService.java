@@ -16,6 +16,7 @@ import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoringModel;
 import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoringOptionModel;
 import org.smarterbalanced.itemreviewviewer.web.models.scoring.RubricModel;
 import org.smarterbalanced.itemreviewviewer.web.services.models.*;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;

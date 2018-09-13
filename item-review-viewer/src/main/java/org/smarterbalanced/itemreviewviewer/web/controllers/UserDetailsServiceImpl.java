@@ -41,6 +41,7 @@ public class UserDetailsServiceImpl implements SAMLUserDetailsService {
 	 */
 	public UserDetailsServiceImpl() {
 		// TODO Auto-generated constructor stub
+		allowedRoles = this.getAllowedRoles();
 		
 	}
 
@@ -51,7 +52,6 @@ public class UserDetailsServiceImpl implements SAMLUserDetailsService {
 	public Object loadUserBySAML(SAMLCredential samlCred) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
         UserDetails user = null;
-        System.out.println(samlCred);
         try {
             final String[] pipeDelimitedChain = samlCred.getAttributeAsStringArray(SBAC_TENANCY_CHAIN_KEY);
             String username = samlCred.getAttributeAsString(FULL_NAME_KEY);
@@ -69,8 +69,9 @@ public class UserDetailsServiceImpl implements SAMLUserDetailsService {
         		String userRole = roleStringArray[2];
         		userRoles.add(userRole);
         		
-        		if(!isUserAuthorized)
-        			isUserAuthorized = allowedRoles.contains(userRole);
+        		if(!isUserAuthorized) {
+					isUserAuthorized = allowedRoles.contains(userRole);
+				}
         		
     		}
 
