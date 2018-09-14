@@ -5,7 +5,7 @@
     <script src="${pageContext.request.contextPath}/Scripts/Libraries/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/Scripts/Utilities/util_xdm.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/Scripts/iris.client.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/Scripts/Accommodations/mapAccoms.js" type="text/javascript"></script>
+    <script src="../Assets/scripts/mapAccoms.js" type="text/javascript"></script>
 
 
 
