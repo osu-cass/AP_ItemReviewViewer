@@ -105,6 +105,10 @@
         <servlet-name>item-review-viewer</servlet-name>
         <url-pattern>/ivs/*</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>item-review-viewer</servlet-name>
+        <url-pattern>/rubricImage/*</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>rendererServlet</servlet-name>
         <servlet-class>tds.itemrenderer.webcontrols.rendererservlet.RendererServlet</servlet-class>

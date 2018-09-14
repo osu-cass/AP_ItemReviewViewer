@@ -157,13 +157,8 @@ public class ItemReviewScoringService {
 			_logger.info("Item: " + id + " is scorable. Rubric file path: " + rubricUri.toString());
 			machineRubric.setData(new String(Files.readAllBytes(Paths.get(rubricUri))));
 
-			String encryptedStudentResponse = EncryptionHelper.EncryptToBase64(studentResponse);
-			String encryptedRubricContent = EncryptionHelper.EncryptToBase64(machineRubric.getData());
-
-			ResponseInfo responseInfo = new ResponseInfo(itsDocument.getFormat(), _itemName, encryptedStudentResponse,
-					encryptedRubricContent, RubricContentType.ContentString, "", true);
-			responseInfo.setRubricEncrypted(true);
-			responseInfo.setStudentResponseEncrypted(true);
+			ResponseInfo responseInfo = new ResponseInfo(itsDocument.getFormat(), _itemName, studentResponse,
+					machineRubric.getData(), RubricContentType.ContentString, "", true);
 
 			ItemScoreRequest itemScoreRequest = new ItemScoreRequest(responseInfo);
 
@@ -177,7 +172,9 @@ public class ItemReviewScoringService {
 
 			Client client = Client.create();
 
-			String scoringEngineUrl = getItemScoringUrl();
+			//String scoringEngineUrl = getItemScoringUrl();
+			//TODO: Put this in a config somewhere.
+			String scoringEngineUrl = "http://a219700398ec611e8bc9102f695eee9c-710927559.us-west-2.elb.amazonaws.com/item-scoring-service-3.1.1.RELEASE/Scoring/ItemScoring/";
 			_logger.info("Communicating with Scoring Engine....." + scoringEngineUrl);
 			WebResource webResource = client.resource(scoringEngineUrl);
 

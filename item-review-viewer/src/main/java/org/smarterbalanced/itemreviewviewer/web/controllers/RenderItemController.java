@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.smarterbalanced.itemreviewviewer.web.config.ItemBankConfig;
 import org.smarterbalanced.itemreviewviewer.web.models.ItemRequestModel;
 import org.smarterbalanced.itemreviewviewer.web.models.metadata.ItemMetadataModel;
 import org.smarterbalanced.itemreviewviewer.web.models.revisions.RevisionModel;
@@ -13,6 +14,7 @@ import org.smarterbalanced.itemreviewviewer.web.models.revisions.SectionModel;
 import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoreInfo;
 import org.smarterbalanced.itemreviewviewer.web.services.GitLabException;
 import org.smarterbalanced.itemreviewviewer.web.services.GitLabService;
+import org.smarterbalanced.itemreviewviewer.web.services.GitLabUtils;
 import org.smarterbalanced.itemreviewviewer.web.services.ItemReviewScoringService;
 import org.smarterbalanced.itemreviewviewer.web.services.models.ItemCommit;
 import org.smarterbalanced.itemreviewviewer.web.services.models.Namespace;
@@ -28,6 +30,10 @@ import tds.irisshared.repository.IContentBuilder;
 import tds.itemrenderer.data.IITSDocument;
 
 import javax.annotation.PostConstruct;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -47,12 +53,13 @@ public class RenderItemController {
     @Autowired
     private ItemReviewScoringService _itemReviewScoringService;
 
+    public static String namespacePatchCycle = ItemBankConfig.get("gitlab.namespace.patch.cycle");
     private static String namespaces;
 
     @PostConstruct
     public synchronized void init() throws ContentException {
         _contentBuilder = SpringApplicationContext.getBean("iContentBuilder", IContentBuilder.class);
-        namespaces = this._getNamespaces();
+        this.getNamespacesFromGitlab();
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -65,6 +72,7 @@ public class RenderItemController {
                              @RequestParam(value = "revision", required = false, defaultValue = "") String revision,
                              @RequestParam(value = "isaap", required = false, defaultValue = "") String isaapCodes
     ) throws ContentRequestException {
+        if (StringUtils.isEmpty(bankKey)) bankKey = _getBankKeyByNamespace(namespace);
         String itemId = _makeItemId(bankKey, itemKey);
         if (!revision.equals("")) {
             itemId = itemId + "-" + revision;
@@ -93,6 +101,7 @@ public class RenderItemController {
                                    @RequestParam(value = "section", required = false, defaultValue = "") String section,
                                    @RequestParam(value = "isaap", required = false, defaultValue = "") String isaapCodes
     ){
+        if (StringUtils.isEmpty(bankKey)) bankKey = _getBankKeyByNamespace(namespace);
         String itemId = _makeItemId(bankKey, itemKey);
 
         ObjectMapper mapper = new ObjectMapper();
@@ -115,31 +124,27 @@ public class RenderItemController {
     }
 
     private String _makeItemId(String bankKey, String itemKey) {
-        String itemId;
-
-        if (StringUtils.isNotEmpty(bankKey)) {
-            itemId = "item-" + bankKey + "-" + itemKey;
-        } else {
-            itemId = itemKey;
-        }
-
-        return itemId;
+        return "item-" + bankKey + "-" + itemKey;
     }
 
-    private String _getNamespaces() {
-        List<Namespace> namespaces;
+    private String _getBankKeyByNamespace(String namespace) {
+        if (GitLabUtils.noBankKeyNamespaceHash.containsKey(namespace)) {
+            return String.valueOf(GitLabUtils.noBankKeyNamespaceHash.get(namespace));
+        }
+
+        return null;
+    }
+
+    public void getNamespacesFromGitlab() {
         ObjectMapper mapper;
-        String json;
 
         try {
-            namespaces = _gitLabService.getNamespaces();
+            List<Namespace> _namespaces = _gitLabService.getNamespaces();
 
             mapper = new ObjectMapper();
-            json = mapper.writeValueAsString(namespaces);
-
-            return json;
+            namespaces = mapper.writeValueAsString(_namespaces);
         } catch (Exception e) {
-            _logger.error("Failed to get namespaces", e);
+            _logger.error("Failed to get namespaces from Gitlab", e);
             throw new GitLabException(e);
         }
     }
@@ -236,5 +241,24 @@ public class RenderItemController {
             throw new ScoringException(e.getMessage(), itemId);
         }
 
+    }
+
+    @RequestMapping(value = "/{img}.png", method = RequestMethod.GET)
+    @ResponseBody
+    public byte[] rubricImage(@PathVariable("img") String img,
+                              @RequestParam("itemId") String itemId,
+                              @RequestParam(value = "version", required = false, defaultValue = "") String version) throws Exception {
+        try {
+            String qualifiedItemId;
+            if (version != null && version.trim().length() > 0)
+                qualifiedItemId = "I-" + itemId + "-" + version;
+            else
+                qualifiedItemId = "I-" + itemId;
+            IITSDocument iitsDocument = _contentBuilder.getITSDocument(qualifiedItemId);
+            String path = StringUtils.join(iitsDocument.getBaseUriDirSegments(), File.separator) + File.separator + img + ".png";
+            return Files.readAllBytes(Paths.get(path));
+        } catch (IOException e) {
+            throw new Exception();
+        }
     }
 }

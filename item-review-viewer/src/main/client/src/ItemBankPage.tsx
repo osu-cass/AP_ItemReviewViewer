@@ -15,14 +15,28 @@ import {
 interface ItemBankPageProps extends RouteComponentProps<ItemRevisionModel> { }
 interface ItemBankPageState {
     itemUrl: string;
+    id: string;
+    version: string;
 }
+
+interface ScoreDetails extends Object {
+    error: boolean;
+    score: number;
+}
+
 
 export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPageState> {
     constructor(props: ItemBankPageProps) {
         super(props);
         this.state = {
-            itemUrl: ""
+            itemUrl: "",
+            id: "",
+            version: "",
         };
+        document.addEventListener('itemViewer:Response', (data: Event) => {
+            console.log("Sending the item data");
+            this.score();
+        });
     }
 
     setItemUrl = (item: ItemRevisionModel) => {
@@ -40,20 +54,35 @@ export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPag
             itemUrl.concat(itemUrl, `&isaap=${isaap}`);
         }
 
-        this.setState({ itemUrl });
-    };
+        this.setState({ itemUrl , id: `${bankKey}-${itemKey}`, version: `${revision}` });
+    }
+
+    score = () => {
+        const scoreEvent = new CustomEvent('itemViewer:Score', {
+            bubbles: true,
+            cancelable: false,
+            detail: {
+                id: this.state.id,
+                version: this.state.version
+            }
+        });
+        window.parent.document.dispatchEvent(scoreEvent);
+    }
 
     render() {
         return (
-            <ItemBankContainer
-                accessibilityClient={accessibilityClient}
-                aboutItemRevisionClient={aboutItemRevisionClient}
-                revisionsClient={revisionsClient}
-                sectionsClient={sectionsClient}
-                namespacesClient={namespacesClient}
-                itemViewUrl={this.state.itemUrl}
-                setUrl={this.setItemUrl}
-                items={itemsMocks}
-            />);
+            <div>
+                <ItemBankContainer
+                    accessibilityClient={accessibilityClient}
+                    aboutItemRevisionClient={aboutItemRevisionClient}
+                    revisionsClient={revisionsClient}
+                    sectionsClient={sectionsClient}
+                    namespacesClient={namespacesClient}
+                    itemViewUrl={this.state.itemUrl}
+                    setUrl={this.setItemUrl}
+                    items={itemsMocks}
+                />
+            </div>
+        );
     }
 }
