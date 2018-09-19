@@ -124,7 +124,7 @@ public class RenderItemController {
     }
 
     private String _makeItemId(String bankKey, String itemKey) {
-        return "item-" + bankKey + "-" + itemKey;
+        return "Item-" + bankKey + "-" + itemKey;
     }
 
     private String _getBankKeyByNamespace(String namespace) {
@@ -184,7 +184,7 @@ public class RenderItemController {
                                    @RequestParam(value = "scrollToId",required = false,defaultValue = "") String scrollToId,
                                    @RequestParam(value = "isaap",required = false,defaultValue = "") String accommodationCodes,
                                    @RequestParam(value = "readOnly",required = false,defaultValue = "false") boolean readOnly,
-                                   @RequestParam(value = "loadFrom",required = false,defaultValue = "") String loadFrom)
+                                   @RequestParam(value = "loadFrom",required = false,defaultValue = "/home/tomcat7/content/gitlab") String loadFrom)
     {
         HashSet<String> codeSet = new HashSet<>(Arrays.asList(accommodationCodes.split(";")));
         ArrayList<String> codes = new ArrayList<>(codeSet);

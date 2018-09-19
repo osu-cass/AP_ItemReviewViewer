@@ -57,9 +57,6 @@
                 updatedToken = JSON.stringify(newToken);
                 IRiS.loadToken(vendorId, updatedToken, readOnly, scrollToDivId);
             }, true);
-
-        };
-
         }
 
         //handles the event where the score button is clicked.
