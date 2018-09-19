@@ -211,10 +211,10 @@
 
                 <bean class="org.opensaml.saml2.metadata.provider.FilesystemMetadataProvider">
                     <constructor-arg>
-                        <!-- For windows uncomment out -->
-                        <value type="java.io.File">/WEB-INF/metadata.xml</value>
+                        <!-- For windows uncomment out
+                        <value type="java.io.File">/WEB-INF/metadata.xml</value> -->
                         <!-- for windows comment out -->
-                        <!--<value type="java.io.File">webapps/ROOT/WEB-INF/metadata.xml</value> -->
+                        <value type="java.io.File">webapps/ROOT/WEB-INF/metadata.xml</value>
                     </constructor-arg>
                     <property name="parserPool" ref="parserPool"/>
                 </bean>

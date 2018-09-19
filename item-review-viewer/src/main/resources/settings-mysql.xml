@@ -50,5 +50,5 @@
 	<!-- End BlackBox Settings -->
 	<!-- Item Viewer Settings -->
 	<entry key="AwsRegion">us-west-2</entry>
-	<entry key="AwsClusterName">ItemViewerService-prod</entry>
+	<entry key="AwsClusterName">irv-dev</entry>
 </properties>

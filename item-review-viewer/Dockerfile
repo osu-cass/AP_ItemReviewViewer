@@ -13,7 +13,6 @@ COPY ./ItemsPatch.xml $contentStore/gitlab
 
 WORKDIR /usr/local/tomcat/
 
-COPY ./ItemsPatch.xml $contentStore/gitlab
 COPY context.xml ./conf
 RUN  rm -rf webapps/*
 
