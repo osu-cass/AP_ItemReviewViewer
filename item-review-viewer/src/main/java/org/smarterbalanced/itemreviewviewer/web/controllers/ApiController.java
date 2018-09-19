@@ -47,11 +47,10 @@ public class ApiController {
         if(!interactionType.equals("")){
             url = url + "&interactionType=" + interactionType;
         }
-
-        if(subjectCode == "ELA") {
+        if(subjectCode.equals("ELA")) {
             namespace = "ELA";
         }
-        else if(subjectCode == "MATH") {
+        else if(subjectCode.equals("MATH")) {
             namespace = "iat-development";
         }
         else {
@@ -72,11 +71,11 @@ public class ApiController {
 
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(jsonData);
-        if(!allowCalculator.equals("") && meta.getSmarterAppMetadata().getInteractionType() != "WER") {
+        if(!allowCalculator.equals("") && !meta.getSmarterAppMetadata().getInteractionType().equals("WER")) {
             disableResource(rootNode, "EnglishDictionary", 0);
             disableResource(rootNode, "Thesaurus", 0);
         }
-        if(isPerformanceTask != true) {
+        if(!isPerformanceTask) {
             disableResource(rootNode, "GlobalNotes", 0);
         }
 
@@ -86,7 +85,8 @@ public class ApiController {
         if (!_gitLabService.isItemAccomExists(itemId, "MP4")) {
             disableResource(rootNode, "AmericanSignLanguage", 2);
         }
-        if(_gitLabService.getClaim(itemId) != "ELA3") {
+        String claim = _gitLabService.getClaim(itemId);
+        if(!StringUtils.isEmpty(claim) && claim.equals("ELA3")) {
             disableResource(rootNode, "ClosedCaptioning", 2);
         }
         String itemResult = rootNode.toString();
@@ -104,7 +104,7 @@ public class ApiController {
         String itemId;
 
         if (StringUtils.isNotEmpty(bankKey)) {
-            itemId = "Item-" + bankKey + "-" + itemKey;
+            itemId = "item-" + bankKey + "-" + itemKey;
         } else {
             itemId = itemKey;
         }
@@ -119,7 +119,6 @@ public class ApiController {
         JsonNode labelNode = rootNode.get(branch);
         JsonNode accNode = labelNode.path("accessibilityResources");
         JsonNode resourceNode = accNode.get(0);
-        JsonNode disabledNode = accNode.get(0);
         for(int i = 0; i < accNode.size();i++) {
             resourceNode = accNode.get(i);
             JsonNode valueNode = resourceNode.get("resourceCode");

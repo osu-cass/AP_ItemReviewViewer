@@ -503,7 +503,7 @@ public class GitLabService implements IGitLabService {
                 isIP.close();
                 _logger.info("unmarshalling metadata file completed");
                 for (int i = 0; i < itemdata.getRow().length; i++) {
-                    if(itemdata.getRow()[i].getItemId() == itemNumber) {
+                    if(itemdata.getRow()[i].getItemId().equals(itemNumber)) {
                         return itemdata.getRow()[i].getClaim();
                     }
                 }
