@@ -40,7 +40,6 @@ public class ApiController {
                                                     @RequestParam(value = "bankKey") String bankKey) throws JSONException, IOException
 
     {
-<<<<<<< HEAD
         String url = ItemBankConfig.get("siw.accessibilityUrl") + "gradeLevels=" + gradeLevels;
         String namespace;
         Boolean isPerformanceTask = false;
@@ -69,45 +68,12 @@ public class ApiController {
         if (!PT.getVal().isEmpty()) {
             isPerformanceTask = true;
         }
-=======
-
-        JSONArray jsonResult = new JSONArray();
-        try {
-            String url = ItemBankConfig.get("siw.accessibilityUrl") + "gradeLevels=" + gradeLevels;
-            String namespace;
-            Boolean isPerformanceTask = false;
-            if(!subjectCode.equals("")){
-                //NOTE: subjectCode only works with uppercase letters, otherwise the api returns Internal Error(500)
-                url = url + "&subjectCode=" + subjectCode.toUpperCase();
-            }
-            if(!interactionType.equals("")){
-                url = url + "&interactionType=" + interactionType;
-            }
-
-            if(subjectCode == "ELA") {
-                namespace = "ELA";
-            }
-            else if(subjectCode == "MATH") {
-                namespace = "iat-development";
-            }
-            else {
-                namespace = "itemreviewviewer";
-            }
-            String itemId = _makeItemId(bankKey,  itemKey);
-
-            Metadata meta = _gitLabService.getMetadata(namespace, itemId);
-            Attrib PT = _gitLabService.getItemData(namespace, itemId).getItem().getAttribList().getAttrib()[3];
-            if (!PT.getVal().isEmpty()) {
-                isPerformanceTask = true;
-            }
->>>>>>> save current changes
 
 
             RestTemplate restTemplate = new RestTemplate();
             String result = restTemplate.getForObject(url, String.class);
             byte[] jsonData = result.getBytes(StandardCharsets.UTF_8);
 
-<<<<<<< HEAD
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(jsonData);
         if(!allowCalculator.equals("") && !meta.getSmarterAppMetadata().getInteractionType().equals("WER")) {
@@ -135,44 +101,26 @@ public class ApiController {
         }catch(JSONException e) {
             String err = "Accessibility options for item not found.";
             return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
-=======
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode rootNode = objectMapper.readTree(jsonData);
-            if(!allowCalculator.equals("") && meta.getSmarterAppMetadata().getInteractionType() != "WER") {
-                disableResource(rootNode, "EnglishDictionary", 0);
-                disableResource(rootNode, "Thesaurus", 0);
-            }
-            if(isPerformanceTask != true) {
-                disableResource(rootNode, "GlobalNotes", 0);
-            }
-
-            if (!_gitLabService.isItemAccomExists(itemId, "brf")) {
-                disableResource(rootNode, "BrailleType", 2);
-            }
-            if (!_gitLabService.isItemAccomExists(itemId, "MP4")) {
-                disableResource(rootNode, "AmericanSignLanguage", 2);
-            }
-            if(_gitLabService.getClaim(itemId) != "ELA3") {
-                disableResource(rootNode, "ClosedCaptioning", 2);
-            }
-            String itemResult = rootNode.toString();
-            try{
-                jsonResult = new JSONArray(itemResult);
-            }catch(JSONException e){
-                String err = "Accessibility options for item not found.";
-                LOGGER.debug(err);
-                LOGGER.debug(e.toString());
-                return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
-            }
-        } catch (Exception e) {
-            String err = "There was an error processing the request for accessibility";
-            LOGGER.error(err);
-            LOGGER.error(e.toString());
-            throw e;
->>>>>>> save current changes
         }
             return new ResponseEntity<>(jsonResult.toString(), HttpStatus.OK);
     }
+<<<<<<< HEAD
+=======
+    private String _makeItemId(String bankKey, String itemKey) {
+        String itemId;
+
+        if (StringUtils.isNotEmpty(bankKey)) {
+            itemId = "item-" + bankKey + "-" + itemKey;
+        } else {
+            itemId = itemKey;
+        }
+
+        return itemId;
+    }
+
+
+
+>>>>>>> fix item naming for accessibility
 
     private void disableResource(JsonNode rootNode, String resourceCode, int branch) {
         JsonNode labelNode = rootNode.get(branch);
