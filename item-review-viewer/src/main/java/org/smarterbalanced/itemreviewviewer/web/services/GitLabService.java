@@ -62,7 +62,7 @@ public class GitLabService implements IGitLabService {
     public GitLabService() {
         try {
             ZIP_FILE_LOCATION = SettingsReader.getZipFileLocation();
-            CONTENT_LOCATION = SettingsReader.readIrisContentPath() + "gitlab/";
+            CONTENT_LOCATION = SettingsReader.readIrisContentPath();
         } catch (Exception exp) {
             _logger.error("Error loading zip file location", exp);
         }

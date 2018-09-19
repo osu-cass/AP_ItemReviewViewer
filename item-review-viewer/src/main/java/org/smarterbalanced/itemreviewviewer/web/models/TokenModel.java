@@ -28,7 +28,7 @@ public class TokenModel {
         for(int i$ = 0; i$ < len$; ++i$) {
             String item = arr$[i$];
             HashMap<String, String> itemhash = new HashMap();
-            itemhash.put("id", "I-" + item);
+            itemhash.put("id", "i-" + item);
             itemhash.put("response", "");
             this.items.add(itemhash);
         }
