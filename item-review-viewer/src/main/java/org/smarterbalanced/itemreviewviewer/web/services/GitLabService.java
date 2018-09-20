@@ -40,6 +40,7 @@ import java.io.*;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
+import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -166,7 +167,7 @@ public class GitLabService implements IGitLabService {
             rootDirectory.renameTo(new File(CONTENT_LOCATION + itemNumber));
             _contentPath = CONTENT_LOCATION + itemNumber;
         } else {
-            _logger.error("Downloaed File:" + zipFilePath + " to Location:" + CONTENT_LOCATION + " is corrupted.make sure Item Exists");
+            _logger.error("Downloaed File:" + zipFilePath + " to Location:" + CONTENT_LOCATION + " is corrupted make sure Item Exists");
             new File(zipFilePath).delete();
         }
         _logger.info("Unzipping the File:" + zipFilePath + " to Location:" + CONTENT_LOCATION + " Success");
@@ -187,6 +188,10 @@ public class GitLabService implements IGitLabService {
             }
             _changeBankKey(newFilePath, itemId.bankKey);
         }
+
+        //fix capitalization issues
+        _fixFileNames(_contentPath);
+
 
         return _contentPath;
     }
@@ -216,6 +221,26 @@ public class GitLabService implements IGitLabService {
         } catch (Exception e) {
             _logger.error("Failed to change bankkey in file: " + filePath);
             throw new GitLabException(e);
+        }
+    }
+
+    //this function removes the capital I in the file names.
+    //This prevents IRiS from throwing errors.
+    private void _fixFileNames(String filePath){
+        if(filePath == null){
+            return;
+        }
+        File dir = new File(filePath);
+        File[] files = dir.listFiles();
+        for(int i = 0; i < files.length; i++){
+            char[] name = files[i].getName().toCharArray();
+            //if the file starts with a capital I change it to i.
+            if(name[0]=='I') {
+                _logger.debug(name.toString());
+                name[0] = 'i';
+                File newName = new File(name.toString());
+                files[i].renameTo(newName);
+            }
         }
     }
 
