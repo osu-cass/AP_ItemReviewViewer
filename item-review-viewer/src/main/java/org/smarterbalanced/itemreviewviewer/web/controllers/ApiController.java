@@ -104,7 +104,7 @@ public class ApiController {
         String itemId;
 
         if (StringUtils.isNotEmpty(bankKey)) {
-            itemId = "item-" + bankKey + "-" + itemKey;
+            itemId = "Item-" + bankKey + "-" + itemKey;
         } else {
             itemId = itemKey;
         }

@@ -463,7 +463,12 @@ public class GitLabService implements IGitLabService {
             if (!isItemExistsLocally(itemNumber) && downloadItem(namespace, itemNumber))
                 unzip(namespace, itemNumber);
 
-            String itemPath = CONTENT_LOCATION + itemNumber+ File.separator + itemNumber + ".xml";
+            // NOTE: use lowercase 'i' only for file names.
+            // This is because all folder names has uppercase 'I' but not files under the folder.
+            Character firstChar = itemNumber.charAt(0);
+            String fileName = itemNumber.replace(firstChar, Character.toLowerCase(firstChar));
+
+            String itemPath = CONTENT_LOCATION + itemNumber + File.separator + fileName + ".xml";
             try {
                 _logger.info("unmarshalling ItemData file started");
                 FileInputStream isIP = new FileInputStream(itemPath);
