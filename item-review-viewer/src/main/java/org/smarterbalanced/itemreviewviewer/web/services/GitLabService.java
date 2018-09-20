@@ -493,7 +493,7 @@ public class GitLabService implements IGitLabService {
             Character firstChar = itemNumber.charAt(0);
             String fileName = itemNumber.replace(firstChar, Character.toLowerCase(firstChar));
 
-            String itemPath = CONTENT_LOCATION + itemNumber + File.separator + fileName + ".xml";
+            String itemPath = CONTENT_LOCATION + itemNumber + File.separator + itemNumber + ".xml";
             try {
                 _logger.info("unmarshalling ItemData file started");
                 FileInputStream isIP = new FileInputStream(itemPath);
