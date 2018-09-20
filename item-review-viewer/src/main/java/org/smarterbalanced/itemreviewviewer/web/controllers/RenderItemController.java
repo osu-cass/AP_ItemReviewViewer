@@ -28,6 +28,7 @@ import tds.blackbox.ContentRequestException;
 import tds.irisshared.content.ContentException;
 import tds.irisshared.repository.IContentBuilder;
 import tds.itemrenderer.data.IITSDocument;
+import org.smarterbalanced.itemreviewviewer.web.services.GitLabUtils;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
@@ -73,7 +74,7 @@ public class RenderItemController {
                              @RequestParam(value = "isaap", required = false, defaultValue = "") String isaapCodes
     ) throws ContentRequestException {
         if (StringUtils.isEmpty(bankKey)) bankKey = _getBankKeyByNamespace(namespace);
-        String itemId = _makeItemId(bankKey, itemKey);
+        String itemId = GitLabUtils.makeDirId(bankKey, itemKey);
         if (!revision.equals("")) {
             itemId = itemId + "-" + revision;
         }
@@ -101,8 +102,11 @@ public class RenderItemController {
                                    @RequestParam(value = "section", required = false, defaultValue = "") String section,
                                    @RequestParam(value = "isaap", required = false, defaultValue = "") String isaapCodes
     ){
-        if (StringUtils.isEmpty(bankKey)) bankKey = _getBankKeyByNamespace(namespace);
-        String itemId = _makeItemId(bankKey, itemKey);
+        if (StringUtils.isEmpty(bankKey)) {
+            bankKey = _getBankKeyByNamespace(namespace);
+        }
+
+        String itemId = GitLabUtils.makeDirId(bankKey, itemKey);
 
         ObjectMapper mapper = new ObjectMapper();
         String json;
@@ -123,9 +127,6 @@ public class RenderItemController {
         return new ResponseEntity<>(json, HttpStatus.OK);
     }
 
-    private String _makeItemId(String bankKey, String itemKey) {
-        return "Item-" + bankKey + "-" + itemKey;
-    }
 
     private String _getBankKeyByNamespace(String namespace) {
         if (GitLabUtils.noBankKeyNamespaceHash.containsKey(namespace)) {

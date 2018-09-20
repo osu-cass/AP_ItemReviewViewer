@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.smarterbalanced.itemreviewviewer.web.services.GitLabService;
+import org.smarterbalanced.itemreviewviewer.web.services.GitLabUtils;
 
 import java.nio.charset.StandardCharsets;
 
@@ -47,20 +48,21 @@ public class ApiController {
         if(!interactionType.equals("")){
             url = url + "&interactionType=" + interactionType;
         }
-
-        if(subjectCode == "ELA") {
+        if(subjectCode.equals("ELA")) {
             namespace = "ELA";
         }
-        else if(subjectCode == "MATH") {
+        else if(subjectCode.equals("MATH")) {
             namespace = "iat-development";
         }
         else {
             namespace = "itemreviewviewer";
         }
-        String itemId = _makeItemId(bankKey,  itemKey);
+        //difference between itemId and itemDirectory is important and should not be overlooked.
+        String itemId = GitLabUtils.makeItemId(bankKey,  itemKey);
+        String itemDir = GitLabUtils.makeDirId(bankKey, itemKey);
 
-        Metadata meta = _gitLabService.getMetadata(namespace, itemId);
-        Attrib PT = _gitLabService.getItemData(namespace, itemId).getItem().getAttribList().getAttrib()[3];
+        Metadata meta = _gitLabService.getMetadata(namespace, itemDir);
+        Attrib PT = _gitLabService.getItemData(namespace, itemDir).getItem().getAttribList().getAttrib()[3];
         if (!PT.getVal().isEmpty()) {
             isPerformanceTask = true;
         }
@@ -72,11 +74,11 @@ public class ApiController {
 
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(jsonData);
-        if(!allowCalculator.equals("") && meta.getSmarterAppMetadata().getInteractionType() != "WER") {
+        if(!allowCalculator.equals("") && !meta.getSmarterAppMetadata().getInteractionType().equals("WER")) {
             disableResource(rootNode, "EnglishDictionary", 0);
             disableResource(rootNode, "Thesaurus", 0);
         }
-        if(isPerformanceTask != true) {
+        if(!isPerformanceTask) {
             disableResource(rootNode, "GlobalNotes", 0);
         }
 
@@ -86,7 +88,8 @@ public class ApiController {
         if (!_gitLabService.isItemAccomExists(itemId, "MP4")) {
             disableResource(rootNode, "AmericanSignLanguage", 2);
         }
-        if(_gitLabService.getClaim(itemId) != "ELA3") {
+        String claim = _gitLabService.getClaim(itemId);
+        if(!StringUtils.isEmpty(claim) && claim.equals("ELA3")) {
             disableResource(rootNode, "ClosedCaptioning", 2);
         }
         String itemResult = rootNode.toString();
@@ -100,26 +103,11 @@ public class ApiController {
 
         return new ResponseEntity<>(jsonResult.toString(), HttpStatus.OK);
     }
-    private String _makeItemId(String bankKey, String itemKey) {
-        String itemId;
-
-        if (StringUtils.isNotEmpty(bankKey)) {
-            itemId = "Item-" + bankKey + "-" + itemKey;
-        } else {
-            itemId = itemKey;
-        }
-
-        return itemId;
-    }
-
-
-
 
     private void disableResource(JsonNode rootNode, String resourceCode, int branch) {
         JsonNode labelNode = rootNode.get(branch);
         JsonNode accNode = labelNode.path("accessibilityResources");
         JsonNode resourceNode = accNode.get(0);
-        JsonNode disabledNode = accNode.get(0);
         for(int i = 0; i < accNode.size();i++) {
             resourceNode = accNode.get(i);
             JsonNode valueNode = resourceNode.get("resourceCode");

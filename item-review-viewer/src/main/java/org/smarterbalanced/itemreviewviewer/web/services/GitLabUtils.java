@@ -3,7 +3,7 @@ package org.smarterbalanced.itemreviewviewer.web.services;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.config.ItemBankConfig;
-import org.springframework.util.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.Hashtable;
 
@@ -18,6 +18,22 @@ public class GitLabUtils {
         put("iat-staging", 991);
         put("iat-uat", 992);
     }};
+
+    //forms valid name for an item.
+    public static String makeItemId(String bankKey, String itemKey){
+        String itemId = null;
+        if(StringUtils.isNotEmpty(bankKey)){
+            itemId = "item-" + bankKey + "-" + itemKey;
+        } else {
+            itemId = itemKey;
+        }
+        return itemId;
+    }
+
+    //forms valid name for an item directory.
+    public static String makeDirId(String bankKey, String itemKey){
+        return "Item-" + bankKey + "-" + itemKey;
+    }
 
     public static String getGitLabItemUrl(String namespace, String itemName) {
         try {

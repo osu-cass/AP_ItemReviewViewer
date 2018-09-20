@@ -40,6 +40,7 @@ import java.io.*;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
+import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -125,9 +126,9 @@ public class GitLabService implements IGitLabService {
      * @see org.smarterbalanced.irv.services.IGitLabService#unzip(java.lang.String)
      */
     @Override
-    public String unzip(String namespace, String itemNumber) throws IOException, GitLabException {
+    public String unzip(String namespace, String itemDirName) throws IOException, GitLabException {
 
-        String zipFilePath = ZIP_FILE_LOCATION + itemNumber + ZIP_EXTENSION;
+        String zipFilePath = ZIP_FILE_LOCATION + itemDirName + ZIP_EXTENSION;
         _logger.info("Unzipping the File:" + zipFilePath + " to Location:" + CONTENT_LOCATION + " Started");
         String _contentPath = "";
         ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFilePath));
@@ -160,30 +161,31 @@ public class GitLabService implements IGitLabService {
         }
         zipIn.close();
 
-        //rename root directory to item-blankid-id-version format
+        //rename root directory to Item-blankid-id-version format
         if(rootDirectoryPath!=null) {
             File rootDirectory = new File(rootDirectoryPath);
-            rootDirectory.renameTo(new File(CONTENT_LOCATION + itemNumber));
-            _contentPath = CONTENT_LOCATION + itemNumber;
+            rootDirectory.renameTo(new File(CONTENT_LOCATION + itemDirName));
+            _contentPath = CONTENT_LOCATION + itemDirName;
         } else {
-            _logger.error("Downloaed File:" + zipFilePath + " to Location:" + CONTENT_LOCATION + " is corrupted.make sure Item Exists");
+            _logger.error("Downloaed File:" + zipFilePath + " to Location:" + CONTENT_LOCATION + " is corrupted make sure Item Exists");
             new File(zipFilePath).delete();
         }
         _logger.info("Unzipping the File:" + zipFilePath + " to Location:" + CONTENT_LOCATION + " Success");
 
         //rename item file if no bankKey
-        String noBankKeyItemId = GitLabUtils.extractItemId(namespace, itemNumber);
-        if (!noBankKeyItemId.equals(itemNumber)) {
-            _logger.info("No BankKey in namespace: " + namespace + " | itemNumber: " + itemNumber);
+        String noBankKeyItemId = GitLabUtils.extractItemId(namespace, itemDirName);
+        if (!noBankKeyItemId.equals(itemDirName)) {
+            String itemName = itemDirName.toLowerCase();
+            _logger.info("No BankKey in namespace: " + namespace + " | itemNumber: " + itemDirName);
             String orgFilePath = _contentPath + "/" + noBankKeyItemId + XML_EXTENSION;
-            String newFilePath = _contentPath + "/" + itemNumber + XML_EXTENSION;
+            String newFilePath = _contentPath + "/" + itemName + XML_EXTENSION;
             File item = new File(orgFilePath);
             item.renameTo(new File(newFilePath));
             _logger.info("Renamed the file from " + orgFilePath + " to " + newFilePath);
 
-            ItemIdUtils.ItemId itemId = ItemIdUtils.parseItemId(itemNumber);
+            ItemIdUtils.ItemId itemId = ItemIdUtils.parseItemId(itemDirName);
             if (itemId == null) {
-                _logger.info("Failed to parse an ItemId with string " + itemNumber);
+                _logger.info("Failed to parse an ItemId with string " + itemDirName);
             }
             _changeBankKey(newFilePath, itemId.bankKey);
         }
@@ -218,6 +220,7 @@ public class GitLabService implements IGitLabService {
             throw new GitLabException(e);
         }
     }
+
 
     @Override
     public List<Namespace> getNamespaces() throws GitLabException {
@@ -415,13 +418,14 @@ public class GitLabService implements IGitLabService {
      * @see org.smarterbalanced.irv.services.IGitLabService#getMetaData(java.lang.String)
      */
     @Override
-    public Metadata getMetadata(String namespace, String itemNumber) throws GitLabException  {
+    public Metadata getMetadata(String namespace, String itemDirName) throws GitLabException  {
         try {
 
-            if (!isItemExistsLocally(itemNumber) && downloadItem(namespace, itemNumber))
-                unzip(namespace, itemNumber);
+            if (!isItemExistsLocally(itemDirName) && downloadItem(namespace, itemDirName)) {
+                unzip(namespace, itemDirName);
+            }
 
-            String metadataFilePath = CONTENT_LOCATION + itemNumber + File.separator + "metadata.xml";
+            String metadataFilePath = CONTENT_LOCATION + itemDirName + File.separator + "metadata.xml";
 
             try {
                 _logger.info("unmarshalling metadata file started");
@@ -457,13 +461,14 @@ public class GitLabService implements IGitLabService {
         }
 
     }
-    public ItemRelease getItemData(String namespace, String itemNumber) {
+
+    public ItemRelease getItemData(String namespace, String itemDirName) {
         try {
 
-            if (!isItemExistsLocally(itemNumber) && downloadItem(namespace, itemNumber))
-                unzip(namespace, itemNumber);
-
-            String itemPath = CONTENT_LOCATION + itemNumber+ File.separator + itemNumber + ".xml";
+            if (!isItemExistsLocally(itemDirName) && downloadItem(namespace, itemDirName))
+                unzip(namespace, itemDirName);
+            String itemNumber = itemDirName.toLowerCase();
+            String itemPath = CONTENT_LOCATION + itemDirName + File.separator + itemNumber + ".xml";
             try {
                 _logger.info("unmarshalling ItemData file started");
                 FileInputStream isIP = new FileInputStream(itemPath);
@@ -489,7 +494,7 @@ public class GitLabService implements IGitLabService {
     }
 
     @Override
-    public String getClaim( String itemNumber) throws GitLabException {
+    public String getClaim(String itemNumber) throws GitLabException {
 
             String itemPath = CONTENT_LOCATION + "ItemsPatch.xml";
             try {
@@ -499,12 +504,12 @@ public class GitLabService implements IGitLabService {
                 XMLReaderWithoutNamespace ipxr = new XMLReaderWithoutNamespace(isXSR);
                 JAXBContext iJC = JAXBContext.newInstance(ItemsPatchModel.class);
                 Unmarshaller itemMarsh = iJC.createUnmarshaller();
-                ItemsPatchModel itemdata = (ItemsPatchModel) itemMarsh.unmarshal(ipxr);
+                ItemsPatchModel itemData = (ItemsPatchModel) itemMarsh.unmarshal(ipxr);
                 isIP.close();
                 _logger.info("unmarshalling metadata file completed");
-                for (int i = 0; i < itemdata.getRow().length; i++) {
-                    if(itemdata.getRow()[i].getItemId() == itemNumber) {
-                        return itemdata.getRow()[i].getClaim();
+                for (int i = 0; i < itemData.getRow().length; i++) {
+                    if(itemData.getRow()[i].getItemId().equals(itemNumber)) {
+                        return itemData.getRow()[i].getClaim();
                     }
                 }
             }catch (FileNotFoundException e) {
@@ -568,9 +573,9 @@ public class GitLabService implements IGitLabService {
      */
 
 
-    public boolean isItemAccomExists (String itemNumber, String ext) {
-        if(isItemExistsLocally(itemNumber)) {
-            String itemPath = CONTENT_LOCATION + itemNumber + File.separator;
+    public boolean isItemAccomExists (String itemDirName, String ext) {
+        if(isItemExistsLocally(itemDirName)) {
+            String itemPath = CONTENT_LOCATION + itemDirName + File.separator;
             File directory = new File(itemPath);
             Collection files = FileUtils.listFiles(directory, new WildcardFileFilter("*." + ext), null);
             if (files.size() > 0) {
@@ -587,14 +592,14 @@ public class GitLabService implements IGitLabService {
         try{
             if(tutorial != null){
 
-                String tutorialId = new String("Item-" +tutorial._bankKey + "-" + tutorial._id);
+                String tutorialId = GitLabUtils.makeDirId(Long.toString(tutorial._bankKey), Long.toString(tutorial._id));
                 if (!isItemExistsLocally(tutorialId) && downloadItem(namespace, tutorialId)){
                     unzip(namespace, tutorialId);
                 }
 
                 if(resources != null){
                     for(ITSResource resource: resources){
-                        String resourceId = new String("Item-" +resource._bankKey + "-" + resource._id);
+                        String resourceId = GitLabUtils.makeDirId(Long.toString(resource._bankKey), Long.toString(resource._id));
                         if (!isItemExistsLocally(resourceId) && downloadItem(namespace, resourceId)){
                             unzip(namespace, resourceId);
                         }
