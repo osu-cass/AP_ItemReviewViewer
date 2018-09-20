@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.smarterbalanced.itemreviewviewer.web.services.GitLabService;
+import org.smarterbalanced.itemreviewviewer.web.services.GitLabUtils;
 
 import java.nio.charset.StandardCharsets;
 
@@ -56,10 +57,12 @@ public class ApiController {
         else {
             namespace = "itemreviewviewer";
         }
-        String itemId = _makeItemId(bankKey,  itemKey);
+        //difference between itemId and itemDirectory is important and should not be overlooked.
+        String itemId = GitLabUtils.makeItemId(bankKey,  itemKey);
+        String itemDir = GitLabUtils.makeDirId(bankKey, itemKey);
 
-        Metadata meta = _gitLabService.getMetadata(namespace, itemId);
-        Attrib PT = _gitLabService.getItemData(namespace, itemId).getItem().getAttribList().getAttrib()[3];
+        Metadata meta = _gitLabService.getMetadata(namespace, itemDir);
+        Attrib PT = _gitLabService.getItemData(namespace, itemDir).getItem().getAttribList().getAttrib()[3];
         if (!PT.getVal().isEmpty()) {
             isPerformanceTask = true;
         }
@@ -100,20 +103,6 @@ public class ApiController {
 
         return new ResponseEntity<>(jsonResult.toString(), HttpStatus.OK);
     }
-    private String _makeItemId(String bankKey, String itemKey) {
-        String itemId;
-
-        if (StringUtils.isNotEmpty(bankKey)) {
-            itemId = "Item-" + bankKey + "-" + itemKey;
-        } else {
-            itemId = itemKey;
-        }
-
-        return itemId;
-    }
-
-
-
 
     private void disableResource(JsonNode rootNode, String resourceCode, int branch) {
         JsonNode labelNode = rootNode.get(branch);
