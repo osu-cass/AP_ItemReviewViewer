@@ -33,3 +33,6 @@ node_modules/
 # Web Assets
 **/Assets/Images
 **/webapp/dist
+
+# Security Files
+*.jks

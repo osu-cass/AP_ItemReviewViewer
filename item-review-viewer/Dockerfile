@@ -9,6 +9,8 @@ RUN mkdir -p $contentStore/gitlab_archive
 COPY ./ItemsPatch.xml $contentStore/gitlab
 
 
+
+
 WORKDIR /usr/local/tomcat/
 
 COPY context.xml ./conf

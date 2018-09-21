@@ -21,7 +21,7 @@
 	  </filter>
 	  <filter-mapping>
 	      <filter-name>springSecurityFilterChain</filter-name>
-	      <url-pattern>/Pages/*</url-pattern>
+	      <url-pattern>/*</url-pattern>
 	      <url-pattern>/saml/*</url-pattern>
 	  </filter-mapping> 
 	  <!-- End:  Following filter is added for integrating SSO  -->

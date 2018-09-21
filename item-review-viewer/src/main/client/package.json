@@ -54,10 +54,10 @@
     "typescript": "2.6.2",
     "url-loader": "0.6.2",
     "webpack": "3.8.1",
-    "webpack-dev-server": "^2.11.1"
+    "webpack-dev-server": "^2.11.2"
   },
   "dependencies": {
-    "@osu-cass/sb-components": "^1.18.2",
+    "@osu-cass/sb-components": "^1.19.0",
     "@sbac/sbac-ui-kit": "github:osu-cass/sbac-global-ui-kit#develop",
     "bootstrap": "3.3.7",
     "es6-promise": "4.1.1",

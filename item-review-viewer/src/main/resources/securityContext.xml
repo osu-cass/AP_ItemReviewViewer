@@ -21,6 +21,8 @@
     <security:http security="none" pattern="/images/**"/>
     <security:http security="none" pattern="/css/**"/>
     <security:http security="none" pattern="/logout.jsp"/>
+    <security:http security="none" pattern="/Pages/error.jsp"/>
+    <security:http security="none" pattern="/Pages/ready.jsp"/>
 
     <!-- Security for the administration UI -->
     <security:http pattern="/saml/web/**" use-expressions="false">
@@ -67,13 +69,14 @@
     <bean id="failureRedirectHandler"
           class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
         <property name="useForward" value="true"/>
-        <property name="defaultFailureUrl" value="/error.jsp"/>
+        <property name="defaultFailureUrl" value="/Pages/error.jsp"/>
     </bean>
 
     <!-- Handler for successful logout -->
     <bean id="successLogoutHandler" class="org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler">
         <property name="defaultTargetUrl" value="/logout.jsp"/>
     </bean>
+
 
     <security:authentication-manager alias="authenticationManager">
         <!-- Register authentication manager for SAML provider -->
@@ -87,12 +90,14 @@
     </security:authentication-manager>
 
     <!-- Logger for SAML messages and events -->
-    <bean id="samlLogger" class="org.springframework.security.saml.log.SAMLDefaultLogger"/>
+    <bean id="samlLogger" class="org.springframework.security.saml.log.SAMLDefaultLogger">
+        <property name="logMessages" value="true"/>
+        <property name="logErrors" value="true"/>
+    </bean>
 
     <!-- Central storage of cryptographic keys -->
     <bean id="keyManager" class="org.springframework.security.saml.key.JKSKeyManager">
-        <!--  <constructor-arg value="${iris.security.dir}/samlKeystore.jks"/> -->
-        <constructor-arg value="classpath:samlKeystore.jks"/>
+        <constructor-arg value="WEB-INF/samlKeystore.jks"/>
         <constructor-arg type="java.lang.String" value="${iris.security.saml.keystore.pass}" />
         <constructor-arg>
             <map>
@@ -112,9 +117,8 @@
     </bean>
 
     <!-- IDP Discovery Service -->
-    <bean id="samlIDPDiscovery" class="org.springframework.security.saml.SAMLDiscovery">
-        <property name="idpSelectionPath" value="/WEB-INF/security/idpSelection.jsp"/>
-    </bean>
+    <bean id="samlIDPDiscovery" class="org.springframework.security.saml.SAMLDiscovery"></bean>
+
 
     <!-- Filter automatically generates default SP metadata -->
     <bean id="metadataGeneratorFilter" class="org.springframework.security.saml.metadata.MetadataGeneratorFilter">
@@ -133,14 +137,15 @@
         </constructor-arg> -->
     </bean>
     
-     <bean id="metadataGenerator" class="org.springframework.security.saml.metadata.MetadataGenerator">
+    <bean id="metadataGenerator" class="org.springframework.security.saml.metadata.MetadataGenerator">
 	    <property name="bindingsSSO">
 	        <list>
 	            <value>redirect</value>
 	            <value>artifact</value>
+                <value>post</value>
 	        </list>
-	    </property>
-	    <property name="entityId" value="${iris.security.idp.entity.id}"/>
+        </property>
+	    <property name="entityId" value=" ${iris.security.idp.entity.id}"/>
 	</bean>
     
 
@@ -179,30 +184,37 @@
                     </constructor-arg>
                 </bean> -->
                 <!-- Example of HTTP metadata without Extended Metadata -->
-                <bean class="org.opensaml.saml2.metadata.provider.HTTPMetadataProvider">
-                    <!-- URL containing the metadata -->
+                <!--<bean class="org.opensaml.saml2.metadata.provider.HTTPMetadataProvider">
                     <constructor-arg>
                         <value type="java.lang.String">${iris.security.idp}</value>
                     </constructor-arg>
-                    <!-- Timeout for metadata loading in ms -->
                     <constructor-arg>
                         <value type="int">15000</value>
                     </constructor-arg>
                     <property name="parserPool" ref="parserPool"/>
-                </bean>
+                </bean> -->
                 <!-- Example of file system metadata without Extended Metadata -->
-                <!--
+                <!-- bean for local development -->
+                <!--<bean class="org.opensaml.saml2.metadata.provider.FilesystemMetadataProvider">
+                    <constructor-arg>
+                        <value type="java.io.File">/WEB-INF/metadata.xml</value>
+                    </constructor-arg>
+                    <property name="parserPool" ref="parserPool"/>
+                </bean> -->
+
                 <bean class="org.opensaml.saml2.metadata.provider.FilesystemMetadataProvider">
                     <constructor-arg>
-                        <value type="java.io.File">/usr/local/metadata/idp.xml</value>
+                        <!-- For windows uncomment out
+                        <value type="java.io.File">/WEB-INF/metadata.xml</value> -->
+                        <!-- for windows comment out -->
+                        <value type="java.io.File">webapps/ROOT/WEB-INF/metadata.xml</value>
                     </constructor-arg>
                     <property name="parserPool" ref="parserPool"/>
                 </bean>
-                -->
             </list>
         </constructor-arg>
         <!-- OPTIONAL used when one of the metadata files contains information about this service provider -->
-        <!-- <property name="hostedSPName" value=""/> -->
+        <!--<property name="hostedSPName" value=""/> -->
         <!-- OPTIONAL property: can tell the system which IDP should be used for authenticating user by default. -->
         <!-- <property name="defaultIDP" value="http://localhost:8080/opensso"/> -->
     </bean>
@@ -210,11 +222,10 @@
     <!-- SAML Authentication Provider responsible for validating of received SAML messages -->
     <bean id="samlAuthenticationProvider" class="org.springframework.security.saml.SAMLAuthenticationProvider">
         <!-- OPTIONAL property: can be used to store/load user data after login -->
-        <!--
-        <property name="userDetails" ref="bean" />
-        -->
+        <property name="userDetails" ref="samlUserDetailService"/>
     </bean>
 
+    <bean id="samlUserDetailService" class="org.smarterbalanced.itemreviewviewer.web.controllers.UserDetailsServiceImpl" />
     <!-- Provider of default SAML Context -->
     <bean id="contextProvider" class="org.springframework.security.saml.context.SAMLContextProviderImpl"/>
 
@@ -222,7 +233,6 @@
     <bean id="samlWebSSOProcessingFilter" class="org.springframework.security.saml.SAMLProcessingFilter">
         <property name="authenticationManager" ref="authenticationManager"/>
         <property name="authenticationSuccessHandler" ref="successRedirectHandler"/>
-        <property name="authenticationFailureHandler" ref="failureRedirectHandler"/>
     </bean>
 
     <!-- Processing filter for WebSSO Holder-of-Key profile -->
@@ -344,5 +354,5 @@
     <bean id="parserPool" class="org.opensaml.xml.parse.StaticBasicParserPool" init-method="initialize"/>
 
     <bean id="parserPoolHolder" class="org.springframework.security.saml.parser.ParserPoolHolder"/>
-
 </beans>
+

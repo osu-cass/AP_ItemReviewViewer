@@ -23,7 +23,14 @@
             var token = '${token}';
             var scrollToDivId = '${scrollToDivId}';
             var readOnly = ${readOnly};
-            IRiS.loadToken(vendorId, token, readOnly, scrollToDivId);
+            console.log(token);
+            const jsonToken = JSON.parse(token);
+            const id = jsonToken.items[0].id.split('-');
+            console.log(id);
+            jsonToken.items[0].id = 'i-' + id[1] + '-' + id[2];
+            jsonToken.loadFrom = "/home/tomcat7/content/gitlab";
+            console.log(token);
+            IRiS.loadToken(vendorId, JSON.stringify(jsonToken), readOnly, scrollToDivId);
 
 
             parent.window.addEventListener("acc-update", function(e) {
@@ -70,8 +77,8 @@
         function closeScores(){
             /*var toClose =*/ $(".scoreResult").addClass("hidden");
             /*for(var i = 0; i < toClose.length; i++){
-                toClose[i].classList.add("hidden");
-            }*/
+             toClose[i].classList.add("hidden");
+             }*/
         }
 
         //handles the event that the react side of the application sends back with the item info.

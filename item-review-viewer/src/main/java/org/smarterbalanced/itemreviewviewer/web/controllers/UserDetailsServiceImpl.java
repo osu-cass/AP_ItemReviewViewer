@@ -41,6 +41,7 @@ public class UserDetailsServiceImpl implements SAMLUserDetailsService {
 	 */
 	public UserDetailsServiceImpl() {
 		// TODO Auto-generated constructor stub
+		allowedRoles = this.getAllowedRoles();
 		
 	}
 
@@ -68,11 +69,14 @@ public class UserDetailsServiceImpl implements SAMLUserDetailsService {
         		String userRole = roleStringArray[2];
         		userRoles.add(userRole);
         		
-        		if(!isUserAuthorized)
-        			isUserAuthorized = allowedRoles.contains(userRole);
+        		if(!isUserAuthorized) {
+					isUserAuthorized = allowedRoles.contains(userRole);
+				}
         		
     		}
-        	
+
+    		System.out.println("User roles for : " + username + ": " + userRoles);
+
         	LOGGER.info("User roles for : " + username + ": " + userRoles);
         	
         	if(isUserAuthorized)
@@ -118,11 +122,13 @@ public class UserDetailsServiceImpl implements SAMLUserDetailsService {
     }
 
 	public List<String> getAllowedRoles() {
-		return allowedRoles;
+		List<String> roles = new ArrayList<String>();
+		roles.add("Item Bank Viewer");
+		return roles;
 	}
 
 	public void setAllowedRoles(List<String> allowedRoles) {
 		this.allowedRoles = allowedRoles;
 	}
-	
+
 }

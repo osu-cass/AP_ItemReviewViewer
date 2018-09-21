@@ -38,8 +38,17 @@
 
 	<entry key="EncryptionKey">${tds.iris.EncryptionKey}</entry>
 
+	<!-- Security Settings-->
+	<entry key="iris.security.idp">https://sso-amptest.smarterbalanced.org/auth/saml2/jsp/exportmetadata.jsp?realm=/sbac</entry>
+	<entry key="iris.security.idp.logout">https://art-amptest.smarterbalanced.org:8443/saml/logout</entry>
+	<entry key="iris.security.idp.entity.id">item_review_viewer</entry>
+	<entry key="iris.security.saml.keystore.cert">apollo</entry>
+	<entry key="iris.security.saml.keystore.pass">nalle123</entry>
+	<entry key="iris.security.saml.privatekey.pass">nalle123</entry>
+	<entry key="iris.security.saml.baseUrl">http://abfc25937aaf811e8bc9102f695eee9c-1898344099.us-west-2.elb.amazonaws.com</entry>
+
 	<!-- End BlackBox Settings -->
 	<!-- Item Viewer Settings -->
 	<entry key="AwsRegion">us-west-2</entry>
-	<entry key="AwsClusterName">ItemViewerService-prod</entry>
+	<entry key="AwsClusterName">irv-dev</entry>
 </properties>

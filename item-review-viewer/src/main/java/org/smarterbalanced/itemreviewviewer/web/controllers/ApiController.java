@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.config.ItemBankConfig;
 import org.smarterbalanced.itemreviewviewer.web.services.models.Attrib;
 import org.smarterbalanced.itemreviewviewer.web.services.models.Metadata;
@@ -26,7 +28,7 @@ public class ApiController {
     @Autowired
     private GitLabService _gitLabService;
 
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(ApiController.class);
 
     @RequestMapping(value="GetAccessibility", method = RequestMethod.GET)
     @ResponseBody
@@ -68,9 +70,9 @@ public class ApiController {
         }
 
 
-        RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(url, String.class);
-        byte[] jsonData = result.getBytes(StandardCharsets.UTF_8);
+            RestTemplate restTemplate = new RestTemplate();
+            String result = restTemplate.getForObject(url, String.class);
+            byte[] jsonData = result.getBytes(StandardCharsets.UTF_8);
 
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(jsonData);
@@ -100,8 +102,7 @@ public class ApiController {
             String err = "Accessibility options for item not found.";
             return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
         }
-
-        return new ResponseEntity<>(jsonResult.toString(), HttpStatus.OK);
+            return new ResponseEntity<>(jsonResult.toString(), HttpStatus.OK);
     }
 
     private void disableResource(JsonNode rootNode, String resourceCode, int branch) {

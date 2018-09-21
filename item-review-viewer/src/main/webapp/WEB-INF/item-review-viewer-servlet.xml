@@ -16,12 +16,14 @@
     <mvc:annotation-driven />
     <task:annotation-driven />
 
+
+
+    <context:component-scan base-package="org.smarterbalanced.itemreviewviewer"/>
+
     <task:scheduled-tasks>
         <task:scheduled ref="renderItemController" method="getNamespacesFromGitlab"
                         fixed-rate="#{T(java.lang.Long).valueOf(renderItemController.namespacePatchCycle)}"/>
     </task:scheduled-tasks>
-
-    <context:component-scan base-package="org.smarterbalanced.itemreviewviewer"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
@@ -31,4 +33,6 @@
             <value>.jsp</value>
         </property>
     </bean>
+
+    <bean id="renderItemController" class="org.smarterbalanced.itemreviewviewer.web.controllers.RenderItemController"/>
 </beans>

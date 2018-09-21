@@ -48,12 +48,18 @@ public class ItemReviewScoringService {
 
 	private static final Logger _logger = LoggerFactory.getLogger(ItemReviewScoringService.class);
 	public static final String MS_FORMAT = "MS";
+	private String _scoringUrl;
 
 	/**
 	 * 
 	 */
 	public ItemReviewScoringService() {
 		// TODO Auto-generated constructor stub
+		try {
+			_scoringUrl = SettingsReader.getScoringUrl();
+		} catch (Exception e){
+			_logger.error("Error: No Scoring Url Found: " + e.toString());
+		}
 	}
 
 	public ItemScoreInfo scoreItem(String studentResponse, String id) throws ItemScoringException {
@@ -174,9 +180,8 @@ public class ItemReviewScoringService {
 
 			//String scoringEngineUrl = getItemScoringUrl();
 			//TODO: Put this in a config somewhere.
-			String scoringEngineUrl = "http://a219700398ec611e8bc9102f695eee9c-710927559.us-west-2.elb.amazonaws.com/item-scoring-service-3.1.1.RELEASE/Scoring/ItemScoring/";
-			_logger.info("Communicating with Scoring Engine....." + scoringEngineUrl);
-			WebResource webResource = client.resource(scoringEngineUrl);
+			_logger.info("Communicating with Scoring Engine....." + _scoringUrl);
+			WebResource webResource = client.resource(_scoringUrl);
 
 			_logger.info("POSTing the Item Score Request.....");
 			ClientResponse response = webResource.accept("application/xml").post(ClientResponse.class,
