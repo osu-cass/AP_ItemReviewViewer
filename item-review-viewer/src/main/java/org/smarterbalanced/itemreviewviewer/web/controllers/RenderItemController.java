@@ -223,12 +223,7 @@ public class RenderItemController {
                             @RequestBody String studentResponse) {
 
         try {
-            String qualifiedItemId = "";
-
-            if (version != null && version.trim().length() > 0)
-                qualifiedItemId = "I-" + itemId + "-" + version;
-            else
-                qualifiedItemId = "I-" + itemId;
+            String qualifiedItemId = _makeQualifedItemId(itemId, version);
 
             IITSDocument iitsDocument = _contentBuilder.getITSDocument(qualifiedItemId);
             ItemScoreInfo itemScoreInfo = _itemReviewScoringService.scoreAssessmentItem(studentResponse, iitsDocument);
@@ -250,11 +245,7 @@ public class RenderItemController {
                               @RequestParam("itemId") String itemId,
                               @RequestParam(value = "version", required = false, defaultValue = "") String version) throws Exception {
         try {
-            String qualifiedItemId;
-            if (version != null && version.trim().length() > 0)
-                qualifiedItemId = "I-" + itemId + "-" + version;
-            else
-                qualifiedItemId = "I-" + itemId;
+            String qualifiedItemId = _makeQualifedItemId(itemId, version);
             IITSDocument iitsDocument = _contentBuilder.getITSDocument(qualifiedItemId);
             String path = StringUtils.join(iitsDocument.getBaseUriDirSegments(), File.separator) + File.separator + img + ".png";
             return Files.readAllBytes(Paths.get(path));
@@ -262,4 +253,13 @@ public class RenderItemController {
             throw new Exception();
         }
     }
+
+    private String _makeQualifedItemId(String itemId, String version){
+        String qualifiedItemId = "i-" + itemId;
+        if(version != null && StringUtils.isNotEmpty(version)) {
+            qualifiedItemId.concat("-" + version);
+        }
+        return qualifiedItemId;
+    }
+
 }

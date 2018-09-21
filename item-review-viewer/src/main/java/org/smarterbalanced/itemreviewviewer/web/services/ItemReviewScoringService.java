@@ -13,6 +13,7 @@ import javax.xml.stream.XMLStreamWriter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.smarterbalanced.itemreviewviewer.web.config.ItemBankConfig;
 import org.smarterbalanced.itemreviewviewer.web.config.SettingsReader;
 import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoreInfo;
 import org.springframework.context.annotation.Scope;
@@ -48,18 +49,12 @@ public class ItemReviewScoringService {
 
 	private static final Logger _logger = LoggerFactory.getLogger(ItemReviewScoringService.class);
 	public static final String MS_FORMAT = "MS";
-	private String _scoringUrl;
 
 	/**
 	 * 
 	 */
 	public ItemReviewScoringService() {
-		// TODO Auto-generated constructor stub
-		try {
-			_scoringUrl = SettingsReader.getScoringUrl();
-		} catch (Exception e){
-			_logger.error("Error: No Scoring Url Found: " + e.toString());
-		}
+
 	}
 
 	public ItemScoreInfo scoreItem(String studentResponse, String id) throws ItemScoringException {
@@ -178,10 +173,10 @@ public class ItemReviewScoringService {
 
 			Client client = Client.create();
 
-			//String scoringEngineUrl = getItemScoringUrl();
-			//TODO: Put this in a config somewhere.
-			_logger.info("Communicating with Scoring Engine....." + _scoringUrl);
-			WebResource webResource = client.resource(_scoringUrl);
+			String scoringUrl = ItemBankConfig.get("scoringServiceUrl");
+
+			_logger.info("Communicating with Scoring Engine....." + scoringUrl);
+			WebResource webResource = client.resource(scoringUrl);
 
 			_logger.info("POSTing the Item Score Request.....");
 			ClientResponse response = webResource.accept("application/xml").post(ClientResponse.class,

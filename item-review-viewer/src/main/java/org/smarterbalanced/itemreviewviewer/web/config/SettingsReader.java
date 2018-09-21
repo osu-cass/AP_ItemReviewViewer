@@ -57,7 +57,4 @@ public class SettingsReader {
         return get("iris.ZipFileLocation");
     }
 
-    public static String getScoringUrl() throws IOException, URISyntaxException {
-        return get("scoringServiceUrl");
-    }
 }
