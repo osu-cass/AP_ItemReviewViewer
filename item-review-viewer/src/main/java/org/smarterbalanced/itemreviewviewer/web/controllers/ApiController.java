@@ -104,23 +104,6 @@ public class ApiController {
         }
             return new ResponseEntity<>(jsonResult.toString(), HttpStatus.OK);
     }
-<<<<<<< HEAD
-=======
-    private String _makeItemId(String bankKey, String itemKey) {
-        String itemId;
-
-        if (StringUtils.isNotEmpty(bankKey)) {
-            itemId = "item-" + bankKey + "-" + itemKey;
-        } else {
-            itemId = itemKey;
-        }
-
-        return itemId;
-    }
-
-
-
->>>>>>> fix item naming for accessibility
 
     private void disableResource(JsonNode rootNode, String resourceCode, int branch) {
         JsonNode labelNode = rootNode.get(branch);
