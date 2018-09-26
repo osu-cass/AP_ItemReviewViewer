@@ -28,7 +28,7 @@
     <!-- End: following filter is added for integrating SSO -->
     <error-page>
         <exception-type>javax.servlet.ServletException</exception-type>
-        <location>/error</location>
+        <location>/Pages/error.jsp</location>
     </error-page>
     <!--Section Item Viewer Service Servlet -->
     <servlet>
