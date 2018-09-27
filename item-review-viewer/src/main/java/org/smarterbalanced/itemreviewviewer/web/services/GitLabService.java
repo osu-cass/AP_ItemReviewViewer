@@ -62,7 +62,9 @@ public class GitLabService implements IGitLabService {
     public GitLabService() {
         try {
             ZIP_FILE_LOCATION = SettingsReader.getZipFileLocation();
-            CONTENT_LOCATION = SettingsReader.readIrisContentPath();
+            // NOTE: Do not change key 'iris.ContentPath' in settings-mysql.xml because iris uses it
+            // irv's settings-mysql.xml overwrites iris's because we use overlays.
+            CONTENT_LOCATION = SettingsReader.readIrisContentPath() + "gitlab/";
         } catch (Exception exp) {
             _logger.error("Error loading zip file location", exp);
         }
