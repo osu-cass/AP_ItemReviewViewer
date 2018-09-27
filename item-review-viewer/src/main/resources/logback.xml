@@ -23,6 +23,11 @@
         <appender-ref ref="STDOUT" />
     </logger>
 
+    <logger name="org.springframework.security" level="ALL">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
     <root level="ALL">
     </root>
 </configuration>

@@ -22,15 +22,8 @@
             var vendorId = '2B3C34BF-064C-462A-93EA-41E9E3EB8333';
             var token = '${token}';
             var scrollToDivId = '${scrollToDivId}';
-            var readOnly = ${readOnly};
-            console.log(token);
-            const jsonToken = JSON.parse(token);
-            const id = jsonToken.items[0].id.split('-');
-            console.log(id);
-            jsonToken.items[0].id = 'i-' + id[1] + '-' + id[2];
-            jsonToken.loadFrom = "/home/tomcat7/content/gitlab";
-            console.log(token);
-            IRiS.loadToken(vendorId, JSON.stringify(jsonToken), readOnly, scrollToDivId);
+            var readOnly = ${readOnly}:
+            IRiS.loadToken(vendorId, token, readOnly, scrollToDivId);
 
 
             parent.window.addEventListener("acc-update", function(e) {

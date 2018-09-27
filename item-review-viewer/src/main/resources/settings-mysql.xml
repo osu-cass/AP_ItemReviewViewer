@@ -45,7 +45,7 @@
 	<entry key="iris.security.saml.keystore.cert">apollo</entry>
 	<entry key="iris.security.saml.keystore.pass">nalle123</entry>
 	<entry key="iris.security.saml.privatekey.pass">nalle123</entry>
-	<entry key="iris.security.saml.baseUrl">http://abfc25937aaf811e8bc9102f695eee9c-1898344099.us-west-2.elb.amazonaws.com</entry>
+	<entry key="iris.security.saml.baseUrl">https://irv-stage.smarterbalanced.org</entry>
 
 	<!-- End BlackBox Settings -->
 	<!-- Item Viewer Settings -->
