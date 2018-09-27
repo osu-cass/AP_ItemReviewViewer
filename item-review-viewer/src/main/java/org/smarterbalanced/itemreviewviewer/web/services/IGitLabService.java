@@ -18,7 +18,7 @@ public interface IGitLabService {
 
     boolean isItemExistsLocally(String itemNumber);
 
-    String unzip(String namespace, String itemNumber) throws IOException;
+    void unzip(String namespace, String itemNumber) throws IOException;
 
     List<Namespace> getNamespaces();
 
