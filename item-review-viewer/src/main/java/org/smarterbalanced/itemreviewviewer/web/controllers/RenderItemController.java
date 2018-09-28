@@ -223,7 +223,7 @@ public class RenderItemController {
                             @RequestBody String studentResponse) {
 
         try {
-            String qualifiedItemId = _makeQualifedItemId(itemId, version);
+            String qualifiedItemId = GitLabUtils.makeQualifiedItemId(itemId, version);
 
             IITSDocument iitsDocument = _contentBuilder.getITSDocument(qualifiedItemId);
             ItemScoreInfo itemScoreInfo = _itemReviewScoringService.scoreAssessmentItem(studentResponse, iitsDocument);
@@ -245,7 +245,7 @@ public class RenderItemController {
                               @RequestParam("itemId") String itemId,
                               @RequestParam(value = "version", required = false, defaultValue = "") String version) throws Exception {
         try {
-            String qualifiedItemId = _makeQualifedItemId(itemId, version);
+            String qualifiedItemId = GitLabUtils.makeQualifiedItemId(itemId, version);
             IITSDocument iitsDocument = _contentBuilder.getITSDocument(qualifiedItemId);
             String path = StringUtils.join(iitsDocument.getBaseUriDirSegments(), File.separator) + File.separator + img + ".png";
             return Files.readAllBytes(Paths.get(path));
@@ -254,12 +254,5 @@ public class RenderItemController {
         }
     }
 
-    private String _makeQualifedItemId(String itemId, String version){
-        String qualifiedItemId = "i-" + itemId;
-        if(version != null && StringUtils.isNotEmpty(version)) {
-            qualifiedItemId.concat("-" + version);
-        }
-        return qualifiedItemId;
-    }
 
 }

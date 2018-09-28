@@ -22,7 +22,7 @@
             var vendorId = '2B3C34BF-064C-462A-93EA-41E9E3EB8333';
             var token = '${token}';
             var scrollToDivId = '${scrollToDivId}';
-            var readOnly = ${readOnly}:
+            var readOnly = ${readOnly};
             IRiS.loadToken(vendorId, token, readOnly, scrollToDivId);
 
 

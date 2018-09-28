@@ -197,12 +197,12 @@
                 </bean> -->
                 <!-- Example of file system metadata without Extended Metadata -->
                 <!-- bean for local development -->
-                <!--<bean class="org.opensaml.saml2.metadata.provider.FilesystemMetadataProvider">
+                <bean class="org.opensaml.saml2.metadata.provider.FilesystemMetadataProvider">
                     <constructor-arg>
                         <value type="java.io.File">/WEB-INF/metadata.xml</value>
                     </constructor-arg>
                     <property name="parserPool" ref="parserPool"/>
-                </bean> -->
+                </bean>
 
                 <bean class="org.opensaml.saml2.metadata.provider.FilesystemMetadataProvider">
                     <constructor-arg>

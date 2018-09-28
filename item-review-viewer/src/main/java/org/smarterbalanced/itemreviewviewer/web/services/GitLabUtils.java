@@ -30,6 +30,24 @@ public class GitLabUtils {
         return itemId;
     }
 
+    //forms a stim id.
+    public static String makeStimId(String bankKey, String itemKey){
+        return "stim-" + bankKey + "-" + itemKey;
+    }
+
+    //takes a valid item id and makes a qualified item ID
+    public static String makeQualifiedItemId(String itemId, String version){
+        itemId = itemId.toLowerCase();
+        if(itemId.contains("item-")){
+            itemId = itemId.replace("item-",  "");
+        }
+        String qualifiedItemId = "i-" + itemId;
+        if(version != null && StringUtils.isNotEmpty(version)){
+            qualifiedItemId.concat("-" + version);
+        }
+        return qualifiedItemId;
+    }
+
     //forms valid name for an item directory.
     public static String makeDirId(String bankKey, String itemKey){
         return "Item-" + bankKey + "-" + itemKey;

@@ -1,5 +1,6 @@
 package org.smarterbalanced.itemreviewviewer.web.services;
 
+import AIR.Common.Utilities.SpringApplicationContext;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.jersey.api.client.Client;
@@ -21,6 +22,8 @@ import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
+import tds.irisshared.content.ContentBuilder;
+import tds.irisshared.repository.IContentBuilder;
 import tds.itemrenderer.data.IITSDocument;
 import tds.itemrenderer.data.ITSResource;
 import tds.itemrenderer.data.ITSTutorial;
@@ -59,12 +62,15 @@ public class GitLabService implements IGitLabService {
 
     private static final int BUFFER_SIZE = 4096;
 
+    private static IContentBuilder _contentBuilder;
+
     public GitLabService() {
         try {
             ZIP_FILE_LOCATION = SettingsReader.getZipFileLocation();
             // NOTE: Do not change key 'iris.ContentPath' in settings-mysql.xml because iris uses it
             // irv's settings-mysql.xml overwrites iris's because we use overlays.
             CONTENT_LOCATION = SettingsReader.readIrisContentPath() + "gitlab/";
+            _contentBuilder = SpringApplicationContext.getBean("iContentBuilder", IContentBuilder.class);
         } catch (Exception exp) {
             _logger.error("Error loading zip file location", exp);
         }
@@ -143,6 +149,7 @@ public class GitLabService implements IGitLabService {
 
         _renameItemFolder(namespace, itemDirName, zipFilePath, rootDirectoryPath);
         _renameItemFile(namespace, itemDirName);
+
     }
 
     private void _renameItemFolder(String namespace, String itemDirName, String zipFilePath, String rootDirectoryPath) {
@@ -177,6 +184,14 @@ public class GitLabService implements IGitLabService {
                 _logger.info("Failed to parse an ItemId with string " + itemDirName);
             }
             _changeBankKey(newFilePath, itemId.bankKey);
+            //TODO: Download Associated items here for no bank key items - Thomas
+        } else {
+            if(!itemDirName.contains("stim")) {
+                String itemId = itemDirName.toLowerCase();
+                String qualifiedItemId = GitLabUtils.makeQualifiedItemId(itemId, null);
+                IITSDocument document = _contentBuilder.getITSDocument(qualifiedItemId);
+                _downloadAssociatedItems(namespace, document);
+            }
         }
     }
 
@@ -563,9 +578,11 @@ public class GitLabService implements IGitLabService {
         return false;
     }
 
-    public void downloadAssociatedItems(String namespace, IITSDocument doc) throws GitLabException {
+    private void _downloadAssociatedItems(String namespace, IITSDocument doc) throws GitLabException {
         ITSTutorial tutorial = doc.getTutorial();
         List<ITSResource> resources = doc.getResources();
+        long stimulusKey = doc.getStimulusKey();
+
 
         try {
             if (tutorial != null) {
@@ -574,20 +591,39 @@ public class GitLabService implements IGitLabService {
                 if (!isItemExistsLocally(tutorialId) && downloadItem(namespace, tutorialId)) {
                     unzip(namespace, tutorialId);
                 }
+            }
 
-                if (resources != null) {
-                    for (ITSResource resource : resources) {
-                        String resourceId = GitLabUtils.makeDirId(Long.toString(resource._bankKey), Long.toString(resource._id));
-                        if (!isItemExistsLocally(resourceId) && downloadItem(namespace, resourceId)) {
-                            unzip(namespace, resourceId);
-                        }
+            if (resources != null) {
+                for (ITSResource resource : resources) {
+                    String resourceId = GitLabUtils.makeDirId(Long.toString(resource._bankKey), Long.toString(resource._id));
+                    if (!isItemExistsLocally(resourceId) && downloadItem(namespace, resourceId)) {
+                        unzip(namespace, resourceId);
                     }
                 }
+            }
+
+            if(stimulusKey > 0.0){
+                _downloadStim(namespace, Long.toString(doc.getBankKey()),Long.toString(stimulusKey));
             }
         } catch (Exception e) {
             throw new GitLabException(e);
         }
 
+    }
+
+    //Downloads the stimulus for a given item.
+    private void _downloadStim(String namespace, String bankKey,String id){
+        String itemId = GitLabUtils.makeStimId(bankKey, id);
+        _logger.debug("Starting download of stim: " + id);
+
+        if(!isItemExistsLocally(itemId) && downloadItem(namespace, itemId)){
+            try {
+                unzip(namespace, itemId);
+                _logger.debug("Stim " + itemId + "successfully unzipped");
+            } catch (IOException e) {
+                _logger.error("Error processing stim: " + itemId);
+            }
+        }
     }
 
 }

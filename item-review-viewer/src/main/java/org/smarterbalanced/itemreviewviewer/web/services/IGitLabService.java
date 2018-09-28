@@ -37,6 +37,4 @@ public interface IGitLabService {
     String getClaim(String itemNumber) throws GitLabException;
 
     boolean isItemAccomExists (String itemNumber, String ext);
-
-    void downloadAssociatedItems(String namespace, IITSDocument doc);
 }
