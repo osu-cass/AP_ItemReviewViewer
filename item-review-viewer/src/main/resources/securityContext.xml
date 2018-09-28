@@ -109,6 +109,7 @@
 
     <!-- Entry point to initialize authentication, default values taken from properties file -->
     <bean id="samlEntryPoint" class="org.springframework.security.saml.SAMLEntryPoint">
+        <property name="filterProcessesUrl" value="saml/SSO"/>
         <property name="defaultProfileOptions">
             <bean class="org.springframework.security.saml.websso.WebSSOProfileOptions">
                 <property name="includeScoping" value="false"/>
@@ -146,6 +147,7 @@
 	        </list>
         </property>
 	    <property name="entityId" value=" ${iris.security.idp.entity.id}"/>
+        <property name="entityBaseURL" value="${iris.security.saml.baseUrl}"/>
 	</bean>
     
 
@@ -227,12 +229,20 @@
 
     <bean id="samlUserDetailService" class="org.smarterbalanced.itemreviewviewer.web.controllers.UserDetailsServiceImpl" />
     <!-- Provider of default SAML Context -->
-    <bean id="contextProvider" class="org.springframework.security.saml.context.SAMLContextProviderImpl"/>
+
+    <bean id="contextProvider" class="org.springframework.security.saml.context.SAMLContextProviderLB">
+        <property name="scheme" value="https" />
+        <property name="serverName" value="irv-stage.smarterbalanced.org"/>
+        <property name="serverPort" value="8080"/>
+        <property name="includeServerPortInRequestURL" value="false"/>
+        <property name="contextPath" value="/"/>
+    </bean>
 
     <!-- Processing filter for WebSSO profile messages -->
     <bean id="samlWebSSOProcessingFilter" class="org.springframework.security.saml.SAMLProcessingFilter">
         <property name="authenticationManager" ref="authenticationManager"/>
         <property name="authenticationSuccessHandler" ref="successRedirectHandler"/>
+        <property name="authenticationFailureHandler" ref="failureRedirectHandler"/>
     </bean>
 
     <!-- Processing filter for WebSSO Holder-of-Key profile -->
