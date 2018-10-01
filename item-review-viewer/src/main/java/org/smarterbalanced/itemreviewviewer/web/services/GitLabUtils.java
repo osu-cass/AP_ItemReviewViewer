@@ -27,6 +27,16 @@ public class GitLabUtils {
         return Integer.toString(bankKey);
     }
 
+    public static String bankKeyToNameSpace(String bankKey){
+        int key = Integer.parseInt(bankKey);
+        for(Object o:noBankKeyNamespaceHash.entrySet()){
+            Map.Entry entry = (Map.Entry) o;
+            if(entry.getValue() == key){
+                return (String) entry.getKey();
+            }
+        }
+        return null;
+    }
     //forms valid name for an item.
     public static String makeItemId(String bankKey, String itemKey){
         String itemId = null;

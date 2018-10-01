@@ -594,16 +594,31 @@ public class GitLabService implements IGitLabService {
 
         try {
             if (tutorial != null) {
+                String tutorialId;
+                if(hasBankId) {
+                    tutorialId = GitLabUtils.makeDirId(Long.toString(tutorial._bankKey), Long.toString(tutorial._id));
+                } else {
+                    String bankKey = GitLabUtils.namespaceToBankId(namespace);
+                    tutorialId = GitLabUtils.makeDirId(bankKey, Long.toString(tutorial._id));
+                }
 
-                String tutorialId = GitLabUtils.makeDirId(Long.toString(tutorial._bankKey), Long.toString(tutorial._id));
                 if (!isItemExistsLocally(tutorialId) && downloadItem(namespace, tutorialId)) {
                     unzip(namespace, tutorialId);
                 }
+
             }
 
             if (resources != null) {
                 for (ITSResource resource : resources) {
-                    String resourceId = GitLabUtils.makeDirId(Long.toString(resource._bankKey), Long.toString(resource._id));
+                    String resourceId;
+
+                    if(hasBankId){
+                        resourceId = GitLabUtils.makeDirId(Long.toString(resource._bankKey), Long.toString(resource._id));
+                    } else {
+                        String bankKey = GitLabUtils.namespaceToBankId(namespace);
+                        resourceId = GitLabUtils.makeDirId(bankKey, Long.toString(resource._id));
+                    }
+
                     if (!isItemExistsLocally(resourceId) && downloadItem(namespace, resourceId)) {
                         unzip(namespace, resourceId);
                     }

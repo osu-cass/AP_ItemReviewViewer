@@ -40,25 +40,27 @@ public class ApiController {
                                                     @RequestParam(value = "bankKey") String bankKey) throws JSONException, IOException
 
     {
-        String url = ItemBankConfig.get("siw.accessibilityUrl") + "gradeLevels=" + gradeLevels;
-        String namespace;
+        String url = ItemBankConfig.get("siw.accessibilityUrl");
+        if(gradeLevels == null  || StringUtils.isEmpty(gradeLevels)){
+            url = url + "gradeLevels=1023";
+        } else {
+            url = url + "gradeLevels=" + gradeLevels;
+        }
         Boolean isPerformanceTask = false;
         if(!subjectCode.equals("")){
             //NOTE: subjectCode only works with uppercase letters, otherwise the api returns Internal Error(500)
             url = url + "&subjectCode=" + subjectCode.toUpperCase();
+        } else {
+            url = url + "&subjectCode=ELA";
         }
         if(!interactionType.equals("")){
             url = url + "&interactionType=" + interactionType;
+        } else {
+            url = url + "&interactionType=TI";
         }
-        if(subjectCode.equals("ELA")) {
-            namespace = "ELA";
-        }
-        else if(subjectCode.equals("MATH")) {
-            namespace = "iat-development";
-        }
-        else {
-            namespace = "itemreviewviewer";
-        }
+
+        String namespace = GitLabUtils.bankKeyToNameSpace(bankKey);
+
         //difference between itemId and itemDirectory is important and should not be overlooked.
         String itemId = GitLabUtils.makeItemId(bankKey,  itemKey);
         String itemDir = GitLabUtils.makeDirId(bankKey, itemKey);
@@ -70,9 +72,11 @@ public class ApiController {
         }
 
 
-            RestTemplate restTemplate = new RestTemplate();
-            String result = restTemplate.getForObject(url, String.class);
-            byte[] jsonData = result.getBytes(StandardCharsets.UTF_8);
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(url, String.class);
+
+        byte[] jsonData = result.getBytes(StandardCharsets.UTF_8);
+
 
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(jsonData);
