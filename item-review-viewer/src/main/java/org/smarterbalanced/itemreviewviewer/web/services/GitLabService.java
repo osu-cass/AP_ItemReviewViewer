@@ -8,6 +8,8 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.config.SettingsReader;
@@ -40,6 +42,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
@@ -167,7 +170,7 @@ public class GitLabService implements IGitLabService {
 
     private void _renameItemFile(String namespace, String itemDirName) {
         String _contentPath = CONTENT_LOCATION + itemDirName;
-
+        boolean hasBankId = true;
         //rename item file if no bankKey
         String noBankKeyItemId = GitLabUtils.extractItemId(namespace, itemDirName);
         if (!noBankKeyItemId.equals(itemDirName)) {
@@ -184,14 +187,15 @@ public class GitLabService implements IGitLabService {
                 _logger.info("Failed to parse an ItemId with string " + itemDirName);
             }
             _changeBankKey(newFilePath, itemId.bankKey);
-            //TODO: Download Associated items here for no bank key items - Thomas
-        } else {
-            if(!itemDirName.contains("stim")) {
-                String itemId = itemDirName.toLowerCase();
-                String qualifiedItemId = GitLabUtils.makeQualifiedItemId(itemId, null);
-                IITSDocument document = _contentBuilder.getITSDocument(qualifiedItemId);
-                _downloadAssociatedItems(namespace, document);
-            }
+            hasBankId = false;
+        }
+
+        //Download related Items
+        if(!itemDirName.contains("stim")) {
+            String itemId = itemDirName.toLowerCase();
+            String qualifiedItemId = GitLabUtils.makeQualifiedItemId(itemId, null);
+            IITSDocument document = _contentBuilder.getITSDocument(qualifiedItemId);
+            _downloadAssociatedItems(namespace, document, hasBankId);
         }
     }
 
@@ -200,9 +204,13 @@ public class GitLabService implements IGitLabService {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.parse(filePath);
-
+            Node item = null;
             // Get the staff element by tag name directly
-            Node item = doc.getElementsByTagName("item").item(0);
+            if(filePath.toLowerCase().contains("stim")){
+                item = doc.getElementsByTagName("passage").item(0);
+            } else {
+                item = doc.getElementsByTagName("item").item(0);
+            }
 
             // update staff attribute
             NamedNodeMap attr = item.getAttributes();
@@ -578,7 +586,7 @@ public class GitLabService implements IGitLabService {
         return false;
     }
 
-    private void _downloadAssociatedItems(String namespace, IITSDocument doc) throws GitLabException {
+    private void _downloadAssociatedItems(String namespace, IITSDocument doc, boolean hasBankId) throws GitLabException {
         ITSTutorial tutorial = doc.getTutorial();
         List<ITSResource> resources = doc.getResources();
         long stimulusKey = doc.getStimulusKey();
@@ -603,7 +611,11 @@ public class GitLabService implements IGitLabService {
             }
 
             if(stimulusKey > 0.0){
-                _downloadStim(namespace, Long.toString(doc.getBankKey()),Long.toString(stimulusKey));
+                if(hasBankId) {
+                    _downloadStim(namespace, Long.toString(doc.getBankKey()), Long.toString(stimulusKey));
+                } else {
+                    _downloadStim(namespace, null, Long.toString(stimulusKey));
+                }
             }
         } catch (Exception e) {
             throw new GitLabException(e);
@@ -612,19 +624,23 @@ public class GitLabService implements IGitLabService {
     }
 
     //Downloads the stimulus for a given item.
-    private void _downloadStim(String namespace, String bankKey,String id){
-        String itemId = GitLabUtils.makeStimId(bankKey, id);
+    private void _downloadStim(String namespace, String bankKey, String id){
+        String itemDirName = null;
+        if(bankKey == null && namespace != null){
+
+            bankKey = GitLabUtils.namespaceToBankId(namespace);
+        }
+        itemDirName = GitLabUtils.makeStimId(bankKey, id);
         _logger.debug("Starting download of stim: " + id);
 
-        if(!isItemExistsLocally(itemId) && downloadItem(namespace, itemId)){
+        if(!isItemExistsLocally(itemDirName) && downloadItem(namespace, itemDirName)){
             try {
-                unzip(namespace, itemId);
-                _logger.debug("Stim " + itemId + "successfully unzipped");
+                unzip(namespace, itemDirName);
+                _logger.debug("Stim " + itemDirName + "successfully unzipped");
             } catch (IOException e) {
-                _logger.error("Error processing stim: " + itemId);
+                _logger.error("Error processing stim: " + itemDirName);
             }
         }
     }
-
 }
 

@@ -1,11 +1,14 @@
 package org.smarterbalanced.itemreviewviewer.web.services;
 
+import com.amazonaws.services.ecs.model.KeyValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.config.ItemBankConfig;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
 
 
 public class GitLabUtils {
@@ -18,6 +21,11 @@ public class GitLabUtils {
         put("iat-staging", 991);
         put("iat-uat", 992);
     }};
+
+    public static String namespaceToBankId(String namespace){
+        int bankKey = (int) noBankKeyNamespaceHash.get(namespace);
+        return Integer.toString(bankKey);
+    }
 
     //forms valid name for an item.
     public static String makeItemId(String bankKey, String itemKey){
