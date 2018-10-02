@@ -191,7 +191,7 @@ public class GitLabService implements IGitLabService {
         }
 
         //Download related Items
-        if(!itemDirName.contains("stim")) {
+        if(!itemDirName.toLowerCase().contains("stim")) {
             String itemId = itemDirName.toLowerCase();
             String qualifiedItemId = GitLabUtils.makeQualifiedItemId(itemId, null);
             IITSDocument document = _contentBuilder.getITSDocument(qualifiedItemId);
