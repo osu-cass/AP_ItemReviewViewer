@@ -205,17 +205,28 @@ public class GitLabService implements IGitLabService {
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.parse(filePath);
             Node item = null;
+            Node tutorial = null;
             // Get the staff element by tag name directly
             if(filePath.toLowerCase().contains("stim")){
                 item = doc.getElementsByTagName("passage").item(0);
             } else {
                 item = doc.getElementsByTagName("item").item(0);
+                tutorial = doc.getElementsByTagName("tutorial").item(0);
             }
 
             // update staff attribute
             NamedNodeMap attr = item.getAttributes();
             Node nodeAttr = attr.getNamedItem("bankkey");
             nodeAttr.setTextContent(bankKey);
+
+            //changes bank key for tutorial if it exists.
+            NamedNodeMap tutorialMap;
+            Node tutorialAttr;
+            if(tutorial != null) {
+                tutorialMap = tutorial.getAttributes();
+                tutorialAttr = tutorialMap.getNamedItem("bankkey");
+                tutorialAttr.setTextContent(bankKey);
+            }
 
             // write the content into xml file
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
