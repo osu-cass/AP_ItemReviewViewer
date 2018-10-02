@@ -41,7 +41,7 @@ public class ApiController {
 
     {
         String url = ItemBankConfig.get("siw.accessibilityUrl");
-        if(gradeLevels == null  || StringUtils.isEmpty(gradeLevels)){
+        if(StringUtils.isEmpty(gradeLevels)){
             url = url + "gradeLevels=1023";
         } else {
             url = url + "gradeLevels=" + gradeLevels;
