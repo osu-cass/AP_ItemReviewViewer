@@ -665,6 +665,7 @@ public class GitLabService implements IGitLabService {
                 _logger.debug("Stim " + itemDirName + "successfully unzipped");
             } catch (IOException e) {
                 _logger.error("Error processing stim: " + itemDirName);
+                throw new GitLabException(e);
             }
         }
     }

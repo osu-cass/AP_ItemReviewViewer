@@ -60,8 +60,8 @@ public class GitLabUtils {
             itemId = itemId.replace("item-",  "");
         }
         String qualifiedItemId = "i-" + itemId;
-        if(version != null && StringUtils.isNotEmpty(version)){
-            qualifiedItemId.concat("-" + version);
+        if(StringUtils.isNotEmpty(version)){
+            qualifiedItemId = qualifiedItemId + "-" + version;
         }
         return qualifiedItemId;
     }
