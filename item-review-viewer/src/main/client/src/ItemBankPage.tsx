@@ -34,7 +34,6 @@ export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPag
             version: "",
         };
         document.addEventListener('itemViewer:Response', (data: Event) => {
-            console.log("Sending the item data");
             this.score();
         });
     }

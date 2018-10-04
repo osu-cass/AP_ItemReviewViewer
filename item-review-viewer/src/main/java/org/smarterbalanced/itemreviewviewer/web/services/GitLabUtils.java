@@ -1,11 +1,14 @@
 package org.smarterbalanced.itemreviewviewer.web.services;
 
+import com.amazonaws.services.ecs.model.KeyValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.config.ItemBankConfig;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
 
 
 public class GitLabUtils {
@@ -19,6 +22,21 @@ public class GitLabUtils {
         put("iat-uat", 992);
     }};
 
+    public static String namespaceToBankId(String namespace){
+        int bankKey = (int) noBankKeyNamespaceHash.get(namespace);
+        return Integer.toString(bankKey);
+    }
+
+    public static String bankKeyToNameSpace(String bankKey){
+        int key = Integer.parseInt(bankKey);
+        for(Object o:noBankKeyNamespaceHash.entrySet()){
+            Map.Entry entry = (Map.Entry) o;
+            if(entry.getValue() == key){
+                return (String) entry.getKey();
+            }
+        }
+        return null;
+    }
     //forms valid name for an item.
     public static String makeItemId(String bankKey, String itemKey){
         String itemId = null;
@@ -28,6 +46,24 @@ public class GitLabUtils {
             itemId = itemKey;
         }
         return itemId;
+    }
+
+    //forms a stim id.
+    public static String makeStimId(String bankKey, String itemKey){
+        return "stim-" + bankKey + "-" + itemKey;
+    }
+
+    //takes a valid item id and makes a qualified item ID
+    public static String makeQualifiedItemId(String itemId, String version){
+        itemId = itemId.toLowerCase();
+        if(itemId.contains("item-")){
+            itemId = itemId.replace("item-",  "");
+        }
+        String qualifiedItemId = "i-" + itemId;
+        if(StringUtils.isNotEmpty(version)){
+            qualifiedItemId = qualifiedItemId + "-" + version;
+        }
+        return qualifiedItemId;
     }
 
     //forms valid name for an item directory.
