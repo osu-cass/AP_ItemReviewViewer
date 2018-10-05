@@ -250,4 +250,23 @@ public class RenderItemController {
             throw new Exception();
         }
     }
+
+    @RequestMapping(value = "/isItemExist", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<String> existItem(
+            @RequestParam(value = "namespace") String namespace,
+            @RequestParam(value = "bankKey", required = false, defaultValue = "") String bankKey,
+            @RequestParam(value = "itemKey") String itemKey,
+            @RequestParam(value = "revision", required = false, defaultValue = "") String revision) {
+        if (StringUtils.isEmpty(bankKey)) bankKey = _getBankKeyByNamespace(namespace);
+        String itemId = GitLabUtils.makeDirId(bankKey, itemKey);
+        if (!revision.equals("")) {
+            itemId = itemId + "-" + revision;
+        }
+
+        if (_gitLabService.isItemExist(namespace, itemId)) {
+            return new ResponseEntity<>(StringUtils.EMPTY, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(StringUtils.EMPTY, HttpStatus.NOT_FOUND);
+    }
 }

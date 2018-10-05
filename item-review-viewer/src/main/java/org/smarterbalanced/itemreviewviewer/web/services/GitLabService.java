@@ -663,5 +663,22 @@ public class GitLabService implements IGitLabService {
             }
         }
     }
+
+    @Override
+    public boolean isItemExist(String namespace, String itemNumber) {
+        String url = null;
+        try {
+            url = GitLabUtils.getGitLabItemUrl(namespace, itemNumber);
+
+            WebResource webResource = Client.create().resource(url);
+            ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
+
+            return response.getStatus() != HttpStatus.NOT_FOUND.value();
+
+        } catch (Exception e) {
+            _logger.error("Cannot process url : " + url);
+            throw new GitLabException(e);
+        }
+    }
 }
 
