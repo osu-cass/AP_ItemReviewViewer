@@ -8,12 +8,9 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
-import org.codehaus.jettison.json.JSONArray;
-import org.codehaus.jettison.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.config.SettingsReader;
-import org.smarterbalanced.itemreviewviewer.web.services.models.ItemRelease;
 import org.smarterbalanced.itemreviewviewer.web.models.metadata.ItemMetadataModel;
 import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoringModel;
 import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoringOptionModel;
@@ -24,7 +21,6 @@ import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
-import tds.irisshared.content.ContentBuilder;
 import tds.irisshared.repository.IContentBuilder;
 import tds.itemrenderer.data.IITSDocument;
 import tds.itemrenderer.data.ITSResource;
@@ -42,7 +38,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
@@ -52,7 +47,6 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
-
 
 @Service
 public class GitLabService implements IGitLabService {
@@ -191,7 +185,7 @@ public class GitLabService implements IGitLabService {
         }
 
         //Download related Items
-        if(!itemDirName.toLowerCase().contains("stim")) {
+        if (!itemDirName.toLowerCase().contains("stim")) {
             String itemId = itemDirName.toLowerCase();
             String qualifiedItemId = GitLabUtils.makeQualifiedItemId(itemId, null);
             IITSDocument document = _contentBuilder.getITSDocument(qualifiedItemId);
@@ -207,7 +201,7 @@ public class GitLabService implements IGitLabService {
             Node item = null;
             Node tutorial = null;
             // Get the staff element by tag name directly
-            if(filePath.toLowerCase().contains("stim")){
+            if (filePath.toLowerCase().contains("stim")) {
                 item = doc.getElementsByTagName("passage").item(0);
             } else {
                 item = doc.getElementsByTagName("item").item(0);
@@ -222,7 +216,7 @@ public class GitLabService implements IGitLabService {
             //changes bank key for tutorial if it exists.
             NamedNodeMap tutorialMap;
             Node tutorialAttr;
-            if(tutorial != null) {
+            if (tutorial != null) {
                 tutorialMap = tutorial.getAttributes();
                 tutorialAttr = tutorialMap.getNamedItem("bankkey");
                 tutorialAttr.setTextContent(bankKey);
@@ -606,7 +600,7 @@ public class GitLabService implements IGitLabService {
         try {
             if (tutorial != null) {
                 String tutorialId;
-                if(hasBankId) {
+                if (hasBankId) {
                     tutorialId = GitLabUtils.makeDirId(Long.toString(tutorial._bankKey), Long.toString(tutorial._id));
                 } else {
                     String bankKey = GitLabUtils.namespaceToBankId(namespace);
@@ -623,7 +617,7 @@ public class GitLabService implements IGitLabService {
                 for (ITSResource resource : resources) {
                     String resourceId;
 
-                    if(hasBankId){
+                    if (hasBankId) {
                         resourceId = GitLabUtils.makeDirId(Long.toString(resource._bankKey), Long.toString(resource._id));
                     } else {
                         String bankKey = GitLabUtils.namespaceToBankId(namespace);
@@ -636,8 +630,8 @@ public class GitLabService implements IGitLabService {
                 }
             }
 
-            if(stimulusKey > 0.0){
-                if(hasBankId) {
+            if (stimulusKey > 0.0) {
+                if (hasBankId) {
                     _downloadStim(namespace, Long.toString(doc.getBankKey()), Long.toString(stimulusKey));
                 } else {
                     _downloadStim(namespace, null, Long.toString(stimulusKey));
@@ -650,16 +644,16 @@ public class GitLabService implements IGitLabService {
     }
 
     //Downloads the stimulus for a given item.
-    private void _downloadStim(String namespace, String bankKey, String id){
+    private void _downloadStim(String namespace, String bankKey, String id) {
         String itemDirName = null;
-        if(bankKey == null && namespace != null){
+        if (bankKey == null && namespace != null) {
 
             bankKey = GitLabUtils.namespaceToBankId(namespace);
         }
         itemDirName = GitLabUtils.makeStimId(bankKey, id);
         _logger.debug("Starting download of stim: " + id);
 
-        if(!isItemExistsLocally(itemDirName) && downloadItem(namespace, itemDirName)){
+        if (!isItemExistsLocally(itemDirName) && downloadItem(namespace, itemDirName)) {
             try {
                 unzip(namespace, itemDirName);
                 _logger.debug("Stim " + itemDirName + "successfully unzipped");
@@ -667,6 +661,23 @@ public class GitLabService implements IGitLabService {
                 _logger.error("Error processing stim: " + itemDirName);
                 throw new GitLabException(e);
             }
+        }
+    }
+
+    @Override
+    public boolean isItemExist(String namespace, String itemNumber) {
+        String url = null;
+        try {
+            url = GitLabUtils.getGitLabItemUrl(namespace, itemNumber);
+
+            WebResource webResource = Client.create().resource(url);
+            ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
+
+            return response.getStatus() == HttpStatus.OK.value();
+
+        } catch (Exception e) {
+            _logger.error("Cannot process url : " + url);
+            throw new GitLabException(e);
         }
     }
 }
