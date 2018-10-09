@@ -673,7 +673,7 @@ public class GitLabService implements IGitLabService {
             WebResource webResource = Client.create().resource(url);
             ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
 
-            return response.getStatus() != HttpStatus.NOT_FOUND.value();
+            return response.getStatus() == HttpStatus.OK.value();
 
         } catch (Exception e) {
             _logger.error("Cannot process url : " + url);

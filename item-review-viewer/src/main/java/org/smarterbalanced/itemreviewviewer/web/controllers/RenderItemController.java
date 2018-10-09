@@ -7,6 +7,7 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.config.ItemBankConfig;
+import org.smarterbalanced.itemreviewviewer.web.models.ItemModel;
 import org.smarterbalanced.itemreviewviewer.web.models.ItemRequestModel;
 import org.smarterbalanced.itemreviewviewer.web.models.metadata.ItemMetadataModel;
 import org.smarterbalanced.itemreviewviewer.web.models.revisions.RevisionModel;
@@ -251,22 +252,26 @@ public class RenderItemController {
         }
     }
 
-    @RequestMapping(value = "/isItemExist", method = RequestMethod.GET)
+    @RequestMapping(value = "/checkItemExistence", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<String> existItem(
-            @RequestParam(value = "namespace") String namespace,
-            @RequestParam(value = "bankKey", required = false, defaultValue = "") String bankKey,
-            @RequestParam(value = "itemKey") String itemKey,
-            @RequestParam(value = "revision", required = false, defaultValue = "") String revision) {
-        if (StringUtils.isEmpty(bankKey)) bankKey = _getBankKeyByNamespace(namespace);
-        String itemId = GitLabUtils.makeDirId(bankKey, itemKey);
-        if (!revision.equals("")) {
-            itemId = itemId + "-" + revision;
+    public ItemModel[] existItem(@RequestBody ItemModel[] items) {
+        boolean isExists = false;
+
+        for (ItemModel item : items) {
+            if (StringUtils.isEmpty(item.getBankKey())) item.setBankKey(_getBankKeyByNamespace(item.getNamespace()));
+
+            String itemId = GitLabUtils.makeDirId(item.getBankKey(), item.getItemKey());
+
+            try {
+                isExists = _gitLabService.isItemExist(item.getNamespace(), itemId);
+            } catch (Exception e) {
+                // TODO: handle error
+                _logger.error("Failed to search item (namespace: " + item.getNamespace() + ", itemId: " +  itemId, e);
+            } finally {
+                item.setExists(isExists);
+            }
         }
 
-        if (_gitLabService.isItemExist(namespace, itemId)) {
-            return new ResponseEntity<>(StringUtils.EMPTY, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(StringUtils.EMPTY, HttpStatus.NOT_FOUND);
+        return items;
     }
 }
