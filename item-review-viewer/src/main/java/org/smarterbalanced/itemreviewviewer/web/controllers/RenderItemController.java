@@ -254,24 +254,18 @@ public class RenderItemController {
 
     @RequestMapping(value = "/checkItemExistence", method = RequestMethod.POST)
     @ResponseBody
-    public ItemModel[] existItem(@RequestBody ItemModel[] items) {
-        boolean isExists = false;
-
+    public ResponseEntity<ItemModel[]> existItem(@RequestBody ItemModel[] items) {
         for (ItemModel item : items) {
-            if (StringUtils.isEmpty(item.getBankKey())) item.setBankKey(_getBankKeyByNamespace(item.getNamespace()));
-
-            String itemId = GitLabUtils.makeDirId(item.getBankKey(), item.getItemKey());
-
+            if (StringUtils.isEmpty(item.getBankKey()))
+                item.setBankKey(_getBankKeyByNamespace(item.getNamespace()));
             try {
-                isExists = _gitLabService.isItemExist(item.getNamespace(), itemId);
+                item.setExists(_gitLabService.isItemExist(item));
             } catch (Exception e) {
-                // TODO: handle error
-                _logger.error("Failed to search item (namespace: " + item.getNamespace() + ", itemId: " +  itemId, e);
-            } finally {
-                item.setExists(isExists);
+                _logger.error("Exception occurred '\'" + item.toString(), e);
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return items;
+        return new ResponseEntity<>(items, HttpStatus.OK);
     }
 }
