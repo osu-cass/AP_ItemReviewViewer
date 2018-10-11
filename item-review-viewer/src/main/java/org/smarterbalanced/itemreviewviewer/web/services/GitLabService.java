@@ -666,7 +666,7 @@ public class GitLabService implements IGitLabService {
     }
 
     @Override
-    public boolean isItemExist(ItemModel item) {
+    public boolean isItemExists(ItemModel item) {
         try {
             String itemDirId = GitLabUtils.makeDirId(item.getBankKey(), item.getItemKey());
 

@@ -38,5 +38,5 @@ public interface IGitLabService {
 
     boolean isItemAccomExists(String itemNumber, String ext);
 
-    boolean isItemExist(ItemModel item);
+    boolean isItemExists(ItemModel item);
 }

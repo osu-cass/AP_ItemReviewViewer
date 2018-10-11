@@ -37,6 +37,14 @@ public class GitLabUtils {
         }
         return null;
     }
+    public static String getBankKeyByNamespace(String namespace) {
+        if (GitLabUtils.noBankKeyNamespaceHash.containsKey(namespace)) {
+            return String.valueOf(GitLabUtils.noBankKeyNamespaceHash.get(namespace));
+        }
+
+        return null;
+    }
+
     //forms valid name for an item.
     public static String makeItemId(String bankKey, String itemKey){
         String itemId = null;
