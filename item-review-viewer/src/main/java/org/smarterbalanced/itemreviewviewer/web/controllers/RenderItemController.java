@@ -73,7 +73,7 @@ public class RenderItemController {
             @RequestParam(value = "revision", required = false, defaultValue = "") String revision,
             @RequestParam(value = "isaap", required = false, defaultValue = "") String isaapCodes
     ) throws ContentRequestException {
-        if (StringUtils.isEmpty(bankKey)) bankKey = _getBankKeyByNamespace(namespace);
+        if (StringUtils.isEmpty(bankKey)) bankKey = GitLabUtils.getBankKeyByNamespace(namespace);
         String itemId = GitLabUtils.makeDirId(bankKey, itemKey);
         if (!revision.equals("")) {
             itemId = itemId + "-" + revision;
@@ -103,7 +103,7 @@ public class RenderItemController {
             @RequestParam(value = "isaap", required = false, defaultValue = "") String isaapCodes
     ) {
         if (StringUtils.isEmpty(bankKey)) {
-            bankKey = _getBankKeyByNamespace(namespace);
+            bankKey = GitLabUtils.getBankKeyByNamespace(namespace);
         }
 
         String itemId = GitLabUtils.makeDirId(bankKey, itemKey);
@@ -126,15 +126,6 @@ public class RenderItemController {
             return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(json, HttpStatus.OK);
-    }
-
-
-    private String _getBankKeyByNamespace(String namespace) {
-        if (GitLabUtils.noBankKeyNamespaceHash.containsKey(namespace)) {
-            return String.valueOf(GitLabUtils.noBankKeyNamespaceHash.get(namespace));
-        }
-
-        return null;
     }
 
     public void getNamespacesFromGitlab() {
@@ -252,26 +243,22 @@ public class RenderItemController {
         }
     }
 
-    @RequestMapping(value = "/checkItemExistence", method = RequestMethod.POST)
+    @RequestMapping(value = "/checkExistenceOfItems", method = RequestMethod.POST)
     @ResponseBody
-    public ItemModel[] existItem(@RequestBody ItemModel[] items) {
-        boolean isExists = false;
-
+    public ResponseEntity<ItemModel[]> checkExistenceOfItems(@RequestBody ItemModel[] items) {
         for (ItemModel item : items) {
-            if (StringUtils.isEmpty(item.getBankKey())) item.setBankKey(_getBankKeyByNamespace(item.getNamespace()));
-
-            String itemId = GitLabUtils.makeDirId(item.getBankKey(), item.getItemKey());
-
             try {
-                isExists = _gitLabService.isItemExist(item.getNamespace(), itemId);
+                if (StringUtils.isEmpty(item.getBankKey()))
+                    item.setBankKey(GitLabUtils.getBankKeyByNamespace(item.getNamespace()));
+
+                item.setExists(_gitLabService.isItemExists(item));
             } catch (Exception e) {
-                // TODO: handle error
-                _logger.error("Failed to search item (namespace: " + item.getNamespace() + ", itemId: " +  itemId, e);
-            } finally {
-                item.setExists(isExists);
+                // NOTE: Should keep working to send items data to client anyway.
+                //       If exception occurred, the item will have isExists `false` as default
+                _logger.error("Exception occurred '\'" + item.toString(), e);
             }
         }
 
-        return items;
+        return new ResponseEntity<>(items, HttpStatus.OK);
     }
 }

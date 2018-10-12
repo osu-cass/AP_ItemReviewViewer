@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+import org.smarterbalanced.itemreviewviewer.web.models.ItemModel;
 import org.smarterbalanced.itemreviewviewer.web.services.models.ItemRelease;
 import org.smarterbalanced.itemreviewviewer.web.models.metadata.ItemMetadataModel;
 import org.smarterbalanced.itemreviewviewer.web.services.models.Namespace;
@@ -37,5 +38,5 @@ public interface IGitLabService {
 
     boolean isItemAccomExists(String itemNumber, String ext);
 
-    boolean isItemExist(String namespace, String itemNumber);
+    boolean isItemExists(ItemModel item);
 }

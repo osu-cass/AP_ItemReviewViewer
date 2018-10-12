@@ -37,4 +37,14 @@ public class ItemModel {
     public void setExists(boolean exists) {
         isExists = exists;
     }
+
+    @Override
+    public String toString() {
+        return "ItemModel{" +
+                "namespace='" + namespace + '\'' +
+                ", bankKey='" + bankKey + '\'' +
+                ", ItemKey='" + ItemKey + '\'' +
+                ", isExists=" + isExists +
+                '}';
+    }
 }

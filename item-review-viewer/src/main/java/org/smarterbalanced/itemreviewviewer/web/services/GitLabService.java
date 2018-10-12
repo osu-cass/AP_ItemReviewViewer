@@ -11,6 +11,7 @@ import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.config.SettingsReader;
+import org.smarterbalanced.itemreviewviewer.web.models.ItemModel;
 import org.smarterbalanced.itemreviewviewer.web.models.metadata.ItemMetadataModel;
 import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoringModel;
 import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoringOptionModel;
@@ -665,19 +666,15 @@ public class GitLabService implements IGitLabService {
     }
 
     @Override
-    public boolean isItemExist(String namespace, String itemNumber) {
-        String url = null;
+    public boolean isItemExists(ItemModel item) {
         try {
-            url = GitLabUtils.getGitLabItemUrl(namespace, itemNumber);
+            String itemDirId = GitLabUtils.makeDirId(item.getBankKey(), item.getItemKey());
 
-            WebResource webResource = Client.create().resource(url);
-            ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
+            Metadata md = getMetadata(item.getNamespace(), itemDirId);
 
-            return response.getStatus() == HttpStatus.OK.value();
-
+            return md != null;
         } catch (Exception e) {
-            _logger.error("Cannot process url : " + url);
-            throw new GitLabException(e);
+            return false;
         }
     }
 }
