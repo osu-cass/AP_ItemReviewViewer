@@ -5,7 +5,9 @@ import {
     accessibilityClient,
     aboutItemRevisionClient,
     revisionsClient,
-    sectionsClient, namespacesClient
+    sectionsClient,
+    namespacesClient,
+    itemExistsClient
 } from "./Clients/clients";
 import {
     itemsMocks
@@ -81,6 +83,7 @@ export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPag
                     revisionsClient={revisionsClient}
                     sectionsClient={sectionsClient}
                     namespacesClient={namespacesClient}
+                    itemExistsClient={itemExistsClient}
                     itemViewUrl={this.state.itemUrl}
                     setUrl={this.setItemUrl}
                     resetUrl={this.resetUrl}

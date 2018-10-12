@@ -1,12 +1,15 @@
 import {
     getRequest,
+    postRequest,
     AccessibilityRevisionModel,
     AccResourceGroupModel,
     ItemRevisionModel,
     AboutItemRevisionModel,
     RevisionModel,
     SectionModel,
-    NamespaceModel
+    NamespaceModel,
+    ItemExistsRequestModel,
+    ItemExistsResponseModel
 } from "@osu-cass/sb-components";
 
 export const accessibilityClient = ( acc: AccessibilityRevisionModel ):
@@ -30,4 +33,8 @@ export const sectionsClient = (): Promise<SectionModel[]> => {
 
 export const namespacesClient = (): Promise<NamespaceModel[]> => {
     return getRequest<NamespaceModel[]>("/renderitem/namespaces");
+};
+
+export const itemExistsClient = (items: ItemExistsRequestModel[]): Promise<ItemExistsResponseModel[]> => {
+    return postRequest<ItemExistsResponseModel[]>("/renderitem/checkExistenceOfItems", items);
 };
