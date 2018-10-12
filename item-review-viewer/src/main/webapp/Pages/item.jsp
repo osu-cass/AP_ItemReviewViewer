@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/IrisStyles/iris.css">
 
     <script type="text/javascript">
-
         //loads the item using IRiS.
         function loadItem(){
             IRiS.setFrame(frames[0]);
@@ -125,26 +124,28 @@
     <style>
         body {
             margin: 0;
+            overflow: hidden;
         }
 
         iframe {
             border: none;
-            height: 100%;
             width: 100%;
+            height:93%;
+            overflow: hidden
         }
 
         #irisContainer {
-            height: 100%;
-            overflow: auto;
             -webkit-overflow-scrolling: touch;
             width: 100%;
         }
 
         #scoringContainer {
-            margin-bottom: 10%;
-            padding: 1%;
-            position: relative;
+            position: absolute;
+            padding-bottom: 40px;
+            margin-right: 10px;
+            height: 5%;
             width: 100%;
+            margin-top: 10px;
         }
 
         #score {
@@ -153,16 +154,23 @@
             border-radius: 5px;
             border-style: solid;
             color: white;
-            font-size: 14px;
+            font-size: 16px;
             float: right;
-            line-height: 1.57;
-            padding: 6.72 13.44px;
-
+            line-height: 1;
+            z-index: 1;
+            margin-right: 40px;
+            padding: 10px;
         }
 
         #correct {
             background-color: #E0F0D9;
             color: #3F7635;
+        }
+
+        #itemViewerContainer{
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
         }
 
         #incorrect {
@@ -183,12 +191,11 @@
         .scoreResult {
             border-radius: 5px;
             display: inline-block;
-            font: 400 13.33px Arial;
-            float: left;
+            font: 16px Arial;
             max-width: 80%;
-            padding: 2%;
-            position: absolute;
+            padding: 10px;
             width: 80%;
+            margin-left: 10px;
         }
 
         .close-btn {
@@ -209,14 +216,16 @@
         }
 
         .hidden {
-            visibility: hidden;
+            display: none;
         }
 
     </style>
 </head>
 <body>
-<div id="irisContainer">
-    <iframe id="irisWindow" src="${pageContext.request.contextPath}/IrisPages/itemRender.xhtml" onload="irisSetup()"></iframe>
+<div id="itemViewerContainer">
+    <div id="irisContainer">
+        <iframe id="irisWindow" src="${pageContext.request.contextPath}/IrisPages/itemRender.xhtml" onload="irisSetup()" scrolling="no"></iframe>
+    </div>
     <div id="scoringContainer">
         <button id="score" class="btn btn-primary" onClick="onScoreClicked()">Score</button>
         <div class="scoreResult hidden" id="correct">

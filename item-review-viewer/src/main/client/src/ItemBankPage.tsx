@@ -14,7 +14,7 @@ import {
 
 interface ItemBankPageProps extends RouteComponentProps<ItemRevisionModel> { }
 interface ItemBankPageState {
-    itemUrl: string;
+    itemUrl?: string;
     id: string;
     version: string;
 }
@@ -56,6 +56,10 @@ export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPag
         this.setState({ itemUrl , id: `${bankKey}-${itemKey}`, version: `${revision}` });
     }
 
+    resetUrl = () => {
+        this.setState({itemUrl: undefined});
+    }
+
     score = () => {
         const scoreEvent = new CustomEvent('itemViewer:Score', {
             bubbles: true,
@@ -79,6 +83,7 @@ export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPag
                     namespacesClient={namespacesClient}
                     itemViewUrl={this.state.itemUrl}
                     setUrl={this.setItemUrl}
+                    resetUrl={this.resetUrl}
                     items={itemsMocks}
                 />
             </div>
