@@ -5,14 +5,14 @@ import {
     accessibilityClient,
     aboutItemRevisionClient,
     revisionsClient,
-    sectionsClient, namespacesClient
+    sectionsClient,
+    namespacesClient,
+    itemExistsClient
 } from "./Clients/clients";
 import {
     itemsMocks
 } from "./Mocks";
 
-
-interface ItemBankPageProps extends RouteComponentProps<ItemRevisionModel> { }
 interface ItemBankPageState {
     itemUrl?: string;
     id: string;
@@ -25,8 +25,8 @@ interface ScoreDetails extends Object {
 }
 
 
-export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPageState> {
-    constructor(props: ItemBankPageProps) {
+export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemBankPageState> {
+    constructor(props: RouteComponentProps<{}>) {
         super(props);
         this.state = {
             itemUrl: "",
@@ -53,11 +53,11 @@ export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPag
             itemUrl.concat(itemUrl, `&isaap=${isaap}`);
         }
 
-        this.setState({ itemUrl , id: `${bankKey}-${itemKey}`, version: `${revision}` });
+        this.setState({ itemUrl, id: `${bankKey}-${itemKey}`, version: `${revision}` });
     }
 
     resetUrl = () => {
-        this.setState({itemUrl: undefined});
+        this.setState({ itemUrl: undefined });
     }
 
     score = () => {
@@ -81,10 +81,11 @@ export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPag
                     revisionsClient={revisionsClient}
                     sectionsClient={sectionsClient}
                     namespacesClient={namespacesClient}
+                    itemExistsClient={itemExistsClient}
                     itemViewUrl={this.state.itemUrl}
                     setUrl={this.setItemUrl}
                     resetUrl={this.resetUrl}
-                    items={itemsMocks}
+                    items={[{}]}
                 />
             </div>
         );

@@ -42,10 +42,7 @@ import java.io.*;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -57,6 +54,7 @@ public class GitLabService implements IGitLabService {
     private static String CONTENT_LOCATION;
     private static final String ZIP_EXTENSION = ".zip";
     private static final String XML_EXTENSION = ".xml";
+    private static final List<String> NON_ITEM_INTERACTION_TYPES = Arrays.asList("WIT", "TUT");
 
     private static final int BUFFER_SIZE = 4096;
 
@@ -671,8 +669,11 @@ public class GitLabService implements IGitLabService {
             String itemDirId = GitLabUtils.makeDirId(item.getBankKey(), item.getItemKey());
 
             Metadata md = getMetadata(item.getNamespace(), itemDirId);
-
-            return md != null;
+            boolean itemExists = false;
+            if(md != null && !NON_ITEM_INTERACTION_TYPES.contains(md.getSmarterAppMetadata().getInteractionType())) {
+                itemExists = true;
+            }
+            return itemExists;
         } catch (Exception e) {
             return false;
         }

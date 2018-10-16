@@ -243,7 +243,7 @@ public class RenderItemController {
         }
     }
 
-    @RequestMapping(value = "/checkExistenceOfItems", method = RequestMethod.POST)
+    @RequestMapping(value = "/checkExistenceOfItems", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
     public ResponseEntity<ItemModel[]> checkExistenceOfItems(@RequestBody ItemModel[] items) {
         for (ItemModel item : items) {
