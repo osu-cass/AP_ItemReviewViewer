@@ -22,7 +22,7 @@
     <beans:import resource="classpath:opentestsystem.shared.web-context-module.xml" />
     <beans:import resource="classpath:opentestsystem.itemrenderer.xml" />
     <beans:import resource="classpath:opentestsystem.spellcheck-context-module.xml" />
-    <beans:import resource="securityContext.xml" />
+    <!--<beans:import resource="securityContext.xml" />-->
     <!-- TODO Shiva: Is this Spring complaining here because it cannot find the definition for appSettings locally even though it has been defined at another location? This does seem to work currently when
         run. -->
 
