@@ -13,8 +13,6 @@ import {
     itemsMocks
 } from "./Mocks";
 
-
-interface ItemBankPageProps extends RouteComponentProps<ItemRevisionModel> { }
 interface ItemBankPageState {
     itemUrl?: string;
     id: string;
@@ -27,8 +25,8 @@ interface ScoreDetails extends Object {
 }
 
 
-export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPageState> {
-    constructor(props: ItemBankPageProps) {
+export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemBankPageState> {
+    constructor(props: RouteComponentProps<{}>) {
         super(props);
         this.state = {
             itemUrl: "",
@@ -55,11 +53,11 @@ export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPag
             itemUrl.concat(itemUrl, `&isaap=${isaap}`);
         }
 
-        this.setState({ itemUrl , id: `${bankKey}-${itemKey}`, version: `${revision}` });
+        this.setState({ itemUrl, id: `${bankKey}-${itemKey}`, version: `${revision}` });
     }
 
     resetUrl = () => {
-        this.setState({itemUrl: undefined});
+        this.setState({ itemUrl: undefined });
     }
 
     score = () => {
@@ -87,7 +85,7 @@ export class ItemBankPage extends React.Component<ItemBankPageProps, ItemBankPag
                     itemViewUrl={this.state.itemUrl}
                     setUrl={this.setItemUrl}
                     resetUrl={this.resetUrl}
-                    items={itemsMocks}
+                    items={[{}]}
                 />
             </div>
         );
