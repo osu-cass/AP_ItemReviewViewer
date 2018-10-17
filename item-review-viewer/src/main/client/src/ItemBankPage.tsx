@@ -1,8 +1,8 @@
 import * as React from "react";
-import {ItemBankContainerProps, ItemRevisionModel, ItemBankContainer, NamespaceModel} from "@osu-cass/sb-components";
+import {ItemBankContainerProps, ItemRevisionModel, ItemBankContainer, NamespaceModel, Subscription} from "@osu-cass/sb-components";
 import {RouteComponentProps} from "react-router";
 
-const queryString = require('query-string');
+import * as QueryParser from  'query-string';
 
 import {
     accessibilityClient,
@@ -20,6 +20,7 @@ interface ItemBankPageState {
     itemUrl?: string;
     id: string;
     version: string;
+    namespaces: NamespaceModel[];
 }
 
 interface ScoreDetails extends Object {
@@ -29,26 +30,25 @@ interface ScoreDetails extends Object {
 
 
 export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemBankPageState> {
+    private subscription = new Subscription();
+
     constructor(props: RouteComponentProps<{}>) {
         super(props);
-
-        let namespaces: NamespaceModel[] = [];
-        this.getNamespaces()
-            .then(result => {
-                result.
-            })
-            .catch(e => {
-                console.log(e);
-            });
-        console.log(namespaces);
-
         this.state = {
-            itemUrl: "",
-            id: "",
-            version: "",
+            namespaces: [],
+            itemUrl: '',
+            id: '',
+            version:''
         };
         document.addEventListener('itemViewer:Response', (data: Event) => {
             this.score();
+        });
+        this.fetchNamespaces();
+    }
+
+    componentDidMount() {
+        this.fetchNamespaces().then(namespaces => {
+            this.setState({namespaces});
         });
     }
 
@@ -86,23 +86,21 @@ export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemB
         window.parent.document.dispatchEvent(scoreEvent);
     }
 
-    getNamespaces = () => {
-        return new Promise((resolve, reject) => {
-            const req = new XMLHttpRequest();
-            req.open('GET', "/renderitem/namespaces", false);
-            req.setRequestHeader("Content-Type", "application/json");
-            req.onerror = event => reject(event.error);
-            req.onload = event => {
-                console.log(event);
-                if (req.status === 200) {
-                    resolve(req.response);
-                }
-                else {
-                    reject(Error(req.statusText));
-                }
-            };
-            req.send();
-        });
+    async fetchNamespaces() {
+        const prom = namespacesClient();
+        const promiseWrapper = this.subscription.add('namespacesClient', prom);
+
+        return promiseWrapper.promise;
+    }
+
+    getItemFromUr () {
+        const queryString = this.props.location.toString().split('?')[1];
+        if(queryString) {
+
+        } else {
+
+        }
+
     }
 
     render() {
@@ -113,7 +111,7 @@ export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemB
                     aboutItemRevisionClient={aboutItemRevisionClient}
                     revisionsClient={revisionsClient}
                     sectionsClient={sectionsClient}
-                    namespacesClient={namespacesClient}
+                    namespaces={this.state.namespaces}
                     itemExistsClient={itemExistsClient}
                     itemViewUrl={this.state.itemUrl}
                     setUrl={this.setItemUrl}
