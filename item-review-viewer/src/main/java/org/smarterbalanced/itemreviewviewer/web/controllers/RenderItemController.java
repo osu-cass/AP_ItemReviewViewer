@@ -248,8 +248,9 @@ public class RenderItemController {
     public ResponseEntity<ItemModel[]> checkExistenceOfItems(@RequestBody ItemModel[] items) {
         for (ItemModel item : items) {
             try {
-                if (StringUtils.isEmpty(item.getBankKey()))
+                if (StringUtils.isEmpty(item.getBankKey())) {
                     item.setBankKey(GitLabUtils.getBankKeyByNamespace(item.getNamespace()));
+                }
 
                 item.setExists(_gitLabService.isItemExists(item));
             } catch (Exception e) {

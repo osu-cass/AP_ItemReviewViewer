@@ -168,6 +168,10 @@ public class GitLabService implements IGitLabService {
         String noBankKeyItemId = GitLabUtils.extractItemId(namespace, itemDirName);
         if (!noBankKeyItemId.equals(itemDirName)) {
             String itemName = itemDirName.toLowerCase();
+            if(itemName.split("-").length > 3){
+                String itemSplit[] = itemName.split("-");
+                itemName = itemSplit[0] + "-" + itemSplit[1] + "-" + itemSplit[2];
+            }
             _logger.info("No BankKey in namespace: " + namespace + " | itemNumber: " + itemDirName);
             String orgFilePath = _contentPath + "/" + noBankKeyItemId + XML_EXTENSION;
             String newFilePath = _contentPath + "/" + itemName + XML_EXTENSION;
