@@ -2,7 +2,7 @@ import * as React from "react";
 import {ItemBankContainerProps, ItemRevisionModel, ItemBankContainer, NamespaceModel, Subscription} from "@osu-cass/sb-components";
 import {RouteComponentProps} from "react-router";
 
-import * as QueryParser from  'query-string';
+import { parse } from  'query-string';
 
 import {
     accessibilityClient,
@@ -54,7 +54,7 @@ export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemB
 
     setItemUrl = (item: ItemRevisionModel) => {
         const { itemKey, bankKey, isaap, revision, section } = item;
-        const itemUrl = `${window.location}ivs/items?ids=${bankKey}-${itemKey}`;
+        const itemUrl = `${window.location.origin}/ivs/items?ids=${bankKey}-${itemKey}`;
         if (revision) {
             itemUrl.concat(itemUrl, `&revision=${revision}`);
         }
@@ -93,14 +93,33 @@ export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemB
         return promiseWrapper.promise;
     }
 
-    getItemFromUr () {
-        const queryString = this.props.location.toString().split('?')[1];
-        if(queryString) {
+    findBankKeyByNamespace(namespace: string) {
+        const { namespaces } = this.state;
+        let bankKey: number | undefined;
 
-        } else {
+        const found = namespaces.find(s => s.name.toLowerCase() === namespace.toLowerCase());
+        if (found) bankKey = found.bankKey;
 
+        return bankKey;
+    }
+
+    getItemFromUrl () {
+        const items: ItemRevisionModel[] = [];
+        const parsedItem: ItemRevisionModel = parse(this.props.location.search);
+        let itemUrl = this.state.itemUrl;
+        if (parsedItem && parsedItem.itemKey) {
+            if (!parsedItem.bankKey && parsedItem.namespace) {
+                parsedItem.bankKey = this.findBankKeyByNamespace(parsedItem.namespace);
+            }
+
+            if (!parsedItem.section) parsedItem.section = 'SIW'; // NOTE: set 'SIW' as default
+            items.push(parsedItem);
+
+            itemUrl = `ivs/items?ids=${parsedItem.bankKey}-${parsedItem.itemKey}`;
         }
+        items.push({});
 
+        return items;
     }
 
     render() {
@@ -116,7 +135,7 @@ export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemB
                     itemViewUrl={this.state.itemUrl}
                     setUrl={this.setItemUrl}
                     resetUrl={this.resetUrl}
-                    items={[{}]}
+                    items={this.getItemFromUrl()}
                 />
             </div>
         );
