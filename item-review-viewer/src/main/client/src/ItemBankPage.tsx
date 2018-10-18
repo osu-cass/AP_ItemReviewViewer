@@ -123,6 +123,12 @@ export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemB
     }
 
     render() {
+        const items = this.getItemFromUrl();
+        let itemUrl = this.state.itemUrl;
+        if(items.length > 1) {
+            itemUrl = `ivs/items?ids=${items[0].bankKey}-${items[0].itemKey}`;
+        }
+
         return (
             <div>
                 <ItemBankContainer
@@ -132,10 +138,10 @@ export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemB
                     sectionsClient={sectionsClient}
                     namespaces={this.state.namespaces}
                     itemExistsClient={itemExistsClient}
-                    itemViewUrl={this.state.itemUrl}
+                    itemViewUrl={itemUrl}
                     setUrl={this.setItemUrl}
                     resetUrl={this.resetUrl}
-                    items={this.getItemFromUrl()}
+                    items={items}
                 />
             </div>
         );
