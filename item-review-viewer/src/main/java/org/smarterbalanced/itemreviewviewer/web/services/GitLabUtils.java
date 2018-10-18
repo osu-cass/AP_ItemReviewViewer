@@ -113,8 +113,9 @@ public class GitLabUtils {
         return _getGitLabIrvUrl(namespace) + itemNumber + "/repository/archive.zip?private_token=" + _getPrivateToken();
     }
 
-    private static String _getItemCommitUrl(String namespace, String itemName, String commitId) {
-        return _getGitLabIrvUrl(namespace) + itemName + "/repository/archive.zip?private_token=" + _getPrivateToken() + "&sha=" + commitId;
+    private static String _getItemCommitUrl(String namespace, String itemNumber, String commitId) {
+        itemNumber = extractItemId(namespace, itemNumber);
+        return _getGitLabIrvUrl(namespace) + itemNumber + "/repository/archive.zip?private_token=" + _getPrivateToken() + "&sha=" + commitId;
     }
 
     public static String getItemCommitsUrl(String namespace, String itemNumber) {

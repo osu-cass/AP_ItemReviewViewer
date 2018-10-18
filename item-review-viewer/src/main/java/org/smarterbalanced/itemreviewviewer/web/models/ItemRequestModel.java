@@ -42,8 +42,8 @@ public class ItemRequestModel {
         this.featureCodes = featureCodes;
         this.accommodations = new ArrayList();
         this.loadFrom = loadFrom;
-        this.revision = revision;
-        this.section = section;
+        this.revision = null;
+        this.section = null;
     }
 
     private void buildAccommodations() {
