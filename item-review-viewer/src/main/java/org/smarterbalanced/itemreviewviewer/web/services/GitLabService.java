@@ -606,7 +606,7 @@ public class GitLabService implements IGitLabService {
                 if (hasBankId) {
                     tutorialId = GitLabUtils.makeDirId(Long.toString(tutorial._bankKey), Long.toString(tutorial._id));
                 } else {
-                    String bankKey = GitLabUtils.namespaceToBankId(namespace);
+                    String bankKey = GitLabUtils.getBankKeyByNamespace(namespace);
                     tutorialId = GitLabUtils.makeDirId(bankKey, Long.toString(tutorial._id));
                 }
 
@@ -623,7 +623,7 @@ public class GitLabService implements IGitLabService {
                     if (hasBankId) {
                         resourceId = GitLabUtils.makeDirId(Long.toString(resource._bankKey), Long.toString(resource._id));
                     } else {
-                        String bankKey = GitLabUtils.namespaceToBankId(namespace);
+                        String bankKey = GitLabUtils.getBankKeyByNamespace(namespace);
                         resourceId = GitLabUtils.makeDirId(bankKey, Long.toString(resource._id));
                     }
 
@@ -651,7 +651,7 @@ public class GitLabService implements IGitLabService {
         String itemDirName = null;
         if (bankKey == null && namespace != null) {
 
-            bankKey = GitLabUtils.namespaceToBankId(namespace);
+            bankKey = GitLabUtils.getBankKeyByNamespace(namespace);
         }
         itemDirName = GitLabUtils.makeStimId(bankKey, id);
         _logger.debug("Starting download of stim: " + id);

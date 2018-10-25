@@ -22,16 +22,9 @@ public class GitLabUtils {
         put("iat-uat", 992);
     }};
 
-    public static String namespaceToBankId(String namespace){
-        int bankKey = (int) noBankKeyNamespaceHash.get(namespace);
-        return Integer.toString(bankKey);
-    }
-
     public static String bankKeyToNameSpace(String bankKey){
-        int key = Integer.parseInt(bankKey);
-        for(Object o:noBankKeyNamespaceHash.entrySet()){
-            Map.Entry entry = (Map.Entry) o;
-            if(entry.getValue() == key){
+        for(Map.Entry entry : noBankKeyNamespaceHash.entrySet()){
+            if((int)entry.getValue() == Integer.parseInt(bankKey)){
                 return (String) entry.getKey();
             }
         }
