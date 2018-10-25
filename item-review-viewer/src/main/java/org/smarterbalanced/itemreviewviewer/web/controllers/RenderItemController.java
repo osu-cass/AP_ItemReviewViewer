@@ -73,9 +73,14 @@ public class RenderItemController {
             @RequestParam(value = "revision", required = false, defaultValue = "") String revision,
             @RequestParam(value = "isaap", required = false, defaultValue = "") String isaapCodes
     ) throws ContentRequestException {
-        if (StringUtils.isEmpty(bankKey)) bankKey = GitLabUtils.getBankKeyByNamespace(namespace);
+        if (StringUtils.isEmpty(bankKey))
+            bankKey = GitLabUtils.getBankKeyByNamespace(namespace);
         String itemId = GitLabUtils.makeDirId(bankKey, itemKey);
-        if (!revision.equals("")) {
+        if (revision.equals("")) {
+            List<ItemCommit> commits = _gitLabService.getItemCommits(namespace, itemId);
+            if (commits.size() > 0)
+                itemId = itemId + "-" + commits.get(0).getId();
+        } else {
             itemId = itemId + "-" + revision;
         }
 
