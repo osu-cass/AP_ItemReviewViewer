@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.config.ItemBankConfig;
 import org.smarterbalanced.itemreviewviewer.web.services.models.Attrib;
+import org.smarterbalanced.itemreviewviewer.web.services.models.ItemCommit;
 import org.smarterbalanced.itemreviewviewer.web.services.models.Metadata;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,7 @@ import org.smarterbalanced.itemreviewviewer.web.services.GitLabService;
 import org.smarterbalanced.itemreviewviewer.web.services.GitLabUtils;
 
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 @Controller
 public class ApiController {
@@ -32,14 +34,14 @@ public class ApiController {
 
     @RequestMapping(value="GetAccessibility", method = RequestMethod.GET)
     @ResponseBody
-    private ResponseEntity<String> getAccessibility(@RequestParam(value="interactionType") String interactionType,
-                                            @RequestParam(value="subject") String subjectCode,
-                                            @RequestParam(value="gradeLevel") String gradeLevels,
-                                            @RequestParam(value = "allowCalculator") String allowCalculator,
-                                             @RequestParam(value = "itemKey") String itemKey,
-                                                    @RequestParam(value = "bankKey") String bankKey) throws JSONException, IOException
-
-    {
+    private ResponseEntity<String> getAccessibility(
+            @RequestParam(value="interactionType") String interactionType,
+            @RequestParam(value="subject") String subjectCode,
+            @RequestParam(value="gradeLevel") String gradeLevels,
+            @RequestParam(value = "allowCalculator") String allowCalculator,
+            @RequestParam(value = "itemKey") String itemKey,
+            @RequestParam(value = "bankKey") String bankKey,
+            @RequestParam(value = "namespace") String namespace) throws JSONException, IOException {
         String url = ItemBankConfig.get("siw.accessibilityUrl");
         if(StringUtils.isEmpty(gradeLevels)){
             url = url + "gradeLevels=1023";
@@ -59,14 +61,16 @@ public class ApiController {
             url = url + "&interactionType=TI";
         }
 
-        String namespace = GitLabUtils.bankKeyToNameSpace(bankKey);
-
         //difference between itemId and itemDirectory is important and should not be overlooked.
         String itemId = GitLabUtils.makeItemId(bankKey,  itemKey);
         String itemDir = GitLabUtils.makeDirId(bankKey, itemKey);
 
-        Metadata meta = _gitLabService.getMetadata(namespace, itemDir);
-        Attrib PT = _gitLabService.getItemData(namespace, itemDir).getItem().getAttribList().getAttrib()[3];
+        List<ItemCommit> commits = _gitLabService.getItemCommits(namespace, itemId);
+        if (commits.size() > 0)
+            itemDir = itemDir + "-" + commits.get(0).getId();
+
+        Metadata meta = _gitLabService.getMetadata(itemDir);
+        Attrib PT = _gitLabService.getItemData(itemDir).getItem().getAttribList().getAttrib()[3];
         if (!PT.getVal().isEmpty()) {
             isPerformanceTask = true;
         }

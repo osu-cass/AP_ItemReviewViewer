@@ -1,13 +1,11 @@
 package org.smarterbalanced.itemreviewviewer.web.services;
 
-import com.amazonaws.services.ecs.model.KeyValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.config.ItemBankConfig;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.Hashtable;
-import java.util.List;
 import java.util.Map;
 
 
@@ -16,6 +14,7 @@ public class GitLabUtils {
 
     // NOTE: This is hardcoded namespaces which do not have bankKey in Gitlab
     //       Remove this once IRiS can work with namespaces
+    // TODO: combining with namespaces from gitlab would be better.
     public static Hashtable<String, Integer> noBankKeyNamespaceHash = new Hashtable<String, Integer>() {{
         put("iat-development", 990);
         put("iat-staging", 991);

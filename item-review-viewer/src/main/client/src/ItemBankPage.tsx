@@ -55,8 +55,9 @@ export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemB
     }
 
     setItemUrl = (item: ItemRevisionModel) => {
-        const { itemKey, bankKey, isaap, revision} = item;
+        const { itemKey, bankKey, isaap, revision, section, namespace } = item;
         let itemUrl = `${window.location.origin}/ivs/items?ids=${bankKey}-${itemKey}`;
+
         if (revision) {
             itemUrl = `${itemUrl}-${revision}`;
         }
@@ -64,6 +65,8 @@ export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemB
         if (isaap) {
             itemUrl = `${itemUrl}&isaap=${isaap}`;
         }
+
+        itemUrl = `${itemUrl}&namespace=${namespace}`;
 
         this.setState({ itemUrl, id: `${bankKey}-${itemKey}`, version: `${revision}` });
     }
@@ -156,7 +159,6 @@ export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemB
 
     render() {
         const items = this.getItemFromUrl();
-        console.log(items);
         let itemUrl = this.state.itemUrl;
         if(items.length > 1) {
             itemUrl = `ivs/items?ids=${items[0].bankKey}-${items[0].itemKey}`;

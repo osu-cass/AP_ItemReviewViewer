@@ -12,6 +12,10 @@ public class ItemIdUtils {
         String id;
         String commitId;
         boolean hasFullId;
+
+        String makeItemFileName() {
+            return String.format("%s-%s-%s", prefix, bankKey, id);
+        }
     }
 
     static ItemId parseItemId(String itemNumbers) {

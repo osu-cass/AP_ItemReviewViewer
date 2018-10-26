@@ -1,6 +1,5 @@
 package org.smarterbalanced.itemreviewviewer.web.content;
 
-import tds.irisshared.content.ContentException;
 import tds.irisshared.content.IContentLocation;
 
 /**

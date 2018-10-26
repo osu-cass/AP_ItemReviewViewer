@@ -55,7 +55,7 @@ public class RenderItemController {
     private ItemReviewScoringService _itemReviewScoringService;
 
     public static String namespacePatchCycle = ItemBankConfig.get("gitlab.namespace.patch.cycle");
-    private static String namespaces;
+    public static String namespaces;
 
     @PostConstruct
     public synchronized void init() throws ContentException {
@@ -79,10 +79,9 @@ public class RenderItemController {
         if (revision.equals("")) {
             List<ItemCommit> commits = _gitLabService.getItemCommits(namespace, itemId);
             if (commits.size() > 0)
-                itemId = itemId + "-" + commits.get(0).getId();
-        } else {
-            itemId = itemId + "-" + revision;
+                revision = commits.get(0).getId();
         }
+        itemId = itemId + "-" + revision;
 
         ObjectMapper mapper = new ObjectMapper();
         String json = "";
@@ -92,7 +91,8 @@ public class RenderItemController {
             meta = _gitLabService.getItemMetadata(namespace, itemId, section);
             json = mapper.writeValueAsString(meta);
         } catch (Exception e) {
-            String err = "Item (" + itemId + ") not found.";
+            String err = "Item (" + itemId + ") in namespace (" + namespace + ") not found.";
+            _logger.error(err, e);
             return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(json, HttpStatus.OK);
@@ -177,10 +177,25 @@ public class RenderItemController {
             @RequestParam(value = "ids", required = true) String[] itemId,
             @RequestParam(value = "revision", required = false, defaultValue = "") String revision,
             @RequestParam(value = "section", required = false, defaultValue = "") String section,
+            @RequestParam(value = "namespace", required = true, defaultValue = "") String namespace,
             @RequestParam(value = "scrollToId", required = false, defaultValue = "") String scrollToId,
             @RequestParam(value = "isaap", required = false, defaultValue = "") String accommodationCodes,
             @RequestParam(value = "readOnly", required = false, defaultValue = "false") boolean readOnly,
             @RequestParam(value = "loadFrom", required = false, defaultValue = "") String loadFrom) {
+        String[] keys = itemId[0].split("-");
+
+        // if revision doesn't exists, find the latest
+        if (keys.length < 3) {
+            StringBuilder itemDir = new StringBuilder("Item");
+            for (String key : keys) {
+                itemDir.append("-").append(key);
+            }
+
+            List<ItemCommit> commits = _gitLabService.getItemCommits(namespace, itemDir.toString());
+            if (commits.size() > 0)
+                itemId[0] = itemId[0] + "-" + commits.get(0).getId();
+        }
+
         HashSet<String> codeSet = new HashSet<>(Arrays.asList(accommodationCodes.split(";")));
         ArrayList<String> codes = new ArrayList<>(codeSet);
         ItemRequestModel item;

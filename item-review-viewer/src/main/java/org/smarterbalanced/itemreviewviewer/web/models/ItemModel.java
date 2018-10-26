@@ -3,7 +3,7 @@ package org.smarterbalanced.itemreviewviewer.web.models;
 public class ItemModel {
     private String namespace;
     private String bankKey;
-    private String ItemKey;
+    private String itemKey;
     private boolean isExists;
 
     public String getNamespace() {
@@ -23,11 +23,11 @@ public class ItemModel {
     }
 
     public String getItemKey() {
-        return ItemKey;
+        return itemKey;
     }
 
     public void setItemKey(String itemKey) {
-        ItemKey = itemKey;
+        this.itemKey = itemKey;
     }
 
     public boolean isExists() {
@@ -43,7 +43,7 @@ public class ItemModel {
         return "ItemModel{" +
                 "namespace='" + namespace + '\'' +
                 ", bankKey='" + bankKey + '\'' +
-                ", ItemKey='" + ItemKey + '\'' +
+                ", itemKey='" + itemKey + '\'' +
                 ", isExists=" + isExists +
                 '}';
     }

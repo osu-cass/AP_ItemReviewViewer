@@ -18,25 +18,25 @@ public interface IGitLabService {
 
     boolean isItemExistsLocally(String itemNumber);
 
-    void unzip(String namespace, String itemNumber) throws IOException;
+    void unzip(String namespace, String itemNumber, boolean isAssociatedItem) throws IOException;
 
     List<Namespace> getNamespaces();
 
-    ItemDocument getItemScoring(String namespace, String itemNumber);
+    ItemDocument getItemScoring(String itemNumber);
 
     List<ItemCommit> getItemCommits(String namespace, String itemNumber) throws GitLabException;
 
     List<ItemCommit> getItemCommits(String namespace, String type, String bankId, String itemNumber) throws GitLabException;
 
-    Metadata getMetadata(String namespace, String itemNumber) throws GitLabException;
+    Metadata getMetadata(String itemNumber) throws GitLabException;
 
-    ItemMetadataModel getItemMetadata(String namespace, String itemId, String section) throws GitLabException, FileNotFoundException;
+    ItemMetadataModel getItemMetadata(String namespace, String itemId, String section) throws GitLabException, IOException;
 
-    ItemRelease getItemData(String namespace, String itemId) throws GitLabException;
+    ItemRelease getItemData(String itemId) throws GitLabException;
 
     String getClaim(String itemNumber) throws GitLabException;
 
     boolean isItemAccomExists(String itemNumber, String ext);
 
-    boolean isItemExists(ItemModel item);
+    boolean isItemExists(ItemModel item) throws IOException;
 }
