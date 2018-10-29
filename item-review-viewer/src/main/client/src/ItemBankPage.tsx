@@ -2,8 +2,6 @@ import * as React from "react";
 import {ItemBankContainerProps, ItemRevisionModel, ItemBankContainer, NamespaceModel, Subscription} from "@osu-cass/sb-components";
 import {RouteComponentProps} from "react-router";
 
-import { parse } from  'query-string';
-
 import {
     accessibilityClient,
     aboutItemRevisionClient,
