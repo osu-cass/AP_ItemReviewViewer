@@ -8,7 +8,6 @@ import {
     accessibilityClient,
     aboutItemRevisionClient,
     revisionsClient,
-    sectionsClient,
     namespacesClient,
     itemExistsClient
 } from "./Clients/clients";
@@ -26,6 +25,11 @@ interface ItemBankPageState {
 interface ScoreDetails extends Object {
     error: boolean;
     score: number;
+}
+
+interface KeyValuePair {
+    key: string;
+    value: string;
 }
 
 
@@ -53,14 +57,10 @@ export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemB
     }
 
     setItemUrl = (item: ItemRevisionModel) => {
-        const { itemKey, bankKey, isaap, revision, section } = item;
+        const { itemKey, bankKey, isaap, revision} = item;
         let itemUrl = `${window.location.origin}/ivs/items?ids=${bankKey}-${itemKey}`;
         if (revision) {
             itemUrl = `${itemUrl}-${revision}`;
-        }
-
-        if (section) {
-            itemUrl = `${itemUrl}&section=${section}`;
         }
 
         if (isaap) {
@@ -93,29 +93,63 @@ export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemB
         return promiseWrapper.promise;
     }
 
-    findBankKeyByNamespace(namespace: string) {
+    findNamespaceObject(bankKey?: number, namespace?: string) : NamespaceModel | undefined {
         const { namespaces } = this.state;
-        let bankKey: number | undefined;
 
-        const found = namespaces.find(s => s.name.toLowerCase() === namespace.toLowerCase());
-        if (found) bankKey = found.bankKey;
+        return namespaces.find(s => s.name.toLowerCase() === (namespace  ? namespace.toLowerCase() : "") || s.bankKey === bankKey);
+    }
 
-        return bankKey;
+    parseUrl = (search: string): ItemRevisionModel | undefined  => {
+        const searchSplit = search.split("&");
+        const dic: KeyValuePair[] = [];
+        //tslint:disable
+        searchSplit.forEach( function (param) {
+            const keyValuePair = param.split("=");
+            if(keyValuePair.length === 2) {
+                dic.push({key: keyValuePair[0], value: keyValuePair[1]});
+            }
+        });
+
+        //tslint:disable
+        const itemKey = dic.find(function(kv) { return kv.key === 'itemKey';});
+        const bankKey = dic.find(function(kv) { return kv.key === 'bankKey';});
+        const namespace = dic.find(function(kv) { return kv.key === 'namespace';});
+        const revision = dic.find(function (kv) { return  kv.key === 'revision';});
+
+        let item : ItemRevisionModel | undefined = {
+            itemKey: itemKey ? parseInt(itemKey.value, 10) : undefined,
+            bankKey: bankKey ? parseInt(bankKey.value, 10) : undefined,
+            namespace: namespace ? namespace.value : undefined,
+            revision: revision ? revision.value : undefined,
+        };
+
+        if (!item.itemKey && (item.bankKey || item.namespace)) {
+            item = undefined;
+        }
+
+        return item;
     }
 
     getItemFromUrl () {
-        const items: ItemRevisionModel[] = [];
-        const parsedItem: ItemRevisionModel = parse(this.props.location.search);
-        let itemUrl = this.state.itemUrl;
-        if (parsedItem && parsedItem.itemKey) {
-            if (!parsedItem.bankKey && parsedItem.namespace) {
-                parsedItem.bankKey = this.findBankKeyByNamespace(parsedItem.namespace);
+        let items: ItemRevisionModel[] = [];
+        if(this.props.location.search){
+            let parsedItem: ItemRevisionModel | undefined = this.parseUrl(this.props.location.search.split('?')[1]);
+            let itemUrl = this.state.itemUrl;
+            if (parsedItem && parsedItem.itemKey) {
+                if (!parsedItem.bankKey && parsedItem.namespace) {
+                    const namespaceObject = this.findNamespaceObject(undefined, parsedItem.namespace);
+                    parsedItem = {...parsedItem, bankKey: namespaceObject ? namespaceObject.bankKey : undefined };
+                } else if(parsedItem.bankKey && !parsedItem.namespace){
+                    const namespaceObject = this.findNamespaceObject(parsedItem.bankKey);
+                    console.log(namespaceObject);
+                    parsedItem = {...parsedItem, namespace: namespaceObject ? namespaceObject.name : undefined};
+                    console.log(parsedItem);
+                }
+
+                items = [parsedItem];
+
+                itemUrl = `ivs/items?ids=${parsedItem.bankKey}-${parsedItem.itemKey}`;
             }
-
-            if (!parsedItem.section) parsedItem.section = 'SIW'; // NOTE: set 'SIW' as default
-            items.push(parsedItem);
-
-            itemUrl = `ivs/items?ids=${parsedItem.bankKey}-${parsedItem.itemKey}`;
         }
         items.push({});
 
@@ -124,6 +158,7 @@ export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemB
 
     render() {
         const items = this.getItemFromUrl();
+        console.log(items);
         let itemUrl = this.state.itemUrl;
         if(items.length > 1) {
             itemUrl = `ivs/items?ids=${items[0].bankKey}-${items[0].itemKey}`;
@@ -135,7 +170,6 @@ export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemB
                     accessibilityClient={accessibilityClient}
                     aboutItemRevisionClient={aboutItemRevisionClient}
                     revisionsClient={revisionsClient}
-                    sectionsClient={sectionsClient}
                     namespaces={this.state.namespaces}
                     itemExistsClient={itemExistsClient}
                     itemViewUrl={itemUrl}
