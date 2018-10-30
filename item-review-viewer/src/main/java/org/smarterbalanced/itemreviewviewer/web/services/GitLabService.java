@@ -156,12 +156,12 @@ public class GitLabService implements IGitLabService {
 
         _logger.info("Unzipping the File:" + zipFilePath + " to Location:" + CONTENT_LOCATION + " Success");
 
-        _renameItemFolder(namespace, itemDirName, zipFilePath, rootDirectoryPath);
+        _renameItemFolder(itemDirName, zipFilePath, rootDirectoryPath);
         _renameItemFile(namespace, itemDirName, isAssociatedItem);
 
     }
 
-    private void _renameItemFolder(String namespace, String itemDirName, String zipFilePath, String rootDirectoryPath) {
+    private void _renameItemFolder(String itemDirName, String zipFilePath, String rootDirectoryPath) {
         String _contentPath = CONTENT_LOCATION + itemDirName;
 
         //rename root directory to Item-blankid-id-version format
@@ -205,8 +205,12 @@ public class GitLabService implements IGitLabService {
                 !isAssociatedItem) {
             String itemId = itemDirName.toLowerCase();
             String qualifiedItemId = GitLabUtils.makeQualifiedItemId(itemId, null);
-            IITSDocument document = _contentBuilder.getITSDocument(qualifiedItemId);
-            _downloadAssociatedItems(namespace, document, hasBankId, itemDirName);
+            try {
+                IITSDocument document = _contentBuilder.getITSDocument(qualifiedItemId);
+                _downloadAssociatedItems(namespace, document, hasBankId);
+            } catch (Exception e) {
+                _logger.info("Failed to render document (" + qualifiedItemId + ")", e);
+            }
         }
     }
 
@@ -508,14 +512,22 @@ public class GitLabService implements IGitLabService {
 
     public ItemMetadataModel getItemMetadata(String namespace, String itemId, String section) throws GitLabException, IOException {
 
-        List<ItemScoringOptionModel> opts = new ArrayList<ItemScoringOptionModel>();
 
         if (!downloadItem(namespace, itemId, false)) {
             throw new GitLabException("Failed downloading (item: " + itemId + ") (namespace: " + namespace +")");
         }
 
-        Metadata md = getMetadata(itemId);
+        Metadata md;
+        try {
+            md = getMetadata(itemId);
+        } catch (GitLabException e) {
+            String[] parts = itemId.split("-");
+            String baseItemName = parts[0] + "-" + parts[1] + "-" + parts[2];
+            md = getMetadata(baseItemName);
+        }
         ItemDocument item = getItemScoring(itemId);
+
+        List<ItemScoringOptionModel> opts = new ArrayList<ItemScoringOptionModel>();
 
         List<RubricModel> rubrics = new ArrayList<RubricModel>();
         List<ItemScoringModel> contentList = item.item.content;
@@ -531,9 +543,9 @@ public class GitLabService implements IGitLabService {
                         rubrics.add(rubric);
                     }
                 }
-
             }
         }
+
         ItemScoringModel score = new ItemScoringModel(
                 null,
                 null,
@@ -557,7 +569,7 @@ public class GitLabService implements IGitLabService {
         return false;
     }
 
-    private void _downloadAssociatedItems(String namespace, IITSDocument doc, boolean hasBankId, String orgDirName) throws GitLabException {
+    private void _downloadAssociatedItems(String namespace, IITSDocument doc, boolean hasBankId) throws GitLabException {
         ITSTutorial tutorial = doc.getTutorial();
         List<ITSResource> resources = doc.getResources();
         long stimulusKey = doc.getStimulusKey();
@@ -611,7 +623,7 @@ public class GitLabService implements IGitLabService {
 
     //Downloads the stimulus for a given item.
     private void _downloadStim(String namespace, String bankKey, String id) {
-        String itemDirName = null;
+        String itemDirName;
         if (bankKey == null && namespace != null) {
 
             bankKey = GitLabUtils.getBankKeyByNamespace(namespace);
