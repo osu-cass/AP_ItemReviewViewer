@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "module": "commonjs",
     "moduleResolution": "node",
-    "target": "es5",
+    "target": "es3",
     "jsx": "react",
     "sourceMap": true,
     "skipDefaultLibCheck": true,

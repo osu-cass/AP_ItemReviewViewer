@@ -65,7 +65,7 @@ public class GitLabService implements IGitLabService {
             ZIP_FILE_LOCATION = SettingsReader.getZipFileLocation();
             // NOTE: Do not change key 'iris.ContentPath' in settings-mysql.xml because iris uses it
             // irv's settings-mysql.xml overwrites iris's because we use overlays.
-            CONTENT_LOCATION = SettingsReader.readIrisContentPath() + "gitlab/";
+            CONTENT_LOCATION = SettingsReader.readIrisContentPath();
             _contentBuilder = SpringApplicationContext.getBean("iContentBuilder", IContentBuilder.class);
         } catch (Exception exp) {
             _logger.error("Error loading zip file location", exp);

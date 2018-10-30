@@ -12,6 +12,6 @@ public class ContentLocation implements IContentLocation {
     @Override
     public String getFileLocation(String id) {
 
-        return "gitlab/";
+        return "";
     }
 }
