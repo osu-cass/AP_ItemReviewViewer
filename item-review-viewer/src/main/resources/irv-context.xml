@@ -44,7 +44,6 @@
     <beans:bean id="tdsSettings" class="TDS.Shared.Configuration.TDSSettings" scope="prototype" />
     <beans:bean id="configurationService" class="tds.dll.common.performance.services.impl.ConfigurationServiceImpl" scope="prototype" />
 
-
     <context:component-scan base-package="tds.irisshared.repository" />
     <context:component-scan base-package="tds.student.sql.singletons" />
     <context:component-scan base-package="tds.student.services">

@@ -55,8 +55,7 @@
     </bean>
 
     <!-- Handler deciding where to redirect user after successful login -->
-    <bean id="successRedirectHandler"
-          class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+    <bean id="successRedirectHandler" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
         <property name="defaultTargetUrl" value="${iris.security.saml.baseUrl}"/>
         <property name="targetUrlParameter" value="${iris.security.saml.baseUrl}"/>
     </bean>
@@ -99,7 +98,7 @@
 
     <!-- Central storage of cryptographic keys -->
     <bean id="keyManager" class="org.springframework.security.saml.key.JKSKeyManager">
-        <constructor-arg value="WEB-INF/samlKeystore.jks"/>
+        <constructor-arg value="WEB-INF/irv-prod.jks"/>
         <constructor-arg type="java.lang.String" value="${iris.security.saml.keystore.pass}" />
         <constructor-arg>
             <map>
@@ -144,7 +143,6 @@
 	    <property name="bindingsSSO">
 	        <list>
 	            <value>redirect</value>
-	            <value>artifact</value>
                 <value>post</value>
 	        </list>
         </property>
@@ -159,7 +157,7 @@
     <!-- Configure HTTP Client to accept certificates from the keystore for HTTPS verification -->
     <!--
     <bean class="org.springframework.security.saml.trust.httpclient.TLSProtocolConfigurer">
-        <property name="sslHostnameVerification" value="default"/>
+        <property name="sslHostnameVerification" value="allowAll"/>
     </bean>
     -->
 
@@ -199,19 +197,20 @@
                 </bean> -->
                 <!-- Example of file system metadata without Extended Metadata -->
                 <!-- bean for local development -->
+                <!--
                 <bean class="org.opensaml.saml2.metadata.provider.FilesystemMetadataProvider">
                     <constructor-arg>
-                        <value type="java.io.File">/WEB-INF/metadata.xml</value>
+                        <value type="java.io.File">/WEB-INF/metadata-prod.xml</value>
                     </constructor-arg>
                     <property name="parserPool" ref="parserPool"/>
                 </bean>
-
+                -->
                 <bean class="org.opensaml.saml2.metadata.provider.FilesystemMetadataProvider">
                     <constructor-arg>
                         <!-- For windows uncomment out
                         <value type="java.io.File">/WEB-INF/metadata.xml</value> -->
                         <!-- for windows comment out -->
-                        <value type="java.io.File">webapps/ROOT/WEB-INF/metadata.xml</value>
+                        <value type="java.io.File">webapps/ROOT/WEB-INF/metadata-prod.xml</value>
                     </constructor-arg>
                     <property name="parserPool" ref="parserPool"/>
                 </bean>
@@ -235,7 +234,7 @@
 
     <bean id="contextProvider" class="org.springframework.security.saml.context.SAMLContextProviderLB">
         <property name="scheme" value="https" />
-        <property name="serverName" value="irv-stage.smarterbalanced.org"/>
+        <property name="serverName" value="${iris.security.saml.contextUrl}"/>
         <property name="serverPort" value="8080"/>
         <property name="includeServerPortInRequestURL" value="false"/>
         <property name="contextPath" value="/"/>

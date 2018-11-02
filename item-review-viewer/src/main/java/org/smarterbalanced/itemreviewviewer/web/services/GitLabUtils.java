@@ -19,6 +19,7 @@ public class GitLabUtils {
         put("iat-development", 990);
         put("iat-staging", 991);
         put("iat-uat", 992);
+        put("iat-prod", 993);
     }};
 
     public static String bankKeyToNameSpace(String bankKey){
@@ -128,6 +129,9 @@ public class GitLabUtils {
     }
 
     public static String getProjectsSearchUrl(String searchKey) {
+        if(searchKey.contains(" ")){
+            searchKey = searchKey.replace(" ", "+");
+        }
         return _getGitLabBaseUrl() + "/projects?private_token=" + _getPrivateToken() + "&search=" + searchKey;
     }
 
