@@ -13,8 +13,8 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+
     <!-- Start: Following filter is added for integration SSO -->
-    <!--
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -24,19 +24,8 @@
         <url-pattern>/*</url-pattern>
         <url-pattern>/saml/*</url-pattern>
     </filter-mapping>
-    -->
     <!-- End: following filter is added for integrating SSO -->
     <!-- redis connection filter -->
-    <filter>
-        <filter-name>springSessionRepositoryFilter</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>springSessionRepositoryFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>ERROR</dispatcher>
-    </filter-mapping>
 
     <error-page>
         <exception-type>javax.servlet.ServletException</exception-type>

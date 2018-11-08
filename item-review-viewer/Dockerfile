@@ -16,6 +16,9 @@ WORKDIR /usr/local/tomcat/
 COPY context.xml ./conf
 RUN  rm -rf webapps/*
 
+
+RUN rm ./conf/server.xml
+COPY server.xml ./conf
 COPY ./target/item-review-viewer.war ./webapps
 RUN mv ./webapps/item-review-viewer.war ./webapps/$contextName.war
 

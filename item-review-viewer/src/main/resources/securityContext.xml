@@ -11,7 +11,6 @@
     <context:annotation-config/>
     
     <context:property-placeholder location="classpath:settings-mysql.xml" ignore-unresolvable="true" order="900" local-override="true" />
-    
 
     <!-- Scan for auto-wiring classes in spring saml packages -->
     <context:component-scan base-package="org.springframework.security.saml"/>
@@ -36,7 +35,7 @@
     <!-- Secured pages with SAML as entry point -->
     <security:http entry-point-ref="samlEntryPoint" use-expressions="true">
         <!--Must set roles here-->
-        <security:intercept-url pattern="/**" access="hasAnyRole('ROLE_View Item')"/>
+        <security:intercept-url pattern="/**" access="hasAnyRole('ROLE_View Item')" requires-channel="https"/>
         <security:custom-filter before="FIRST" ref="metadataGeneratorFilter"/>
         <security:custom-filter after="BASIC_AUTH_FILTER" ref="samlFilter"/>
     </security:http>
@@ -98,7 +97,7 @@
 
     <!-- Central storage of cryptographic keys -->
     <bean id="keyManager" class="org.springframework.security.saml.key.JKSKeyManager">
-        <constructor-arg value="WEB-INF/irv-prod.jks"/>
+        <constructor-arg value="${iris.security.saml.keyStorePath}"/>
         <constructor-arg type="java.lang.String" value="${iris.security.saml.keystore.pass}" />
         <constructor-arg>
             <map>
@@ -206,12 +205,10 @@
                 </bean>
                 -->
                 <bean class="org.opensaml.saml2.metadata.provider.FilesystemMetadataProvider">
-                    <constructor-arg>
+                    <constructor-arg value="${iris.security.saml.metaDataPath}"/>
                         <!-- For windows uncomment out
                         <value type="java.io.File">/WEB-INF/metadata.xml</value> -->
                         <!-- for windows comment out -->
-                        <value type="java.io.File">webapps/ROOT/WEB-INF/metadata-prod.xml</value>
-                    </constructor-arg>
                     <property name="parserPool" ref="parserPool"/>
                 </bean>
             </list>
@@ -233,11 +230,16 @@
     <!-- Provider of default SAML Context -->
 
     <bean id="contextProvider" class="org.springframework.security.saml.context.SAMLContextProviderLB">
-        <property name="scheme" value="https" />
+        <property name="scheme" value="${iris.security.saml.protocol}" />
         <property name="serverName" value="${iris.security.saml.contextUrl}"/>
         <property name="serverPort" value="8080"/>
         <property name="includeServerPortInRequestURL" value="false"/>
         <property name="contextPath" value="/"/>
+        <property name="storageFactory" ref="storageFactory"/>
+    </bean>
+
+    <bean id="storageFactory" class="org.springframework.security.saml.storage.EmptyStorageFactory">
+
     </bean>
 
     <!-- Processing filter for WebSSO profile messages -->
