@@ -124,7 +124,12 @@ export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemB
             revision: revision ? revision.value : undefined,
         };
 
-        if (!item.itemKey && (item.bankKey || item.namespace)) {
+        if(!item.bankKey && item.namespace){
+            const namespaceObject: NamespaceModel | undefined = this.findNamespaceObject(undefined, item.namespace);
+            item.bankKey = namespaceObject ? namespaceObject.bankKey : undefined;
+        }
+
+        if (!item.itemKey && item.bankKey  && item.namespace) {
             item = undefined;
         }
 
@@ -136,7 +141,7 @@ export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemB
         if(this.props.location.search){
             let parsedItem: ItemRevisionModel | undefined = this.parseUrl(this.props.location.search.split('?')[1]);
             let itemUrl = this.state.itemUrl;
-            if (parsedItem && parsedItem.itemKey) {
+            if (parsedItem && parsedItem.itemKey && parsedItem.namespace) {
                 if (!parsedItem.bankKey && parsedItem.namespace) {
                     const namespaceObject = this.findNamespaceObject(undefined, parsedItem.namespace);
                     parsedItem = {...parsedItem, bankKey: namespaceObject ? namespaceObject.bankKey : undefined };
@@ -148,8 +153,6 @@ export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemB
                 }
 
                 items = [parsedItem];
-
-                itemUrl = `ivs/items?ids=${parsedItem.bankKey}-${parsedItem.itemKey}`;
             }
         }
         items.push({});
@@ -161,7 +164,7 @@ export class ItemBankPage extends React.Component<RouteComponentProps<{}>, ItemB
         const items = this.getItemFromUrl();
         let itemUrl = this.state.itemUrl;
         if(items.length > 1) {
-            itemUrl = `ivs/items?ids=${items[0].bankKey}-${items[0].itemKey}`;
+            itemUrl = `ivs/items?ids=${items[0].bankKey}-${items[0].itemKey}&namespace=${items[0].namespace}`;
         }
 
         return (
