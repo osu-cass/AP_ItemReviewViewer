@@ -7,6 +7,9 @@ import java.util.List;
 import org.apache.commons.lang.math.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -41,6 +44,7 @@ public class UserDetailsServiceImpl implements SAMLUserDetailsService {
 	 */
 	public UserDetailsServiceImpl() {
 		// TODO Auto-generated constructor stub
+		allowedRoles = this.getAllowedRoles();
 		
 	}
 
@@ -68,11 +72,14 @@ public class UserDetailsServiceImpl implements SAMLUserDetailsService {
         		String userRole = roleStringArray[2];
         		userRoles.add(userRole);
         		
-        		if(!isUserAuthorized)
-        			isUserAuthorized = allowedRoles.contains(userRole);
+        		if(!isUserAuthorized) {
+					isUserAuthorized = allowedRoles.contains(userRole);
+				}
         		
     		}
-        	
+
+    		System.out.println("User roles for : " + username + ": " + userRoles);
+
         	LOGGER.info("User roles for : " + username + ": " + userRoles);
         	
         	if(isUserAuthorized)
@@ -100,7 +107,7 @@ public class UserDetailsServiceImpl implements SAMLUserDetailsService {
 						return "ROLE_View Item";
 					}
 				});
-            }	
+            }
             
             //Ideally it should be fetched from database and populated instance of
             // #org.springframework.security.core.userdetails.User should be returned from this method
@@ -118,11 +125,14 @@ public class UserDetailsServiceImpl implements SAMLUserDetailsService {
     }
 
 	public List<String> getAllowedRoles() {
-		return allowedRoles;
+		List<String> roles = new ArrayList<String>();
+		roles.add("Item Bank Viewer");
+		return roles;
 	}
+
 
 	public void setAllowedRoles(List<String> allowedRoles) {
 		this.allowedRoles = allowedRoles;
 	}
-	
+
 }

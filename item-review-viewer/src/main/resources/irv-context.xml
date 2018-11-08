@@ -22,6 +22,7 @@
     <beans:import resource="classpath:opentestsystem.shared.web-context-module.xml" />
     <beans:import resource="classpath:opentestsystem.itemrenderer.xml" />
     <beans:import resource="classpath:opentestsystem.spellcheck-context-module.xml" />
+    <beans:import resource="securityContext.xml" />
     <!-- TODO Shiva: Is this Spring complaining here because it cannot find the definition for appSettings locally even though it has been defined at another location? This does seem to work currently when
         run. -->
 
@@ -42,7 +43,6 @@
     <!-- TDSSettings bean. This gives access to clientname and any other info such as session type etc. -->
     <beans:bean id="tdsSettings" class="TDS.Shared.Configuration.TDSSettings" scope="prototype" />
     <beans:bean id="configurationService" class="tds.dll.common.performance.services.impl.ConfigurationServiceImpl" scope="prototype" />
-
 
     <context:component-scan base-package="tds.irisshared.repository" />
     <context:component-scan base-package="tds.student.sql.singletons" />

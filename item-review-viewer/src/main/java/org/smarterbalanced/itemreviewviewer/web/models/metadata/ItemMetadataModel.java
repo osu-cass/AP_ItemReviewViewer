@@ -5,6 +5,7 @@ import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoringModel;
 
 public class ItemMetadataModel {
 
+    private String namespace;
     private String itemKey;
     private String bankKey;
     private String revision;
@@ -16,13 +17,24 @@ public class ItemMetadataModel {
 
     }
 
-    public ItemMetadataModel(String itemKey, String bankKey, String revision, String section, AboutItemMetadataModel aboutItemMetadataModel, ItemScoringModel sampleItemScoring){
+    public ItemMetadataModel(String namespace, String itemKey, String bankKey, String revision, String section,
+                             AboutItemMetadataModel aboutItemMetadataModel, ItemScoringModel sampleItemScoring){
+        this.namespace = namespace;
         this.itemKey = itemKey;
         this.bankKey = bankKey;
         this.revision = revision;
         this.section = section;
         this.aboutItemMetadataModel = aboutItemMetadataModel;
         this.sampleItemScoring = sampleItemScoring;
+    }
+
+    @JsonProperty("namespace")
+    public String getNamespace() {
+        return namespace;
+    }
+
+    public void setNamespace(String namespace) {
+        this.namespace = namespace;
     }
 
     @JsonProperty("itemKey")

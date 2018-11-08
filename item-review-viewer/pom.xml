@@ -5,7 +5,7 @@
     <artifactId>item-review-viewer</artifactId>
     <packaging>war</packaging>
     <name>item-review-viewer</name>
-    <version>0.0.1</version>
+    <version>1.0.0</version>
 
     <repositories>
         <repository>
@@ -70,6 +70,13 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.7</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.6.3</version>
         </dependency>
 
         <dependency>
@@ -113,6 +120,8 @@
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <version>1.1.4.RELEASE</version>
         </dependency>
+
+                
 
         <!-- Operating System Info -->
         <dependency>
@@ -181,17 +190,43 @@
         <dependency>
             <groupId>org.smarterbalanced</groupId>
             <artifactId>itemviewerservice</artifactId>
-            <version>3.6.1</version>
+            <version>3.6.3</version>
             <type>war</type>
         </dependency>
 
         <dependency>
             <groupId>org.opentestsystem.delivery</groupId>
             <artifactId>iris-shared</artifactId>
-            <version>3.6.2</version>
+            <version>3.6.5</version>
         </dependency>
 
+        
+
     </dependencies>
+
+    <profiles>
+        <profile>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <id>production</id>
+            <properties>
+                <target.env>prod</target.env>
+            </properties>
+        </profile>
+        <profile>
+            <id>staging</id>
+            <properties>
+                <target.env>staging</target.env>
+            </properties>
+        </profile>
+        <profile>
+            <id>development</id>
+            <properties>
+                <target.env>dev</target.env>
+            </properties>
+        </profile>
+    </profiles>
 
     <build>
         <finalName>item-review-viewer</finalName>
@@ -208,6 +243,27 @@
                         </overlay>
                     </overlays>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <echo>Target Environment: ${target.env}</echo>
+                                <delete file="${project.build.outputDirectory}/application.properties"/>
+                                <copy file="src/main/resources/application.${target.env}.properties"
+                                      tofile="${project.build.outputDirectory}/application.properties"/>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

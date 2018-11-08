@@ -4,29 +4,39 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+import org.smarterbalanced.itemreviewviewer.web.models.ItemModel;
+import org.smarterbalanced.itemreviewviewer.web.services.models.ItemRelease;
 import org.smarterbalanced.itemreviewviewer.web.models.metadata.ItemMetadataModel;
+import org.smarterbalanced.itemreviewviewer.web.services.models.Namespace;
 import org.smarterbalanced.itemreviewviewer.web.services.models.ItemCommit;
 import org.smarterbalanced.itemreviewviewer.web.services.models.ItemDocument;
 import org.smarterbalanced.itemreviewviewer.web.services.models.Metadata;
-import tds.itemrenderer.data.IITSDocument;
 
 public interface IGitLabService {
 
-    boolean downloadItem(String itemNumber) throws GitLabException;
+    boolean downloadItem(String namespace, String itemNumber) throws GitLabException;
 
     boolean isItemExistsLocally(String itemNumber);
 
-    String unzip(String itemNumber) throws IOException;
+    void unzip(String namespace, String itemNumber, boolean isAssociatedItem) throws IOException;
+
+    List<Namespace> getNamespaces();
 
     ItemDocument getItemScoring(String itemNumber);
 
-    List<ItemCommit> getItemCommits(String itemNumber) throws GitLabException;
+    List<ItemCommit> getItemCommits(String namespace, String itemNumber) throws GitLabException;
 
-    List<ItemCommit> getItemCommits(String type, String bankId, String itemNumber) throws GitLabException;
+    List<ItemCommit> getItemCommits(String namespace, String type, String bankId, String itemNumber) throws GitLabException;
 
     Metadata getMetadata(String itemNumber) throws GitLabException;
 
-    ItemMetadataModel getItemMetadata(String itemId, String section) throws GitLabException, FileNotFoundException;
+    ItemMetadataModel getItemMetadata(String namespace, String itemId, String section) throws GitLabException, IOException;
 
-    void downloadAssociatedItems(IITSDocument doc);
+    ItemRelease getItemData(String itemId) throws GitLabException;
+
+    String getClaim(String itemNumber) throws GitLabException;
+
+    boolean isItemAccomExists(String itemNumber, String ext);
+
+    boolean isItemExists(ItemModel item) throws IOException;
 }

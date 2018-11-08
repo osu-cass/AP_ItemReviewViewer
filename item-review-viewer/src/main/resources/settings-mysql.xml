@@ -18,18 +18,10 @@
 	<entry key="tds.itemPreview.passageLayout"></entry>
 	<entry key="tds.itemPreview.configCache.minutes">0</entry>
 	<entry key="tds.itemPreview.configCache.id"></entry>
-
-	<entry key="iris.ContentPath">/home/tomcat7/content/</entry>
+	<entry key="iris.ContentPath">/home/tomcat7/content/gitlab/</entry>
 	<entry key="iris.ZipFileLocation">/home/tomcat7/content/gitlab_archive/</entry>
 	<!-- URL for the Dictionary API used for the Dictionary and Thesaurus accommodations -->
 	<entry key="iris.DictionaryUrl">https://tds.smarterbalanced.org/Dictionary/</entry>
-
-	<entry key="gitlab.private.token">LZ9AWwMujzL3xXa2j4nT</entry>
-	<entry key="gitlab.url">https://gitlab-dev.smarterbalanced.org/api/v3/projects/ItemReviewViewer%2F</entry>
-
-	<entry key="siw.accessibilityUrl">http://siw-dev.cass.oregonstate.edu/Item/GetAccessibility?</entry>
-
-
 	<!-- End Item Preview Settings -->
 	<!-- Start BlackBox Settings -->
 	<!-- legacy settings -->
@@ -46,8 +38,68 @@
 
 	<entry key="EncryptionKey">${tds.iris.EncryptionKey}</entry>
 
+	<!-- Production Settings -->
+	<!--
+	<entry key="iris.security.idp">https://sso.smarterbalanced.org/auth/saml2/jsp/exportmetadata.jsp?realm=/sbac</entry>
+	<entry key="iris.security.idp.logout">https://art.smarterbalanced.org:8443/saml/logout</entry>
+	<entry key="iris.security.idp.entity.id">item_review_viewer</entry>
+	<entry key="iris.security.saml.keystore.cert">irv-prod-sp</entry>
+	<entry key="iris.security.saml.keystore.pass">oh9Ahkee</entry>
+	<entry key="iris.security.saml.privatekey.pass">oh9Ahkee</entry>
+	<entry key="iris.security.saml.baseUrl">https://itemreview.smarterbalanced.org</entry>
+	<entry key="iris.security.saml.contextUrl">itemreview.smarterbalanced.org</entry>
+	<entry key="iris.security.saml.keyStorePath">WEB-INF/irv-prod.jks</entry>
+	<entry key="iris.security.saml.metaDataPath">webapps/ROOT/WEB-INF/metadata-prod.xml</entry>
+	<entry key="iris.security.saml.protocol">https</entry>
+	-->
+
+	<!-- Production Test Settings Settings -->
+	<entry key="iris.security.idp">https://sso.smarterbalanced.org/auth/saml2/jsp/exportmetadata.jsp?realm=/sbac</entry>
+	<entry key="iris.security.idp.logout">https://art.smarterbalanced.org:8443/saml/logout</entry>
+	<entry key="iris.security.idp.entity.id">item_review_viewer</entry>
+	<entry key="iris.security.saml.keystore.cert">irv-prod-sp</entry>
+	<entry key="iris.security.saml.keystore.pass">oh9Ahkee</entry>
+	<entry key="iris.security.saml.privatekey.pass">oh9Ahkee</entry>
+	<entry key="iris.security.saml.baseUrl">https://irv-prod.smarterbalanced.org</entry>
+	<entry key="iris.security.saml.contextUrl">irv-prod.smarterbalanced.org</entry>
+	<entry key="iris.security.saml.keyStorePath">WEB-INF/irv-prod.jks</entry>
+	<entry key="iris.security.saml.metaDataPath">webapps/ROOT/WEB-INF/metadata-prod.xml</entry>
+	<entry key="iris.security.saml.protocol">https</entry>
+
+
+	<!-- Security Settings-->
+	<!-- Staging settings
+	<entry key="iris.security.idp">https://sso.smarterbalanced.org/auth/saml2/jsp/exportmetadata.jsp?realm=/sbac</entry>
+	<entry key="iris.security.idp.logout">https://art.smarterbalanced.org:8443/saml/logout</entry>
+	<entry key="iris.security.idp.entity.id">item_review_viewer</entry>
+	<entry key="iris.security.saml.keystore.cert">apollo</entry>
+	<entry key="iris.security.saml.keystore.pass">nalle123</entry>
+	<entry key="iris.security.saml.privatekey.pass">nalle123</entry>
+	<entry key="iris.security.saml.baseUrl">https://irv-stage.smarterbalanced.org</entry>
+	<entry key="iris.security.saml.contextUrl">irv-stage.smarterbalanced.org</entry>
+	<entry key="iris.security.saml.keyStorePath">WEB-INF/samlKeystore.jks</entry>
+	<entry key="iris.security.saml.metaDataPath">webapps/ROOT/WEB-INF/metadata.xml</entry>
+	<entry key="iris.security.saml.protocol">https</entry>
+	-->
+
+
+	<!--dev settings -->
+	<!--
+	<entry key="iris.security.idp">https://sso.smarterbalanced.org/auth/saml2/jsp/exportmetadata.jsp?realm=/sbac</entry>
+	<entry key="iris.security.idp.logout">https://art.smarterbalanced.org:8443/saml/logout</entry>
+	<entry key="iris.security.idp.entity.id">item_review_viewer_osu</entry>
+	<entry key="iris.security.saml.keystore.cert">apollo</entry>
+	<entry key="iris.security.saml.keystore.pass">nalle123</entry>
+	<entry key="iris.security.saml.privatekey.pass">nalle123</entry>
+	<entry key="iris.security.saml.baseUrl">https://irv-dev.cass.oregonstate.edu</entry>
+	<entry key="iris.security.saml.contextUrl">irv-dev.cass.oregonstate.edu</entry>
+	<entry key="iris.security.saml.keyStorePath">WEB-INF/samlKeystore.jks</entry>
+	<entry key="iris.security.saml.metaDataPath">webapps/ROOT/WEB-INF/metadata.xml</entry>
+	<entry key="iris.security.saml.protocol">https</entry>
+	-->
+
 	<!-- End BlackBox Settings -->
 	<!-- Item Viewer Settings -->
 	<entry key="AwsRegion">us-west-2</entry>
-	<entry key="AwsClusterName">ItemViewerService-prod</entry>
+	<entry key="AwsClusterName">irv-stage</entry>
 </properties>

@@ -1,12 +1,6 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package org.smarterbalanced.itemreviewviewer.web.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,8 +36,8 @@ public class ItemRequestModel {
         this.featureCodes = featureCodes;
         this.accommodations = new ArrayList();
         this.loadFrom = loadFrom;
-        this.revision = revision;
-        this.section = section;
+        this.revision = null;
+        this.section = null;
     }
 
     private void buildAccommodations() {

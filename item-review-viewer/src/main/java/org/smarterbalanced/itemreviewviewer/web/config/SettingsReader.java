@@ -56,4 +56,5 @@ public class SettingsReader {
     public static String getZipFileLocation() throws IOException, URISyntaxException {
         return get("iris.ZipFileLocation");
     }
+
 }

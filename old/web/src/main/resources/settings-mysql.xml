@@ -24,7 +24,7 @@
 	<entry key="iris.ContentPath">\usr\local\sbac\gitlab</entry>
 	<entry key="iris.ZipFileLocation">/usr/local/sbac/gitlab/</entry>
 	<entry key="iris.ItemReviewPage">/Pages/item.xhtml</entry>
-	<entry key="iris.security.idp">https://sso-amptest.smarterbalanced.org/auth/saml2/jsp/exportmetadata.jsp?realm=/sbac</entry>
+	<entry key="iris.security.idp">https://sso.smarterbalanced.org/auth/saml2/jsp/exportmetadata.jsp?realm=/sbac</entry>
 	<entry key="iris.security.idp.logout">https://art-amptest.smarterbalanced.org:8443/saml/logout</entry>
 	<entry key="iris.security.idp.entity.id">item_review_viewer</entry>
 	<entry key="iris.security.saml.keystore.cert">apollo</entry>

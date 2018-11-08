@@ -13,6 +13,7 @@ import javax.xml.stream.XMLStreamWriter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.smarterbalanced.itemreviewviewer.web.config.ItemBankConfig;
 import org.smarterbalanced.itemreviewviewer.web.config.SettingsReader;
 import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoreInfo;
 import org.springframework.context.annotation.Scope;
@@ -53,7 +54,7 @@ public class ItemReviewScoringService {
 	 * 
 	 */
 	public ItemReviewScoringService() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public ItemScoreInfo scoreItem(String studentResponse, String id) throws ItemScoringException {
@@ -157,13 +158,8 @@ public class ItemReviewScoringService {
 			_logger.info("Item: " + id + " is scorable. Rubric file path: " + rubricUri.toString());
 			machineRubric.setData(new String(Files.readAllBytes(Paths.get(rubricUri))));
 
-			String encryptedStudentResponse = EncryptionHelper.EncryptToBase64(studentResponse);
-			String encryptedRubricContent = EncryptionHelper.EncryptToBase64(machineRubric.getData());
-
-			ResponseInfo responseInfo = new ResponseInfo(itsDocument.getFormat(), _itemName, encryptedStudentResponse,
-					encryptedRubricContent, RubricContentType.ContentString, "", true);
-			responseInfo.setRubricEncrypted(true);
-			responseInfo.setStudentResponseEncrypted(true);
+			ResponseInfo responseInfo = new ResponseInfo(itsDocument.getFormat(), _itemName, studentResponse,
+					machineRubric.getData(), RubricContentType.ContentString, "", true);
 
 			ItemScoreRequest itemScoreRequest = new ItemScoreRequest(responseInfo);
 
@@ -177,9 +173,10 @@ public class ItemReviewScoringService {
 
 			Client client = Client.create();
 
-			String scoringEngineUrl = getItemScoringUrl();
-			_logger.info("Communicating with Scoring Engine....." + scoringEngineUrl);
-			WebResource webResource = client.resource(scoringEngineUrl);
+			String scoringUrl = ItemBankConfig.get("scoringServiceUrl");
+
+			_logger.info("Communicating with Scoring Engine....." + scoringUrl);
+			WebResource webResource = client.resource(scoringUrl);
 
 			_logger.info("POSTing the Item Score Request.....");
 			ClientResponse response = webResource.accept("application/xml").post(ClientResponse.class,
