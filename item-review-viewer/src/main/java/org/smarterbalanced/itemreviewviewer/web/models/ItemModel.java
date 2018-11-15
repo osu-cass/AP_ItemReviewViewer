@@ -5,6 +5,7 @@ public class ItemModel {
     private String bankKey;
     private String itemKey;
     private boolean isExists;
+    private String error;
 
     public String getNamespace() {
         return namespace;
@@ -38,6 +39,14 @@ public class ItemModel {
         isExists = exists;
     }
 
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
     @Override
     public String toString() {
         return "ItemModel{" +
@@ -45,6 +54,7 @@ public class ItemModel {
                 ", bankKey='" + bankKey + '\'' +
                 ", itemKey='" + itemKey + '\'' +
                 ", isExists=" + isExists +
+                ", error='" + error + '\'' +
                 '}';
     }
 }

@@ -41,6 +41,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
@@ -293,8 +294,10 @@ public class GitLabService implements IGitLabService {
             _removeNoProjectNamespaces(namespaces);
 
         } catch (Exception e) {
+            //if the name gitlab API can't search for namespaces due to load use these namespaces.
             _logger.error("Failed to get namespaces, URL: " + nameSpacesUrl);
-            throw new GitLabException(e);
+            namespaces = GitLabUtils.getDefaultNameSpaces();
+            //throw new GitLabException("Failed to Get Namespaces from Gitlab");
         }
 
         return namespaces;
@@ -355,16 +358,23 @@ public class GitLabService implements IGitLabService {
 
                 String name = projects.get(0).getName();
                 String parts[] = name.split("-");
-                // NOTE: It is temporary implementation before figuring out how bankKey is used in project names
+                //TODO: Add name spaces to the namespace hash on the fly
                 if (parts.length > 1) {
                     if (parts.length == 3) {
                         namespace.setHasBankKey(true);
                     } else {
                         namespace.setHasBankKey(false);
+                        if(GitLabUtils.getBankKeyByNamespace(namespace.getName()) == null) {
+                            GitLabUtils.addNameSpace(namespace.getName());
+                        }
+                        namespace.setBankKey(Integer.parseInt(GitLabUtils.getBankKeyByNamespace(namespace.getName())));
                     }
                 } else {
                     namespace.setHasBankKey(false);
-                    namespace.setBankKey(GitLabUtils.noBankKeyNamespaceHash.get(namespace.name));
+                    if(GitLabUtils.noBankKeyNamespaceHash.get(namespace.name) == null){
+                        GitLabUtils.addNameSpace(namespace.getName());
+                    }
+                    namespace.setBankKey(Integer.parseInt(GitLabUtils.getBankKeyByNamespace(namespace.getName())));
                 }
             }
         } catch (Exception e) {
@@ -372,6 +382,7 @@ public class GitLabService implements IGitLabService {
             throw new GitLabException(e);
         }
     }
+
 
     public ItemDocument getItemScoring(String itemNumber) throws GitLabException {
         String[] parts = itemNumber.split("-");
@@ -643,23 +654,39 @@ public class GitLabService implements IGitLabService {
     }
 
     @Override
-    public boolean isItemExists(ItemModel item) throws IOException {
+    public int isItemExists(ItemModel item) throws IOException {
         String itemDirId = GitLabUtils.makeDirId(item.getBankKey(), item.getItemKey());
+
+        // Checks if the item exits
+        String itemUrl = GitLabUtils.getGitLabItemUrl(item.getNamespace(), itemDirId);
+        URL url = new URL(itemUrl);
+        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+        connection.setRequestMethod("GET");
+        connection.connect();
+        int statusCode = connection.getResponseCode();
 
         String found = matchItemDirWithoutRevision(itemDirId);
 
-        if (StringUtils.isEmpty(found)) {
-            if (!downloadItem(item.getNamespace(), itemDirId, false)) {
-                throw new GitLabException("Failed downloading (item: " + itemDirId + ") (namespace: " + item.getNamespace() +")");
-            }
-            found = itemDirId;
-        }
-        Metadata md = getMetadata(found);
         boolean itemExists = false;
-        if (md != null && !NON_ITEM_INTERACTION_TYPES.contains(md.getSmarterAppMetadata().getInteractionType())) {
-            itemExists = true;
+        if(statusCode == 200) {
+            if (StringUtils.isEmpty(found)) {
+                if (!downloadItem(item.getNamespace(), itemDirId, false)) {
+                    _logger.error("Failed downloading (item: " + itemDirId + ") (namespace: " + item.getNamespace() + ")");
+                }
+                found = itemDirId;
+            }
+            Metadata md = getMetadata(found);
+            if (md != null && !NON_ITEM_INTERACTION_TYPES.contains(md.getSmarterAppMetadata().getInteractionType())) {
+                itemExists = true;
+            }
         }
-        return itemExists;
+
+
+        if(statusCode == 200 && !itemExists){
+            statusCode = 418; //I'm a teapot
+        }
+
+        return statusCode;
     }
 
     public String matchItemDirWithoutRevision(String itemDir) {

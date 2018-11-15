@@ -82,7 +82,6 @@
 	<entry key="iris.security.saml.protocol">https</entry>
 	-->
 
-
 	<!--dev settings -->
 	<!--
 	<entry key="iris.security.idp">https://sso.smarterbalanced.org/auth/saml2/jsp/exportmetadata.jsp?realm=/sbac</entry>

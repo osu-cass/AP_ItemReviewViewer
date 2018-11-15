@@ -4,13 +4,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.config.ItemBankConfig;
 import org.apache.commons.lang.StringUtils;
+import org.smarterbalanced.itemreviewviewer.web.services.models.Namespace;
 
-import java.util.Hashtable;
-import java.util.Map;
+import java.util.List;
+import java.util.*;
+
 
 
 public class GitLabUtils {
     private static final Logger _logger = LoggerFactory.getLogger(GitLabUtils.class);
+    private static int _currentBankKey = 990;
 
     // NOTE: This is hardcoded namespaces which do not have bankKey in Gitlab
     //       Remove this once IRiS can work with namespaces
@@ -30,6 +33,12 @@ public class GitLabUtils {
         }
         return null;
     }
+
+    public static int addNameSpace(String namespace){
+        noBankKeyNamespaceHash.put(namespace, --_currentBankKey);
+        return _currentBankKey;
+    }
+
     public static String getBankKeyByNamespace(String namespace) {
         if (GitLabUtils.noBankKeyNamespaceHash.containsKey(namespace)) {
             return String.valueOf(GitLabUtils.noBankKeyNamespaceHash.get(namespace));
@@ -145,5 +154,14 @@ public class GitLabUtils {
 
     public static String _getPrivateToken() {
         return ItemBankConfig.get("gitlab.private.token");
+    }
+
+    public static List<Namespace> getDefaultNameSpaces() {
+        List<Namespace> defaultList = new ArrayList<Namespace>();
+        defaultList.add(new Namespace("18", "iat-prod", false, 993));
+        defaultList.add(new Namespace("11", "itemreviewapp", true, 0));
+        defaultList.add(new Namespace("15", "ELA", true, 0));
+
+        return defaultList;
     }
 }
