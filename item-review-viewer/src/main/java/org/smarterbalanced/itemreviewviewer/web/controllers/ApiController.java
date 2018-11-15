@@ -95,7 +95,7 @@ public class ApiController {
         if (!_gitLabService.isItemAccomExists(itemId, "brf")) {
             disableResource(rootNode, "BrailleType", 2);
         }
-        if (!_gitLabService.isItemAccomExists(itemId, "MP4")) {
+        if (!_gitLabService.isItemAccomExists(itemId, "mp4")) {
             disableResource(rootNode, "AmericanSignLanguage", 2);
         }
         String claim = _gitLabService.getClaim(itemId);
