@@ -38,5 +38,5 @@ public interface IGitLabService {
 
     boolean isItemAccomExists(String itemNumber, String ext);
 
-    boolean isItemExists(ItemModel item) throws IOException;
+    int isItemExists(ItemModel item) throws IOException;
 }
