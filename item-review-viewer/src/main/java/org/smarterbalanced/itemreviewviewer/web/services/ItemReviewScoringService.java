@@ -39,7 +39,7 @@ import tds.itemscoringengine.RubricContentType;
 import tds.itemscoringengine.ScoringStatus;
 
 /**
- * @author kthotti
+ * @author kthotti & noelcket
  *
  */
 
@@ -73,10 +73,11 @@ public class ItemReviewScoringService {
 	public ItemScoreInfo scoreAssessmentItem(String studentResponse, IITSDocument iitsDocument)
 			throws ItemScoringException {
 
+		String itemFormat = null;
 		try {
 
 			ITSDocument itsDocument = (ITSDocument) iitsDocument;
-			String itemFormat = itsDocument.getFormat();
+			itemFormat = itsDocument.getFormat();
 
 			_logger.info("Socring the item.... " + iitsDocument.getID() + " Item Format: " + itemFormat + " started");
 
@@ -95,7 +96,11 @@ public class ItemReviewScoringService {
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			throw new ItemScoringException("There is an error while communicating with Item Scoring Engine " + e);
+			if(itemFormat.trim().equalsIgnoreCase("SA") || itemFormat.trim().equalsIgnoreCase("WER")){
+				return new ItemScoreInfo(-9, -9, null, null, null);
+			} else {
+				throw new ItemScoringException("There is an error while communicating with Item Scoring Engine " + e);
+			}
 		}
 
 	}

@@ -80,18 +80,20 @@
             IRiS.getResponse().done(function(xmlResponse) {
                 const id = data.detail.id;
                 const version = data.detail.version != 'undefined' ? '?version=' + data.detail.version : '';
-                if(xmlResponse) {
+                if(xmlResponse != null) {
                     $.ajax({
                         type: 'POST',
                         url: '/item/score/' + id + version,
                         data: xmlResponse,
                         success: function(data) {
+                            console.log(data);
                             if(data.points > 0){
-                                $("#correctPoints").innerHTML = data.points.toString() + " points";
+                                $("#correctPoints").text("You scored " + data.points.toString() + " points out of " + data.maxScor + " points.");
                                 $("#correct").removeClass('hidden');
+                            } else if (data.points === -9 && data.status == "Scored") {
+                                $("#correctNoScore").removeClass('hidden');
                             } else if (data.points === -9){
-                                $("#correctText").innerHTML += "This item cannot automatically be scored.";
-                                $("#correct").removeClass('hidden');
+                                $("#cantScore").removeClass('hidden');
                             } else {
                                 $("#incorrect").removeClass('hidden');
                             }
@@ -167,6 +169,11 @@
             color: #3F7635;
         }
 
+        .correct {
+            background-color: #E0F0D9;
+            color: #3F7635;
+        }
+
         #itemViewerContainer{
             height: 100%;
             width: 100%;
@@ -180,6 +187,11 @@
 
         #unanswered {
             background-color: #FFD980;
+            color: #D08000;
+        }
+
+        #cantScore {
+            background-color: #F1DEDE;
             color: #D08000;
         }
 
@@ -228,8 +240,12 @@
     </div>
     <div id="scoringContainer">
         <button id="score" class="btn btn-primary" onClick="onScoreClicked()">Score</button>
-        <div class="scoreResult hidden" id="correct">
-            <p id="correctText" class="content"><b>Congrats!</b> Your answer is correct. <span id="correctPoints"></span></p>
+        <div class="scoreResult hidden correct" id="correct">
+            <p class="content correct"><b>Congrats!</b> Your answer is correct. <span id="correctPoints"></span></p>
+            <button class="close-btn" onClick="closeScores()"/>
+        </div>
+        <div class="scoreResult hidden correct" id="correctNoScore">
+            <p id="correctTextNoScore" class="content correct"><b>Congrats!</b> Your answer is correct. The points for this item can not be calculated by the scoring engine</p>
             <button class="close-btn" onClick="closeScores()"/>
         </div>
         <div class="scoreResult hidden" id="incorrect">
@@ -237,11 +253,15 @@
             <button class="close-btn" onClick="closeScores()"/>
         </div>
         <div class="scoreResult hidden" id="unanswered">
-            <p id="unansweredText" class="content">This item cannot be scored.</p>
+            <p id="unansweredText" class="content">Please Answer the Question</p>
             <button class="close-btn" onClick="closeScores()"/>
         </div>
         <div class="scoreResult hidden" id="serverError">
             <p id="serverErrorText" class="content">There was an error with the scoring server.</p>
+            <button class="close-btn" onClick="closeScores()"/>
+        </div>
+        <div id="cantScore" class="scoreResult hidden">
+            <p class="content">This Item cannot be scored by the scoring engine.</p>
             <button class="close-btn" onClick="closeScores()"/>
         </div>
     </div>
