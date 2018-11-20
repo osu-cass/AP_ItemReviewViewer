@@ -87,14 +87,16 @@
                         data: xmlResponse,
                         success: function(data) {
                             console.log(data);
-                            if(data.points > 0){
-                                $("#correctPoints").text("You scored " + data.points.toString() + " points out of " + data.maxScor + " points.");
+                            //if both points and maxScore are correct then we have a correct answer and a correct max score.
+                            if(data.points && data.maxScore && data.points > 0 && data.maxScore > 0){
+                                $("#correctPoints").text("You scored: " + data.points.toString() + " points. Max Score: " + data.maxScore + " points.");
                                 $("#correct").removeClass('hidden');
-                            } else if (data.points === -9 && data.status == "Scored") {
-                                $("#correctNoScore").removeClass('hidden');
-                            } else if (data.points === -9){
+                            } else if (data.maxScore && data.maxScore == -1) {//answer is correct but we don't have max score info
+                                $("#correctPoints").removeClass('hidden');
+                                $("#correctPoints").text("Maximum Score Information not found.");
+                            } else if (data.points === -9){ //item cannot be scored by the scoring engine.
                                 $("#cantScore").removeClass('hidden');
-                            } else {
+                            } else { //else it is incorrect.
                                 $("#incorrect").removeClass('hidden');
                             }
                         },
@@ -244,16 +246,12 @@
             <p class="content correct"><b>Congrats!</b> Your answer is correct. <span id="correctPoints"></span></p>
             <button class="close-btn" onClick="closeScores()"/>
         </div>
-        <div class="scoreResult hidden correct" id="correctNoScore">
-            <p id="correctTextNoScore" class="content correct"><b>Congrats!</b> Your answer is correct. The points for this item can not be calculated by the scoring engine</p>
-            <button class="close-btn" onClick="closeScores()"/>
-        </div>
         <div class="scoreResult hidden" id="incorrect">
             <p id="incorrectText" class="content"><b>Sorry!</b> Your answer is incorrect.</p>
             <button class="close-btn" onClick="closeScores()"/>
         </div>
         <div class="scoreResult hidden" id="unanswered">
-            <p id="unansweredText" class="content">Please Answer the Question</p>
+            <p id="unansweredText" class="content">Please answer the question.</p>
             <button class="close-btn" onClick="closeScores()"/>
         </div>
         <div class="scoreResult hidden" id="serverError">
