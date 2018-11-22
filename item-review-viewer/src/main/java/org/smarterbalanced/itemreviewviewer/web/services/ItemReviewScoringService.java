@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.config.ItemBankConfig;
 import org.smarterbalanced.itemreviewviewer.web.config.SettingsReader;
 import org.smarterbalanced.itemreviewviewer.web.models.scoring.ItemScoreInfo;
+import org.smarterbalanced.itemreviewviewer.web.services.models.Metadata;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -39,7 +40,7 @@ import tds.itemscoringengine.RubricContentType;
 import tds.itemscoringengine.ScoringStatus;
 
 /**
- * @author kthotti
+ * @author kthotti & noelcket
  *
  */
 
@@ -49,12 +50,13 @@ public class ItemReviewScoringService {
 
 	private static final Logger _logger = LoggerFactory.getLogger(ItemReviewScoringService.class);
 	public static final String MS_FORMAT = "MS";
+	private GitLabService _gitlabService;
 
 	/**
 	 * 
 	 */
 	public ItemReviewScoringService() {
-
+		_gitlabService = new GitLabService();
 	}
 
 	public ItemScoreInfo scoreItem(String studentResponse, String id) throws ItemScoringException {
@@ -73,10 +75,11 @@ public class ItemReviewScoringService {
 	public ItemScoreInfo scoreAssessmentItem(String studentResponse, IITSDocument iitsDocument)
 			throws ItemScoringException {
 
+		String itemFormat = null;
 		try {
 
 			ITSDocument itsDocument = (ITSDocument) iitsDocument;
-			String itemFormat = itsDocument.getFormat();
+			itemFormat = itsDocument.getFormat();
 
 			_logger.info("Socring the item.... " + iitsDocument.getID() + " Item Format: " + itemFormat + " started");
 
@@ -85,6 +88,8 @@ public class ItemReviewScoringService {
 
 			ItemScoreResponse itemScoreResponse = scoreItem(studentResponse, itsDocument);
 			tds.itemscoringengine.ItemScoreInfo _iItemScoreInfo = itemScoreResponse.getScore().getScoreInfo();
+
+			int maxScore = _getMaxScore(iitsDocument, _iItemScoreInfo);
 
 			ItemScoreInfo itemScoreInfo = new ItemScoreInfo(_iItemScoreInfo.getPoints(), _iItemScoreInfo.getMaxScore(),
 					_iItemScoreInfo.getStatus(), _iItemScoreInfo.getDimension(), _iItemScoreInfo.getRationale());
@@ -95,7 +100,11 @@ public class ItemReviewScoringService {
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			throw new ItemScoringException("There is an error while communicating with Item Scoring Engine " + e);
+			if(itemFormat.trim().equalsIgnoreCase("SA") || itemFormat.trim().equalsIgnoreCase("WER")){
+				return new ItemScoreInfo(-9, -9, null, null, null);
+			} else {
+				throw new ItemScoringException("There is an error while communicating with Item Scoring Engine " + e);
+			}
 		}
 
 	}
@@ -276,6 +285,25 @@ public class ItemReviewScoringService {
 			}
 		}
 		return machineRubric;
+	}
+
+	//checks if the getMaxScore info returns a not found value. If it does it gets the max score from the metadata.
+	private int _getMaxScore(IITSDocument iitsDocument, tds.itemscoringengine.ItemScoreInfo iItemScoreInfo){
+		int maxScore = iItemScoreInfo.getMaxScore();
+		if(maxScore == -1){
+			String bankKey = Long.toString(iitsDocument.getBankKey());
+			String itemKey = Long.toString(iitsDocument.getItemKey());
+			String itemDirName = GitLabUtils.makeDirId(bankKey, itemKey);
+
+			Metadata metadata = _gitlabService.getMetadata(itemDirName);
+
+			String maximumNumberOfPoints = metadata.getSmarterAppMetadata().getMaximumNumberOfPoints();
+			if(maximumNumberOfPoints!= null && Integer.parseInt(maximumNumberOfPoints) > 0){
+				maxScore = Integer.parseInt(maximumNumberOfPoints);
+			}
+		}
+
+		return maxScore;
 	}
 
 }

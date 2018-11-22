@@ -36,3 +36,4 @@ node_modules/
 
 # Security Files
 *.jks
+production.keys.*
