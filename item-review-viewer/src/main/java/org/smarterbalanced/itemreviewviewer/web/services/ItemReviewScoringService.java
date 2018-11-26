@@ -88,16 +88,21 @@ public class ItemReviewScoringService {
 
 			ItemScoreResponse itemScoreResponse = scoreItem(studentResponse, itsDocument);
 			tds.itemscoringengine.ItemScoreInfo _iItemScoreInfo = itemScoreResponse.getScore().getScoreInfo();
+			if(itemFormat.trim().equalsIgnoreCase("SA") || itemFormat.trim().equalsIgnoreCase("WER")){
+				_iItemScoreInfo.setPoints(-9);
+				_iItemScoreInfo.setMaxScore(-9);
+			}
+
 
 			int maxScore = _getMaxScore(iitsDocument, _iItemScoreInfo);
 
-			ItemScoreInfo itemScoreInfo = new ItemScoreInfo(_iItemScoreInfo.getPoints(), _iItemScoreInfo.getMaxScore(),
+			ItemScoreInfo itemScoreInfo = new ItemScoreInfo(_iItemScoreInfo.getPoints(), maxScore,
 					_iItemScoreInfo.getStatus(), _iItemScoreInfo.getDimension(), _iItemScoreInfo.getRationale());
-			_logger.info("creating itemscoreinfo object " + _iItemScoreInfo.getPoints(), _iItemScoreInfo.getMaxScore(),
+			_logger.info("creating itemscoreinfo object " + _iItemScoreInfo.getPoints(), maxScore,
 					_iItemScoreInfo.getStatus(), _iItemScoreInfo.getDimension(), _iItemScoreInfo.getRationale());
 			_logger.info("Socring the item.... " + iitsDocument.getID() + " Item Format: " + itemFormat + " success");
-			return itemScoreInfo;
 
+			return itemScoreInfo;
 		} catch (Exception e) {
 			// TODO: handle exception
 			if(itemFormat.trim().equalsIgnoreCase("SA") || itemFormat.trim().equalsIgnoreCase("WER")){
@@ -122,11 +127,13 @@ public class ItemReviewScoringService {
 				answerKey1.append(itsDocument.getAttributeValue("itm_att_Answer Key (Part II)"));
 			}
 
+			int maxScore = _getMaxScore(itsDocument, null);
+
 			if (studentResponse.equalsIgnoreCase(answerKey1.toString())) {
 				if (itsDocument.getFormat().equalsIgnoreCase(MS_FORMAT))
-					return new ItemScoreInfo(-9, -9, ScoringStatus.Scored, null, null);
+					return new ItemScoreInfo(maxScore, maxScore, ScoringStatus.Scored, null, null);
 				else
-					return new ItemScoreInfo(1, 1, ScoringStatus.Scored, null, null);
+					return new ItemScoreInfo(maxScore, maxScore, ScoringStatus.Scored, null, null);
 			} else {
 				return new ItemScoreInfo(-1, 1, ScoringStatus.Scored, null, null);
 			}
@@ -289,7 +296,10 @@ public class ItemReviewScoringService {
 
 	//checks if the getMaxScore info returns a not found value. If it does it gets the max score from the metadata.
 	private int _getMaxScore(IITSDocument iitsDocument, tds.itemscoringengine.ItemScoreInfo iItemScoreInfo){
-		int maxScore = iItemScoreInfo.getMaxScore();
+		int maxScore = -1;
+		if(iItemScoreInfo != null){
+			maxScore = iItemScoreInfo.getMaxScore();
+		}
 		if(maxScore == -1){
 			String bankKey = Long.toString(iitsDocument.getBankKey());
 			String itemKey = Long.toString(iitsDocument.getItemKey());
