@@ -7,14 +7,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.commons.lang.StringUtils;
-import org.apache.http.HttpResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smarterbalanced.itemreviewviewer.web.config.ItemBankConfig;
-import org.smarterbalanced.itemreviewviewer.web.models.accessibility.AccessibilityResource;
-import org.smarterbalanced.itemreviewviewer.web.models.accessibility.AccessibilityResourceGroup;
 import org.smarterbalanced.itemreviewviewer.web.services.models.Attrib;
-import org.smarterbalanced.itemreviewviewer.web.services.models.ItemCommit;
 import org.smarterbalanced.itemreviewviewer.web.services.models.Metadata;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,7 +23,6 @@ import org.smarterbalanced.itemreviewviewer.web.services.GitLabUtils;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
