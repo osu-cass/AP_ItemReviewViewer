@@ -87,11 +87,11 @@ public class ApiController {
             setResource(rootNode, "GlobalNotes", true);
         }
 
-        if (!_gitLabService.isItemAccomExists(itemId, "brf")) {
+        if (!_gitLabService.isItemAccomExists(itemDir, "brf")) {
             setResource(rootNode, "BrailleType", true);
         }
 
-        if (!_gitLabService.isItemAccomExists(itemId, "mp4")) {
+        if (!_gitLabService.isItemAccomExists(itemDir, "mp4")) {
             setResource(rootNode, "AmericanSignLanguage", true);
         }
         String claim = _gitLabService.getClaim(itemId);
