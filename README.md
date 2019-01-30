@@ -2,7 +2,7 @@
 Welcome to the Item Review Viewer App
 
 # Software requirements
-All set up steps for this project were done using intellij IDE. For best results please use intellij IDE.
+All set up steps for this project were done using [IntelliJ IDEA](https://www.jetbrains.com/idea/?fromMenu). For best results, please use IntelliJ IDEA.
 
 # Setting up environment
 
@@ -23,56 +23,57 @@ C:\home\tomcat7\content\gitlab_archive
 To run this project you will need Apache Tomcat Sever v7.0.81. To install Tomcat download the installer and run it. The installer can be found [here](https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.81/bin/apache-tomcat-7.0.81.exe).
 
 ## Setting up the context.
-Once tomcat is installed you will need to edit the context file to add the iris encryption key. To do this go to C:\Program Files\C:\Program Files\Apache Software Foundation\Tomcat 7.0\conf and open context as admin.
+Once tomcat is installed you will need to edit the context file to add the iris encryption key.
+To do this, open following file  as **admin**
+`C:\Program Files\Apache Software Foundation\Tomcat 7.0\conf\context.xml`
 
-You then need to copy this line into the <context> tag.
-```
+You then need to copy `<Parameter...>` line into the `<Context>` tag.
+```xml
+<Context>
+   ...
    <Parameter name="tds.iris.EncryptionKey" override="false" value="msnfodnendisondoendonend"/>
+</Context>
 ```
 
 ## Opening the project
-
  Open the following `pom.xml` file in IntelliJ as a project (from the project root):
-```
+```xml
 <repo-name>\item-review-viewer\pom.xml
 ```
 
-## Configuring the project
+## Configuring the project in IntelliJ
 To start the configuration Follow the steps below.
-- Change the name in the name field at the top of the window to "Run"
-- Click "Run-> Edit Configurations"
-- Click "+" at the top left corner of window.
-- Then from the menu of items on the left hand side select Tomcat server-> local
-- Under the "Server" tab, Verify that "Application Server" is set to Tomcat 7.0.81.
+1. Click "Run -> Edit Configurations"
+1. Click "+" at the top left corner of window.
+1. From the menu of items on the left hand side, select "Tomcat Server" -> Local
+1. Under the "Server" tab, Verify that "Application server:" is set to "Tomcat 7.0.81".
 
 ### Configuring tomcat.
-- If the Application Server is not set to Tomcat 7.0.81 click the configure button next to the Application server.
-- Next A pop up window will pop up. From this window you will need to set your tomcat home. To do this click the "..." button to the right of the Tomcat Home Field.
-- From the pop up file explorer in Intellij navigate to and select your tomcat home directory. If you installed tom cat using the installer above on windows ten this will be at C:\Program Files\Apache Software Foundation\Tomcat 7.0.
-- Next we will need to select the libraries we will need in our project from tomcat server. This can be done by clicking the "+" button under the libraries section of the pop up window that is already open.
-- This will cause the Intellij File explorer to pop up. From the explorer navigate to C:\Program Files\Apache Software Foundation\Tomcat 7.0\ and select jsp-api.jar and servlet-api.jar.
-- Click Ok This will cause the Tomcat configuration window to close.
-- Under the tomcat server Settings near the bottom of the window set HTTP port to 8050.
+If the "Application server:" is not set to "Tomcat 7.0.81".
+1. Click the "Configure" button next to the "Application server:".
+1. In a pop up "Application Servers" popped up, click the "..." button to the right of the "Tomcat Home" Field.
+1. From the pop up file explorer in Intellij, navigate to and select your tomcat home directory. If you installed tomcat using the installer above on windows then this will be at `C:\Program Files\Apache Software Foundation\Tomcat 7.0`.
+1. Next we will need to select the libraries we will need in our project from tomcat server. This can be done by clicking the "+" button under the libraries section of the pop up window that is already open.
+1. This will cause the Intellij File explorer to pop up. From the explorer navigate to `C:\Program Files\Apache Software Foundation\Tomcat 7.0\` and select `jsp-api.jar` and `servlet-api.jar`.
+1. Click Ok. This will cause the Tomcat configuration window to close.
 
-### Configuring The deployment
-- Navigate to the Deployment tab
-- Under the "Deployment" tab, click the "+" and add "item-review-viewer:war exploded"
-- Ensure that the application context is "/".
+1. Under the "Tomcat Server Settings" near the bottom of the window set "HTTP port:" to "8050".### Configuring The deployment
+1. Navigate to the "Deployment" tab in "Run/Debug Configurations" pop up.
+1. Click the "+" and add "item-review-viewer:war exploded"
+1. Ensure that the "Application context:" is "/".
 
 ### Configuring the environment variables.
-- Click "Run-> Edit Configurations"
-- Click "+" under the "Before launch: ..." section.
-- Select "Run Maven Goal", then type `process-resources` in the Command line input.
-- Make sure the order of items in the "Before launch: ..." is
-  - "Run Maven Goal 'item-review-viewer: process-resources'"
-  - "Build"
-  - "Build 'item-review-viewer:war exploded' artifact"
-- You can change the environment in the "Maven Projects" tab
-- Select an environment in "Profiles" section, default profile is 'production'
+1. Click "+" under the "Before launch: Maven Gaol, BUild, ..." section in "Run/Debug Configurations" pop up.
+1. Select "Run Maven Goal", then type `process-resources` in the Command line input.
+1. Make sure the order of items in the the section is
+   1. "Run Maven Goal 'item-review-viewer: process-resources'"
+   1. "Build"
+   1. "Build 'item-review-viewer:war exploded' artifact"
+1. You can change the environment in the "Maven Projects" tab
+1. Select an environment in "Profiles" section, default profile is 'production'
 
 A guide on how to add environment variables can be found [here](https://www.jetbrains.com/help/idea/run-debug-configuration-application.html#1).
 
 Now you can run the project by selecting "Run -> Debug (Run)"
 
 If in setting up the Application you find any missing steps feel free to add them to this readme.
-
