@@ -19,6 +19,13 @@ public class Namespace {
     public Namespace() {
     }
 
+    public Namespace(String id, String name, boolean hasBankKey, int bankKey){
+        this.id = id;
+        this.name = name;
+        this.hasBankKey = hasBankKey;
+        this.bankKey = bankKey;
+    }
+
     public String getId() {
         return id;
     }

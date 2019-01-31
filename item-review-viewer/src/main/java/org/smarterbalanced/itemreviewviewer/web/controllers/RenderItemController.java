@@ -272,7 +272,15 @@ public class RenderItemController {
                     item.setBankKey(GitLabUtils.getBankKeyByNamespace(item.getNamespace()));
                 }
 
-                item.setExists(_gitLabService.isItemExists(item));
+                int status = _gitLabService.isItemExists(item);
+                if(status == 200){
+                    item.setExists(true);
+                } else {
+                    item.setExists(false);
+                    item.setError(_errorMessage(status));
+                }
+
+
             } catch (Exception e) {
                 // NOTE: Should keep working to send items data to client anyway.
                 //       If exception occurred, the item will have isExists `false` as default
@@ -281,5 +289,17 @@ public class RenderItemController {
         }
 
         return new ResponseEntity<>(items, HttpStatus.OK);
+    }
+
+    private String _errorMessage(int status){
+        String error;
+        if(status == 404){
+            error = "Item Not Found";
+        } else if (status == 418){
+            error = "Item Resources Cannot Be Rendered";
+        } else {
+            error = "System Error - " + status;
+        }
+        return error;
     }
 }

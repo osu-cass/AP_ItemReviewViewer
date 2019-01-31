@@ -80,19 +80,23 @@
             IRiS.getResponse().done(function(xmlResponse) {
                 const id = data.detail.id;
                 const version = data.detail.version != 'undefined' ? '?version=' + data.detail.version : '';
-                if(xmlResponse) {
+                if(xmlResponse != null) {
                     $.ajax({
                         type: 'POST',
                         url: '/item/score/' + id + version,
                         data: xmlResponse,
                         success: function(data) {
-                            if(data.points > 0){
-                                $("#correctPoints").innerHTML = data.points.toString() + " points";
+                            console.log(data);
+                            //if both points and maxScore are correct then we have a correct answer and a correct max score.
+                            if(data.points && data.maxScore && data.points > 0 && data.maxScore > 0){
+                                $("#correctPoints").text("You scored: " + data.points.toString() + " points. Max Score: " + data.maxScore + " points.");
                                 $("#correct").removeClass('hidden');
-                            } else if (data.points === -9){
-                                $("#correctText").innerHTML += "This item cannot automatically be scored.";
-                                $("#correct").removeClass('hidden');
-                            } else {
+                            } else if (data.maxScore && data.maxScore == -1) {//answer is correct but we don't have max score info
+                                $("#correctPoints").removeClass('hidden');
+                                $("#correctPoints").text("Maximum Score Information not found.");
+                            } else if (data.points === -9){ //item cannot be scored by the scoring engine.
+                                $("#cantScore").removeClass('hidden');
+                            } else { //else it is incorrect.
                                 $("#incorrect").removeClass('hidden');
                             }
                         },
@@ -167,6 +171,11 @@
             color: #3F7635;
         }
 
+        .correct {
+            background-color: #E0F0D9;
+            color: #3F7635;
+        }
+
         #itemViewerContainer{
             height: 100%;
             width: 100%;
@@ -180,6 +189,11 @@
 
         #unanswered {
             background-color: #FFD980;
+            color: #D08000;
+        }
+
+        #cantScore {
+            background-color: #F1DEDE;
             color: #D08000;
         }
 
@@ -228,8 +242,8 @@
     </div>
     <div id="scoringContainer">
         <button id="score" class="btn btn-primary" onClick="onScoreClicked()">Score</button>
-        <div class="scoreResult hidden" id="correct">
-            <p id="correctText" class="content"><b>Congrats!</b> Your answer is correct. <span id="correctPoints"></span></p>
+        <div class="scoreResult hidden correct" id="correct">
+            <p class="content correct"><b>Congrats!</b> Your answer is correct. <span id="correctPoints"></span></p>
             <button class="close-btn" onClick="closeScores()"/>
         </div>
         <div class="scoreResult hidden" id="incorrect">
@@ -237,11 +251,15 @@
             <button class="close-btn" onClick="closeScores()"/>
         </div>
         <div class="scoreResult hidden" id="unanswered">
-            <p id="unansweredText" class="content">This item cannot be scored.</p>
+            <p id="unansweredText" class="content">Please answer the question.</p>
             <button class="close-btn" onClick="closeScores()"/>
         </div>
         <div class="scoreResult hidden" id="serverError">
             <p id="serverErrorText" class="content">There was an error with the scoring server.</p>
+            <button class="close-btn" onClick="closeScores()"/>
+        </div>
+        <div id="cantScore" class="scoreResult hidden">
+            <p class="content">This Item cannot be scored by the scoring engine.</p>
             <button class="close-btn" onClick="closeScores()"/>
         </div>
     </div>
