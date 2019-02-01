@@ -1,0 +1,36 @@
+FROM tomcat:7-jre7
+
+ARG contentStore=/home/tomcat7/content/
+ARG contextName=ROOT
+
+RUN mkdir -p $contentStore
+RUN mkdir -p $contentStore/gitlab
+RUN mkdir -p $contentStore/gitlab_archive
+COPY ./ItemsPatch.xml $contentStore/gitlab
+
+
+
+
+WORKDIR /usr/local/tomcat/
+
+COPY context.xml ./conf
+RUN  rm -rf webapps/*
+
+
+RUN rm ./conf/server.xml
+COPY server.xml ./conf
+
+# create mount point for volume with application
+RUN mkdir $CATALINA_HOME/webapps/ROOT
+
+# add tomcat jpda debugging environmental variables
+#ENV JPDA_OPTS="-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n"
+ENV JPDA_ADDRESS="8000"
+ENV JPDA_TRANSPORT="dt_socket"
+
+
+# start tomcat7 with remote debugging
+#EXPOSE 8080
+#ENTRYPOINT ["catalina.sh", "run"]
+EXPOSE 8080 8000
+ENTRYPOINT ["catalina.sh", "jpda", "run"]

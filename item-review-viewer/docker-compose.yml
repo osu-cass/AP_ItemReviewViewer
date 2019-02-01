@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+
+  api:
+    build:
+      dockerfile: 'Dockerfile-local'
+      context: .
+    image: 'irv'
+    container_name: irv
+
+#    environment:
+#      JPDA_ADDRESS: 8000
+#      JPDA_TRANSPORT: dt_socket
+    volumes:
+      - ./target/item-review-viewer:/usr/local/tomcat/webapps/ROOT
+    ports:
+      - 8080:8080
+      - 8000:8000 # for remote debugging, necessary?
+    restart:
+      always # always | on_failure
