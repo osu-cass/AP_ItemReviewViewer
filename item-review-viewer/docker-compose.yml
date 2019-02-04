@@ -9,9 +9,6 @@ services:
     image: 'irv'
     container_name: irv
 
-#    environment:
-#      JPDA_ADDRESS: 8000
-#      JPDA_TRANSPORT: dt_socket
     volumes:
       - ./target/item-review-viewer:/usr/local/tomcat/webapps/ROOT
     ports:

@@ -24,13 +24,10 @@ COPY server.xml ./conf
 RUN mkdir $CATALINA_HOME/webapps/ROOT
 
 # add tomcat jpda debugging environmental variables
-#ENV JPDA_OPTS="-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n"
 ENV JPDA_ADDRESS="8000"
 ENV JPDA_TRANSPORT="dt_socket"
 
 
 # start tomcat7 with remote debugging
-#EXPOSE 8080
-#ENTRYPOINT ["catalina.sh", "run"]
 EXPOSE 8080 8000
 ENTRYPOINT ["catalina.sh", "jpda", "run"]
